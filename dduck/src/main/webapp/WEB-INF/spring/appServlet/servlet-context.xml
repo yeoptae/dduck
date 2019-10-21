@@ -21,8 +21,36 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.last27.kongdduck" />
+	<context:component-scan base-package="com.kh.dduck" />
 	
+	<!-- 인터셉터 등록하기 -->
+<!-- 	<interceptors> -->
+<!-- 		<interceptor> -->
+<!-- 			<mapping path="/demo/*"/> -->
+<!-- 			<mapping path="/board/*"/> -->
+<!-- 			<exclude-mapping path="/member/*"/> -->
+<!-- 			<beans:bean id="loggerInterceptor" class="com.kh.spring.common.interceptor.LoggerInterceptor"></beans:bean> -->
+<!-- 		</interceptor> -->
+<!-- 	</interceptors> -->
 	
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="10485760"/>
+	</beans:bean>
+	
+	<!-- jsonView 등록하기 -->
+	<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<beans:property name="order" value="1"/>
+	</beans:bean>
+	<beans:bean id="jsonView" class="net.sf.json.spring.web.servlet.view.JsonView"/>
+	
+	<!-- ResponseBody방식 ajax 등록 -->
+	<beans:bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+	<beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<beans:property name="messageConverters">
+			<beans:list>
+				<beans:ref bean="jacksonMessageConverter"/>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
 	
 </beans:beans>

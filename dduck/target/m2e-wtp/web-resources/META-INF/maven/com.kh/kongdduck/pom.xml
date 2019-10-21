@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.kh</groupId>
-	<artifactId>dduck</artifactId>
-	<name>dduck</name>
+	<artifactId>kongdduck</artifactId>
+	<name>testProject</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -111,6 +111,7 @@
 	
 		<!-- DB설정 jar depency -->
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+		
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-jdbc</artifactId>
