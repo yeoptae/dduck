@@ -18,7 +18,11 @@
                 </div>
                 <div class="col-sm-8 text-left">
                     <a href="${pageContext.request.contextPath}/admin/adminmypage.do">관리자페이지로연결 </a>
-                   
+                    <h1>Welcome</h1>
+                    <a href="${pageContext.request.contextPath}/detail/detailView">상세페이지</a>
+                    <hr>
+                    <h3>Test</h3>
+                    <p>Lorem ipsum...</p>
                 </div>
                 <div class="col-sm-2 sidenav">
                     <div class="well">
@@ -30,4 +34,6 @@
             </div>
         </div>
     </section>
+    
+    
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
