@@ -313,9 +313,10 @@ input , select {
 	}
 	
 	function update() {
-		textareacontent = $("#textarea").val();
+		var textareacontent = $("#textarea").val();
 		location.href="${pageContext.request.contextPath}/review/reviewUpdate?reviewNo="+$('#no').val()+"&reviewContent="+textareacontent;
 	}
+	
 	
 	function asdfg(element,content) {
 		console.log("asdf:"+content)
