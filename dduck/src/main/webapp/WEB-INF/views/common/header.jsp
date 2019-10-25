@@ -26,7 +26,7 @@
     <header>
         <div class="jumbotron" style="background-color: white;">
             <div class="container text-center">
-                <img src="${pageContext.request.contextPath }/resources/images/MainTitle.png">
+                <a href="${pageContext.request.contextPath }"><img src="${pageContext.request.contextPath }/resources/images/MainTitle.png"></a>
             </div>
         </div>
 
