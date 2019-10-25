@@ -54,7 +54,7 @@ public class MailController {
             Random r = new Random();
             int dice = r.nextInt(4589362) + 49311; //이메일로 받는 인증코드 부분 (난수)
             
-            String setfrom = "ooxorhksoo@gmail.com";
+            String setfrom = "mgrmgr1004@gmail.com";
             String tomail = request.getParameter("ooeoansoo@naver.com"); // 받는 사람 이메일
             String title = "회원가입 인증 이메일 입니다."; // 제목
             String content =
@@ -83,7 +83,7 @@ public class MailController {
                 MimeMessageHelper messageHelper = new MimeMessageHelper(message,
                         true, "UTF-8");
  
-                messageHelper.setFrom("ooxorhksoo@gmail.com"); // 보내는사람 생략하면 정상작동을 안함
+                messageHelper.setFrom("mgrmgr1004@gmail.com"); // 보내는사람 생략하면 정상작동을 안함
                 messageHelper.setTo("ooeoansoo@naver.com"); // 받는사람 이메일
                 messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
                 messageHelper.setText(content); // 메일 내용
