@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,8 +22,8 @@ public class ClientController {
 	@Autowired
 	ClientService service;
 	
-//	@Autowired
-//	BCryptPasswordEncoder pwEncoder;
+	@Autowired
+	BCryptPasswordEncoder pwEncoder;
 	
 	
 	
@@ -80,17 +81,28 @@ public class ClientController {
       return "login/login";
 
    }
-   //회원가입페이지
-   @RequestMapping("/Client/signUp.do")
-   public String signUp() {
-	   return "login/signup";
-   }
-   
-   
-  //회원가입
-   @RequestMapping("/Client/enroll.do")
-   public String enroll() {
-	   return "/"; 
-   }
 
+	/* 회원가입 화면전환  */
+	@RequestMapping("/client/clientEnroll.do")
+	public String enroll() {
+		return "client/clientEnroll";
+	}
+	
+	/* 회원가입  */
+	@RequestMapping("/client/clientEnrollEnd.do")
+	public String enrollEnd(Client c, Model model) {
+		c.setCPw(pwEncoder.encode(c.getCPw()));
+		int result=service.insertClient(c);
+		String msg="";
+		String loc="";
+		if(result>0) {
+			msg="회원가입완료";
+		}else {
+			msg="회원가입오류";
+		}
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);
+		
+		return "common/msg";
+	}
 }
