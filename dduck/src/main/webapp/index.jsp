@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-sm-8 text-left">
                     <h1>Welcome</h1>
-                    <p>.</p>
+                    <a href="${pageContext.request.contextPath}/detail/detailView">상세페이지</a>
                     <hr>
                     <h3>Test</h3>
                     <p>Lorem ipsum...</p>
