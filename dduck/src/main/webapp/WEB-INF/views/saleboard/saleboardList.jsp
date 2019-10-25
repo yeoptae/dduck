@@ -18,12 +18,44 @@
 						<th colspan="5">데이터가 없습니다</th>
 					</tr>
 				</c:if>
-				
-					<c:forEach items="${list }" var="b" varStatus="v">
-				<%--   <c:choose> 
-				 <c:when 
-				 choose문을 사용해서 분기처리 할 예정--%>
-				  <c:if test='${b["GCODE"]=="1" }'> 
+
+				<c:forEach items="${list }" var="b" varStatus="v">
+					<div class="col-sm-4">
+						<div class="panel panel-primary">
+							<div class="panel-heading"></div>
+							<%--  <c:if test="${param.cPage!=1 }">
+								<c:out value="${v.count+5 }" />
+							</c:if> --%> 
+							<div class="panel-body">
+							
+								<c:forEach items="${fileList }" var="f" varStatus="vs">
+									<c:if test='${f["PCODE"]==b["PCODE"]}'>
+										<c:if test='${f["ATTACHFLAG"]=="1" }'>
+											<img
+												src='<%=request.getContextPath()%>/resources/upload/board/${f["ATTACHREFILENAME"]}'
+												class="img-responsive" style="width: 320px; height: 230px;"
+												alt="Image" />
+										</c:if>
+									</c:if>
+								</c:forEach>
+
+							</div>
+
+							<div class="panel-footer">
+								<ul class="list-inline">
+									<li class="list-inline-item"><c:out
+											value='${b["SALENAME"] }' /></li>
+									<li class="list-inline-item"><c:out
+											value='${b["SALEPRICE"] }' /> 원</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+				</c:forEach>
+
+				<c:forEach items="${list }" var="b" varStatus="v">
+					<c:if test='${b["GCODE"]=="2" }'>
 						<div class="col-sm-4">
 							<div class="panel panel-primary">
 								<div class="panel-heading"></div>
@@ -31,39 +63,37 @@
 									<c:out value="${v.count+5 }" />
 								</c:if> --%>
 								<div class="panel-body">
-						<%-- <img src='${b["BOARDFILE"] }' class="img-responsive" style="width : 100%" alt="image"/> --%>
-                   
-               
-                     <c:forEach items="${fileList }" var="f" varStatus="vs">
-                          <c:if test='${f["PCODE"]==b["PCODE"]}'>
-                           	<c:if test='${f["ATTACHFLAG"]=="1" }'>  
-									<img src='<%=request.getContextPath()%>/resources/upload/board/${f["ATTACHREFILENAME"]}' class="img-responsive"
-										style="width:320px;height:230px;" alt="Image" />
-							 </c:if>
-							 </c:if> 
-							<%-- </c:when> --%>
-						<%--  </c:choose> --%>
-				     </c:forEach> 
-				     
+									<%-- <img src='${b["BOARDFILE"] }' class="img-responsive" style="width : 100%" alt="image"/> --%>
+
+
+									<c:forEach items="${fileList }" var="f" varStatus="vs">
+										<c:if test='${f["PCODE"]==b["PCODE"]}'>
+											<c:if test='${f["ATTACHFLAG"]=="1" }'>
+												<img
+													src='<%=request.getContextPath()%>/resources/upload/board/${f["ATTACHREFILENAME"]}'
+													class="img-responsive" style="width: 320px; height: 230px;"
+													alt="Image" />
+											</c:if>
+										</c:if>
+									</c:forEach>
+
 								</div>
 
 								<div class="panel-footer">
 									<ul class="list-inline">
-										<li class="list-inline-item">
-										<c:out value='${b["SALENAME"] }' /> 
-										</li>
-										<li class="list-inline-item">
-										<c:out value='${b["SALEPRICE"] }' /> 원
-										</li>
-									</ul>	
+										<li class="list-inline-item"><c:out
+												value='${b["SALENAME"] }' /></li>
+										<li class="list-inline-item"><c:out
+												value='${b["SALEPRICE"] }' /> 원</li>
+									</ul>
 								</div>
 							</div>
 						</div>
-			 	</c:if> 
-					</c:forEach>
-					
-					<c:forEach items="${list }" var="b" varStatus="v">
-				  <c:if test='${b["GCODE"]=="2" }'> 
+					</c:if>
+				</c:forEach>
+
+				<c:forEach items="${list }" var="b" varStatus="v">
+					<c:if test='${b["GCODE"]=="3" }'>
 						<div class="col-sm-4">
 							<div class="panel panel-primary">
 								<div class="panel-heading"></div>
@@ -71,37 +101,37 @@
 									<c:out value="${v.count+5 }" />
 								</c:if> --%>
 								<div class="panel-body">
-						<%-- <img src='${b["BOARDFILE"] }' class="img-responsive" style="width : 100%" alt="image"/> --%>
-                   
-               
-                     <c:forEach items="${fileList }" var="f" varStatus="vs">
-                          <c:if test='${f["PCODE"]==b["PCODE"]}'>
-                           	<c:if test='${f["ATTACHFLAG"]=="1" }'>  
-									<img src='<%=request.getContextPath()%>/resources/upload/board/${f["ATTACHREFILENAME"]}' class="img-responsive"
-										style="width:320px;height:230px;" alt="Image" />
-							 </c:if> 
-						 </c:if> 
-				     </c:forEach> 
-				     
+									<%-- <img src='${b["BOARDFILE"] }' class="img-responsive" style="width : 100%" alt="image"/> --%>
+
+
+									<c:forEach items="${fileList }" var="f" varStatus="vs">
+										<c:if test='${f["PCODE"]==b["PCODE"]}'>
+											<c:if test='${f["ATTACHFLAG"]=="1" }'>
+												<img
+													src='<%=request.getContextPath()%>/resources/upload/board/${f["ATTACHREFILENAME"]}'
+													class="img-responsive" style="width: 320px; height: 230px;"
+													alt="Image" />
+											</c:if>
+										</c:if>
+									</c:forEach>
+
 								</div>
 
 								<div class="panel-footer">
 									<ul class="list-inline">
-										<li class="list-inline-item">
-										<c:out value='${b["SALENAME"] }' /> 
-										</li>
-										<li class="list-inline-item">
-										<c:out value='${b["SALEPRICE"] }' /> 원
-										</li>
-									</ul>	
+										<li class="list-inline-item"><c:out
+												value='${b["SALENAME"] }' /></li>
+										<li class="list-inline-item"><c:out
+												value='${b["SALEPRICE"] }' /> 원</li>
+									</ul>
 								</div>
 							</div>
 						</div>
-			 	</c:if> 
-					</c:forEach>
-					
-					<c:forEach items="${list }" var="b" varStatus="v">
-				  <c:if test='${b["GCODE"]=="3" }'> 
+					</c:if>
+				</c:forEach>
+
+				<c:forEach items="${list }" var="b" varStatus="v">
+					<c:if test='${b["GCODE"]=="4" }'>
 						<div class="col-sm-4">
 							<div class="panel panel-primary">
 								<div class="panel-heading"></div>
@@ -109,37 +139,37 @@
 									<c:out value="${v.count+5 }" />
 								</c:if> --%>
 								<div class="panel-body">
-						<%-- <img src='${b["BOARDFILE"] }' class="img-responsive" style="width : 100%" alt="image"/> --%>
-                   
-               
-                     <c:forEach items="${fileList }" var="f" varStatus="vs">
-                          <c:if test='${f["PCODE"]==b["PCODE"]}'>
-                           	<c:if test='${f["ATTACHFLAG"]=="1" }'>  
-									<img src='<%=request.getContextPath()%>/resources/upload/board/${f["ATTACHREFILENAME"]}' class="img-responsive"
-										style="width:320px;height:230px;" alt="Image" />
-							 </c:if> 
-						 </c:if> 
-				     </c:forEach> 
-				     
+									<%-- <img src='${b["BOARDFILE"] }' class="img-responsive" style="width : 100%" alt="image"/> --%>
+
+
+									<c:forEach items="${fileList }" var="f" varStatus="vs">
+										<c:if test='${f["PCODE"]==b["PCODE"]}'>
+											<c:if test='${f["ATTACHFLAG"]=="1" }'>
+												<img
+													src='<%=request.getContextPath()%>/resources/upload/board/${f["ATTACHREFILENAME"]}'
+													class="img-responsive" style="width: 320px; height: 230px;"
+													alt="Image" />
+											</c:if>
+										</c:if>
+									</c:forEach>
+
 								</div>
 
 								<div class="panel-footer">
 									<ul class="list-inline">
-										<li class="list-inline-item">
-										<c:out value='${b["SALENAME"] }' /> 
-										</li>
-										<li class="list-inline-item">
-										<c:out value='${b["SALEPRICE"] }' /> 원
-										</li>
-									</ul>	
+										<li class="list-inline-item"><c:out
+												value='${b["SALENAME"] }' /></li>
+										<li class="list-inline-item"><c:out
+												value='${b["SALEPRICE"] }' /> 원</li>
+									</ul>
 								</div>
 							</div>
 						</div>
-			 	</c:if> 
-					</c:forEach>
-					
-					<c:forEach items="${list }" var="b" varStatus="v">
-				  <c:if test='${b["GCODE"]=="4" }'> 
+					</c:if>
+				</c:forEach>
+
+				<c:forEach items="${list }" var="b" varStatus="v">
+					<c:if test='${b["GCODE"]=="5" }'>
 						<div class="col-sm-4">
 							<div class="panel panel-primary">
 								<div class="panel-heading"></div>
@@ -147,75 +177,34 @@
 									<c:out value="${v.count+5 }" />
 								</c:if> --%>
 								<div class="panel-body">
-						<%-- <img src='${b["BOARDFILE"] }' class="img-responsive" style="width : 100%" alt="image"/> --%>
-                   
-               
-                     <c:forEach items="${fileList }" var="f" varStatus="vs">
-                          <c:if test='${f["PCODE"]==b["PCODE"]}'>
-                           	<c:if test='${f["ATTACHFLAG"]=="1" }'>  
-									<img src='<%=request.getContextPath()%>/resources/upload/board/${f["ATTACHREFILENAME"]}' class="img-responsive"
-										style="width:320px;height:230px;" alt="Image" />
-							 </c:if> 
-						 </c:if> 
-				     </c:forEach> 
-				     
+									<%-- <img src='${b["BOARDFILE"] }' class="img-responsive" style="width : 100%" alt="image"/> --%>
+
+
+									<c:forEach items="${fileList }" var="f" varStatus="vs">
+										<c:if test='${f["PCODE"]==b["PCODE"]}'>
+											<c:if test='${f["ATTACHFLAG"]=="1" }'>
+												<img
+													src='<%=request.getContextPath()%>/resources/upload/board/${f["ATTACHREFILENAME"]}'
+													class="img-responsive" style="width: 320px; height: 230px;"
+													alt="Image" />
+											</c:if>
+										</c:if>
+									</c:forEach>
+
 								</div>
 
 								<div class="panel-footer">
 									<ul class="list-inline">
-										<li class="list-inline-item">
-										<c:out value='${b["SALENAME"] }' /> 
-										</li>
-										<li class="list-inline-item">
-										<c:out value='${b["SALEPRICE"] }' /> 원
-										</li>
-									</ul>	
+										<li class="list-inline-item"><c:out
+												value='${b["SALENAME"] }' /></li>
+										<li class="list-inline-item"><c:out
+												value='${b["SALEPRICE"] }' /> 원</li>
+									</ul>
 								</div>
 							</div>
 						</div>
-			 	</c:if> 
-					</c:forEach>
-					
-					<c:forEach items="${list }" var="b" varStatus="v">
-				  <c:if test='${b["GCODE"]=="5" }'> 
-						<div class="col-sm-4">
-							<div class="panel panel-primary">
-								<div class="panel-heading"></div>
-								<%-- <c:if test="${param.cPage!=1 }">
-									<c:out value="${v.count+5 }" />
-								</c:if> --%>
-								<div class="panel-body">
-						<%-- <img src='${b["BOARDFILE"] }' class="img-responsive" style="width : 100%" alt="image"/> --%>
-                   
-               
-                     <c:forEach items="${fileList }" var="f" varStatus="vs">
-                          <c:if test='${f["PCODE"]==b["PCODE"]}'>
-                           	<c:if test='${f["ATTACHFLAG"]=="1" }'>  
-									<img src='<%=request.getContextPath()%>/resources/upload/board/${f["ATTACHREFILENAME"]}' class="img-responsive"
-										style="width:320px;height:230px;" alt="Image" />
-							 </c:if> 
-						 </c:if> 
-				     </c:forEach> 
-				     
-								</div>
-
-								<div class="panel-footer">
-									<ul class="list-inline">
-										<li class="list-inline-item">
-										<c:out value='${b["SALENAME"] }' /> 
-										</li>
-										<li class="list-inline-item">
-										<c:out value='${b["SALEPRICE"] }' /> 원
-										</li>
-									</ul>	
-								</div>
-							</div>
-						</div>
-			 	</c:if> 
-					</c:forEach>
-					
-					
-					
+					</c:if>
+				</c:forEach>
 			</div>
 		</div>
 		<br>

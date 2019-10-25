@@ -45,11 +45,11 @@
                     <ul class="nav navbar-nav" id="menu">
                  <%--  <c:forEach items="${list }" var="b"> --%>
                         <%-- <li><a href='${pageContext.request.contextPath}/admin/saleboardList.do?gCode=${b["GCODE"]}'>답례</a></li> --%>
-                        <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?GCODE=1">답례</a></li>
-                        <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?GCODE=2">간식</a></li>
-                        <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?GCODE=3">돌</a></li>
-                        <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?GCODE=4">케익</a></li>
-                        <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?GCODE=5">세트</a></li>
+                        <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=1">답례</a></li>
+                        <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=2">간식</a></li>
+                        <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=3">돌</a></li>
+                        <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=4">케익</a></li>
+                        <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=5">세트</a></li>
                 <%--  </c:forEach> --%>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">

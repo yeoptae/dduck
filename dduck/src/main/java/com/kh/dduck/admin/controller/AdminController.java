@@ -33,9 +33,9 @@ public class AdminController {
 	required=false, defaultValue="0") int cPage,HttpServletRequest request) {
 		ModelAndView mv=new ModelAndView();
 		
-		int GCODE = Integer.parseInt(request.getParameter("GCODE"));
+		int gCode = Integer.parseInt(request.getParameter("gCode"));
 		int numPerPage=9;
-		List<Map<String,String>> list=service.selectBoardList(cPage,numPerPage,GCODE);
+		List<Map<String,String>> list=service.selectBoardList(cPage,numPerPage,gCode);
 		List<Map<String,String>> fileList=service.selectFile();
 		System.out.println(fileList);
 		System.out.println(list);
@@ -44,7 +44,7 @@ public class AdminController {
 		mv.addObject("count",totlaCount);
 		mv.addObject("list",list);
 		mv.addObject("fileList",fileList);
-		mv.addObject("GCODE",GCODE);
+		mv.addObject("GCODE",gCode);
 		mv.setViewName("saleboard/saleboardList");
 		
 		return mv;
