@@ -1,10 +1,10 @@
-package com.kh.dduck.client.service;
+package com.kh.dduck.client.model.service;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kh.dduck.client.dao.ClientDao;
+import com.kh.dduck.client.model.dao.ClientDao;
 import com.kh.dduck.client.model.vo.Client;
 
 @Service

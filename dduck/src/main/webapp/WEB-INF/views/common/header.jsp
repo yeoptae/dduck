@@ -47,6 +47,7 @@
                     <ul class="nav navbar-nav" id="menu">
                  <%--  <c:forEach items="${list }" var="b"> --%>
                         <%-- <li><a href='${pageContext.request.contextPath}/admin/saleboardList.do?gCode=${b["GCODE"]}'>답례</a></li> --%>
+                        <li><a href="${pageContext.request.contextPath}/notice/noticeList.do">공지사항</a></li>
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=1">답례</a></li>
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=2">간식</a></li>
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=3">돌</a></li>

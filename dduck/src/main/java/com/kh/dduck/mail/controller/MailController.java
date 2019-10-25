@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kh.dduck.client.service.ClientService;
+import com.kh.dduck.client.model.service.ClientService;
 
 @Controller    //컨트롤러 빈 선언
 public class MailController {

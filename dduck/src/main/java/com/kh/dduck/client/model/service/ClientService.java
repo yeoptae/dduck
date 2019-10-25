@@ -1,4 +1,4 @@
-package com.kh.dduck.client.service;
+package com.kh.dduck.client.model.service;
 
 import com.kh.dduck.client.model.vo.Client;
 
