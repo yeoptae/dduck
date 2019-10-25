@@ -27,7 +27,6 @@
             <div class="container text-center">
               <a href="${pageContext.request.contextPath}/admin/mainpage.do">
               <img src="${pageContext.request.contextPath }/resources/images/MainTitle.png"></a>
-                <a href="${pageContext.request.contextPath }"><img src="${pageContext.request.contextPath }/resources/images/MainTitle.png"></a>
             </div>
         </div>
 
