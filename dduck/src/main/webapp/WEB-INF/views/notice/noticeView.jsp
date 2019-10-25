@@ -51,7 +51,7 @@
 	                <a href="" class="navbar-btn btn-danger btn">
 	                    <span class="glyphicon" onclick=""></span> 수정 </a>
 	                <a href="" class="navbar-btn btn-danger btn">
-	                    <span class="glyphicon" onclick=""></span> 삭제 </a>
+	                    <span class="glyphicon deleteNotice" onclick=""></span> 삭제 </a>
 	            </div>
 	        </div>
 	    </div>
@@ -60,7 +60,7 @@
 <script>
 /* 삭제 ---------------------------------------------------------------- */
 	$(function(){
-		$('#deleteNotice').click(function(){
+		$('.deleteNotice').click(function(){
 			if(confirm("정말로 삭제하시겠습니까?")){
 				location.href='${path}/notice/noticeDelete.do?noticeCode=${NOTICECODE}';
 			}

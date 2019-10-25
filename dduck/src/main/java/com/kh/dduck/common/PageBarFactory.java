@@ -1,9 +1,8 @@
 package com.kh.dduck.common;
 
 public class PageBarFactory {
-
-	public static String getPageBar(int totalCount, int cPage, 
-			int numPerPage, String url) {
+	
+	public static String getPageBar(int totalCount, int cPage, int numPerPage, String url) {
 		String pageBar="";
 		int pageBarSize=5;
 		
@@ -58,16 +57,5 @@ public class PageBarFactory {
 		pageBar+="</script>";
 		return pageBar;
 	}
-	
-	
-	
 }
-
-
-
-
-
-
-
-
 

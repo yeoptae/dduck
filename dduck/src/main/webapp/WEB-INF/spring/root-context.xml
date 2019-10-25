@@ -16,8 +16,8 @@
 	<bean id="realDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-		<property name="username" value="dducktest"/>
-		<property name="password" value="dducktest"/>
+		<property name="username" value="test2"/>
+		<property name="password" value="test2"/>
 	</bean>
 	
 	 <!--  로그를 출력하기 위한 라이브러리추가  -->
