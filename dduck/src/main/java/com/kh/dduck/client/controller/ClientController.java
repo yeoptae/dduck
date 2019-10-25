@@ -10,8 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.kh.dduck.client.model.service.ClientService;
 import com.kh.dduck.client.model.vo.Client;
-import com.kh.dduck.client.service.ClientService;
 
 @Controller
 public class ClientController {

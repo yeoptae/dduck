@@ -1,4 +1,4 @@
-package com.kh.dduck.client.dao;
+package com.kh.dduck.client.model.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
