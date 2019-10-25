@@ -11,9 +11,9 @@
             <div class="row content">
                 <div class="col-sm-2 sidenav">
                     <p>
-                        <img src="${pageContext.request.contextPath }/resources/images/LeftBanner1.png">
-                        <img src="${pageContext.request.contextPath }/resources/images/LeftBanner2.gif">
-                        <img src="${pageContext.request.contextPath }/resources/images/LeftBanner3.gif">
+                        <img src="${path }/resources/images/LeftBanner1.png">
+                        <img src="${path }/resources/images/LeftBanner2.gif">
+                        <img src="${path }/resources/images/LeftBanner3.gif">
                     </p>
                 </div>
                 <div class="col-sm-8 text-left">
@@ -31,7 +31,7 @@
                 <div class="col-sm-2 sidenav">
                     <div class="well">
                         <p>
-                            <img src="${pageContext.request.contextPath }/resources/images/RightBanner.png">
+                            <img src="${path }/resources/images/RightBanner.png">
                         </p>
                     </div>
                 </div>

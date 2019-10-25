@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="client">
+
+	
+<!-- 회원가입  -->
+	<insert id="insertClient" parameterType="client">
+		INSERT INTO CLIENT VALUES (#{cId},#{cPw},#{cName},#{cEmail},#{cPhone},#{cAddr},sysdate)
+	</insert> 
+	
+<!-- 로그인 -->
+	<select parameterType="Client" resultType="Client" id="selectClientOne">
+		SELECT * FROM CLIENT WHERE CID=#{cId}
+	</select>
+</mapper>

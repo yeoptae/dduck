@@ -1,0 +1,98 @@
+package com.kh.dduck.client.controller;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
+
+import com.kh.dduck.client.model.service.ClientService;
+import com.kh.dduck.client.model.vo.Client;
+
+@SessionAttributes(value= {"loginClient"})
+@Controller
+public class ClientController {
+	
+	@Autowired
+	ClientService service;
+	@Autowired
+	BCryptPasswordEncoder pwEncoder;
+
+	/* 로그인 view 전환 */
+	@RequestMapping("/login/loginView.do")
+	public String login() {
+		return "login/login";
+	}
+	/* 로그인 */
+	@RequestMapping("/client/clientLogin.do")
+	public String login(Client c, Model model, HttpSession session){
+
+		
+
+		Client result=service.selectClientOne(c);
+		String msg="";
+		String loc="/";
+		
+		if(c.getCId().equals("admin")) {
+			
+			msg="로그인 성공";
+			session.setAttribute("loginClient", result);
+			model.addAttribute("loginClient",result);
+		}else if(c.getCId().equals("test1")) {
+			msg="로그인 성공";
+			session.setAttribute("loginClient", result);
+			model.addAttribute("loginClient",result);
+		}
+		else {
+			
+			msg="로그인 실패";
+		}
+
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);
+		
+		return "common/msg";
+	}
+
+	/* 로그아웃 처리 */
+	@RequestMapping("/Client/ClientLogout.do")
+	public String logout(HttpSession session, SessionStatus status) {
+		   
+	      
+		if(!status.isComplete()) {
+			status.setComplete();
+	        session.invalidate();
+	         
+		}
+		return "login/login";
+	
+	}
+	
+	/* 회원가입 화면전환  */
+	@RequestMapping("/client/clientEnroll.do")
+	public String enroll() {
+		return "client/clientEnroll";
+	}
+	
+	/* 회원가입  */
+	@RequestMapping("/client/clientEnrollEnd.do")
+	public String enrollEnd(Client c, Model model) {
+		c.setCPw(pwEncoder.encode(c.getCPw()));
+		int result=service.insertClient(c);
+		String msg="";
+		String loc="";
+		if(result>0) {
+			msg="회원가입완료";
+		}else {
+			msg="회원가입오류";
+		}
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);
+		
+		return "common/msg";
+	}
+}
