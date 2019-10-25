@@ -16,8 +16,8 @@
 	<bean id="realDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-		<property name="username" value="test2"/>
-		<property name="password" value="test2"/>
+		<property name="username" value="dduck"/>
+		<property name="password" value="dduck"/>
 	</bean>
 	
 	 <!--  로그를 출력하기 위한 라이브러리추가  -->
@@ -66,5 +66,28 @@
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod"/>
 	</aop:config>
 	
+	<!-- 메일 보내기 (SEND) -->
+   <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+      <property name="host" value="smtp.gmail.com" />
+      <property name="port" value="587" />
+      <property name="username" value="mgrmgr1004@gmail.com" />
+      <property name="password" value="mgr.1004" />
+    
+
+      <!-- email 요청시는 SMTP -->
+      <property name="javaMailProperties">
+         <props>
+            <prop key="mail.transport.protocol">smtp</prop>
+            <prop key="mail.smtp.auth">true</prop>
+            <prop key="mail.smtp.starttls.enable">true</prop>
+            <prop key="mail.debug">true</prop>
+         </props>
+      </property>
+   </bean>
+	
+	
+	
+
 	
 </beans>
+

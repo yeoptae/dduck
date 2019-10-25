@@ -18,7 +18,6 @@
                 </div>
                 <div class="col-sm-8 text-left">
                     <h1>Welcome</h1>
-                    
                     <a href="${pageContext.request.contextPath}/detail/detailView">상세페이지</a>
                     <hr>
                     <h3>Test</h3>
@@ -34,4 +33,6 @@
             </div>
         </div>
     </section>
+    
+    
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

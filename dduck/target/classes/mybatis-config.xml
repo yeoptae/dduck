@@ -4,6 +4,6 @@
 	<typeAliases>
 		 <typeAlias type="com.kh.dduck.review.model.vo.Review" alias="review"/>
 <!-- 		<typeAlias type="com.kh.spring.common.ArrayTypeHandler" alias="arrType"/> -->
-<!-- 		<typeAlias type="com.kh.spring.demo.model.vo.Member" alias="member"/> -->
+	<typeAlias type="com.kh.dduck.client.model.vo.Client" alias="client" />
 	</typeAliases>
 </configuration>

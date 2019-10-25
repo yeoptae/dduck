@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="client">
+	
+	<select id="selectClientOne" resultType="Client" parameterType="Client">
+		SELECT * FROM CLIENT WHERE CID=#{cId}
+	</select>
+	
+		<insert id="insertClient" parameterType="client">
+		INSERT INTO MEMBER VALUES(#{cId},#{cPw},#{cName},#{cEmail},
+		#{cPhone},#{cAddr},sysdate)
+	</insert>
+
+</mapper>

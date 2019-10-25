@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <title>메인페이지</title>
+</head>
     <style>
     .jumbotron {
         padding-top: 0px !important;
@@ -20,7 +20,7 @@
     }
 
     
-	</style>
+   </style>
 
 <body>
     <header>
@@ -50,12 +50,33 @@
                         <li><a href="#">케익</a></li>
                         <li><a href="#">세트</a></li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> 로그인</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-</head>
+						
+	                	
+	                	
+	                	<!--로그인 시 보여지는 로직들  -->
+								<c:choose>
+									<c:when test="${empty loginClient }">
+									<ul class="nav navbar-nav navbar-right">
+				                        <li><a href="${pageContext.request.contextPath}/login/loginView.do"><span class="glyphicon glyphicon-user"></span> 로그인</a></li>
+				                       <li><a href="${pageContext.request.contextPath}/member/email.do"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
+				                   	</ul>
+				                   	</c:when>
+								    <c:when test="${loginClient.CId eq 'admin' }">
+								    	<ul class="nav navbar-nav navbar-right">	
+								        	<li><a href="${pageContext.request.contextPath}">관리자페이지</a></li>
+	                      					<li><a href="${pageContext.request.contextPath}/Client/ClientLogout.do">로그아웃</a></li>
+	                    				</ul>
+								    </c:when>
+								    <c:otherwise >
+						              <ul class="nav navbar-nav navbar-right">
+						                    <li><a href="${pageContext.request.contextPath}">마이페이지</a></li>
+						                    <li><a href="${pageContext.request.contextPath}/Client/ClientLogout.do">로그아웃</a></li>
+					                    </ul>
+								    </c:otherwise>
+								</c:choose>
+              	  </div>
+           	 </div>
+        	 </nav>
+    	</header>
+	</html>
+
