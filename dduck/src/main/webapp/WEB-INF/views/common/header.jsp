@@ -12,21 +12,20 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <title>메인페이지</title>
+   
     <style>
     .jumbotron {
         padding-top: 0px !important;
         padding-bottom: 0px !important;
     }
-
-    
 	</style>
 
 <body>
     <header>
         <div class="jumbotron" style="background-color: white;">
             <div class="container text-center">
-                <img src="${pageContext.request.contextPath }/resources/images/MainTitle.png">
+              <a href="${pageContext.request.contextPath}/admin/mainpage.do">
+              <img src="${pageContext.request.contextPath }/resources/images/MainTitle.png"></a>
             </div>
         </div>
 
@@ -44,11 +43,14 @@
 
                 <div class="collapse navbar-collapse" id="myNavbar" style=" text-align:center;">
                     <ul class="nav navbar-nav" id="menu">
-                        <li><a href="#">답례</a></li>
-                        <li><a href="#">간식</a></li>
-                        <li><a href="#">돌</a></li>
-                        <li><a href="#">케익</a></li>
-                        <li><a href="#">세트</a></li>
+                 <%--  <c:forEach items="${list }" var="b"> --%>
+                        <%-- <li><a href='${pageContext.request.contextPath}/admin/saleboardList.do?gCode=${b["GCODE"]}'>답례</a></li> --%>
+                        <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?GCODE=1">답례</a></li>
+                        <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?GCODE=2">간식</a></li>
+                        <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?GCODE=3">돌</a></li>
+                        <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?GCODE=4">케익</a></li>
+                        <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?GCODE=5">세트</a></li>
+                <%--  </c:forEach> --%>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> 로그인</a></li>
