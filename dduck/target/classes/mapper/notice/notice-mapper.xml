@@ -33,5 +33,7 @@
 	</insert>
 	
 <!-- notice 삭제 -->
-	<select id="selectNoticeCode"
+	<select id="selectNoticeCode" parameterType="_int">
+		delte form notice where noticedoe=#{noticeCode}
+	</select>
 </mapper>

@@ -41,7 +41,7 @@
     <br><br><br><br><br>
     
 	<!-- 관리자메뉴 -->
-	<c:if test="${cId eq 'admin' }">
+<%-- 	<c:if test="${cId eq 'admin' }"> --%>
 	    <div class="navbar navbar-default navbar-fixed-bottom">
 	        <div class="container">
 	            <p class="navbar-text pull-left">
@@ -49,15 +49,26 @@
 	            </p>
 	            <div class="pull-right">
 	                <a href="" class="navbar-btn btn-danger btn">
-	                    <span class="glyphicon"></span> 수정 </a>
+	                    <span class="glyphicon" onclick=""></span> 수정 </a>
 	                <a href="" class="navbar-btn btn-danger btn">
-	                    <span class="glyphicon"></span> 삭제 </a>
+	                    <span class="glyphicon" onclick=""></span> 삭제 </a>
 	            </div>
 	        </div>
 	    </div>
-    </c:if>
+<%--     </c:if> --%>
 </section>
 <script>
+/* 삭제 ---------------------------------------------------------------- */
+	$(function(){
+		$('#deleteNotice').click(function(){
+			if(confirm("정말로 삭제하시겠습니까?")){
+				location.href='${path}/notice/noticeDelete.do?noticeCode=${NOTICECODE}';
+			}
+		});
+	});
+	
+
+/* 파일 다운로드 -----------------------------------------------------------*/
 	function fileDownload(oName){
 		oName=encodeURIComponent(oName);
 		location.href="${path}/notice/noticeFileDown.do?oName="+oName;

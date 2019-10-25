@@ -20,4 +20,7 @@ public interface NoticeDao {
 	/* notice view 연결 */
 	Map<String, String> selectNotice(SqlSessionTemplate session, int noticeCode);
 	List<NoticeFile> selectNoticeFileList(SqlSessionTemplate session, int noticeCode);
+	
+	/* 게시글 삭제 */
+	int selectNoticeCode(SqlSessionTemplate session, int noticeCode);
 }

@@ -56,4 +56,10 @@ public class NoticeServiceImpl implements NoticeService {
 	public List<NoticeFile> selectNoticeFileList(int noticeCode) {
 		return dao.selectNoticeFileList(session,noticeCode);
 	}
+	
+	/* 게시글 삭제 */
+	@Override
+	public int selectNoticeCode(int noticeCode) {
+		return dao.selectNoticeCode(session, noticeCode);
+	}
 }

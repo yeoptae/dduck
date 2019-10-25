@@ -45,7 +45,8 @@
 
                 <div class="collapse navbar-collapse" id="myNavbar" style=" text-align:center;">
                     <ul class="nav navbar-nav" id="menu">
-                        <li><a href="${path }/notice/noticeList.do">답례</a></li>
+                        <li><a href="${path }/notice/noticeList.do">공지사항</a></li>
+                        <li><a href="#">답례</a></li>
                         <li><a href="#">간식</a></li>
                         <li><a href="#">돌</a></li>
                         <li><a href="#">케익</a></li>

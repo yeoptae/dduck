@@ -47,4 +47,11 @@ public class NoticeDaoImpl implements NoticeDao {
 	public List<NoticeFile> selectNoticeFileList(SqlSessionTemplate session, int noticeCode) {
 		return session.selectList("notice.selectNoticeFileList",noticeCode);
 	}
+	
+	/* 게시글 삭제 */
+	@Override
+	public int selectNoticeCode(SqlSessionTemplate session, int noticeCode) {
+		return session.selectOne("notice.selectNoticeCode", noticeCode);
+	}
+	
 }

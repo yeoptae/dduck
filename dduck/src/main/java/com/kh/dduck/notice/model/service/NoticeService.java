@@ -17,4 +17,7 @@ public interface NoticeService {
 	/* notice view 연결 */
 	Map<String,String> selectNotice(int noticeCode);
 	List<NoticeFile> selectNoticeFileList(int noticeCode);
+	
+	/* 게시글 삭제 */
+	int selectNoticeCode(int noticeCode);
 }
