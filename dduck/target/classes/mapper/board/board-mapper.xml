@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="board">
+
+  <select id="selectFile" resultType="map">
+       select * from saleboardfile
+  </select>
+
+   <select id="selectBoardCount" resultType="_int">
+      select count(*) from saleboard
+   </select>
+   
+   <select id="selectBoardList" resultType="map">
+      SELECT A.*,
+         (SELECT COUNT(*)
+            FROM SALEBOARDFILE
+            WHERE PCODE=A.PCODE) AS BOARDFILE
+    FROM SALEBOARD A WHERE GCODE=${gCode} ORDER BY PCODE DESC
+   </select>
+
+	<insert id="insertBoard" parameterType="map">
+		INSERT INTO SALEBOARD VALUES(SEQ_PCODE.NEXTVAL,#{gCode},#{saleName},#{salePrice},#{detailsInfo},1)
+		<selectKey keyProperty="pCode" resultType="string" order="AFTER">
+			SELECT SEQ_PCODE.CURRVAL FROM DUAL
+		</selectKey>
+	</insert>
+	<insert id="insertBoardFile" 
+	parameterType="com.kh.dduck.adminboard.model.vo.SaleBoardFile">
+		insert into saleboardFile values(seq_attachcode.nextval,#{pCode},default,#{attachReFileName},#{attachFlag})
+	</insert>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
