@@ -20,7 +20,7 @@
         padding-top: 0px !important;
         padding-bottom: 0px !important;
     }
-	</style>
+   </style>
 <body>
     <header>
         <div class="jumbotron" style="background-color: white;">
@@ -54,11 +54,11 @@
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=5">세트</a></li>
                 <%--  </c:forEach> --%>
                     </ul>
-						
-	                	
-	                	
-	                	<!--로그인 시 보여지는 로직들  -->
-								<c:choose>
+                  
+                      
+                      
+                      <!--로그인 시 보여지는 로직들  -->
+                        <c:choose>
                            <c:when test="${empty loginClient }">
                            <ul class="nav navbar-nav navbar-right">
                            <!--로그인 클릭시 해당 매핑값을 읽어들임  -->
@@ -80,9 +80,8 @@
                                    </ul>
                             </c:otherwise>
                         </c:choose>
-              	  </div>
-           	 </div>
-        	 </nav>
-    	</header>
-	</html>
-
+                   </div>
+               </div>
+            </nav>
+       </header>
+   </html>
