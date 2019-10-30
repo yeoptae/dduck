@@ -94,6 +94,14 @@
                         		</div>
                 		</div><br>
                 		
+                		<div class="form-group has-warning">
+                        	<label class="col-xs-4 control-label">전화번호</label>
+                        		<div class="col-xs-8">
+                            		<input type="text" id="inputSuccess" class="form-control" value="${loginClient.CName }"><br>
+                        		</div>
+                		</div><br>
+                		
+                		
                 		
 					</div>
 				</div>
