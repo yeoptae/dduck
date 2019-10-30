@@ -1,14 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
 <mapper namespace="client">
 	
 	<select id="selectClientOne" resultType="Client" parameterType="Client">
 		SELECT * FROM CLIENT WHERE CID=#{cId}
 	</select>
 	
-		<insert id="insertClient" parameterType="client">
-		INSERT INTO MEMBER VALUES(#{cId},#{cPw},#{cName},#{cEmail},
-		#{cPhone},#{cAddr},sysdate)
+	<insert id="insertClient" parameterType="client">
+		INSERT INTO CLIENT VALUES(#{cId},#{cPw},#{cName},#{cEmail},
+		#{cPhone},#{cAddr1},#{cAddr2},#{cAddr3}sysdate)
 	</insert>
+	
+	<update id="updateClient">
+		UPDATE CLIENT SET CNAME = #{cName}
+		 where CID = #{cId}
+	</update>
+	<select id="selectClient" resultType="Client" parameterType="String">
+		select * from client where cid=#{mNo}
+	</select>
+	
+	<!-- CPW = #{cPw}, CEMAIL = #{cEmail}, CPHONE = #{cPhone} CADDR = #{cAddr}-->
+	
+
+<!-- 	SELECT CID, CPW, CNAME, CEMAIL, CPHONE,
+		CADDR
+		FROM CLIENT
+		WHERE CID = #{cId} -->
+	
+	
+		<!-- SELECT * FROM CLIENT WHERE CID=#{cId}
+		 -->
+		<!-- SELECT CID AS cId, CPW AS cPw, CNAME AS cName, CEMAIL AS cEmail, CPHONE AS cPhone, CADDR AS cAddr
+		FROM CLIENT WHERE CID=#{cId} -->
+		
+		
+		<update id="updatePw" parameterType="client">
+		update client set cpw = #{cPw} where cid = #{cId}
+		</update>
+
+
+
+
 
 </mapper>
