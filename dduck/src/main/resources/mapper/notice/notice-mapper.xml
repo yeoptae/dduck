@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="notice">
+	
+<!-- notice List 페이징처리 -->
+	<select id="selectNoticeCount" resultType="_int">
+		select count(*) from notice
+	</select>
+
+	<select id="selectNoticeList" resultType="map">
+		SELECT * FROM NOTICE ORDER BY NOTICEEN DESC	
+	</select>
+	
+<!-- notice view 불러오기 -->
+	<select id="selectNotice" resultType="map" parameterType="_int">
+		select * from notice where noticecode=#{noticeCode}
+	</select>
+	<select id="selectNoticeFileList" resultType="com.kh.dduck.notice.model.vo.NoticeFile" parameterType="_int">
+		select * from noticefile where noticecode=#{noticeCode}
+	</select>
+	
+<!-- notiveFormEnd 게시글 등록 -->
+	<insert id="insertNotice" parameterType="map">
+		INSERT INTO NOTICE VALUES(SEQ_NOTICECODE.NEXTVAL, 
+		#{cId},#{noticeTitle},default,#{noticeContent},#{noticeCategory},default)
+		<selectKey keyProperty="noticeCode" resultType="string" order="AFTER">
+			SELECT SEQ_NOTICECODE.CURRVAL FROM DUAL
+		</selectKey>
+	</insert>
+	<insert id="insertNoticeFileList" parameterType="com.kh.dduck.notice.model.vo.NoticeFile">
+		insert into noticefile values(seq_noticefilecode.nextval,
+		#{noticeCode},#{noticeFileOri},default)
+	</insert>
+	
+<!-- notice 삭제 -->
+	<select id="selectNoticeCode" parameterType="_int">
+		delte form notice where noticedoe=#{noticeCode}
+	</select>
+</mapper>

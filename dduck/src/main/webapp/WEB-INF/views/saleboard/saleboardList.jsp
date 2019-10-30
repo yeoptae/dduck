@@ -37,11 +37,16 @@
 								<c:forEach items="${fileList }" var="f" varStatus="vs">
 									<c:if test='${f["PCODE"]==b["PCODE"]}'>
 										<c:if test='${f["ATTACHFLAG"]=="1" }'>
+											
+											<input type="hidden" value="${f['PCODE'] }">
+											
+											<a href="${pageContext.request.contextPath}/detail/detailView?pCode=${f['PCODE'] }">
 											<img
 												src='<%=request.getContextPath()%>/resources/upload/board/${f["ATTACHREFILENAME"]}'
 												class="img-responsive" style="width: 320px; height: 230px;"
 												alt="Image" />
-											<div class="panel-body">
+
+											</a>
 										</c:if>
 									</c:if>
 								</c:forEach>
