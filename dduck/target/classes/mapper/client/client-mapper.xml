@@ -2,14 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="client">
-	
-	<select id="selectClientOne" resultType="Client" parameterType="Client">
+
+	<select id="selectClientOne" resultType="Client"
+		parameterType="Client">
 		SELECT * FROM CLIENT WHERE CID=#{cId}
 	</select>
 	
 	<insert id="insertClient" parameterType="client">
 		INSERT INTO CLIENT VALUES(#{cId},#{cPw},#{cName},#{cEmail},
 		#{cPhone},#{cAddr1},#{cAddr2},#{cAddr3}sysdate)
+
 	</insert>
 	
 	<update id="updateClient">
@@ -42,5 +44,14 @@
 
 
 
+
+	<select id="selectClientList" resultType="map">
+		SELECT * FROM CLIENT order by cen desc
+	</select>
+	
+	<select id="selectClientCount" resultType="_int">
+	  select count(*) from client
+	</select>
+	
 
 </mapper>

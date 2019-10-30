@@ -25,9 +25,8 @@
     <header>
         <div class="jumbotron" style="background-color: white;">
             <div class="container text-center">
-              <a href="${pageContext.request.contextPath}/admin/mainpage.do">
+              <a href="${pageContext.request.contextPath}">
               <img src="${pageContext.request.contextPath }/resources/images/MainTitle.png"></a>
-                <a href="${pageContext.request.contextPath }"><img src="${pageContext.request.contextPath }/resources/images/MainTitle.png"></a>
             </div>
         </div>
 
@@ -60,6 +59,7 @@
 	                	
 	                	<!--로그인 시 보여지는 로직들  -->
 								<c:choose>
+<<<<<<< HEAD
 									<c:when test="${empty loginClient }">
 									<ul class="nav navbar-nav navbar-right">
 									<!--로그인 클릭시 해당 매핑값을 읽어들임  -->
@@ -81,6 +81,7 @@
 					                    </ul>
 								    </c:otherwise>
 								</c:choose>
+
               	  </div>
            	 </div>
         	 </nav>

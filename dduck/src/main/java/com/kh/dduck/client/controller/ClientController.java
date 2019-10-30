@@ -25,10 +25,13 @@ public class ClientController {
 	@Autowired
 	ClientService service;
 
+	
 	@Autowired
 	BCryptPasswordEncoder pwEncoder;
-
-	// 로그인 뷰로 갑니다.
+	
+	
+	
+	//로그인 뷰로 갑니다.
 	@RequestMapping("/login/loginView.do")
 	public String login() {
 		return "login/login";
@@ -63,31 +66,33 @@ public class ClientController {
 //		return "common/msg";
 //	}
 	@RequestMapping("/client/clientLogin.do")
-	public String login(Client c, Model model, SessionStatus status) {
 
-		Client result = service.selectClientOne(c);
-		System.out.println(result + "이건 잘 되냐");
-		String msg = "";
-		String loc = "/";
+	   public String login(Client c, Model model, SessionStatus status) {
+
+	      Client result = service.selectClientOne(c);
+	      System.out.println(result + "이건 잘 되냐");
+	      String msg = "";
+	      String loc = "/";
 
 		if (c.getCId().equals("admin") && pwEncoder.matches(c.getCPw(), result.getCPw())) {
 
-			msg = "로그인 성공";
-			model.addAttribute("loginClient", result);
-		} else if (pwEncoder.matches(c.getCPw(), result.getCPw())) {
-			msg = "로그인 성공";
-			model.addAttribute("loginClient", result);
-		} else {
+			
+	         msg = "로그인 성공";
+	         model.addAttribute("loginClient", result);
+	      } else if (pwEncoder.matches(c.getCPw(), result.getCPw())) {
+	         msg = "로그인 성공";
+	         model.addAttribute("loginClient", result);
+	      } else {
 
-			msg = "로그인 실패";
-		}
+	         msg = "로그인 실패";
+	      }
 
-		model.addAttribute("msg", msg);
-		model.addAttribute("loc", loc);
+	      model.addAttribute("msg", msg);
+	      model.addAttribute("loc", loc);
 
-		return "common/msg";
-	}
-
+	      return "common/msg";
+	   }
+		
 	// 로그아웃
 	@RequestMapping("/Client/ClientLogout.do")
 	public String logout(HttpSession session, SessionStatus status) {
