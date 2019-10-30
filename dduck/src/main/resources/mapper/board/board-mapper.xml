@@ -19,7 +19,7 @@
    </select>
 
 	<insert id="insertBoard" parameterType="map">
-		INSERT INTO SALEBOARD VALUES(SEQ_PCODE.NEXTVAL,#{gCode},#{saleName},#{salePrice},#{detailsInfo},1)
+		INSERT INTO SALEBOARD VALUES(SEQ_PCODE.NEXTVAL,#{gCode},#{saleName},#{salePrice},#{detailsInfo})
 		<selectKey keyProperty="pCode" resultType="string" order="AFTER">
 			SELECT SEQ_PCODE.CURRVAL FROM DUAL
 		</selectKey>
