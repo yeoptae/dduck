@@ -10,7 +10,7 @@
 
 <div class="container-fluid">
       <div class="row content">
-        <div class="col-sm-3 sidenav">
+        <div class="col-sm-3">
            <h4>관리자페이지</h4>
           <ul class="nav nav-pills nav-stacked">
            <li><a href="${pageContext.request.contextPath}/admin/adminmypage.do">주문현황</a></li>
