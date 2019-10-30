@@ -45,8 +45,6 @@
 
                 <div class="collapse navbar-collapse" id="myNavbar" style=" text-align:center;">
                     <ul class="nav navbar-nav" id="menu">
-                 <%--  <c:forEach items="${list }" var="b"> --%>
-                        <%-- <li><a href='${pageContext.request.contextPath}/admin/saleboardList.do?gCode=${b["GCODE"]}'>답례</a></li> --%>
                         <li><a href="http://localhost:9090/dduck">Home</a></li>
                         <li class="dropdown">
                         	<a class="dropdown-toggle" data-toggle="dropdown"">메뉴<b class="caret"></b></a>
@@ -60,7 +58,7 @@
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=3">돌</a></li>
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=4">케익</a></li>
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=5">세트</a></li>
-                <%--  </c:forEach> --%>
+            
                     </ul>
     	
 	                	
