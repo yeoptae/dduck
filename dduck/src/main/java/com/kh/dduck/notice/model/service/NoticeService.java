@@ -18,6 +18,4 @@ public interface NoticeService {
 	Map<String,String> selectNotice(int noticeCode);
 	List<NoticeFile> selectNoticeFileList(int noticeCode);
 	
-	/* 게시글 삭제 */
-	int selectNoticeCode(int noticeCode);
 }

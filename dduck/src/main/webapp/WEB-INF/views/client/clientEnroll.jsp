@@ -127,7 +127,7 @@
                             <label id="zip_num">우편번호</label>
                         </div>
                         <div class="col-sm-3">
-                            <input type="text" id="sample6_postcode" placeholder="우편번호" name="cAddr"
+                            <input type="text" id="sample6_postcode" placeholder="우편번호" name="cAddr1"
                                 class="form-control">
                         </div>
                         <div class="col-sm-3">
@@ -142,7 +142,7 @@
                             <label id="address1">주소</label>
                         </div>
                         <div class="col-sm-6">
-                            <input type="text" id="sample6_address" placeholder="주소" name="cAddr"
+                            <input type="text" id="sample6_address" placeholder="주소" name="cAddr2"
                                 class="form-control">
                         </div>
                     </div>
@@ -152,7 +152,7 @@
                             <label id="address1">상세주소</label>
                         </div>
                         <div class="col-sm-6">
-                            <input type="text" id="sample6_address2" placeholder="상세주소" name="cAddr"
+                            <input type="text" id="sample6_address2" placeholder="상세주소" name="cAddr3"
                                 class="form-control">
                         </div>
                     </div>

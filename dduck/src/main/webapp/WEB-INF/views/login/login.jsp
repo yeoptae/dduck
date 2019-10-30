@@ -37,11 +37,11 @@
                                     </div>
                                     <c:if test="${msg == '실패'}">
                                     <tr>
-											<td colspan=2>
-											아이디 또는 패스워드가 틀렸습니다.
-											</td>
-									</tr>
-									</c:if>
+                                 <td colspan=2>
+                                 아이디 또는 패스워드가 틀렸습니다.
+                                 </td>
+                           </tr>
+                           </c:if>
                                 <div style="margin-top:10px" class="form-group">
                                     <!-- Button -->
                            
@@ -50,7 +50,7 @@
                                     <input type="button" value="회원가입" class="btn btn-primary">
                                      </div>                                    
                                    </div>
-                        	</form>
+                           </form>
                         </div>  
                     </div>  
               </div>
