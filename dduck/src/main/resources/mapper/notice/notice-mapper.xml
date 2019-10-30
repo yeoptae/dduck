@@ -8,7 +8,7 @@
 	</select>
 
 	<select id="selectNoticeList" resultType="map">
-		SELECT * FROM NOTICE ORDER BY NOTICEEN DESC	
+		SELECT * FROM NOTICE ORDER BY NOTICECODE DESC	
 	</select>
 	
 <!-- notice view 불러오기 -->
@@ -28,8 +28,7 @@
 		</selectKey>
 	</insert>
 	<insert id="insertNoticeFileList" parameterType="com.kh.dduck.notice.model.vo.NoticeFile">
-		insert into noticefile values(seq_noticefilecode.nextval,
-		#{noticeCode},#{noticeFileOri},default)
+		insert into noticefile values(seq_noticefilecode.nextval,#{noticeCode},#{cId},#{noticeFileOri},default)
 	</insert>
 	
 <!-- notice 삭제 -->

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="qna">
+<!-- qna List -->
+	<select id="selectQnaCount" resultType="_int">
+		select count(*) from qna
+	</select>
+
+	<select id="selectQnaList" resultType="map">
+		SELECT * FROM QNA ORDER BY QACODE DESC	
+	</select>
+
+<!-- qna View -->
+	<select id="selectQna" resultType="map" parameterType="_int">
+		select * from qna where qacode=#{qaCode}
+	</select>
+	<select id="selectQnaComment" resultType="map" parameterType="_int">
+		select * from qnacomment where qacode=#{qaCode}
+	</select>
+
+<!-- qna comment -->
+	<insert id="insertQnaComment" parameterType="qnacomment">
+		INSERT INTO QNACOMMENT VALUES(seq_cmcode.nextval, #{qaCode}, #{cId}, #{cmComment}, DEFAULT)
+	</insert> 
+	
+	<delete id="qnaCommentDelete" parameterType="qnacomment">
+		delete from qnacomment where qacode=#{qaCode}
+	</delete>
+	
+	<update id="qnaCommentUpdate" parameterType="qnacomment">
+		UPDATE QNACOMMENT SET CMCONTENT=#{cmContent} WHERE qacode=#{qaCode}
+	</update>
+</mapper>

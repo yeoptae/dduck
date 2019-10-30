@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html;charset=utf-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>\
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <jsp:include page="/WEB-INF/views/common/header.jsp">
-	<jsp:param name="pageTitle" value=""/>
+   <jsp:param name="pageTitle" value=""/>
 </jsp:include>
 
 
@@ -18,13 +18,12 @@
             <div class="panel panel-info" >
                     <div class="panel-heading">
                         <div class="panel-title">Sign In</div>
-                        <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">비밀번호초기화</a></div>
+                        <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="${pageContext.request.contextPath}/pwSearch/pwSearch.do">비밀번호찾기</a></div>
                     </div>     
 
                     <div style="padding-top:30px" class="panel-body" >
 
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-                            
                         <form id="loginform" class="form-horizontal" role="form" action="${path }/client/clientLogin.do">
                                     
                             <div style="margin-bottom: 25px" class="input-group">
@@ -36,39 +35,48 @@
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                         <input id="login-password" type="password" class="form-control" name="cPw" placeholder="Password">
                                     </div>
+                                    <c:if test="${msg == '실패'}">
+                                    <tr>
+                                 <td colspan=2>
+                                 아이디 또는 패스워드가 틀렸습니다.
+                                 </td>
+                           </tr>
+                           </c:if>
                                 <div style="margin-top:10px" class="form-group">
                                     <!-- Button -->
-									
+                           
                                     <div class="col-sm-12 controls">
                                     <input type="submit" id="login" value="로그인" class="btn btn-primary">
                                     <input type="button" value="회원가입" class="btn btn-primary">
                                      </div>                                    
-                                	</div>
-								</form>
-                        </div>                     
+                                   </div>
+                           </form>
+                        </div>  
                     </div>  
-        		</div>
-   		</div>
-   		
- <!-- <script type="text/javascript">
-	$('#login').click(function(e){
-		
-			// 입력 값 체크
-			if($.trim($('#cID').val()) == ''){
-				alert("아이디를 입력해 주세요.");
-				$('#cID').focus();
-				return;
-			}else if($.trim($('#cPW').val()) == ''){
-				alert("패스워드를 입력해 주세요.");
-				$('#cPW').focus();
-				return;
-			}
-			
-/* 			//전송
-			$('#loginFrm').submit(); */
-		}); -->
-		
+              </div>
+         </div>
+         
+ <script type="text/javascript">
+ $(document).ready(function(e){
+   $('#login').click(function(){
+      
+         // 입력 값 체크
+         if($.trim($('#login-username').val()) == ''){
+            alert("아이디를 입력해 주세요.");
+            $('#login-username').focus();
+            return  false;
+         }else if($.trim($('#login-password').val()) == ''){
+            alert("패스워드를 입력해 주세요.");
+            $('#login-password').focus();
+            return false;
+         }
+         
+       //전송
+         $('#loginform').submit(); 
+      });
+ });
+      
 </script>
-   		
+         
     
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html;charset=utf-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>\
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <jsp:include page="/WEB-INF/views/common/header.jsp">
    <jsp:param name="clientEnroll" value="회원가입"/>
@@ -127,7 +127,7 @@
                             <label id="zip_num">우편번호</label>
                         </div>
                         <div class="col-sm-3">
-                            <input type="text" id="sample6_postcode" placeholder="우편번호" name="cAddr"
+                            <input type="text" id="sample6_postcode" placeholder="우편번호" name="cAddr1"
                                 class="form-control">
                         </div>
                         <div class="col-sm-3">
@@ -142,7 +142,7 @@
                             <label id="address1">주소</label>
                         </div>
                         <div class="col-sm-6">
-                            <input type="text" id="sample6_address" placeholder="주소" name="cAddr"
+                            <input type="text" id="sample6_address" placeholder="주소" name="cAddr2"
                                 class="form-control">
                         </div>
                     </div>
@@ -152,7 +152,7 @@
                             <label id="address1">상세주소</label>
                         </div>
                         <div class="col-sm-6">
-                            <input type="text" id="sample6_address2" placeholder="상세주소" name="cAddr"
+                            <input type="text" id="sample6_address2" placeholder="상세주소" name="cAddr3"
                                 class="form-control">
                         </div>
                     </div>

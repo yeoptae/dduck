@@ -168,10 +168,5 @@ public class NoticeController {
 		}
 	}
 	
-	/* 게시글 삭제 */
-	@RequestMapping("/notice/noticeDelete.do")
-	public int deleteNotice(int noticeCode) {
-		int nc=service.selectNoticeCode(noticeCode);
-		return nc;
-	}
+
 }
