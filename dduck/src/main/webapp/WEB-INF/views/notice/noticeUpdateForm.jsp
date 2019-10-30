@@ -9,8 +9,8 @@
 <section id="content">
     <div class="centerset">
 		<div class="centerset well well-sm writerform">
-		<form class="form-horizontal" action="${path }/notice/noticeFormEnd.do" method="post" enctype="multipart/form-data"><!-- onsubmit="return validate();" -->
-		<input type="hidden" name="cId" value='${loginClient.cId }' required>
+		<form class="form-horizontal" action="${path }/notice/noticeFormEnd.do" method="post" onsubmit="return validate();" enctype="multipart/form-data">
+		<input type="hidden" name="cId" value='admin' required>
 		<fieldset>
 		    <legend class="qna-form-header text-center">공지등록</legend>
 		
@@ -26,7 +26,7 @@
                 </div>
             </div>
 		    <div class="col-md-9">
-		        <input id="name" name="noticeTitle" type="text" placeholder="제목을 입력해주세요" class="form-control" required>
+		        <input id="name" value="${notice.NOTICETITLE }" name="noticeTitle" type="text" placeholder="제목을 입력해주세요" class="form-control" required>
 		    </div>
 		    </div>
 		
@@ -34,7 +34,7 @@
 		    <div class="form-group">
 		    <div class="qna-form-text">내용</div>
 		    <div class="col-md-9">
-		        <pre><textarea class="form-control" id="message" name="noticeContent" placeholder="내용을 입력해주세요" rows="5" style="height: 500px;" required></textarea></pre>
+		        <pre><textarea value="${notice.NOTICECONTENT }" class="form-control" id="message" name="noticeContent" placeholder="내용을 입력해주세요" rows="5" style="height: 500px;" required></textarea></pre>
 		    </div>
 		    </div>
 		    <br>

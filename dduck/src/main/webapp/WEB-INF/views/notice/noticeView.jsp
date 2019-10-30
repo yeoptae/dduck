@@ -48,7 +48,7 @@
 	                <a href="" target="_blank" ></a>
 	            </p>
 	            <div class="pull-right">
-	                <a href="" class="navbar-btn btn-danger btn">
+	                <a href='${path }/notice/updateNotice.do?noticeCode=${notice.NOTICECODE}' class="navbar-btn btn-danger btn">
 	                    <span class="glyphicon" onclick=""></span> 수정 </a>
 	                <a href="" class="navbar-btn btn-danger btn">
 	                    <span class="glyphicon deleteNotice" onclick=""></span> 삭제 </a>
