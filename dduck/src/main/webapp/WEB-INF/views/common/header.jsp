@@ -59,7 +59,6 @@
 	                	
 	                	<!--로그인 시 보여지는 로직들  -->
 								<c:choose>
-<<<<<<< HEAD
 									<c:when test="${empty loginClient }">
 									<ul class="nav navbar-nav navbar-right">
 									<!--로그인 클릭시 해당 매핑값을 읽어들임  -->
