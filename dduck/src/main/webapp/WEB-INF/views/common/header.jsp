@@ -25,7 +25,7 @@
     <header>
         <div class="jumbotron" style="background-color: white;">
             <div class="container text-center">
-              <a href="${pageContext.request.contextPath}/admin/mainpage.do">
+              <a href="${pageContext.request.contextPath}">
               <img src="${pageContext.request.contextPath }/resources/images/MainTitle.png"></a>
              
             </div>
@@ -60,25 +60,27 @@
 	                	
 	                	<!--로그인 시 보여지는 로직들  -->
 								<c:choose>
-									<c:when test="${empty loginClient }">
-									<ul class="nav navbar-nav navbar-right">
-				                        <li><a href="${pageContext.request.contextPath}/login/loginView.do"><span class="glyphicon glyphicon-user"></span> 로그인</a></li>
-				                       <li><a href="${pageContext.request.contextPath}/member/email.do"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
-				                   	</ul>
-				                   	</c:when>
-								    <c:when test="${loginClient.CId eq 'admin' }">
-								    	<ul class="nav navbar-nav navbar-right">	
-								        	<li><a href="${pageContext.request.contextPath}">관리자페이지</a></li>
-	                      					<li><a href="${pageContext.request.contextPath}/Client/ClientLogout.do">로그아웃</a></li>
-	                    				</ul>
-								    </c:when>
-								    <c:otherwise >
-						              <ul class="nav navbar-nav navbar-right">
-						                    <li><a href="${pageContext.request.contextPath}">마이페이지</a></li>
-						                    <li><a href="${pageContext.request.contextPath}/Client/ClientLogout.do">로그아웃</a></li>
-					                    </ul>
-								    </c:otherwise>
-								</c:choose>
+                           <c:when test="${empty loginClient }">
+                           <ul class="nav navbar-nav navbar-right">
+                           <!--로그인 클릭시 해당 매핑값을 읽어들임  -->
+                                    <li><a href="${pageContext.request.contextPath}/login/loginView.do"><span class="glyphicon glyphicon-user"></span> 로그인</a></li>
+                                   <li><a href="${pageContext.request.contextPath}/member/email.do"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
+                                  </ul>
+                                  </c:when>
+                            <c:when test="${loginClient.CId eq 'admin' }">
+                               <ul class="nav navbar-nav navbar-right">   
+                                   <li><a href="${pageContext.request.contextPath}">관리자페이지</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/Client/ClientLogout.do">로그아웃</a></li>
+                                   </ul>
+                            </c:when>
+                            <c:otherwise >
+                                <ul class="nav navbar-nav navbar-right">
+                                <li><a href="${pageContext.request.contextPath}/list/list.do?cNo=${loginClient.CId}" >내정보</a></li>
+                                      <li><a href="${pageContext.request.contextPath}/update/update.do?cNo=${loginClient.CId}">마이페이지</a></li>
+                                      <li><a href="${pageContext.request.contextPath}/Client/ClientLogout.do">로그아웃</a></li>
+                                   </ul>
+                            </c:otherwise>
+                        </c:choose>
               	  </div>
            	 </div>
         	 </nav>

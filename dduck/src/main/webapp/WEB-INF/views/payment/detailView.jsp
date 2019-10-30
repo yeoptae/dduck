@@ -56,27 +56,37 @@ input , select {
 
 <section id="content">
 
-	<form class="detailViewForm" method="post" action="${pageContext.request.contextPath}/payment/paymentView">
+	<form name="calculatorFrm" class="detailViewForm" method="post">
     <div class="container">
         <div class="row">
                 <br>
             <div class="col-sm-8">
                 <div class="carousel-inner" role="listbox">
-                    <img src="https://placehold.it/800x400?text=IMAGE" alt="Image">
+                	<c:forEach items="${att }" var="a" varStatus="at">
+                		<c:if test='${a["attachFlag"]=="1" }'>
+                    		<img src='${pageContext.request.contextPath}/resources/upload/board/${a["attachReFileName"]}' alt="Image"
+                    		style="width:800px; height:600px;">
+                		</c:if>
+                	</c:forEach>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="well" style="background-color: white;">
-                    
-                    	<h2 style="text-align: center">떡이름</h2><hr>
+                    	<h2 style="text-align: center">${saleList["SALENAME"] }</h2><hr>
                     	
+                    	<input type = "hidden" name = "name" value="${saleList['SALENAME'] }">
+                    	<input type = "hidden" name = "cId" value="${loginClient.CId }"/>
+                    	<input type = "hidden" name = "pCode" value="${saleList['PCODE'] }"/>
                     	
                     	<div class="form-group">
                     	<label class="col-xs-4 control-label">판매가</label>
                     	<div class="col-xs-8">
-                    	<input type="text" id="price" value="20000" style="border:none" readonly>
+                    	<input type="text" id="price" value="${saleList['SALEPRICE'] }" style="border:none" readonly>
                     	</div><br>
                     	</div>
+                    	
+                    	<input type="hidden" id="productPrice" name="productPrice">
+                    	
                     	
                     	<div class="form-group">
                     	<label class="col-xs-4 control-label">수량</label>
@@ -102,14 +112,14 @@ input , select {
                     	<div class="form-group">
                     	<label class="col-xs-4 control-label">배송날짜</label>
                     	<div class="col-xs-8">
-						<input type="date" id='dateofbirth'>
+						<input type="date" name="date" id='dateofbirth'>
 						</div><br>
                     	</div>
                     	
                     	<div class="form-group">
                     	<label class="col-xs-4 control-label">수량</label>
                     	<div class="col-xs-8">
-                    	<input type="number" value="1" min="1" id="amount" onChange="OnKeyUp()">
+                    	<input type="number" name="panierAmount" value="1" min="1" id="amount" onChange="OnKeyUp()">
                     	</div><br>
                     	</div>
                     	
@@ -128,22 +138,19 @@ input , select {
                     	<div class="form-group">
                     	<label class="col-xs-4 control-label">총 합계 금액</label>
                     	<div class="col-xs-8">
-						<input type="text" id="totalprice" value="20000" style="border:none" readonly>
+						<input type="text" name="totalprice" id="totalprice" style="border:none" readonly>
 						</div><br>
                     	</div>
                 </div>
 				
-				<div class="col-md-6 text-center">
-                <button type="button" class="btn btn-primary btn-lg">
-                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>장바구니
-                </button>
+				<div class="col-md-12 text-center">
+                    <input type="button" class="btn btn-danger" value="장바구니" onclick="jangbaguni();"><br>
                 </div>
                 
-                <div class="col-md-6 text-center">
-                <button type="submit" class="btn btn-primary btn-lg">
-                    <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>주문하기
-                </button>
+                <div class="col-md-12 text-center">
+               <input type="button" class="btn btn-danger" value="주문하기" onclick="payment();">
                 </div>
+                
             </div>
         </div>
         
@@ -151,14 +158,27 @@ input , select {
     </form>
 	
 	<script>
-
+		function jangbaguni(){
+			calculatorFrm.action="${pageContext.request.contextPath}/payment/panier";
+			if(confirm("장바구니 등록하시겠습니까?")){
+			calculatorFrm.submit();
+			}
+		}
+		
+		function payment() {
+			calculatorFrm.action="${pageContext.request.contextPath}/dduck/payment";
+			if(confirm("확인 버튼을 누르면 결제창으로 넘어갑니다")){
+				calculatorFrm.submit();
+			}
+		}
+	
 		function changePrice() {
 			
 			var price = $("#price").val();
 			var count= $("#amount").val();
 			var shipPrice=$("#selectShip").val();						
 			$("#totalprice").val("");
-			$(totalprice).val(parseInt(price*count)+parseInt(shipPrice)+"원");
+			$(totalprice).val(parseInt(price*count)+parseInt(shipPrice));
 			
 		}
 		
@@ -179,7 +199,12 @@ input , select {
 			console.log(select5000);
 			
 			var totalprice1 = document.getElementById("totalprice");
-			totalprice1.value = Number(selectValue)+ (Number(price1) * Number(amount1)) +"원";
+			totalprice1.value = Number(selectValue)+ (Number(price1) * Number(amount1));
+			
+			console.log(price1);
+			console.log(amount1);
+			var productPrice = document.getElementById("productPrice");
+			productPrice.value = parseInt(price1)*parseInt(amount1); 
 			
 		}
 		
@@ -197,30 +222,15 @@ input , select {
   
   <br>
   <div class="row">
-    <div class="sample_image1 col-sm-2">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-      <p></p>
-    </div>
-    <div class="sample_image2 col-sm-2"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-      <p></p>    
-    </div>
-    <div class="sample_image3 col-sm-2"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-      <p></p>
-    </div>
-    <div class="sample_image4 col-sm-2"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-      <p></p>
-    </div> 
-    <div class="sample_image5 col-sm-2"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-      <p></p>
-    </div>     
-    <div class="sample_image6 col-sm-2"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-      <p></p>
-    </div> 
+  	<c:forEach items="${att }" var="a">
+	  	<c:if test='${a["attachFlag"] == 0}'>
+		    <div class="sample_image1 col-sm-2">
+		      <img src='${pageContext.request.contextPath}/resources/upload/board/${a["attachReFileName"]}' class="img-responsive" 
+		      style="width:150px; height:80px;" alt="Image">
+		      <p></p>
+		    </div>
+	    </c:if>
+    </c:forEach>
   </div><hr>
 </div><br>
 	
@@ -241,6 +251,9 @@ input , select {
     <div class="container text-center"> <br>
             <div class="col-sm-12 row well" style="background-color:lightyellow;">
                 <h3>후기를 등록해주세요</h3><br>
+                <input type="hidden" name="cId" value="${loginClient.CId }">
+                <input type="hidden" name="pCode" value="${saleList['PCODE'] }">
+                
                 <div class="col-sm-12 row well" style="float: none; margin: 0 auto; background-color: lightgray;">
                     <select class="form-control" name="reviewStar">
                         <option value="★★★★★">★★★★★ 아주만족</option>
@@ -266,15 +279,20 @@ input , select {
 			<div class="col-sm-12 row">
 				<hr>
 				<div class="col-sm-4" style="text-align: center;">
-				<input type = "hidden" name = "no" id = "no" value = '${r["REVIEWNO"]}'/>
+				<input type = "hidden" name = "reviewNo" id = "no" value = '${r["REVIEWNO"]}'/>
+				<input type = "hidden" name = "deletepcode" id = "deletepcode" value="${saleList['PCODE'] }"/>
 					<h1>${r["REVIEWSTAR"]}</h1>
 					<h3>${r["CID"]}</h3>
 					<h4>${r["REVIEWEN"]}</h4>
 					
-					<div class="col-sm-12">
-					<input type="button" class="btn" value="수정" onclick="reviewUpdate(this);">
-					<input type="button" class="btn" value="삭제"  onclick="reviewDelete(this);">
-					</div>
+					
+					<c:if test="${loginClient.CId eq r['CID']}">
+							<div class="col-sm-12">
+							<input type="button" class="btn" value="수정"  id='${r["REVIEWNO"]}' onclick="reviewUpdate(this);">
+							<input type="button" class="btn" value="삭제" id='${r["REVIEWNO"]}' onclick="reviewDelete(this);">
+							</div>
+					</c:if>
+					
 				</div>
 				<div class="col-sm-8" >
 					<textarea class="form-control" id="textarea" rows=7 cols=80 readonly style="background-color: white; resize: none;">${r["REVIEWCONTENT"]}</textarea><br>
@@ -299,6 +317,8 @@ input , select {
 	function reviewUpdate(element){
 		var target=$(element).parent().parent().next().find('.add1');
 		var textArea=$(element).parent().parent().next().find('textarea');
+		var id=$(element).attr("id");
+		console.log(id);
 		$(target).show();
 		
 		var textareacontent = $(textArea).html();
@@ -306,15 +326,15 @@ input , select {
 		textArea.attr("readOnly",false);
 		$(textArea).focus();
 		//add1.innerHTML = "<input type='button' value='수정완료' onclick='update();'><input type='button' value='취소' onclick='asdfg();'>";
-		var data="<input type='button' value='수정완료' onclick='update();'><input type='button' value='취소' onclick='asdfg(this,\""+textareacontent+"\");'>";
+		var data="<input type='button' value='수정완료' onclick='update("+id+",event);'><input type='button' value='취소' onclick='asdfg(this,\""+textareacontent+"\");'>";
 		$(target).html(data);
 		console.log($(textArea).val());
 		
 	}
 	
-	function update() {
-		var textareacontent = $("#textarea").val();
-		location.href="${pageContext.request.contextPath}/review/reviewUpdate?reviewNo="+$('#no').val()+"&reviewContent="+textareacontent;
+	function update(id,el) {
+		var textareacontent=$(el.target).parent().prevAll("textarea").val();
+		location.href="${pageContext.request.contextPath}/review/reviewUpdate?reviewNo="+id+"&reviewContent="+textareacontent+"&PCode="+$('#deletepcode').val();
 	}
 	
 	
@@ -333,8 +353,8 @@ input , select {
 	
 	function reviewDelete() {
 		
-		if(confirm("리뷰를 삭제할거냐..?")) {
-		      location.href="${pageContext.request.contextPath}/review/reviewDelete?reviewNo="+$('#no').val();
+ 		if(confirm("리뷰를 삭제할거냐..?")) {
+		      location.href="${pageContext.request.contextPath}/review/reviewDelete?reviewNo="+$('#no').val()+"&PCode="+$('#deletepcode').val();
 		      console.log($('#no').val());
 			
 		}
