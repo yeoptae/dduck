@@ -46,6 +46,8 @@
 												class="img-responsive" style="width: 320px; height: 230px;"
 												alt="Image" />
 
+											<div class="panel-body">
+
 											</a>
 										</c:if>
 									</c:if>
