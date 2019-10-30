@@ -30,21 +30,21 @@ public class AdminController {
 	
 	@RequestMapping("/admin/saleboardList.do")
 	public ModelAndView saleboardList(@RequestParam(value="cPage",
-	required=false, defaultValue="0") int cPage,HttpServletRequest request) {
+	required=false, defaultValue="1") int cPage, int gCode) {
 		ModelAndView mv=new ModelAndView();
 		
-		int gCode = Integer.parseInt(request.getParameter("gCode"));
 		int numPerPage=9;
 		List<Map<String,String>> list=service.selectBoardList(cPage,numPerPage,gCode);
 		List<Map<String,String>> fileList=service.selectFile();
 		System.out.println(fileList);
 		System.out.println(list);
 		int totlaCount=service.selectBoardCount();
-		mv.addObject("pageBar",PageBarFactory.getPageBar(totlaCount, cPage, numPerPage,"/dduck/admin/saleboardList.do"));
+		mv.addObject("pageBar",PageBarFactory.getPageBarWhere(totlaCount, cPage, numPerPage,"/dduck/admin/saleboardList.do",gCode));
 		mv.addObject("count",totlaCount);
 		mv.addObject("list",list);
 		mv.addObject("fileList",fileList);
-		mv.addObject("GCODE",gCode);
+		mv.addObject("gCode",gCode);
+		
 		mv.setViewName("saleboard/saleboardList");
 		
 		return mv;
@@ -58,13 +58,35 @@ public class AdminController {
 	public String adminOrder() {
 		return "admin/adminOrder";
 	}
+	
 	@RequestMapping("/admin/adminClientList.do")
-	public String adminClietList() {
-		return "admin/clientList";
+	public  ModelAndView adminClietList(@RequestParam(value="cPage",
+		required=false, defaultValue="1") int cPage,HttpServletRequest request) {
+		ModelAndView mv=new ModelAndView();
+		
+		int numPerPage=5;
+		List<Map<String,String>> clientList=service.selectClientList(cPage,numPerPage);
+		int totlaCount=service.selectClientCount();
+		mv.addObject("pageBar",PageBarFactory.getPageBar(totlaCount, cPage, numPerPage,"/dduck/admin/adminClientList.do"));
+		mv.addObject("count",totlaCount);
+		mv.addObject("clientList",clientList);
+		mv.setViewName("admin/clientList");
+		return mv;
 	}
+	
+	
 	@RequestMapping("/admin/adminQnaBoard.do")
-     public String adminQnaBoard() {
-		return "admin/adminQnaBoard";
+     public ModelAndView adminQnaBoard(@RequestParam(value="cPage",
+    			required=false, defaultValue="1") int cPage,HttpServletRequest request) {
+		ModelAndView mv=new ModelAndView();
+		int numPerPage=5;
+		List<Map<String,String>> QnaList=service.selectQnaBoard(cPage,numPerPage);
+		int totlaCount=service.selectQnaCount();
+		mv.addObject("pageBar",PageBarFactory.getPageBar(totlaCount, cPage, numPerPage,"/dduck/admin/adminQnaBoard.do"));
+		mv.addObject("count",totlaCount);
+		mv.addObject("QnaList",QnaList);
+		mv.setViewName("admin/adminQnaBoard");
+		return mv;
 	}
 	
 	@RequestMapping("/admin/insertproduct.do")
