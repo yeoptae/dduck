@@ -158,7 +158,7 @@ public class MailController {
             
             ModelAndView mv2 = new ModelAndView(); 
             
-            mv2.setViewName("member/email_injeung");
+            mv2.setViewName("login/emailenroll");
             
             response_equals.setContentType("text/html; charset=UTF-8");
             PrintWriter out_equals = response_equals.getWriter();

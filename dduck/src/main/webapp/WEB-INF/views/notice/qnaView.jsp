@@ -8,33 +8,79 @@
 </jsp:include>
 <section id="content">
     <div class="container">  
-            
-    <h2>QNA - </h2>
-            
+        <div>
+            <h4 class="pull-left">　　QNA - </h4>
+            <h4 class="pull-right">${qna.CID }　-　<fmt:formatDate value='${qna.QAEN }' pattern="yyyy.MM.dd"/>  　</h4>
+        </div>
+        <br><br>
+	    <div class="well well-sm viewheadline1">
+	    <p class="headline2">
+	    <strong>${qna.QATITLE} </strong>
+	    </p>
+	    </div>
         
-    <div class="well well-sm viewheadline1">
-    <p class="headline2">
-    <strong>제목입니다 </strong>.
-    </p>
-    </div>
         
-    <div class="row marketing">
+    	<div class="row marketing">
+
+
         <div class="col-lg-6">
-            <h4>제목입력내용</h4>
-            <p>
-            글내용작성칸<br>
-            글ㄴ;ㅐ요ㅗㅇ두번쨰칸
-            </p>
+        	
+            <h4><p>
+            	${qna.QACONTENT}
+            </p></h4>
         </div>
         </div>
-    </div>
-    <br><br><br><br><br>
-                   
+        <br><br><br><br><br>
+<!-- ---------------댓글구간--------------- -->
+        <c:choose>
+	        <c:when test="${!empty qnaC.CMCONTENT }">
+				<div class="content">
+		            <div class="panel panel-default">
+		                <div class="panel-heading">
+		                	<input type = "hidden" name = "qaCode" id = "qaCode" value = '${qnaC.QACODE}'/>
+							${qnaC.CID } - <fmt:formatDate value='${qnaC.CMEN }' pattern="yyyy.MM.dd"/>
+		                </div>
+		                <div class="panel-body">
+		                    <textarea readonly class="commentTextArea" id="commentUpdate">${qnaC.CMCONTENT }</textarea>
+		                    <div class="updateShowButton pull-right" id="updateShowButton"></div>
+							<c:if test="${loginClient.CId eq 'admin' }">
+								<div class="qnaCNull"></div>
+					            <div class="pull-right" id="updateHideButton">
+					                <a href="javascript:void(0);" class="navbar-btn btn-danger btn" onclick="cmUpdate(this)">
+					                    <span class="glyphicon"></span> 수정 </a>
+					                <a href="${path }/qna/qnaCommentDelete.do?qaCode=${qna.QACODE }" class="navbar-btn btn-danger btn">
+					                    <span class="glyphicon"></span> 삭제 </a>
+					            </div>
+				            </c:if>
+		                </div>
+		            </div>
+				</div>
+			</c:when>
+			<c:when test="${loginClient.CId eq 'admin' && empty qnaC.CMCONTENT}">
+				<form action="${path }/qna/qnaCommentSubmit.do" method="POST">
+					<div class="content">
+			            <div class="panel panel-default">
+			                <div class="panel-body" style="background : rgb(245, 245, 245);">
+			                    <textarea rows="10" class="textareaComment" name="cmComment"></textarea>
+		                		<div class="pull-right">
+	                                <input class="navbar-btn btn-danger btn" type="submit" value="등록" class="qnaSubmitButton">
+	                            </div>
+			                </div>
+			            </div>
+					</div>
+				<input type="hidden" name="cId" value="${qna.CID }">
+				<input type="hidden" name="qaCode" value="${qna.QACODE }">
+				</form>
+			</c:when>
+		</c:choose>
+		
+<!-- ---------------게시글 수정 삭제 구간--------------- -->
     <div class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
-            <p class="navbar-text pull-left">
-                <a href="" target="_blank" ></a>
-            </p>
+<!--             <div class="pull-left">
+                <a href="" class="navbar-btn btn-danger btn">
+                    <span class="glyphicon"></span> 답변 </a>
+            </div> -->
             <div class="pull-right">
                 <a href="" class="navbar-btn btn-danger btn">
                     <span class="glyphicon"></span> 수정 </a>
@@ -44,4 +90,37 @@
         </div>
     </div>
 </section>
+<script>
+	function cmUpdate(element){
+		var textArea = $('#commentUpdate');
+
+		var updateHideButton =$('#updateHideButton'); //기존 수정 삭제 버튼 가리기
+		$(updateHideButton).hide();
+		var updateShowButton = $('#updateShowButton'); //수정버튼 보이기
+		$(updateShowButton).show();
+		
+		var commentContext = $(textArea).html();
+		textArea.attr("readOnly",false);
+		$(textArea).focus();
+		var data="<input type='button' class='navbar-btn btn-danger btn' value='수정완료' onclick='commentUpdate();'>&nbsp<input type='button' class='navbar-btn btn-danger btn' value='취소' onclick='commentRollback(this,\""+commentContext+"\");'>";
+		$(updateShowButton).html(data);
+	}
+	
+	function commentUpdate(){
+		var commentContext = $("#commentUpdate").val();
+		console.log(commentContext);
+		location.href="${path}/qna/qnaCommentUpdate.do?qaCode="+$('#qaCode').val()+"&cmContent="+commentContext;
+	}
+	
+	function commentRollback(element,content) {
+		var updateHideButton =$('#updateHideButton');
+		$(updateHideButton).show();
+		var textArea = $('#commentUpdate');
+		var updateShowButton = $('#updateShowButton');
+		$(updateShowButton).hide();
+		$(textArea).val(content);
+		textArea.attr("readOnly",true);
+		
+	}
+</script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

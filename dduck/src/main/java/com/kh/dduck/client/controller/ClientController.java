@@ -9,14 +9,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.kh.dduck.client.model.service.ClientService;
 import com.kh.dduck.client.model.vo.Client;
 
+@SessionAttributes(value = { "loginClient" })
 @Controller
 public class ClientController {
-	
 	private Logger logger=LoggerFactory.getLogger(ClientController.class);
 	
 	@Autowired
@@ -35,34 +36,30 @@ public class ClientController {
 	
 	
 	@RequestMapping("/client/clientLogin.do")
-	public String login(Client c, Model model, HttpSession session){
+	   public String login(Client c, Model model, SessionStatus status) {
 
-		
+	      Client result = service.selectClientOne(c);
 
-		Client result=service.selectClientOne(c);
-		String msg="";
-		String loc="/";
-		
-		if(c.getCId().equals("admin")) {
-			
-			msg="로그인 성공";
-			session.setAttribute("loginClient", result);
-			model.addAttribute("loginClient",result);
-		}else if(c.getCId().equals("test1")) {
-			msg="로그인 성공";
-			session.setAttribute("loginClient", result);
-			model.addAttribute("loginClient",result);
-		}
-		else {
-			
-			msg="로그인 실패";
-		}
+	      String msg = "";
+	      String loc = "/";
 
-		model.addAttribute("msg",msg);
-		model.addAttribute("loc",loc);
-		
-		return "common/msg";
-	}
+//	      if (c.getCId().equals("admin") && pwEncoder.matches(c.getCPw(), result.getCPw())) {
+//
+//	         msg = "로그인 성공";
+//	         model.addAttribute("loginClient", result);
+	      if (pwEncoder.matches(c.getCPw(), result.getCPw())) {
+	         msg = "로그인 성공";
+	         model.addAttribute("loginClient", result);
+	      } else {
+
+	         msg = "로그인 실패";
+	      }
+
+	      model.addAttribute("msg", msg);
+	      model.addAttribute("loc", loc);
+
+	      return "common/msg";
+	   }
 		
 
 	
