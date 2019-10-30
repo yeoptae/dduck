@@ -21,7 +21,7 @@
                     <h1>Welcome</h1>
                     <a href="${pageContext.request.contextPath}/detail/detailView">상세페이지</a>
                     <hr>
-                    <h3>Test</h3>
+                    <h3>Test</h3>1
                     <p>Lorem ipsum...</p>
                 </div>
                 <div class="col-sm-2 sidenav">

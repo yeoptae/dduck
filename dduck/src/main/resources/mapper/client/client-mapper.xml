@@ -7,7 +7,7 @@
 	</select>
 	
 		<insert id="insertClient" parameterType="client">
-		INSERT INTO MEMBER VALUES(#{cId},#{cPw},#{cName},#{cEmail},
+		INSERT INTO CLIENT VALUES(#{cId},#{cPw},#{cName},#{cEmail},
 		#{cPhone},#{cAddr},sysdate)
 	</insert>
 
