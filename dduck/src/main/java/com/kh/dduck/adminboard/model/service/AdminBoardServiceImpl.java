@@ -80,7 +80,7 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 
 	@Override
 	public int selectQnaCount() {
-		return dao.selectBoardCount(session);
+		return dao.selecQnaCount(session);
 	}
 	
 	

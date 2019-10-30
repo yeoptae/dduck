@@ -77,7 +77,7 @@ public class AdminController {
 	
 	@RequestMapping("/admin/adminQnaBoard.do")
      public ModelAndView adminQnaBoard(@RequestParam(value="cPage",
-    			required=false, defaultValue="1") int cPage,HttpServletRequest request) {
+    			required=false, defaultValue="1") int cPage) {
 		ModelAndView mv=new ModelAndView();
 		int numPerPage=5;
 		List<Map<String,String>> QnaList=service.selectQnaBoard(cPage,numPerPage);
