@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.dduck.adminboard.model.dao.AdminBoardDao;
 import com.kh.dduck.adminboard.model.vo.SaleBoardFile;
+import com.kh.dduck.client.model.vo.Client;
 
 @Service
 public class AdminBoardServiceImpl implements AdminBoardService {
@@ -48,12 +49,43 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 		return dao.selectBoardList(session,cPage,numPerpage,gCode);
 	}
 
-
+	
+	
+	 
 	@Override
 	public List<Map<String, String>> selectFile() {
 		// TODO Auto-generated method stub
 		return dao.selectFile(session);
 	}
+
+
+	@Override
+	public List<Map<String, String>> selectClientList(int cPage,int numPerpage) {
+		
+		return dao.selectClientList(session,cPage,numPerpage);
+	}
+
+
+	@Override
+	public int selectClientCount() {
+		return  dao.selectClientCount(session);
+	}
+
+
+	@Override
+	public List<Map<String, String>> selectQnaBoard(int cPage, int numPerPage) {
+		return dao.selectQnaBoard(session,cPage,numPerPage);
+	}
+
+
+	@Override
+	public int selectQnaCount() {
+		return dao.selectBoardCount(session);
+	}
+	
+	
+	
+	
 	
 	
 

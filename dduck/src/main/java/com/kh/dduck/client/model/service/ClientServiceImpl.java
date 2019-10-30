@@ -24,6 +24,34 @@ public class ClientServiceImpl implements ClientService {
 	public int insertClient(Client c) {
 		return dao.insertClient(sqlSession,c);
 	}
+	
+	//회원 정보수정
+	@Override
+	public int updateClient(Client c) {
+		return dao.updateClient(sqlSession,c);
+	}
+	@Override
+	public Client selectClient(Client c, String mNo) {
+		return dao.selectClient(sqlSession, c,mNo);
+	}
+	
+	//비번수정
+	@Override
+	public int updatePw(Client c) {
+		return dao.updatePw(sqlSession, c);
+	}
+	
+	
+	
+	
+	
+
+	
+	
+	/*
+	 * @Override public Map<String, Object> selectClientInfo(Map<String,Object> map)
+	 * throws Exception{ return dao.selectClientInfo(map); }
+	 */
 
 
 }

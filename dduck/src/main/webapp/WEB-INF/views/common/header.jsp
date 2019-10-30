@@ -21,12 +21,12 @@
         padding-top: 0px !important;
         padding-bottom: 0px !important;
     }
-	</style>
+   </style>
 <body>
     <header>
         <div class="jumbotron" style="background-color: white;">
             <div class="container text-center">
-              <a href="${pageContext.request.contextPath}/admin/mainpage.do">
+              <a href="${pageContext.request.contextPath}">
               <img src="${pageContext.request.contextPath }/resources/images/MainTitle.png"></a>
             </div>
         </div>
@@ -62,8 +62,7 @@
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=5">세트</a></li>
                 <%--  </c:forEach> --%>
                     </ul>
-						
-	                	
+    	
 	                	
 	                	<!--로그인 시 보여지는 로직들  -->
 	                	<c:choose>

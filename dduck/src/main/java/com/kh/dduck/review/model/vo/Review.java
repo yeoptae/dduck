@@ -9,7 +9,7 @@ public class Review {
 	
 	private int reviewNo;
 	private String cId;
-	private int pCode;
+	private Integer pCode;
 	private Date reviewEn;
 	private String reviewContent;
 	private String reviewStar;
