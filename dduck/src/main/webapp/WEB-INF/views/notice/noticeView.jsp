@@ -2,11 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<link rel="stylesheet" href="${path }/resources/css/style.css">
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="notice" value="noticeview"/>
 </jsp:include>
+<link rel="stylesheet" href="${path }/resources/css/style.css">
 <section id="content">
     <div class="container">  
         <div>
@@ -16,7 +16,7 @@
         <br><br>
 	    <div class="well well-sm viewheadline1">
 	    <p class="headline2">
-	    <strong>${notice.NOTICETITLE} </strong>
+	    <strong>　${notice.NOTICETITLE} </strong>
 	    </p>
 	    </div>
         

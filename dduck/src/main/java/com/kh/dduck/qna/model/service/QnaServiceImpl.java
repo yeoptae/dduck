@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.dduck.qna.model.dao.QnaDao;
+import com.kh.dduck.qna.model.vo.Qna;
 import com.kh.dduck.qna.model.vo.QnaComment;
 
 @Service
@@ -54,5 +55,22 @@ public class QnaServiceImpl implements QnaService {
 	@Override
 	public int qnaCommentUpdate(QnaComment qm) {
 		return dao.qnaCommentUpdate(session,qm);
+	}
+	
+	/* qna 등록 */
+	@Override
+	public int insertQna(Qna qna) {
+		return dao.insertQna(session,  qna);
+	}
+	
+	/* qna update */
+	@Override
+	public int qnaUpdateFormEnd(Qna qna) {
+		return dao.qnaUpdateFormEnd(session, qna);
+	}
+	
+	@Override
+	public int qnaDelete(Qna qna) {
+		return dao.qnaDelete(session, qna);
 	}
 }

@@ -20,7 +20,7 @@
 
 <!-- qna comment -->
 	<insert id="insertQnaComment" parameterType="qnacomment">
-		INSERT INTO QNACOMMENT VALUES(seq_cmcode.nextval, #{qaCode}, #{cId}, #{cmComment}, DEFAULT)
+		INSERT INTO QNACOMMENT VALUES(seq_cmcode.nextval, #{qaCode}, #{cId}, #{cmContent}, DEFAULT)
 	</insert> 
 	
 	<delete id="qnaCommentDelete" parameterType="qnacomment">
@@ -30,4 +30,15 @@
 	<update id="qnaCommentUpdate" parameterType="qnacomment">
 		UPDATE QNACOMMENT SET CMCONTENT=#{cmContent} WHERE qacode=#{qaCode}
 	</update>
+	
+<!-- qna -->
+	<insert id="insertQna" parameterType="qna">
+		INSERT INTO QNA VALUES(seq_qacode.nextval, #{cId}, #{qaTitle}, #{qaContent}, DEFAULT)
+	</insert> 
+	<update id="qnaUpdateFormEnd" parameterType="qna">
+		UPDATE QNA SET QATITLE=#{qaTitle} ,QACONTENT=#{qaContent} WHERE qacode=#{qaCode}
+	</update>
+	<delete id="qnaDelete" parameterType="qna">
+		delete from qna where qacode=#{qaCode}
+	</delete>
 </mapper>
