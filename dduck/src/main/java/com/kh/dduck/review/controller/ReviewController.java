@@ -32,7 +32,6 @@ public class ReviewController {
         
 		
 		Map<String, Object> saleList = service.selectSale(pCode);
-		
 		List<SaleBoardFile> att = service.selectAttachList(pCode);
 		System.out.println("!!!!!!!!!!!!!!!!!"+pCode+"!!!!!!!!!!!!!!!!!");
 		int numPerPage = 5;
