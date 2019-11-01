@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.kh.dduck.qna.model.vo.Qna;
 import com.kh.dduck.qna.model.vo.QnaComment;
 
 public interface QnaDao {
@@ -25,4 +26,13 @@ public interface QnaDao {
 	
 	/* qna comment update(수정) */
 	int qnaCommentUpdate(SqlSessionTemplate session, QnaComment qm);
+	
+	/* qna 등록 */
+	int insertQna(SqlSessionTemplate session, Qna qna);
+	
+	/* qna update */
+	int qnaUpdateFormEnd(SqlSessionTemplate session, Qna qna);
+	
+	/* qna delete */
+	int qnaDelete(SqlSessionTemplate session,Qna qna);
 }

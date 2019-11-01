@@ -20,7 +20,26 @@
                     <hr>
                     <h3>Test</h3>1
                     <p>Lorem ipsum...</p>
-                </div>
+
+
+						<div id="custom-search-input">
+							<div class="input-group col-md-12">
+								<input type="text" class="search-query form-control" id="searchWord" name="searchWord"  placeholder="떡 검색하기" />
+								<span class="input-group-btn">
+									<button class="btn btn-danger" onclick="searchDduck()" type="button" id="btnSearch" name="btnSearch">
+										<span class=" glyphicon glyphicon-search"></span>
+									</button>
+								</span>
+							</div>
+						</div>
+<script>
+	function searchDduck(){
+		var searchWord=$('#searchWord').val();
+		location.href="${path}/saleboard/saleboardSearch.do?searchWord="+searchWord;
+	}
+</script>
+
+			</div>
                 <div class="col-sm-2 sidenav">
                     <div class="well">
                         <p>

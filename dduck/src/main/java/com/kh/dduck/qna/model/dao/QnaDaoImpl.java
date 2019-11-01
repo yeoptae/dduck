@@ -7,6 +7,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.dduck.qna.model.vo.Qna;
 import com.kh.dduck.qna.model.vo.QnaComment;
 
 @Repository
@@ -47,8 +48,26 @@ public class QnaDaoImpl implements QnaDao {
 	}
 	
 	/* qna comment update(수정) */
-@Override
+	@Override
 	public int qnaCommentUpdate(SqlSessionTemplate session, QnaComment qm) {
 		return session.update("qna.qnaCommentUpdate",qm);
+	}
+	
+	/* qna 등록 */
+	@Override
+	public int insertQna(SqlSessionTemplate session, Qna qna) {
+		return session.insert("qna.insertQna",qna);
+	}
+	
+	/* qna update */
+	@Override
+	public int qnaUpdateFormEnd(SqlSessionTemplate session, Qna qna) {
+		return session.update("qna.qnaUpdateFormEnd",qna);
+	}
+	
+	/* qna delete */
+	@Override
+	public int qnaDelete(SqlSessionTemplate session, Qna qna) {
+		return session.delete("qna.qnaDelete", qna);
 	}
 }

@@ -1,8 +1,7 @@
 package com.kh.dduck.notice.model.dao;
 
 import java.util.List;
-import java.util.Map;
-
+import java.util.Map;import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import com.kh.dduck.notice.model.vo.NoticeFile;
@@ -23,4 +22,11 @@ public interface NoticeDao {
 	
 	/* 게시글 삭제 */
 	int selectNoticeCode(SqlSessionTemplate session, int noticeCode);
+	
+	/* notice delete */
+	int noticeDelete(SqlSessionTemplate session, int noticeCode);
+	
+	/* notice update */
+	int updateNotice(SqlSessionTemplate session, Map<String,String> param);
+	int updateNoticeFile(SqlSessionTemplate session, NoticeFile ntf);
 }

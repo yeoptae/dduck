@@ -2,11 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<link rel="stylesheet" href="${path }/resources/css/style.css">
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="qna" value="qnaview"/>
 </jsp:include>
+<link rel="stylesheet" href="${path }/resources/css/style.css">
 <section id="content">
     <div class="container">  
         <div>
@@ -16,7 +16,7 @@
         <br><br>
 	    <div class="well well-sm viewheadline1">
 	    <p class="headline2">
-	    <strong>${qna.QATITLE} </strong>
+	    <strong>　${qna.QATITLE} </strong>
 	    </p>
 	    </div>
         
@@ -62,7 +62,7 @@
 					<div class="content">
 			            <div class="panel panel-default">
 			                <div class="panel-body" style="background : rgb(245, 245, 245);">
-			                    <textarea rows="10" class="textareaComment" name="cmComment"></textarea>
+			                    <textarea rows="10" class="textareaComment" name="cmContent"></textarea>
 		                		<div class="pull-right">
 	                                <input class="navbar-btn btn-danger btn" type="submit" value="등록" class="qnaSubmitButton">
 	                            </div>
@@ -76,22 +76,35 @@
 		</c:choose>
 		
 <!-- ---------------게시글 수정 삭제 구간--------------- -->
+<c:if test="${loginClient.CId eq qna.CID || loginClient.CId eq 'admin'}">
     <div class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
-<!--             <div class="pull-left">
-                <a href="" class="navbar-btn btn-danger btn">
-                    <span class="glyphicon"></span> 답변 </a>
-            </div> -->
             <div class="pull-right">
-                <a href="" class="navbar-btn btn-danger btn">
+                <a href="javascript:void(0);" onclick="qnaUpdate()" class="updateBtn navbar-btn btn-danger btn">
                     <span class="glyphicon"></span> 수정 </a>
-                <a href="" class="navbar-btn btn-danger btn">
+                <a href="javascript:void(0);" onclick="qnaDelete()" class="navbar-btn btn-danger btn">
                     <span class="glyphicon"></span> 삭제 </a>
             </div>
         </div>
     </div>
+</c:if>
 </section>
 <script>
+	function qnaDelete(){
+		if(confirm("정말로 삭제하시겠습니까?")){
+			location.href="${path}/qna/qnaDelete.do?qaCode=${qna.QACODE}";
+		}
+	}
+	
+	$(function(){
+		$('.updateBtn').click(function(){
+			if(confirm("게시글을 수정하시겠습니까?")){
+				location.href='${path}/qna/qnaUpdate.do?qaCode=${qna.QACODE}';
+			}
+		})
+	})
+
+/* =======================qna comment=========================== */
 	function cmUpdate(element){
 		var textArea = $('#commentUpdate');
 

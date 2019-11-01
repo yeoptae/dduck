@@ -2,22 +2,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<link rel="stylesheet" href="${path }/resources/css/style.css">
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="notice" value="noticelist"/>
 </jsp:include>
+<link rel="stylesheet" href="${path }/resources/css/style.css">
 <section id="content">
     <br><br>
     <div class="mainlist bodystyle">
         <div class="container">
             <div class="row">
-             	<c:if test="${loginClient.cId eq 'admin' }">
-             	</c:if>
+             	<c:if test="${loginClient.CId eq 'admin' }">
 	            	<div class="pull-left buttonposi">
-	            		
 	            		<input type="button" value="글쓰기" id='btn-add' class='btn btn-lg btn-link' onclick='location.href="${path}/notice/noticeForm"'/>
 	            	</div>
+             	</c:if>
                 <div class="col-md-3">
                     <form action="#" method="get">
                         <div class="input-group">
@@ -56,9 +55,7 @@
                                     	</c:choose>
                                     </td>
                                     <td>
-                                    	<c:if test="${param.cPage!=1 }">
-                                    		<c:out value="${v.count+5 }"/>
-                                    	</c:if>
+                                    	<c:out value='${n["NOTICECODE"] }'/>
                                     </td>
                                     <td>
                                     	<a href='${path }/notice/noticeView.do?noticeCode=${n["NOTICECODE"]}'>

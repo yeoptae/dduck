@@ -54,4 +54,21 @@ public class NoticeDaoImpl implements NoticeDao {
 		return session.selectOne("notice.selectNoticeCode", noticeCode);
 	}
 	
+	/* notice delete */
+	@Override
+	public int noticeDelete(SqlSessionTemplate session, int noticeCode) {
+		return session.delete("notice.noticeDelete",noticeCode);
+	}
+	
+	/* notice update */
+	@Override
+	//게시글 내용 수정
+	public int updateNotice(SqlSessionTemplate session, Map<String, String> param) {
+		return session.update("notice.updateNotice",param);
+	}
+	//첨부파일 수정
+	@Override
+	public int updateNoticeFile(SqlSessionTemplate session, NoticeFile ntf) {
+		return session.update("notice.udpatetNoticeFileList",ntf);
+	}
 }
