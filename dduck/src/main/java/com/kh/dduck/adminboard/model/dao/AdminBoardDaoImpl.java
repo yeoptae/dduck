@@ -7,6 +7,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.dduck.adminboard.model.vo.SaleBoard;
 import com.kh.dduck.adminboard.model.vo.SaleBoardFile;
 import com.kh.dduck.client.model.vo.Client;
 
@@ -69,5 +70,24 @@ public class AdminBoardDaoImpl implements AdminBoardDao {
 	public int selecQnaCount(SqlSessionTemplate session) {
 		return session.selectOne("qnaBoard.selectQnaCount");
 	}
+
+	
+	
+	
+	
+	@Override
+	public int selectPaymentCount(SqlSessionTemplate session) {
+
+		return session.selectOne("payment.selectPaymentCount");
+	}
+
+	@Override
+	public List<Map<String, String>> selectPaymentList(SqlSessionTemplate session, int cPage, int numPerPage) {
+		RowBounds rows=new RowBounds((cPage-1)*numPerPage,numPerPage);
+		return session.selectList("payment.selectPaymentList",null,rows);
+	}
+
+	
+	
 	
 }

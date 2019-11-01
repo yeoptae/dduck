@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.dduck.adminboard.model.dao.AdminBoardDao;
+import com.kh.dduck.adminboard.model.vo.SaleBoard;
 import com.kh.dduck.adminboard.model.vo.SaleBoardFile;
 import com.kh.dduck.client.model.vo.Client;
 
@@ -82,7 +83,22 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 	public int selectQnaCount() {
 		return dao.selectBoardCount(session);
 	}
-	
+
+
+	@Override
+	public List<Map<String, String>> selectPaymentList(int cPage, int numPerPage) {
+		
+		return dao.selectPaymentList(session,cPage,numPerPage);
+	}
+
+
+	@Override
+	public int selectPaymentCount() {
+		
+		return dao.selectPaymentCount(session);
+	}
+
+
 	
 	
 	

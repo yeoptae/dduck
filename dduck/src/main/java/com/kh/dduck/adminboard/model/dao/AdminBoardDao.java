@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.kh.dduck.adminboard.model.vo.SaleBoard;
 import com.kh.dduck.adminboard.model.vo.SaleBoardFile;
 import com.kh.dduck.client.model.vo.Client;
 
@@ -27,4 +28,9 @@ public interface AdminBoardDao {
 	
 	List<Map<String,String>> selectQnaBoard(SqlSessionTemplate session,int cPage,int numPerPage);
 	int selecQnaCount(SqlSessionTemplate session);
+	
+	int selectPaymentCount(SqlSessionTemplate session);
+	List<Map<String,String>> selectPaymentList(SqlSessionTemplate session, int cPage, int numPerPage);
+	
+	
 }

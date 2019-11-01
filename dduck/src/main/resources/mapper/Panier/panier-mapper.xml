@@ -3,8 +3,8 @@
 
 <mapper namespace="panier">
 
-	<insert id="insertPanier" parameterType="panier">
-		INSERT INTO panier VALUES (seq_panierCODE.nextval, #{cId}, #{pCode}, sysdate, #{panierAmount})
-	</insert> 
+   <insert id="insertPanier" parameterType="panier">
+      INSERT INTO panier VALUES (seq_panierCODE.nextval, #{cId}, #{pCode}, sysdate, #{panierAmount})
+   </insert> 
 
 </mapper>
