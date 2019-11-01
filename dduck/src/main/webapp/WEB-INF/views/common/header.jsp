@@ -74,7 +74,7 @@
                                   </c:when>
                             <c:when test="${loginClient.CId eq 'admin' }">
                                <ul class="nav navbar-nav navbar-right">   
-                                   <li><a href="${pageContext.request.contextPath}">관리자페이지</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/admin/adminmypage.do">관리자페이지</a></li>
                                         <li><a href="${pageContext.request.contextPath}/Client/ClientLogout.do">로그아웃</a></li>
                                    </ul>
                             </c:when>

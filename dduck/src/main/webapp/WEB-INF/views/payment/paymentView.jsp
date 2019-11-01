@@ -4,12 +4,27 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <script type="text/JavaScript" src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="pageTitle" value=""/>
 </jsp:include>
 
-<section id="content">
+<style>
 
+input , select {
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 3px 5px;
+/*   box-shadow: inset 0 3px 6px rgba(0,0,0,0.1); */
+  width: 190px;
+}
+</style>
+
+<section id="content">
+	<form name="paymentFrm" class="paymentViewForm" method="post">
 			  <div class="container">
 				<div class="row">
 					<table class="table table-responsive">
@@ -37,7 +52,6 @@
 				</div>
 			</div>
 		
-			
 			<div class="container text-center well">
 				
 				<div class="col-sm-12">
@@ -46,23 +60,23 @@
 					<div class="col-sm-8" style="float: none; margin-left: 15%; auto;">
 						
 						<div class="form-group has-warning">
-                        	<label class="col-xs-4 control-label">수령인</label>
+                        	<label class="col-xs-4 control-label">주문하시는분</label>
                         		<div class="col-xs-8">
-                            		<input type="text" id="inputSuccess" class="form-control" value="${loginClient.CName }"><br>
+                            		<input type="text" id="buyerName" class="form-control" value="${loginClient.CName }"><br>
                         		</div>
                 		</div><br>
                 		
                 		<div class="form-group has-warning">
                         	<label class="col-xs-4 control-label">전화번호</label>
                         		<div class="col-xs-8">
-                            		<input type="text" id="inputSuccess" class="form-control" value="${loginClient.CName }"><br>
+                            		<input type="text" id="buyerPhone" class="form-control" value="${loginClient.CPhone }"><br>
                         		</div>
                 		</div><br>
                 		
                 		<div class="form-group has-warning">
                         	<label class="col-xs-4 control-label">이메일</label>
                         		<div class="col-xs-8">
-                            		<input type="text" id="inputSuccess" class="form-control" value="${loginClient.CName }"><br>
+                            		<input type="text" id="buyerAddr" class="form-control" value="${loginClient.CEmail }"><br>
                         		</div>
                 		</div><br>
 					</div>
@@ -71,45 +85,91 @@
 				
 				<div class="col-sm-12 well">
 					<h1>배송지 정보</h1>
-					<div class="col-sm-10 well"  style="float: none; margin-left: 10%; auto;">
+					<div class="col-sm-10"  style="float: none; margin-left: 10%; auto;">
 						
 						<div class="form-group has-warning">
                         	<label class="col-xs-4 control-label">받으실분</label>
                         		<div class="col-xs-8">
-                            		<input type="text" id="inputSuccess" class="form-control" value="${loginClient.CName }"><br>
+                            		<input type="text" name="payName" id="inputSuccess" class="form-control" value="${loginClient.CName }" style="width: 100px; height: 30px;"><br>
                         		</div>
                 		</div><br>
                 		
+                		<div class="form-group has-warning">
+                        	<label class="col-xs-4 control-label">우편번호</label>
+                        		<div class="col-xs-8">
+                            		<input type="text" name="payAddr1" id="zonecode" class="form-control" value="${loginClient.CAddr1 }" readonly style="width: 90px; height: 30px;">
+                        			 
+                        		</div>
+                		</div>
+
                 		<div class="form-group has-warning">
                         	<label class="col-xs-4 control-label">주소</label>
                         		<div class="col-xs-8">
-                            		<input type="text" id="inputSuccess" class="form-control" value="${loginClient.CName }"><br>
+                            		<input type="text" name="payAddr2" id="address" class="form-control" value="${loginClient.CAddr2 }" readonly>
+                        		</div>
+                		</div>
+
+                		<div class="form-group has-warning">
+                        	<label class="col-xs-4 control-label">상세주소</label>
+                        		<div class="col-xs-8">
+                            		<input type="text" name="payAddr3" id="address_etc" class="form-control" value="${loginClient.CAddr3 }"><br>
+                        		</div>
+                		</div><br>
+
+                		<div class="form-group has-warning">
+                        	<label class="col-xs-4 control-label"></label>
+                        		<div class="col-xs-8">
+                            		<input type="button" onClick="openDaumZipAddress();" class="btn btn-lg btn-primary" value = "주소변경"><br><br>
                         		</div>
                 		</div><br>
                 		
                 		<div class="form-group has-warning">
                         	<label class="col-xs-4 control-label">전화번호</label>
                         		<div class="col-xs-8">
-                            		<input type="text" id="inputSuccess" class="form-control" value="${loginClient.CName }"><br>
+                            		<input type="text" name="payPhone" id="inputSuccess" class="form-control" value="${loginClient.CPhone }"><br>
                         		</div>
                 		</div><br>
                 		
                 		<div class="form-group has-warning">
-                        	<label class="col-xs-4 control-label">전화번호</label>
+                        	<label class="col-xs-4 control-label">배송 시간</label>
+                        		<div class="col-xs-6">
+                            		<select name="payTime" id="selectShip" class="form-control" onChange="changePrice()">
+			                    		<option value="0">시간 선택</option>
+			                    		<option value="06~08시">06~08시 도착</option>
+			                    		<option value="08~10시">08~10시 도착</option>
+			                    		<option value="10~12시">10~12시 도착</option>
+			                    		<option value="12~14시">12~14시 도착</option>
+			                    		<option value="14`16시">14~16시 도착</option>
+			                    		<option value="16~18시">16~18시 도착</option>
+			                    	</select><br>
+                        		</div>
+                		</div>
+                		
+                		<div class="form-group has-warning">
+                        	<label class="col-xs-4 control-label">요청사항</label>
                         		<div class="col-xs-8">
-                            		<input type="text" id="inputSuccess" class="form-control" value="${loginClient.CName }"><br>
+                            		<textarea name="payMemo" rows=7 cols=140 class="form-control" name="reviewContent" style="resize: none;"></textarea><br>
                         		</div>
                 		</div><br>
-                		
                 		
                 		
 					</div>
-				</div>
-			
+				</div><br><br>
+				
+				<input type="text" name="cId" value="${loginClient.CId }">
+				<input type="text" name="pCode" value="${pCode }">
+				<input type="text" name="payAmount" value="${panierAmount }">
+				<input type="text" name="payPrice" value="${totalprice }">
+				<input type="text" name="payDay" value="${date }"><br><br>
+
+				
+<!-- 			<button class="btn btn-lg btn-primary btn-block" type="submit">결제</button><br><br><br> -->
+<!-- 			<button id="check_module" type="button">아임 서포트 결제 모듈 테스트 해보기</button> -->
+			 <input type="button" id="check_module" class="btn btn-danger" value="결제하기">
 			</div>
+		</form>
 		
-		
-		
+		 
 </section>
 
 <script>
@@ -131,7 +191,48 @@ function openDaumZipAddress() {
 
 	}).open();
 
+	$('#address_etc').val("");
+
 }
+
+
+///////////////////////////////////////////
+	
+		$("#check_module").click(function () {
+			IMP.init('imp80374196');
+			
+			IMP.request_pay({
+				 	pg : 'html5_inicis',
+				    pay_method : 'card',
+				    merchant_uid : 'merchant_' + new Date().getTime(),
+				    name : "${name }",
+				    amount : ${totalprice },
+				    buyer_email : $('#buyerEmail').val(),
+				    buyer_name : $('#buyerName').val(),
+				    buyer_tel : $('#buyerPhone').val(),
+				    buyer_addr : $('#address').val() + " " + $('#address_etc').val(),
+				    buyer_postcode : $('#zonecode').val()
+				    
+			}, function (rsp) {
+			    if ( rsp.success ) {
+			        var msg = '결제가 완료되었습니다.';
+			        msg += '고유ID : ' + rsp.imp_uid;
+			        msg += '상점 거래ID : ' + rsp.merchant_uid;
+			        msg += '결제 금액 : ' + rsp.paid_amount;
+			        msg += '카드 승인번호 : ' + rsp.apply_num;
+			    } else {
+			        var msg = '결제에 실패하였습니다.';
+			        msg += '에러내용 : ' + rsp.error_msg;
+			    }
+			    alert(msg);
+			    
+			    paymentFrm.action="${pageContext.request.contextPath}/payment";
+			    paymentFrm.submit();
+			});
+		});
+		
+
+
 
 </script>
 

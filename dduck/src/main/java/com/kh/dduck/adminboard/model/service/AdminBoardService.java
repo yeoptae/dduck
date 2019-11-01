@@ -3,6 +3,7 @@ package com.kh.dduck.adminboard.model.service;
 import java.util.List;
 import java.util.Map;
 
+import com.kh.dduck.adminboard.model.vo.SaleBoard;
 import com.kh.dduck.adminboard.model.vo.SaleBoardFile;
 import com.kh.dduck.client.model.vo.Client;
 
@@ -21,7 +22,7 @@ public interface AdminBoardService {
 	 List<Map<String,String>> selectQnaBoard(int cPage,int numPerPage);
 	 int selectQnaCount();
 	 
-	 
-	 
+	 List<Map<String,String>> selectPaymentList(int cPage,int numPerPage);
+	 int selectPaymentCount();
 
 }
