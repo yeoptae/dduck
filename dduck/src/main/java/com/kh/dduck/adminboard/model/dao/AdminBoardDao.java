@@ -29,6 +29,14 @@ public interface AdminBoardDao {
 	List<Map<String,String>> selectQnaBoard(SqlSessionTemplate session,int cPage,int numPerPage);
 	int selecQnaCount(SqlSessionTemplate session);
 	
+	Map<String,Object> selectSaleBoard(SqlSessionTemplate session,int pCode);
+	List<SaleBoardFile> selectSaleBoardFile(SqlSessionTemplate session,int pCode);
+	
+	int updateBoard(SqlSessionTemplate session,Map<String,Object> param);
+	int updateBoardFile(SqlSessionTemplate session,SaleBoardFile boardFile);
+	
+	int deleteSaleBoard(SqlSessionTemplate session,SaleBoard s);
+	int deletePayment(SqlSessionTemplate session);
 	int selectPaymentCount(SqlSessionTemplate session);
 	List<Map<String,String>> selectPaymentList(SqlSessionTemplate session, int cPage, int numPerPage);
 	

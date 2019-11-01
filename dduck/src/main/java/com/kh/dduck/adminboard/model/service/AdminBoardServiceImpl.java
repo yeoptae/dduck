@@ -81,11 +81,56 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 
 	@Override
 	public int selectQnaCount() {
-		return dao.selectBoardCount(session);
+		return dao.selecQnaCount(session);
 	}
 
 
 	@Override
+	public Map<String, Object> selectSaleBoard(int pCode) {
+		return dao.selectSaleBoard(session,pCode);
+	}
+
+
+	@Override
+	public List<SaleBoardFile> selectSaleBoardFile(int pCode) {
+		return dao.selectSaleBoardFile(session,pCode);
+	}
+
+
+	@Override
+	public int updateBoard(Map<String,Object> param,List<SaleBoardFile> boardFile) throws Exception {
+		int result=0;
+		result=dao.updateBoard(session, param);
+		if(result == 0) throw new RuntimeException();
+		if(boardFile.size()>0) {
+		for(SaleBoardFile a : boardFile) {
+	      result=dao.updateBoardFile(session,a);
+	      if(result == 0) throw new RuntimeException();
+		}
+	}
+		return result;
+	
+	}
+
+
+	@Override
+	public int deleteSaleBoard(SaleBoard s) {
+		return dao.deleteSaleBoard(session,s);
+	}
+
+
+	@Override
+	public int deletePayment() {
+		return dao.deletePayment(session);
+	}
+
+	
+  
+	
+
+
+	
+	
 	public List<Map<String, String>> selectPaymentList(int cPage, int numPerPage) {
 		
 		return dao.selectPaymentList(session,cPage,numPerPage);
