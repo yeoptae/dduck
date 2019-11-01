@@ -151,6 +151,15 @@ input , select {
                <input type="button" class="btn btn-danger" value="주문하기" onclick="payment();">
                 </div>
                 
+                <div class="col-md-12 text-center">
+               <input type="button" class="btn btn-danger" value="수정하기" onclick="boardUpdate();">
+                </div>
+                
+                <div class="col-md-12 text-center">
+               <%--  <input type = "text" id="pCode" value="${paymentList['PCODE'] }"/> --%>
+                                                             
+               <input type="button" class="btn btn-danger" value="삭제하기" onclick="boardDelete();">
+                </div>
             </div>
         </div>
         
@@ -158,6 +167,8 @@ input , select {
     </form>
 	
 	<script>
+	   
+	
 		function jangbaguni(){
 			calculatorFrm.action="${pageContext.request.contextPath}/payment/panier";
 			if(confirm("장바구니 등록하시겠습니까?")){
@@ -171,7 +182,22 @@ input , select {
 				calculatorFrm.submit();
 			}
 		}
-	
+		
+		 function boardUpdate(){
+		    	calculatorFrm.action="${pageContext.request.contextPath}/admin/boardUpdate.do";
+				if(confirm("게시판을 수정하시겠습니까?")){
+				calculatorFrm.submit();		
+		    }
+		 }
+		    
+		 
+		    function boardDelete(){
+		    	calculatorFrm.action="${pageContext.request.contextPath}/admin/boardDelete.do";
+				if(confirm("삭제하시겠습니까?")){
+				calculatorFrm.submit();
+		    }
+		    }
+		    
 		function changePrice() {
 			
 			var price = $("#price").val();

@@ -56,6 +56,11 @@ public class ReviewDaoImpl implements ReviewDao {
 
 		return session.selectList("review.selectAttachList",pCode);
 	}
+
+	@Override
+	public List<Map<String, Object>> selectPayment(SqlSessionTemplate session, int pCode) {
+		return session.selectList("payment.selectPayment",pCode);
+	}
 	
 	
 	

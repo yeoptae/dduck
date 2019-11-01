@@ -18,4 +18,5 @@ public interface ReviewDao {
 	int updateReview(SqlSessionTemplate session, Review r);
 	Map<String,Object> selectSale(SqlSessionTemplate session, int pCode);
 	List<SaleBoardFile> selectAttachList(SqlSessionTemplate session, int pCode);
+	List<Map<String,Object>> selectPayment(SqlSessionTemplate session,int pCode);
 }

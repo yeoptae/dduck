@@ -31,7 +31,28 @@
 		insert into saleboardFile values(seq_attachcode.nextval,#{pCode},default,#{attachReFileName},#{attachFlag})
 	</insert>
 	
+    <select id="selectSaleBoard" resultType="map" parameterType="_int">
+       select * from saleboard where pCode = #{pCode}
+    </select>	
+
+    <select id="selectSaleBoardFile" resultType="com.kh.dduck.adminboard.model.vo.SaleBoardFile" parameterType="_int">
+       select * from saleboardfile where pCode= #{pCode} 
+    </select>
+	   
+	<update id="updateBoard" parameterType="map">
+	     update saleboard set gcode=#{gCode},salename=#{saleName},saleprice=#{salePrice},detailsinfo=#{detailsInfo} 
+	     where pCode= #{pCode}
+	</update>
 	
+	<update id="updateBoardFile"
+	parameterType="com.kh.dduck.adminboard.model.vo.SaleBoardFile">
+	    update saleboardfile set attachEN=sysdate,attachrefilename=#{attachReFileName}  
+	    where pCode=#{pCode} <!-- and attachCode= #{attachCode} -->
+	</update>
+	
+	<delete id="deleteSaleBoard" parameterType="saleBoard">
+	    delete from saleBoard where pCode=#{pCode}
+	</delete>
 </mapper>
 
 

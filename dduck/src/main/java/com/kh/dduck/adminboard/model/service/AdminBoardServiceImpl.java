@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.dduck.adminboard.model.dao.AdminBoardDao;
+import com.kh.dduck.adminboard.model.vo.SaleBoard;
 import com.kh.dduck.adminboard.model.vo.SaleBoardFile;
 import com.kh.dduck.client.model.vo.Client;
 
@@ -82,6 +83,53 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 	public int selectQnaCount() {
 		return dao.selecQnaCount(session);
 	}
+
+
+	@Override
+	public Map<String, Object> selectSaleBoard(int pCode) {
+		return dao.selectSaleBoard(session,pCode);
+	}
+
+
+	@Override
+	public List<SaleBoardFile> selectSaleBoardFile(int pCode) {
+		return dao.selectSaleBoardFile(session,pCode);
+	}
+
+
+	@Override
+	public int updateBoard(Map<String,Object> param,List<SaleBoardFile> boardFile) throws Exception {
+		int result=0;
+		result=dao.updateBoard(session, param);
+		if(result == 0) throw new RuntimeException();
+		if(boardFile.size()>0) {
+		for(SaleBoardFile a : boardFile) {
+	      result=dao.updateBoardFile(session,a);
+	      if(result == 0) throw new RuntimeException();
+		}
+	}
+		return result;
+	
+	}
+
+
+	@Override
+	public int deleteSaleBoard(SaleBoard s) {
+		return dao.deleteSaleBoard(session,s);
+	}
+
+
+	@Override
+	public int deletePayment() {
+		return dao.deletePayment(session);
+	}
+
+	
+  
+	
+
+
+	
 	
 	
 	

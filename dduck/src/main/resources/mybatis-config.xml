@@ -12,6 +12,7 @@
 	<typeAliases>
 
 		 <typeAlias type="com.kh.dduck.review.model.vo.Review" alias="review"/>
+		  <typeAlias type="com.kh.dduck.adminboard.model.vo.SaleBoard" alias="saleBoard"/>
 		 <typeAlias type="com.kh.dduck.panier.model.vo.Panier" alias="panier"/>
 <!-- 		<typeAlias type="com.kh.spring.common.ArrayTypeHandler" alias="arrType"/> -->
 		<typeAlias type="com.kh.dduck.client.model.vo.Client" alias="client" />

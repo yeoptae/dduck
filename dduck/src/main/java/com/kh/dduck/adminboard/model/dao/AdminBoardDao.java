@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.kh.dduck.adminboard.model.vo.SaleBoard;
 import com.kh.dduck.adminboard.model.vo.SaleBoardFile;
 import com.kh.dduck.client.model.vo.Client;
 
@@ -27,4 +28,13 @@ public interface AdminBoardDao {
 	
 	List<Map<String,String>> selectQnaBoard(SqlSessionTemplate session,int cPage,int numPerPage);
 	int selecQnaCount(SqlSessionTemplate session);
+	
+	Map<String,Object> selectSaleBoard(SqlSessionTemplate session,int pCode);
+	List<SaleBoardFile> selectSaleBoardFile(SqlSessionTemplate session,int pCode);
+	
+	int updateBoard(SqlSessionTemplate session,Map<String,Object> param);
+	int updateBoardFile(SqlSessionTemplate session,SaleBoardFile boardFile);
+	
+	int deleteSaleBoard(SqlSessionTemplate session,SaleBoard s);
+	int deletePayment(SqlSessionTemplate session);
 }

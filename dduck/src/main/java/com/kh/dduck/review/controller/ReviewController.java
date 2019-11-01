@@ -28,11 +28,12 @@ public class ReviewController {
 	public ModelAndView ReviewView(@RequestParam(value = "cPage", required = false, defaultValue = "0") int cPage, int pCode) {
 
 		ModelAndView mv = new ModelAndView();
-
+        
 		
 		Map<String, Object> saleList = service.selectSale(pCode);
+		List<Map<String,Object>> paymentList=service.selectPayment(pCode);
 		List<SaleBoardFile> att = service.selectAttachList(pCode);
-		
+		System.out.println("!!!!!!!!!!!!!!!!!"+pCode+"!!!!!!!!!!!!!!!!!");
 		int numPerPage = 5;
 		List<Map<String, String>> list = service.selectReviewList(cPage, numPerPage,pCode);
 		
@@ -43,6 +44,7 @@ public class ReviewController {
 		mv.addObject("list", list);
 		mv.addObject("saleList", saleList);
 		mv.addObject("att", att);
+		mv.addObject("paymentList",paymentList);
 		mv.setViewName("payment/detailView");
 
 		return mv;
