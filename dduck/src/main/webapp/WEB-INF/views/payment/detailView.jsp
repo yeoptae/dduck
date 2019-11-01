@@ -65,7 +65,7 @@ input , select {
                 	<c:forEach items="${att }" var="a" varStatus="at">
                 		<c:if test='${a["attachFlag"]=="1" }'>
                     		<img src='${pageContext.request.contextPath}/resources/upload/board/${a["attachReFileName"]}' alt="Image"
-                    		style="width:800px; height:600px;">
+                    		style="width:800px; height:550px;">
                 		</c:if>
                 	</c:forEach>
                 </div>
@@ -144,7 +144,7 @@ input , select {
                 </div>
 				
 				<div class="col-md-12 text-center">
-                    <input type="button" class="btn btn-danger" value="장바구니" onclick="jangbaguni();"><br>
+                    <input type="button" class="btn btn-primary" value="장바구니" onclick="jangbaguni();"><br>
                 </div>
                 
                 <div class="col-md-12 text-center">
@@ -226,7 +226,10 @@ input , select {
 	  	<c:if test='${a["attachFlag"] == 0}'>
 		    <div class="sample_image1 col-sm-2">
 		      <img src='${pageContext.request.contextPath}/resources/upload/board/${a["attachReFileName"]}' class="img-responsive" 
-		      style="width:150px; height:80px;" alt="Image">
+		      style="width:150px; height:80px;" alt="Image">  
+		      
+		      
+		      
 		      <p></p>
 		    </div>
 	    </c:if>
@@ -310,8 +313,18 @@ input , select {
 
 </section>
 
+
+
+
 <script>
-	
+
+	var img = document.getElementsByClassName('img-responsive'); 
+	for (var x = 0; x < img.length; x++) { 
+		img.item(x).onclick=function() {
+			window.open(this.src)
+			}; 
+		}
+
 
 
 	function reviewUpdate(element){
