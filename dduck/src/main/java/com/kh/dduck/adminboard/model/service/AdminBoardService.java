@@ -32,5 +32,7 @@ public interface AdminBoardService {
 	 
 	 
 	 
+	 List<Map<String,String>> selectPaymentList(int cPage,int numPerPage);
+	 int selectPaymentCount();
 
 }

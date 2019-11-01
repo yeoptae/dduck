@@ -10,7 +10,7 @@
    
    <insert id="insertClient" parameterType="client">
       INSERT INTO CLIENT VALUES(#{cId},#{cPw},#{cName},#{cEmail},
-      #{cPhone},#{cAddr1},#{cAddr2},#{cAddr3}sysdate)
+      #{cPhone},#{cAddr1},sysdate,#{cAddr2},#{cAddr3})
 
    </insert>
    
@@ -18,32 +18,11 @@
       UPDATE CLIENT SET CNAME = #{cName}
        where CID = #{cId}
    </update>
+   
    <select id="selectClient" resultType="Client" parameterType="String">
       select * from client where cid=#{mNo}
    </select>
    
-   <!-- CPW = #{cPw}, CEMAIL = #{cEmail}, CPHONE = #{cPhone} CADDR = #{cAddr}-->
-   
-
-<!--    SELECT CID, CPW, CNAME, CEMAIL, CPHONE,
-      CADDR
-      FROM CLIENT
-      WHERE CID = #{cId} -->
-   
-   
-      <!-- SELECT * FROM CLIENT WHERE CID=#{cId}
-       -->
-      <!-- SELECT CID AS cId, CPW AS cPw, CNAME AS cName, CEMAIL AS cEmail, CPHONE AS cPhone, CADDR AS cAddr
-      FROM CLIENT WHERE CID=#{cId} -->
-      
-      
-      <update id="updatePw" parameterType="client">
-      update client set cpw = #{cPw} where cid = #{cId}
-      </update>
-
-
-
-
 
    <select id="selectClientList" resultType="map">
       SELECT * FROM CLIENT order by cen desc
@@ -52,6 +31,23 @@
    <select id="selectClientCount" resultType="_int">
      select count(*) from client
    </select>
+   
+   <!-- 비밀번호 변경 관련 mapper -->
+    <update id = "updatePw" >
+    update client set cPw=#{cPw} where cEmail=#{cEmail}
+    </update>
+    
+    <!--회원탈퇴  -->
+    
+    <delete id="delete">
+ 			delete from Client where cId = #{cId} 
+	</delete>
+	
+	<!--정보수정에서 비번변경  -->
+	<update id="updatePwChange">
+		update client set cPw=#{cPw} where cId=#{cId}
+	</update>
+
    
 
 </mapper>

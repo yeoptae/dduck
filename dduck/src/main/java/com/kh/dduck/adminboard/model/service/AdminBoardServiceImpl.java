@@ -131,6 +131,19 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 
 	
 	
+	public List<Map<String, String>> selectPaymentList(int cPage, int numPerPage) {
+		
+		return dao.selectPaymentList(session,cPage,numPerPage);
+	}
+
+
+	@Override
+	public int selectPaymentCount() {
+		
+		return dao.selectPaymentCount(session);
+	}
+
+
 	
 	
 	

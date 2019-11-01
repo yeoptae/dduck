@@ -37,4 +37,8 @@ public interface AdminBoardDao {
 	
 	int deleteSaleBoard(SqlSessionTemplate session,SaleBoard s);
 	int deletePayment(SqlSessionTemplate session);
+	int selectPaymentCount(SqlSessionTemplate session);
+	List<Map<String,String>> selectPaymentList(SqlSessionTemplate session, int cPage, int numPerPage);
+	
+	
 }

@@ -101,4 +101,20 @@ public class AdminBoardDaoImpl implements AdminBoardDao {
 	
 	
 	
+	
+	@Override
+	public int selectPaymentCount(SqlSessionTemplate session) {
+
+		return session.selectOne("payment.selectPaymentCount");
+	}
+
+	@Override
+	public List<Map<String, String>> selectPaymentList(SqlSessionTemplate session, int cPage, int numPerPage) {
+		RowBounds rows=new RowBounds((cPage-1)*numPerPage,numPerPage);
+		return session.selectList("payment.selectPaymentList",null,rows);
+	}
+
+	
+	
+	
 }

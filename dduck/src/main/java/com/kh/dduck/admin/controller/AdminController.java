@@ -156,12 +156,6 @@ public class AdminController {
 	public String mainPage() {
 		return "admin/main";
 	}
-
-	@RequestMapping("/admin/adminmypage.do")
-	public String adminOrder() {
-		return "admin/adminOrder";
-	}
-
 	@RequestMapping("/admin/adminClientList.do")
 	public ModelAndView adminClietList(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage,
 			HttpServletRequest request) {
@@ -248,6 +242,26 @@ public class AdminController {
 		mv.addObject("loc", loc);
 
 		mv.setViewName("common/msg");
+		return mv;
+	}
+	
+	
+	
+	@RequestMapping("/admin/adminmypage.do")
+	public ModelAndView paymentList(@RequestParam(value="cPage", required=false, defaultValue="0") int cPage) {
+		
+		ModelAndView mv = new ModelAndView();
+		
+		int numPerPage=10;
+		
+		List<Map<String,String>> list=service.selectPaymentList(cPage,numPerPage);
+		int totalCount=service.selectPaymentCount();
+		
+		mv.addObject("pageBar",PageBarFactory.getPageBar(totalCount, cPage, numPerPage, "/dduck/admin/adminmypage.do"));
+		mv.addObject("count",totalCount);
+		mv.addObject("list",list);
+		mv.setViewName("admin/adminOrder");
+		
 		return mv;
 	}
 }
