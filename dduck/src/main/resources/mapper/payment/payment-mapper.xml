@@ -14,6 +14,5 @@
 	<select id="selectPaymentList" resultType="map">
 		select * from payment  join saleboard using(pCode) ORDER BY payday DESC
 	</select>
-	
-	
+
 </mapper>
