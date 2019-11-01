@@ -50,7 +50,7 @@ public class ReviewDaoImpl implements ReviewDao {
 		
 		return session.selectOne("review.selectSale",pCode);
 	}
-
+ 
 	@Override
 	public List<SaleBoardFile> selectAttachList(SqlSessionTemplate session, int pCode) {
 
