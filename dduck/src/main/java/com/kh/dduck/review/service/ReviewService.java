@@ -17,4 +17,5 @@ public interface ReviewService {
 	int updateReview(Review r);
 	Map<String,Object> selectSale(int pCode);
 	List<SaleBoardFile> selectAttachList(int pCode);
+	List<Map<String,Object>> selectPayment(int pCode);
 }

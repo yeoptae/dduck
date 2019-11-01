@@ -3,6 +3,7 @@ package com.kh.dduck.qna.model.service;
 import java.util.List;
 import java.util.Map;
 
+import com.kh.dduck.qna.model.vo.Qna;
 import com.kh.dduck.qna.model.vo.QnaComment;
 
 public interface QnaService {
@@ -23,4 +24,13 @@ public interface QnaService {
 	
 	/* qna comment update(수정) */
 	int qnaCommentUpdate(QnaComment qm);
+	
+	/* qna delete */
+	int qnaDelete(Qna qna);
+	
+	/* qna 등록 */
+	int insertQna(Qna qna);
+	
+	/* qna update */
+	int qnaUpdateFormEnd(Qna qna);
 }

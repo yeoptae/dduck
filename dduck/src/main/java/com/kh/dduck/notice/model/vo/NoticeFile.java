@@ -9,7 +9,6 @@ public class NoticeFile {
 
 	private int noticeFileCode;
 	private int noticeCode;
-	private String cId;
 	private String noticeFileOri;
 	private Date noticeFileEn;
 	

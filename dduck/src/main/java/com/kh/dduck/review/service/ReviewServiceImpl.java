@@ -62,6 +62,11 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		return dao.selectAttachList(session,pCode);
 	}
+
+	@Override
+	public List<Map<String, Object>> selectPayment(int pCode) {
+		return dao.selectPayment(session,pCode);
+	}
 	
 	
 	

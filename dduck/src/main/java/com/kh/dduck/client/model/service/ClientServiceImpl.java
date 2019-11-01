@@ -10,6 +10,8 @@ import com.kh.dduck.client.model.vo.Client;
 @Service
 public class ClientServiceImpl implements ClientService {
 	
+	
+	
 	@Autowired
 	ClientDao dao;
 	
@@ -35,23 +37,21 @@ public class ClientServiceImpl implements ClientService {
 		return dao.selectClient(sqlSession, c,mNo);
 	}
 	
-	//비번수정
+	//비번찾기후 수정
 	@Override
 	public int updatePw(Client c) {
 		return dao.updatePw(sqlSession, c);
 	}
-	
-	
-	
-	
-	
 
-	
-	
-	/*
-	 * @Override public Map<String, Object> selectClientInfo(Map<String,Object> map)
-	 * throws Exception{ return dao.selectClientInfo(map); }
-	 */
 
+	@Override
+	public int deleteClient(Client c) {
+		return dao.deleteClient(sqlSession, c);
+	}
+	@Override
+	public int updatePwChange(Client c) {
+		return dao.updatePwChange(sqlSession, c);
+	}
+	
 
 }

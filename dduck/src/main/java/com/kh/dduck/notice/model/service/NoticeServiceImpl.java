@@ -57,4 +57,26 @@ public class NoticeServiceImpl implements NoticeService {
 		return dao.selectNoticeFileList(session,noticeCode);
 	}
 	
+	/* notice delete */
+	@Override
+	public int noticeDelete(int noticeCode) {
+		return dao.noticeDelete(session, noticeCode);
+	}
+	
+	/* notice update */
+	@Override
+	public int updateNotice(Map<String, String> param, List<NoticeFile> NoticeFileList) throws Exception {
+		int result=0;
+		result=dao.updateNotice(session,param);//notice테이블에 데이터 입력
+		if(result==0) throw new RuntimeException();
+		if(NoticeFileList.size()>0) {
+			for(NoticeFile nfl : NoticeFileList) {
+				nfl.setNoticeCode(Integer.parseInt(param.get("noticeCode")));
+				result=dao.updateNoticeFile(session,nfl);
+				if(result==0) throw new Exception();
+			}
+		}
+		
+		return result;
+	}
 }

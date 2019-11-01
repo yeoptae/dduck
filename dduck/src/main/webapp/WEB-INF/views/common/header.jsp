@@ -44,8 +44,6 @@
 
                 <div class="collapse navbar-collapse" id="myNavbar" style=" text-align:center;">
                     <ul class="nav navbar-nav" id="menu">
-                 <%--  <c:forEach items="${list }" var="b"> --%>
-                        <%-- <li><a href='${pageContext.request.contextPath}/admin/saleboardList.do?gCode=${b["GCODE"]}'>답례</a></li> --%>
                         <li><a href="http://localhost:9090/dduck">Home</a></li>
                         <li class="dropdown">
                         	<a class="dropdown-toggle" data-toggle="dropdown"">메뉴<b class="caret"></b></a>
@@ -59,9 +57,8 @@
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=3">돌</a></li>
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=4">케익</a></li>
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=5">세트</a></li>
-                <%--  </c:forEach> --%>
+            
                     </ul>
-    	
 	                	
 	                	<!--로그인 시 보여지는 로직들  -->
 	                	<c:choose>
@@ -74,14 +71,13 @@
                                   </c:when>
                             <c:when test="${loginClient.CId eq 'admin' }">
                                <ul class="nav navbar-nav navbar-right">   
-                                    <li><a href="${pageContext.request.contextPath}/admin/adminmypage.do">관리자페이지</a></li>
+                                   <li><a href="${pageContext.request.contextPath}/admin/adminmypage.do">관리자페이지</a></li>
                                         <li><a href="${pageContext.request.contextPath}/Client/ClientLogout.do">로그아웃</a></li>
                                    </ul>
                             </c:when>
                             <c:otherwise >
                                 <ul class="nav navbar-nav navbar-right">
-                               <%--  <li><a href="${pageContext.request.contextPath}/list/list.do?cNo=${loginClient.CId}" >내정보</a></li> --%>
-                                      <li><a href="${pageContext.request.contextPath}/update/update.do?cNo=${loginClient.CId}">마이페이지</a></li>
+                                      <li><a href="${pageContext.request.contextPath}/mypage/mypage.do?cNo=${loginClient.CId}">마이페이지</a></li>
                                       <li><a href="${pageContext.request.contextPath}/Client/ClientLogout.do">로그아웃</a></li>
                                    </ul>
                             </c:otherwise>

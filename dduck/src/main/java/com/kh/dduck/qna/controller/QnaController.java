@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.dduck.common.PageBarFactory;
 import com.kh.dduck.qna.model.service.QnaService;
+import com.kh.dduck.qna.model.vo.Qna;
 import com.kh.dduck.qna.model.vo.QnaComment;
 
 @Controller
@@ -127,6 +128,95 @@ public class QnaController {
 		return "common/msg";
 	}
 	
-	
+	/* qna 글쓰기 연결 */
+	@RequestMapping("qna/qnaForm")
+	public String qnaForm() {
+		return "notice/qnaForm";
+	}
 
+	/* qna 등록 */
+	@RequestMapping("/qna/qnaFormEnd.do")
+	public String insertQna(Qna qna, Model model) {
+		int result=service.insertQna(qna);
+
+		String msg = "";
+		String loc = "";
+
+		if (result > 0) {
+			msg = "등록 완료";
+			loc = "/qna/qnaList.do";
+			model.addAttribute("msg", msg);
+			model.addAttribute("loc", loc);
+
+		} else {
+			msg = "등록 실패";
+			loc = "/qna/qnaList.do";
+			model.addAttribute("msg", msg);
+			model.addAttribute("loc", loc);
+
+		}
+
+		return "common/msg";
+	}
+	
+	/* qna 수정페이지로 전환 */
+	@RequestMapping("/qna/qnaUpdate.do")
+	public ModelAndView qnaUpdate(int qaCode) {
+		ModelAndView mv=new ModelAndView();
+		Map<String, String> qna=service.selectQna(qaCode);
+		
+		mv.addObject("qna", qna);
+		mv.setViewName("notice/qnaUpdateForm");
+		return mv;
+	}
+	/* qna update end */
+	@RequestMapping("/qna/qnaUpdateFormEnd.do")
+	public String qnaUpdateFormEnd(Qna qna, Model model) {
+		
+		int result = service.qnaUpdateFormEnd(qna);
+		
+		String msg ="";
+		String loc ="";
+		
+		if(result>0) {
+			msg = "수정 완료";
+			loc="/qna/qnaView.do?qaCode="+qna.getQaCode();
+			model.addAttribute("msg",msg);
+			model.addAttribute("loc",loc);
+
+		}else {
+			msg = "수정 실패";
+			loc="/qna/qnaView.do?qaCode="+qna.getQaCode();
+			model.addAttribute("msg",msg);
+			model.addAttribute("loc",loc);
+		}
+		
+
+		return "common/msg";
+	}
+	
+	/* qna delete */
+	@RequestMapping("qna/qnaDelete.do")
+	public String qnaDelete(Qna qna, Model model) {
+		int result=service.qnaDelete(qna);
+		
+		String msg = "";
+		String loc = "";
+		
+		if (result > 0) {
+			msg = "삭제 완료";
+			loc = "/qna/qnaList.do";
+			model.addAttribute("msg", msg);
+			model.addAttribute("loc", loc);
+
+		} else {
+			msg = "삭제 실패";
+			loc = "/qna/qnaList.do";
+			model.addAttribute("msg", msg);
+			model.addAttribute("loc", loc);
+
+		}
+
+		return "common/msg";
+	}
 }

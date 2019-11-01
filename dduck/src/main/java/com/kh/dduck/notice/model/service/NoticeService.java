@@ -18,4 +18,10 @@ public interface NoticeService {
 	Map<String,String> selectNotice(int noticeCode);
 	List<NoticeFile> selectNoticeFileList(int noticeCode);
 	
+	/* notice delete */
+	int noticeDelete(int noticeCode);
+	
+	/* notice update */
+	int updateNotice(Map<String, String> param,List<NoticeFile> NoticeFileList) throws Exception;
+	
 }
