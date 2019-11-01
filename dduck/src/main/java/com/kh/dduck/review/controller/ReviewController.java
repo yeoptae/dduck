@@ -32,7 +32,6 @@ public class ReviewController {
         
 		
 		Map<String, Object> saleList = service.selectSale(pCode);
-		List<Map<String,Object>> paymentList=service.selectPayment(pCode);
 		List<SaleBoardFile> att = service.selectAttachList(pCode);
 		System.out.println("!!!!!!!!!!!!!!!!!"+pCode+"!!!!!!!!!!!!!!!!!");
 		int numPerPage = 5;
@@ -45,7 +44,7 @@ public class ReviewController {
 		mv.addObject("list", list);
 		mv.addObject("saleList", saleList);
 		mv.addObject("att", att);
-		mv.addObject("paymentList",paymentList);
+	
 		mv.setViewName("payment/detailView");
 
 		return mv;
