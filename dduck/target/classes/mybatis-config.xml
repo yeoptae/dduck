@@ -15,6 +15,7 @@
 		 <typeAlias type="com.kh.dduck.panier.model.vo.Panier" alias="panier"/>
 <!-- 		<typeAlias type="com.kh.spring.common.ArrayTypeHandler" alias="arrType"/> -->
 		<typeAlias type="com.kh.dduck.client.model.vo.Client" alias="client" />
+		<typeAlias type="com.kh.dduck.notice.model.vo.Notice" alias="notice" />
 		<typeAlias type="com.kh.dduck.qna.model.vo.Qna" alias="qna" />
 		<typeAlias type="com.kh.dduck.qna.model.vo.QnaComment" alias="qnacomment" />
 	</typeAliases>

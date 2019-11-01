@@ -10,7 +10,16 @@
 <section id="content">
     <div class="container">  
         <div>
-            <h4 class="pull-left">　　공지사항 - </h4>
+            <h4 class="pull-left">　 
+				<c:choose>
+              		<c:when test='${notice.NOTICECATEGORY eq "1"}'>
+              			공지사항
+              		</c:when>
+              	    <c:when test='${notice.NOTICECATEGORY eq "2"}'>
+              			이벤트
+              		</c:when>
+              	</c:choose>
+            </h4>
             <h4 class="pull-right">${notice.CID }　　</h4>
         </div>
         <br><br>
@@ -25,19 +34,20 @@
 
 
         <div class="col-lg-6">
-        	
+		<c:forEach items="${noticeFile }" var="ntf">
+        	<img src="${path}/resources/upload/notice/${ntf.noticeFileOri}">
+        </c:forEach>
             <h4><p>
             	${notice.NOTICECONTENT}
             </p></h4>
         </div>
         </div>
         <br><br><br><br><br>
-        <c:forEach items="${noticeFile }" var="ntf">
+<%--         <c:forEach items="${noticeFile }" var="ntf">
         	<span class="downfontsize btn btn-default btn-lg"><i class="glyphicon glyphicon-download-alt" onclick="fileDownload('${ntf.noticeFileOri}')"></i> 첨부파일</span>
         		- ${ntf.noticeFileOri }
-<%--         	<button type="button" onclick="fileDownload('${ntf.noticeFileOri}')">
-        	</button> --%>
-        </c:forEach>
+       		<div class="noticeNull15px"></div>
+        </c:forEach> --%>
     </div>
     <br><br><br><br><br>
     
@@ -49,10 +59,10 @@
 	                <a href="" target="_blank" ></a>
 	            </p>
 	            <div class="pull-right">
-	                <a href='${path }/notice/updateNotice.do?noticeCode=${notice.NOTICECODE}' class="navbar-btn btn-danger btn">
-	                    <span class="glyphicon" onclick=""></span> 수정 </a>
-	                <a href="" class="navbar-btn btn-danger btn">
-	                    <span class="glyphicon deleteNotice" onclick=""></span> 삭제 </a>
+	                <a href='javascript:void(0)' onclick="noticeUpdate()" class="navbar-btn btn-danger btn">
+	                    <span class="glyphicon"></span> 수정 </a>
+	                <a href="javascript:void(0)" onclick="noticeDelete()" class="navbar-btn btn-danger btn">
+	                    <span class="glyphicon deleteNotice" ></span> 삭제 </a>
 	            </div>
 	        </div>
 	    </div>
@@ -60,13 +70,16 @@
 </section>
 <script>
 /* 삭제 ---------------------------------------------------------------- */
-	$(function(){
-		$('.deleteNotice').click(function(){
-			if(confirm("정말로 삭제하시겠습니까?")){
-				location.href='${path}/notice/noticeDelete.do?noticeCode=${NOTICECODE}';
-			}
-		})
-	})
+	function noticeUpdate(){
+	if(confirm("수정하시겠습니까?")){
+		location.href="${path}/notice/noticeUpdateForm.do?noticeCode=${notice.NOTICECODE}";
+	}
+}
+	function noticeDelete(){
+	if(confirm("정말로 삭제하시겠습니까?")){
+		location.href="${path}/notice/noticeDelete.do?noticeCode=${notice.NOTICECODE}";
+	}
+}
 	
 
 /* 파일 다운로드 -----------------------------------------------------------*/

@@ -197,7 +197,7 @@ public class QnaController {
 	
 	/* qna delete */
 	@RequestMapping("qna/qnaDelete.do")
-	public String qnaCommentDelete(Qna qna, Model model) {
+	public String qnaDelete(Qna qna, Model model) {
 		int result=service.qnaDelete(qna);
 		
 		String msg = "";

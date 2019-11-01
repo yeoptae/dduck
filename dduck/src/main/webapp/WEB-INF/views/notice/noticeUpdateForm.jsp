@@ -10,10 +10,10 @@
 <section id="content">
     <div class="centerset">
 		<div class="centerset well well-sm writerform">
-		<form class="form-horizontal" action="${path }/notice/noticeFormEnd.do" method="post" onsubmit="return validate();" enctype="multipart/form-data">
+		<form class="form-horizontal" action="${path }/notice/noticeUpdateEnd.do" method="post" onsubmit="return validate();" enctype="multipart/form-data">
 		<input type="hidden" name="cId" value='admin' required>
 		<fieldset>
-		    <legend class="qna-form-header text-center">공지등록</legend>
+		    <legend class="qna-form-header text-center">공지수정</legend>
 		
 		    <!-- Name input-->
 		    <div class="form-group">
@@ -35,7 +35,7 @@
 		    <div class="form-group">
 		    <div class="qna-form-text">내용</div>
 		    <div class="col-md-9">
-		        <pre><textarea value="${notice.NOTICECONTENT }" class="form-control" id="message" name="noticeContent" placeholder="내용을 입력해주세요" rows="5" style="height: 500px;" required></textarea></pre>
+		        <pre><textarea value="" class="form-control" id="message" name="noticeContent" placeholder="내용을 입력해주세요" rows="5" style="height: 500px;" required>${notice.NOTICECONTENT }</textarea></pre>
 		    </div>
 		    </div>
 		    <br>
@@ -47,7 +47,6 @@
                 </div>
                 <div class="custom-file">
                     <input type="file" class="btn btn-primary btn-round-sm btn-sm" name="upFile" id="upFile1">
-<!--                     <label class="custom-file-label" for="upFile1">파일을 선택하세요</label> -->
                 </div>
                 <br>
                 <div class="input-group-prepend" style="padding:0px;">
@@ -55,7 +54,6 @@
                 </div>
                 <div class="custom-file">
                     <input type="file" class="btn btn-primary btn-round-sm btn-sm" name="upFile" id="upFile2">
-<!--                     <label class="custom-file-label" for="upFile2">파일을 선택하세요</label> -->
                 </div>
             </div>
 		    <div class="form-group">

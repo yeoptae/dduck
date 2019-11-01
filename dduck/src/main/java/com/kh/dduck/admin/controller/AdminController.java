@@ -28,6 +28,14 @@ public class AdminController {
 	@Autowired
 	AdminBoardService service;
 	
+//	/* saleboard search(상품 검색기능) */
+//	@RequestMapping("/saleboard/saleboardSearch.do")
+//	public ModelAndView saleboardSearch(HttpServletRequest request, Map<String, String> param,
+//		@RequestParam(value="cPage", required=false, defaultValue="1") int cPage,
+//		@RequestParam(value="searchWord", defaultValue = "")String searchWord) throws Exception{
+//		int numPerPage=9; //9개까지 리스트 출력
+//	}
+	
 	@RequestMapping("/admin/saleboardList.do")
 	public ModelAndView saleboardList(@RequestParam(value="cPage",
 	required=false, defaultValue="1") int cPage, int gCode) {

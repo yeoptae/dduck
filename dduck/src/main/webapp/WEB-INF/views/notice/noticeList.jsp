@@ -55,9 +55,7 @@
                                     	</c:choose>
                                     </td>
                                     <td>
-                                    	<c:if test="${param.cPage!=1 }">
-                                    		<c:out value="${v.count+5 }"/>
-                                    	</c:if>
+                                    	<c:out value='${n["NOTICECODE"] }'/>
                                     </td>
                                     <td>
                                     	<a href='${path }/notice/noticeView.do?noticeCode=${n["NOTICECODE"]}'>
