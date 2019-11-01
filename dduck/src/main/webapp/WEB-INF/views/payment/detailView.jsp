@@ -65,7 +65,7 @@ input , select {
                 	<c:forEach items="${att }" var="a" varStatus="at">
                 		<c:if test='${a["attachFlag"]=="1" }'>
                     		<img src='${pageContext.request.contextPath}/resources/upload/board/${a["attachReFileName"]}' alt="Image"
-                    		style="width:800px; height:600px;">
+                    		style="width:800px; height:550px;">
                 		</c:if>
                 	</c:forEach>
                 </div>
@@ -144,13 +144,22 @@ input , select {
                 </div>
 				
 				<div class="col-md-12 text-center">
-                    <input type="button" class="btn btn-danger" value="장바구니" onclick="jangbaguni();"><br>
+                    <input type="button" class="btn btn-primary" value="장바구니" onclick="jangbaguni();"><br>
                 </div>
                 
                 <div class="col-md-12 text-center">
                <input type="button" class="btn btn-danger" value="주문하기" onclick="payment();">
                 </div>
                 
+                <div class="col-md-12 text-center">
+               <input type="button" class="btn btn-danger" value="수정하기" onclick="boardUpdate();">
+                </div>
+                
+                <div class="col-md-12 text-center">
+               <%--  <input type = "text" id="pCode" value="${paymentList['PCODE'] }"/> --%>
+                                                             
+               <input type="button" class="btn btn-danger" value="삭제하기" onclick="boardDelete();">
+                </div>
             </div>
         </div>
         
@@ -158,6 +167,8 @@ input , select {
     </form>
 	
 	<script>
+	   
+	
 		function jangbaguni(){
 			calculatorFrm.action="${pageContext.request.contextPath}/payment/panier";
 			if(confirm("장바구니 등록하시겠습니까?")){
@@ -171,7 +182,22 @@ input , select {
 				calculatorFrm.submit();
 			}
 		}
-	
+		
+		 function boardUpdate(){
+		    	calculatorFrm.action="${pageContext.request.contextPath}/admin/boardUpdate.do";
+				if(confirm("게시판을 수정하시겠습니까?")){
+				calculatorFrm.submit();		
+		    }
+		 }
+		    
+		 
+		    function boardDelete(){
+		    	calculatorFrm.action="${pageContext.request.contextPath}/admin/boardDelete.do";
+				if(confirm("삭제하시겠습니까?")){
+				calculatorFrm.submit();
+		    }
+		    }
+		    
 		function changePrice() {
 			
 			var price = $("#price").val();
@@ -226,7 +252,10 @@ input , select {
 	  	<c:if test='${a["attachFlag"] == 0}'>
 		    <div class="sample_image1 col-sm-2">
 		      <img src='${pageContext.request.contextPath}/resources/upload/board/${a["attachReFileName"]}' class="img-responsive" 
-		      style="width:150px; height:80px;" alt="Image">
+		      style="width:150px; height:80px;" alt="Image">  
+		      
+		      
+		      
 		      <p></p>
 		    </div>
 	    </c:if>
@@ -310,8 +339,18 @@ input , select {
 
 </section>
 
+
+
+
 <script>
-	
+
+	var img = document.getElementsByClassName('img-responsive'); 
+	for (var x = 0; x < img.length; x++) { 
+		img.item(x).onclick=function() {
+			window.open(this.src)
+			}; 
+		}
+
 
 
 	function reviewUpdate(element){

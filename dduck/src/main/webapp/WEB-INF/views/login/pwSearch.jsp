@@ -14,8 +14,6 @@
 <!------ Include the above in your HEAD tag ---------->
 
     <div class="container">    
-    <span style="color: green; font-weight: bold;">입력한 이메일로 받은 인증번호를 입력하세요. (인증번호가 맞아야 비밀번호를 변경하실 수 있습니다.)</span> <br> <br>  
-        <br> <br>
         <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
             <div class="panel panel-info" >
                     <div class="panel-heading">
@@ -24,12 +22,16 @@
 
                     <div style="padding-top:30px" class="panel-body" >
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-                        <form id="pwSearch" class="form-horizontal" role="form" action="${path }/pwSearch/pwSearch2.do${dice},${e_mail}" method="post">
+                        <form id="pwSearch" class="form-horizontal" role="form" action="${path}/find_pass.do" method="post">
                                     
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input id="login-username" type="email" class="form-control" name="e_mail" value="" placeholder="User Email">                                     
+                                        <input  id="id" name="user_id" type="text" class="form-control" value="" placeholder="User Id">                                     
                                     </div>
+                            <div style="margin-bottom: 25px" class="input-group">
+                                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <input id="e_mail" name="e_mail" type="email" class="form-control"  value="" placeholder="User Email">                                     
+                                   </div>
                             <!--  <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                         <input id="login-username" type="text" class="form-control" name="cEmailNum" value="" placeholder="인증번호">                                     

@@ -27,12 +27,14 @@ public class ReviewController {
 	@RequestMapping("/detail/detailView")
 	public ModelAndView ReviewView(@RequestParam(value = "cPage", required = false, defaultValue = "0") int cPage, int pCode) {
 
+		
 		ModelAndView mv = new ModelAndView();
-
+        
 		
 		Map<String, Object> saleList = service.selectSale(pCode);
+		List<Map<String,Object>> paymentList=service.selectPayment(pCode);
 		List<SaleBoardFile> att = service.selectAttachList(pCode);
-		
+		System.out.println("!!!!!!!!!!!!!!!!!"+pCode+"!!!!!!!!!!!!!!!!!");
 		int numPerPage = 5;
 		List<Map<String, String>> list = service.selectReviewList(cPage, numPerPage,pCode);
 		
@@ -43,6 +45,7 @@ public class ReviewController {
 		mv.addObject("list", list);
 		mv.addObject("saleList", saleList);
 		mv.addObject("att", att);
+		mv.addObject("paymentList",paymentList);
 		mv.setViewName("payment/detailView");
 
 		return mv;
@@ -52,13 +55,14 @@ public class ReviewController {
 	
 	//결제뷰 넘겨주기
 	@RequestMapping("/dduck/payment")
-	public ModelAndView paymentView(String name, int panierAmount, Date date, int totalprice, String ship, String productPrice) {
-		System.out.println(name);
-		System.out.println(panierAmount);
-		System.out.println(date);
-		System.out.println(totalprice);
-		System.out.println(ship);
-		System.out.println(productPrice);
+	public ModelAndView paymentView(String name, int panierAmount, Date date, int totalprice, String ship, String productPrice, int pCode) {
+		System.out.println("떡이름 : " + name);
+		System.out.println("수량 : " + panierAmount);
+		System.out.println("배송일 : " + date);
+		System.out.println("총금액 : " + totalprice);
+		System.out.println("배송비용 : " + ship);
+		System.out.println("상품금액 : "+ productPrice);
+		System.out.println("pCode : " + pCode);
 		
 		ModelAndView mv = new ModelAndView();
 		
@@ -68,6 +72,7 @@ public class ReviewController {
 		mv.addObject("totalprice",totalprice);
 		mv.addObject("ship",ship);
 		mv.addObject("productPrice",productPrice);
+		mv.addObject("pCode",pCode);
 		
 		mv.setViewName("payment/paymentView");
 		

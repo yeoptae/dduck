@@ -71,30 +71,22 @@
                          <c:out value="subStr1 - ${subStr1 }" />
  --%>
 	<div class="row">
-		<div class="col-xs-12 col-sm-12">
-			<h1 class="text-center" style="margin-right: -50px;">정보수정</h1>
-		</div>
-
 		<div class="col-sm-3 sidenav">
-			<h4>관리자페이지</h4>
+			<h4 style="padding:10px;">마이 페이지</h4>
 			<ul class="nav nav-pills nav-stacked">
 				<li><a
-					href="${pageContext.request.contextPath}/admin/adminmypage.do">주문현황</a></li>
+					href="${pageContext.request.contextPath}/admin/adminmypage.do">장바구니</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/admin/adminClientList.do">회원리스트</a></li>
+					href="${pageContext.request.contextPath}/admin/adminClientList.do">정보수정</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/admin/adminQnaBoard.do">Qna게시판
-						관리하기</a></li>
+					href="${pageContext.request.contextPath}/admin/adminQnaBoard.do">비밀번호 변경</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/admin/insertproduct.do">상품등록</a></li>
+					href="${pageContext.request.contextPath}/admin/insertproduct.do">회원탈퇴</a></li>
 			</ul>
-			<br>
 		</div>
 		<div class="col-xs-8 col-sm-8">
-
+		<h1 class="text-center">정보수정</h1>
 			<div>
-				<p>&nbsp;</p>
-
 				<form class="form-horizontal" action="${path }/update/updateEnd.do"
 					method="post">
 					<div class="form-group">

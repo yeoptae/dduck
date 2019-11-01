@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="payment">
+
+	<insert id="insertPayment" parameterType="payment">
+		insert into payment values (seq_paycode.nextval, #{cId}, #{pCode} , #{payAmount} , #{payPrice}, #{payDay}, sysdate, #{payMemo}, #{payAddr1} , #{payAddr2} , #{payAddr3} , #{payTime}, #{payPhone}, #{payName})
+	</insert> 
+	
+	<select id="selectPaymentCount" resultType="_int"> 
+		select count(*) from payment
+	</select>
+	
+	<select id="selectPaymentList" resultType="map">
+		select * from payment  join saleboard using(pCode) ORDER BY payday DESC
+	</select>
+	
+</mapper>
