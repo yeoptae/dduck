@@ -36,41 +36,11 @@ public class ClientController {
    public String login() {
       return "login/login";
    }
-
-   // 로그인시 널값이 아닐경우 이 맵핑값으로 넘어와 해당 로직 실행
-//   @RequestMapping("/client/clientLogin.do")
-//   public String login(Client c, Model model, HttpSession session) {
-//      
-//      Client result = service.selectClientOne(c);
-//      System.out.println(result+"이건 잘 되냐");
-//      String msg = "";
-//      String loc = "/";
-//
-//      if (c.getCId().equals("admin") && pwEncoder.matches(c.getCPw(), result.getCPw())) {
-//
-//         msg = "로그인 성공";
-//         session.setAttribute("loginClient", result);
-//         model.addAttribute("loginClient", result);
-//      } else if (pwEncoder.matches(c.getCPw(), result.getCPw())) {
-//         msg = "로그인 성공";
-//         session.setAttribute("loginClient", result);
-//         model.addAttribute("loginClient", result);
-//      } else {
-//
-//         msg = "로그인 실패";
-//      }
-//
-//      model.addAttribute("msg", msg);
-//      model.addAttribute("loc", loc);
-//
-//      return "common/msg";
-//   }
    @RequestMapping("/client/clientLogin.do")
 
       public String login(Client c, Model model, SessionStatus status) {
 
          Client result = service.selectClientOne(c);
-         System.out.println(result + "이건 잘 되냐");
          String msg = "";
          String loc = "/";
 
@@ -83,6 +53,7 @@ public class ClientController {
             msg = "로그인 성공";
             model.addAttribute("loginClient", result);
          } else {
+        	 
 
             msg = "로그인 실패";
          }
@@ -142,9 +113,9 @@ public class ClientController {
            String msg = "";
          String loc = "";
          if (result > 0) {
-            msg = "회원가입완료";
+            msg = "정보수정완료";
          } else {
-            msg = "회원가입오류";
+            msg = "정보수정오류";
          }
          model.addAttribute("msg", msg);
          model.addAttribute("loc", loc);
@@ -152,14 +123,14 @@ public class ClientController {
          return "common/msg";
       }
      
-     /*
-      * 마이페이지 뷰 전환
-      * 
-      * @RequestMapping("/update/update.do") public String modify() { return
-      * "update/update";
-      * 
-      * }
-      */
+     
+      /* 마이페이지 뷰 전환*/
+       @RequestMapping("/mypage/mypage.do") public String modify() { 
+    	   
+    	   return "login/mypage";
+       
+       }
+      
      
     
 
@@ -176,5 +147,100 @@ public class ClientController {
       return "update/update";
    }
    
+   /*회원탈퇴 뷰*/
+   @RequestMapping("/withdraw/withdraw.do")
+   public String withdraw() {
+      return "login/withdraw";
+   }
+   
+   
+   
+ /*회원탈퇴*/
+   @RequestMapping("/withdraw1/withdraw1.do")
+	public String deleteReview(Client c, Model model) {
+	   c.setCPw(pwEncoder.encode(c.getCPw()));
+		int result = service.deleteClient(c);
+         System.out.println("!!!!!!!"+c);
+		String msg = "";
+		String loc = "";
 
+		if (result > 0) {
+			msg = "탈퇴 완료";
+			loc="/login/login";
+			model.addAttribute("msg", msg);
+			model.addAttribute("loc", loc);
+
+		} else {
+			msg = "탈퇴 실패";
+			loc = "/";
+			model.addAttribute("msg", msg);
+			model.addAttribute("loc", loc);
+
+		}
+
+		return "common/msg";
+	}
+   
+   
+   /*마이페이지에서 비밀번호 변경뷰매소드*/
+   @RequestMapping("/pwChange/pwChange.do")
+   public String pwChange() {
+      return "login/pwChange";
+   }
+   
+   /*마이페이지에서 비밀번호 변경매소드*/
+   @RequestMapping("/pwChangeEnd/pwChangeEnd.do")
+   public String pwChangeEnd(Client c, Model model) {
+	   c.setCPw(pwEncoder.encode(c.getCPw()));
+       logger.debug("비버변경 됐니??"+c);
+       
+       int result = service.updatePwChange(c);
+        
+        String msg = "";
+        String loc = "";
+        if (result > 0) {
+           msg = "비번변경완료";
+        } else {
+           msg = "취소하셧습니다.";
+        }
+        model.addAttribute("msg", msg);
+        model.addAttribute("loc", loc);
+
+        return "common/msg";
+     }
+   
+   
+   
+   
+   
+   
+   
+   
+   /*비번 찾아서 변경하는 매소드*/
+   @RequestMapping("/pass_change.do")
+   public String pwSearchEnd(HttpServletRequest request,Client c, Model model, String e_mail){
+ 	  c.setCPw(pwEncoder.encode(c.getCPw()));
+       logger.debug("비버변경 됐니??"+c);
+       
+       int result = service.updatePw(c);
+        
+        String msg = "";
+        String loc = "";
+        if (result > 0) {
+           msg = "비번변경완료";
+        } else {
+           msg = "비번변경오류";
+        }
+        model.addAttribute("msg", msg);
+        model.addAttribute("loc", loc);
+
+        return "common/msg";
+     }
+ 	  
+ 	  
+ 	  
+   
+               
+
+   
 }

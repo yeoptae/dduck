@@ -61,7 +61,6 @@
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=5">세트</a></li>
                 <%--  </c:forEach> --%>
                     </ul>
-    	
 	                	
 	                	<!--로그인 시 보여지는 로직들  -->
 	                	<c:choose>
@@ -80,8 +79,7 @@
                             </c:when>
                             <c:otherwise >
                                 <ul class="nav navbar-nav navbar-right">
-                               <%--  <li><a href="${pageContext.request.contextPath}/list/list.do?cNo=${loginClient.CId}" >내정보</a></li> --%>
-                                      <li><a href="${pageContext.request.contextPath}/update/update.do?cNo=${loginClient.CId}">마이페이지</a></li>
+                                      <li><a href="${pageContext.request.contextPath}/mypage/mypage.do?cNo=${loginClient.CId}">마이페이지</a></li>
                                       <li><a href="${pageContext.request.contextPath}/Client/ClientLogout.do">로그아웃</a></li>
                                    </ul>
                             </c:otherwise>
