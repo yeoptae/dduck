@@ -33,23 +33,22 @@ public class ClientDaoImpl implements ClientDao {
 	public int updatePw(SqlSessionTemplate sqlSession, Client c) {
 		return sqlSession.update("client.updatePw",c);
 	}
-	
-	
-	
-	
+
+	@Override
+	public int deleteClient(SqlSessionTemplate sqlSession, Client c) {
+		return sqlSession.delete("client.delete",c);
+	}
+
+	@Override
+	public int updatePwChange(SqlSessionTemplate sqlSession, Client c) {
+		return sqlSession.delete("client.updatePwChange",c);
+	}
 
 	
 
-
-
-
 	
 	
-	/*
-	 * @Override public Map<String, Object> selectClientInfo(Map<String, Object>
-	 * map) { return map; }
-	 */
-	
+
 	
 	
 
