@@ -38,7 +38,7 @@
                                     <th class="notice-table-2">제목</th>
                                     <th class="notice-table-3">작성자</th>
                                     <th class="notice-table-4">작성일</th>
-                                    <th class="notice-table-5">조회수</th>
+                                    <!-- <th class="notice-table-5">조회수</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -69,9 +69,9 @@
                                     	<fmt:formatDate value='${n["NOTICEEN"] }' pattern="yyyy.MM.dd"/>
 										<%-- <c:out value='${n["NOTICEEN"] }'/> --%>
 									</td>
-                                    <td>
+                                    <%-- <td>
                                     	<c:out value='${n["NOTICECOUNT"] }'/>
-                                    </td>
+                                    </td> --%>
                                 </tr>
                             </c:forEach>
                             </tbody>

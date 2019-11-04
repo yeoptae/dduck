@@ -28,31 +28,56 @@ public class AdminController {
 	@Autowired
 	AdminBoardService service;
 
-//	/* saleboard search(상품 검색기능) */
+
+	
+	/* saleboard search(상품 검색기능) */
+
 //	@RequestMapping("/saleboard/saleboardSearch.do")
-//	public ModelAndView saleboardSearch(HttpServletRequest request, Map<String, String> param,
-//		@RequestParam(value="cPage", required=false, defaultValue="1") int cPage,
-//		@RequestParam(value="searchWord", defaultValue = "")String searchWord) throws Exception{
-//		int numPerPage=9; //9개까지 리스트 출력
+//	public ModelAndView searchList(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage,
+//			@RequestParam(value="searchWord", defaultValue = "") String searchWord,
+//			int gCode) throws Exception {
+//		
+//		int tatalCount = service.selectBoardCount(searchWord);
+//
+//		int numPerPage = 9;
+//		
+//		List<Map<String, String>> list = service.selectBoardList(cPage, numPerPage, gCode);
+//		List<Map<String, String>> fileList = service.selectFile();
+//		
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("list",list);
+//		map.put("count", tatalCount);
+//		map.put("searchWord", searchWord);
+//		map.put("fileList", fileList);
+//		map.put("pageBar",PageBarFactory.getPageBarWhere(tatalCount, cPage, numPerPage, "/dduck/admin/saleboardSearch.do", gCode));
+//		
+//		
+//		ModelAndView mv = new ModelAndView("saleboard/saleboardList");
+//		mv.addObject("map", map);
+//
+//		return mv;
 //	}
 
 	@RequestMapping("/admin/saleboardList.do")
 	public ModelAndView saleboardList(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage,
+			@RequestParam(value="searchWord", defaultValue = "") String searchWord,
 			int gCode) {
 		ModelAndView mv = new ModelAndView();
 
 		int numPerPage = 9;
-		List<Map<String, String>> list = service.selectBoardList(cPage, numPerPage, gCode);
+		
+		List<Map<String, String>> list = service.selectBoardList(cPage, numPerPage, searchWord, gCode);
 		List<Map<String, String>> fileList = service.selectFile();
-		System.out.println(fileList);
-		System.out.println(list);
 		int totlaCount = service.selectBoardCount();
-		mv.addObject("pageBar",
-				PageBarFactory.getPageBarWhere(totlaCount, cPage, numPerPage, "/dduck/admin/saleboardList.do", gCode));
+		int totlaCount2 = service.selectBoardCount2(searchWord);
+		
+		mv.addObject("searchWord",searchWord);
 		mv.addObject("count", totlaCount);
 		mv.addObject("list", list);
 		mv.addObject("fileList", fileList);
 		mv.addObject("gCode", gCode);
+		mv.addObject("pageBar",
+				PageBarFactory.getPageBarWhere2(totlaCount2, cPage, numPerPage, "/dduck/admin/saleboardList.do", gCode,searchWord));
 
 		mv.setViewName("saleboard/saleboardList");
 

@@ -24,8 +24,8 @@
 						<th colspan="5">데이터가 없습니다</th>
 					</tr>
 				</c:if>
-
-				<c:forEach items="${list }" var="b" varStatus="v">
+				<h5>${map.searchCount }개의  게시물이 검색되었습니다.</h5>
+				<c:forEach items="${map.searchList }" var="b" varStatus="v">
 					<div class="col-lg-4 col-md-6 col-sm-8 col-sx-9 col-10 m-auto">
 						<div class="blog-post">
 							<div class="post-thumb">
@@ -34,7 +34,7 @@
 							</c:if> --%>
 
 
-								<c:forEach items="${fileList }" var="f" varStatus="vs">
+								<%-- <c:forEach items="${fileList }" var="f" varStatus="vs">
 									<c:if test='${f["PCODE"]==b["PCODE"]}'>
 										<c:if test='${f["ATTACHFLAG"]=="1" }'>
 											
@@ -51,7 +51,7 @@
 											</a>
 										</c:if>
 									</c:if>
-								</c:forEach>
+								</c:forEach> --%>
 
 							</div>
 
@@ -59,12 +59,12 @@
 								<ul class="mt-1 mb-0">
 									<center>
 										<li class="list-inline-item"><c:out
-												value='${b["SALENAME"] }' /></li>
+												value='${b.SALENAME }' /></li>
 									</center>
 									<center>
 										<li class="list-inline-item" name="money"
 											style="color: #333; font-family:"Dotum",돋움; font-size:20px;">
-											<fmt:formatNumber value='${b["SALEPRICE"] }' /> 원
+											<fmt:formatNumber value='${b.SALEPRICE }' /> 원
 										</li>
 								</ul>
 							</div>
@@ -78,7 +78,7 @@
 		</div>
 		</div>
 		<br>
-		<center>${pageBar }</center>
+		<center><%-- ${pageBar } --%></center>
 	</section>
 
 

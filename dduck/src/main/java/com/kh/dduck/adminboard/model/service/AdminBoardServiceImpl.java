@@ -20,6 +20,17 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 	@Autowired
 	SqlSessionTemplate session;
 	
+	/* 검색기능---------------------------------------------------------- */
+//	@Override
+//	public int selectBoardCount(String searchWord) throws Exception {
+//		return dao.selectBoardCount(session, searchWord);
+//	}
+//	@Override
+//	public List<Map<String, Object>> searchList(Map<String, Object> map, int cPage, int numPerpage, String searchWord)
+//			throws Exception {
+//		return dao.searchList(session, map, cPage, numPerpage, searchWord);
+//	}
+	/* ----------------------------------------------------------------- */
 	
 	@Override
 	public int insertBoard(Map<String, String> param, List<SaleBoardFile> boardFile) throws Exception {
@@ -38,16 +49,20 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 
 
 	@Override
+	public int selectBoardCount2(String searchWord) {
+		// TODO Auto-generated method stub
+		return dao.selectBoardCount2(session,searchWord);
+	}
+	@Override
 	public int selectBoardCount() {
 		// TODO Auto-generated method stub
 		return dao.selectBoardCount(session);
 	}
 
-
 	@Override
-	public List<Map<String, String>> selectBoardList(int cPage, int numPerpage,int gCode) {
+	public List<Map<String, String>> selectBoardList(int cPage, int numPerpage,String searchWord,int gCode) {
 		// TODO Auto-generated method stub
-		return dao.selectBoardList(session,cPage,numPerpage,gCode);
+		return dao.selectBoardList(session,cPage,numPerpage, searchWord ,gCode);
 	}
 
 	

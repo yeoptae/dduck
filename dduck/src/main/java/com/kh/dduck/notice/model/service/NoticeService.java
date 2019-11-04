@@ -3,6 +3,8 @@ package com.kh.dduck.notice.model.service;
 import java.util.List;
 import java.util.Map;
 
+import com.kh.dduck.notice.model.vo.Notice;
+import com.kh.dduck.notice.model.vo.Notice;
 import com.kh.dduck.notice.model.vo.NoticeFile;
 
 public interface NoticeService {
@@ -22,6 +24,8 @@ public interface NoticeService {
 	int noticeDelete(int noticeCode);
 	
 	/* notice update */
-	int updateNotice(Map<String, String> param,List<NoticeFile> NoticeFileList) throws Exception;
+	int deleteNoticeFile(int noticeCode);
+	int updateNotice(Notice n);
+	int insertNoticeFile(Notice n,List<NoticeFile> NoticeFileList);
 	
 }
