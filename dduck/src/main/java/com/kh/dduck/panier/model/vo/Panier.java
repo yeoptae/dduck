@@ -12,4 +12,5 @@ public class Panier {
 	private int pCode;
 	private Date panierEn;
 	private int panierAmount;
+
 }

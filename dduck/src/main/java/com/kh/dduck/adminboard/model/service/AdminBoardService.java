@@ -20,8 +20,9 @@ public interface AdminBoardService {
 	 
 	 int insertBoard(Map<String, String> param,List<SaleBoardFile> boardFile) throws Exception;
 
-	 List<Map<String,String>> selectClientList(int cPage,int numPerpage);
+	 List<Map<String,String>> selectClientList(int cPage,int numPerpage,String keyword);
 	 int selectClientCount();
+	 int selectClientCount2(String keyword);
 	 
 	 List<Map<String,String>> selectQnaBoard(int cPage,int numPerPage);
 	 int selectQnaCount();
@@ -30,13 +31,12 @@ public interface AdminBoardService {
 	 List<SaleBoardFile> selectSaleBoardFile(int pCode);
 	 
 	 int updateBoard(Map<String, Object> param,List<SaleBoardFile> boardFile) throws Exception;
-	 int deletePayment();
+
      int deleteSaleBoard(SaleBoard s);
-	 
-	 
 	 
 	 
 	 List<Map<String,String>> selectPaymentList(int cPage,int numPerPage);
 	 int selectPaymentCount();
 
+   int deleteBoardFile(int pCode);
 }

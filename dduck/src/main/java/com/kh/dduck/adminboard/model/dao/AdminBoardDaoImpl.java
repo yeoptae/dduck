@@ -70,16 +70,20 @@ public class AdminBoardDaoImpl implements AdminBoardDao {
 	}
 
 	@Override
-	public List<Map<String, String>> selectClientList(SqlSessionTemplate session,int cPage,int numPerPage) {
+	public List<Map<String, String>> selectClientList(SqlSessionTemplate session,int cPage,int numPerPage,String keyword) {
 		// TODO Auto-generated method stub
 		RowBounds rows=new RowBounds((cPage-1)*numPerPage,numPerPage);
-		return session.selectList("client.selectClientList",null,rows);
+		return session.selectList("client.selectClientList",keyword,rows);
 		                                              /* parameter */
 	}
 
 	@Override
 	public int selectClientCount(SqlSessionTemplate session) {
 		return session.selectOne("client.selectClientCount");
+	}
+	@Override
+	public int selectClientCount2(SqlSessionTemplate session, String keyword) {
+		return session.selectOne("client.selectClientCount2",keyword);
 	}
 
 	@Override
@@ -110,24 +114,13 @@ public class AdminBoardDaoImpl implements AdminBoardDao {
 		return session.update("board.updateBoard",param);
 	}
 
-	@Override
-	public int updateBoardFile(SqlSessionTemplate session, SaleBoardFile boardFile) {
-		return session.update("board.updateBoardFile",boardFile);
-	}
+	
 
 	@Override
 	public int deleteSaleBoard(SqlSessionTemplate session, SaleBoard s) {
 		return session.delete("board.deleteSaleBoard",s);
 	}
 
-	@Override
-	public int deletePayment(SqlSessionTemplate session) {
-		return session.delete("payment.deletePayment");
-	}
-     
-	
-	
-	
 	
 	@Override
 	public int selectPaymentCount(SqlSessionTemplate session) {
@@ -140,6 +133,21 @@ public class AdminBoardDaoImpl implements AdminBoardDao {
 		RowBounds rows=new RowBounds((cPage-1)*numPerPage,numPerPage);
 		return session.selectList("payment.selectPaymentList",null,rows);
 	}
+
+	@Override
+	public int deletePayment(SqlSessionTemplate session) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deleteBoardFile(SqlSessionTemplate session, int pCode) {
+		return session.delete("board.deleteBoardFile",pCode);
+	}
+
+	
+
+	
 
 	
 	

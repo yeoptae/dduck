@@ -14,4 +14,12 @@ public class PanierDaoImpl implements PanierDao {
 		return session.insert("panier.insertPanier",p);
 	}
 	
+	//장바구니삭제
+	@Override
+	public int deletePanier(SqlSessionTemplate session, Panier p) {
+		
+		return session.delete("panier.deletePanier",p);
+	}
+
+	
 }

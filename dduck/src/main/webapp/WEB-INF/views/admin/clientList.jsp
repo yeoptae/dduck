@@ -7,13 +7,15 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="pageTitle" value="관리자마이페이지" />
 </jsp:include>
-<section id="content">
 
+
+
+<section id="content">
 	<div class="container-fluid">
 		<div class="row content">
 			<div class="col-sm-3 sidenav">
+				<ul class="nav nav-pills nav-stacked" style="margin: 80px 0 0 0; margin-left: 60px;">
 				<h4>관리자페이지</h4>
-				<ul class="nav nav-pills nav-stacked">
 					<li><a
 						href="${pageContext.request.contextPath}/admin/adminmypage.do">주문현황</a></li>
 					<li><a
@@ -33,9 +35,23 @@
 
 				<hr>
 				<h2>회원리스트</h2>
-				<br>
+				
+				
 				<br>
 				<div class="container-fluid" style="margin-top: 5%">
+				
+				<form name="form1" method="post" action="${pageContext.request.contextPath}/admin/adminClientList.do">
+
+    <select name="searchoption">
+        <option value="cName" 
+<c:if test="${mv.searchoption == 'cName'}">selected</c:if>
+        >이름</option>
+    </select>
+    <input name="keyword" value="${mv.keyword}">
+    <input type="submit" value="조회">
+</form>
+<br>
+
 					<table class="table">
 						<thead class="thead-light">
 							<tr style="text-align: center;">
@@ -68,19 +84,14 @@
 
 
 
-
-
-
 				<br>
 				<br>
 
 			</div>
-</section>
+			
 
+</section>
 
 </body>
 
-
-
-</section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
