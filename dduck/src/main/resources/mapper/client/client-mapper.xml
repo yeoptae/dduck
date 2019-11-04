@@ -20,16 +20,28 @@
    </update>
    
    <select id="selectClient" resultType="Client" parameterType="String">
-      select * from client where cid=#{mNo}
+      select * from client where cid=#{mNo}        
    </select>
+   
    
 
    <select id="selectClientList" resultType="map">
-      SELECT * FROM CLIENT order by cen desc
-   </select>
+      SELECT * FROM CLIENT 
+      <include refid="search" />
+       order by cen desc
+    </select>
+   <sql id="search">
+          where cName like '%'||#{keyword}||'%'
+    </sql>
+      
+   
    
    <select id="selectClientCount" resultType="_int">
      select count(*) from client
+   </select>
+   
+    <select id="selectClientCount2" resultType="_int" parameterType="string">
+     select count(*) from client where cName like '%'||#{keyword}||'%'
    </select>
    
    <!-- 비밀번호 변경 관련 mapper -->

@@ -53,6 +53,10 @@
 	<delete id="deleteSaleBoard" parameterType="saleBoard">
 	    delete from saleBoard where pCode=#{pCode}
 	</delete>
+	
+	<delete id="deleteBoardFile" parameterType="_int">
+	   delete from saleBoardFile where pCode=#{pCode}
+	</delete>
 </mapper>
 
 

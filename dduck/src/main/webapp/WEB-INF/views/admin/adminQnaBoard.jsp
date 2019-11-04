@@ -12,8 +12,8 @@
 	<div class="container-fluid">
 		<div class="row content">
 			<div class="col-sm-3 sidenav">
+				<ul class="nav nav-pills nav-stacked" style="margin: 80px 0 0 0; margin-left: 60px;">
 				<h4>관리자페이지</h4>
-				<ul class="nav nav-pills nav-stacked">
 					<li><a
 						href="${pageContext.request.contextPath}/admin/adminmypage.do">주문현황</a></li>
 					<li><a
@@ -43,7 +43,6 @@
 								<th style="background-color: #eeeeee; text-align: center;">boardNo</th>
 								<th style="background-color: #eeeeee; text-align: center;">작성자</th>
 								<th style="background-color: #eeeeee; text-align: center;">제목</th>
-								<th style="background-color: #eeeeee; text-align: center;">일자</th>
 								<th style="background-color: #eeeeee; text-align: center;">작성일</th>
 
 							</tr>
@@ -54,9 +53,9 @@
 								<tr style="text-align: center;">
 									<td><c:out value='${q["QACODE"] }' /></td>
 									<td><c:out value='${q["CID"] }' /></td>
-									<td><c:out value='${q["QATITLE"] }' /></td>
-									<td><c:out value='${q["QACONTENT"] }' /></td>
+									<td><a href='${path }/qna/qnaView.do?qaCode=${q["QACODE"] }'><c:out value='${q["QATITLE"] }'/></a></td>
 									<td><c:out value='${q["QAEN"] }' /></td>
+									
 								</tr>
 							</c:forEach>
 						</tbody>
