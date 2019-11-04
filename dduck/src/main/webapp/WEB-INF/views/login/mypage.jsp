@@ -26,7 +26,9 @@
 			<h4 style="padding:10px;">마이 페이지</h4>
 			<ul class="nav nav-pills nav-stacked">
 				<li><a
-					href="${pageContext.request.contextPath}/admin/adminmypage.do">장바구니</a></li>
+					href="${pageContext.request.contextPath}/client/panier?cId=${loginClient.CId}">장바구니</a></li>
+				<li><a
+					href="${pageContext.request.contextPath}/client/paymentList?cId=${loginClient.CId}">결제내역</a></li>
 				<li><a
 					href="${pageContext.request.contextPath}/update/update.do?cNo=${loginClient.CId}">정보수정</a></li>
 				<li><a
