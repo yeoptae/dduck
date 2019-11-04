@@ -186,6 +186,7 @@ public class AdminController {
 		 return "common/msg";
 	 }
 
+	
 	@RequestMapping("/admin/mainpage.do")
 	public String mainPage() {
 		return "admin/main";
