@@ -10,6 +10,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -44,18 +47,13 @@ public class ClientController {
          String msg = "";
          String loc = "/";
 
-      if (c.getCId().equals("admin") && pwEncoder.matches(c.getCPw(), result.getCPw())) {
-
-         
-            msg = "로그인 성공";
-            model.addAttribute("loginClient", result);
-         } else if (pwEncoder.matches(c.getCPw(), result.getCPw())) {
-            msg = "로그인 성공";
-            model.addAttribute("loginClient", result);
-         } else {
-        	 
-
-            msg = "로그인 실패";
+    	  
+       if(result!=null &&pwEncoder.matches(c.getCPw(), result.getCPw())){
+    		  msg = "로그인 성공";
+              model.addAttribute("loginClient", result);
+    		  
+    	  } else {
+        	   msg = "로그인 실패";
          }
 
          model.addAttribute("msg", msg);
@@ -83,6 +81,9 @@ public class ClientController {
    public String enroll() {
       return "client/clientEnroll";
    }
+   
+   
+   
 
    /* 회원가입 */
    @RequestMapping("/client/clientEnrollEnd.do")
@@ -237,10 +238,25 @@ public class ClientController {
         return "common/msg";
      }
  	  
- 	  
- 	  
+   
+
+   
+   @RequestMapping("/user/idCheck")
+   public @ResponseBody int idCheck(@RequestParam("cId") String cId) {
+	   
+	   System.out.println(" sssss  ");
+	   int result = service.userIdCheck(cId);
+	   
+		return result;
+	}
+   
+   
+   
+   
+   
+   
+}
    
                
 
    
-}

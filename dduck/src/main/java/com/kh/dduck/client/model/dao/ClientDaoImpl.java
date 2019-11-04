@@ -44,10 +44,11 @@ public class ClientDaoImpl implements ClientDao {
 		return sqlSession.delete("client.updatePwChange",c);
 	}
 
-	
+	@Override
+	public int userIdCheck(SqlSessionTemplate sqlSession, String cId) {
+		return sqlSession.selectOne("client.userIdCheck",cId);
+	}
 
-	
-	
 
 	
 	

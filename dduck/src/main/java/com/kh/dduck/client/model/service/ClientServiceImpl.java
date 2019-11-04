@@ -52,6 +52,11 @@ public class ClientServiceImpl implements ClientService {
 	public int updatePwChange(Client c) {
 		return dao.updatePwChange(sqlSession, c);
 	}
-	
+	@Override
+	public int userIdCheck(String cId) {
+		return dao.userIdCheck(sqlSession, cId);
+	}
+
+
 
 }

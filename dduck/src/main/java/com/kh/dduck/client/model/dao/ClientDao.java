@@ -13,6 +13,7 @@ public interface ClientDao {
 	int updatePw(SqlSessionTemplate sqlSession,Client c);
 	int deleteClient(SqlSessionTemplate sqlSession,Client c);
 	int updatePwChange(SqlSessionTemplate sqlSession, Client c);
+	int userIdCheck(SqlSessionTemplate sqlSession, String cId);
 	
 //	int withdraw(SqlSessionTemplate sqlSession,Client c);
 

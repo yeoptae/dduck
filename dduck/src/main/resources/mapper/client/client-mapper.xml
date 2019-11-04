@@ -48,6 +48,10 @@
 		update client set cPw=#{cPw} where cId=#{cId}
 	</update>
 
+ 	<select id="userIdCheck"  parameterType="String" resultType="int">
+     	 SELECT count(*) FROM client WHERE CID=#{cId}
+  	 </select>
+	
    
 
 </mapper>
