@@ -1,9 +1,11 @@
 package com.kh.dduck.adminboard.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
+import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +15,25 @@ import com.kh.dduck.client.model.vo.Client;
 
 @Repository
 public class AdminBoardDaoImpl implements AdminBoardDao {
+	
+	/* 검색기능------------------------------------------- */
+//	@Override
+//	public int selectBoardCount(SqlSessionTemplate session, String searchWord) {
+//		Map<String, Object> map=new HashMap<String, Object>();
+//		map.put("SAERCHWORD",searchWord);
+//		return Integer.parseInt(session.selectOne("board.selectBoardCount", map).toString());
+//	}
+//	@Override
+//	public List<Map<String, Object>> searchList(SqlSessionTemplate session, Map<String, Object> map, int cPage, int numPerpage, String searchWord) {
+//		
+//		map.put("cPage", cPage);
+//		map.put("numPerpage", numPerpage);
+//		map.put("SEARCHWORD",searchWord);
+//		
+//		List<Map<String, Object>> list=session.selectList("board.searchList",map);
+//		return list;
+//	}
+	/* ------------------------------------------------- */
 
 //	@Override
 	public int insertBoard(SqlSessionTemplate session, Map<String, String> param) {
@@ -28,11 +49,17 @@ public class AdminBoardDaoImpl implements AdminBoardDao {
 	public int selectBoardCount(SqlSessionTemplate session) {
 		return session.selectOne("board.selectBoardCount");
 	}
-
 	@Override
-	public List<Map<String, String>> selectBoardList(SqlSessionTemplate session, int cPage, int numPerPage,int gCode) {
+	public int selectBoardCount2(SqlSessionTemplate session, String searchWord) {
+		return session.selectOne("board.selectBoardCount2",searchWord);
+	}
+	@Override
+	public List<Map<String, String>> selectBoardList(SqlSessionTemplate session, int cPage, int numPerPage, String searchWord, int gCode) {
 		RowBounds rows=new RowBounds((cPage-1)*numPerPage,numPerPage);
-		return session.selectList("board.selectBoardList",gCode,rows);
+		Map<Object, Object> map=new HashMap<Object, Object>();
+		map.put("searchWord", searchWord);
+		map.put("gCode", gCode);
+		return session.selectList("board.selectBoardList",map, rows);
 	}
 	
 

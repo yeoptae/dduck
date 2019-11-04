@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.dduck.notice.model.dao.NoticeDao;
+import com.kh.dduck.notice.model.vo.Notice;
 import com.kh.dduck.notice.model.vo.NoticeFile;
 
 @Service
@@ -65,18 +66,27 @@ public class NoticeServiceImpl implements NoticeService {
 	
 	/* notice update */
 	@Override
-	public int updateNotice(Map<String, String> param, List<NoticeFile> NoticeFileList) throws Exception {
+	public int deleteNoticeFile(int noticeCode) {
+		return dao.deleteNoticeFile(session, noticeCode);
+	}
+	@Override
+	public int updateNotice(Notice n) {
+		return dao.updateNotice(session, n);
+	}
+	@Override
+	public int insertNoticeFile(Notice n, List<NoticeFile> NoticeFileList) {
 		int result=0;
-		result=dao.updateNotice(session,param);//notice테이블에 데이터 입력
+		result=dao.updateNotice(session,n);//notice테이블에 데이터 입력
 		if(result==0) throw new RuntimeException();
 		if(NoticeFileList.size()>0) {
 			for(NoticeFile nfl : NoticeFileList) {
-				nfl.setNoticeCode(Integer.parseInt(param.get("noticeCode")));
-				result=dao.updateNoticeFile(session,nfl);
-				if(result==0) throw new Exception();
+				nfl.setNoticeCode(n.getNoticeCode());
+				result=dao.insertNoticeFile(session,nfl);
+				if(result==0);
 			}
 		}
 		
 		return result;
 	}
+	
 }

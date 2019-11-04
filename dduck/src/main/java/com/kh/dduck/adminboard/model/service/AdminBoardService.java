@@ -8,10 +8,14 @@ import com.kh.dduck.adminboard.model.vo.SaleBoardFile;
 
 public interface AdminBoardService {
 	
+	/* 검색기능 */
+	//int selectBoardCount(String searchWord) throws Exception;
+	//List<Map<String, Object>> searchList(Map<String,Object> map,int cPage,int numPerpage,String searchWord) throws Exception;
 	 
-	int selectBoardCount();
+	 int selectBoardCount();
+	 int selectBoardCount2(String searchWord);
 
-	 List<Map<String,String>> selectBoardList(int cPage,int numPerpage,int gCode);
+	 List<Map<String,String>> selectBoardList(int cPage,int numPerpage,String searchWord,int gCode);
 	 List<Map<String,String>> selectFile();
 	 
 	 int insertBoard(Map<String, String> param,List<SaleBoardFile> boardFile) throws Exception;
