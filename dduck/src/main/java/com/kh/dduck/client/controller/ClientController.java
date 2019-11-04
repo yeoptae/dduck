@@ -1,5 +1,8 @@
 package com.kh.dduck.client.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,11 +13,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.dduck.client.model.service.ClientService;
 import com.kh.dduck.client.model.vo.Client;
+import com.kh.dduck.common.PageBarFactory;
+import com.kh.dduck.panier.model.vo.Panier;
 
 @SessionAttributes(value = { "loginClient" })
 @Controller
@@ -237,10 +244,45 @@ public class ClientController {
         return "common/msg";
      }
  	  
- 	  
- 	  
-   
-               
+ 	 
+   	//장바구니
+   	@RequestMapping("/client/panier")
+   	public ModelAndView panier(@RequestParam(value="cPage", required=false, defaultValue="0") int cPage, String cId) {
+   		
+   		ModelAndView mv = new ModelAndView();
+   		
+   		int numPerPage = 10;
+   		List<Map<String,String>> list = service.selectPanierList(cPage,numPerPage,cId);
+   		int totalCount = service.selectPanierCount();
+   		mv.addObject("pageBar",PageBarFactory.getPageBar(totalCount, cPage, numPerPage, "/spring/client/panier"));
+		mv.addObject("count",totalCount);
+		mv.addObject("list",list);
+		mv.setViewName("client/panier");
+		
+		return mv;
+   		
+   	}
+  	
+  	
+   	//결제내역 출력
+   	@RequestMapping("/client/paymentList")
+   	public ModelAndView paymentList(@RequestParam(value="cPage", required=false, defaultValue="0") int cPage, String cId) {
+   		
+   		ModelAndView mv = new ModelAndView();
+   		
+   		int numPerPage = 10;
+   		
+   		List<Map<String,String>> list = service.selectPaymentEndList(cPage,numPerPage,cId);
+   		int totalCount = service.selectPaymentEndCount();
+   		
+   		mv.addObject("pageBar",PageBarFactory.getPageBar(totalCount, cPage, numPerPage, "/spring/client/paymentList"));
+		mv.addObject("count",totalCount);
+		mv.addObject("list",list);
+		
+		mv.setViewName("client/paymentList");
+		
+		return mv;
+   	}
+   	
 
-   
 }

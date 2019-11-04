@@ -22,5 +22,12 @@ public class PanierServiceImpl implements PanierService {
 		return dao.insertPanier(session, p);
 	}
 	
+	//장바구니삭제
+	@Override
+	public int deletePanier(Panier p) {
+		
+		return dao.deletePanier(session,p);
+	}
+	
 	
 }

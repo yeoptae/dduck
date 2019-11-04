@@ -36,6 +36,7 @@
                   <th style="background-color: #eeeeee; text-align: center;">떡이름</th>
                   <th style="background-color: #eeeeee; text-align: center;">주문자</th>
                   <th style="background-color: #eeeeee; text-align: center;">주소</th>
+                  <th style="background-color: #eeeeee; text-align: center;">결제완료일</th>
                   <th style="background-color: #eeeeee; text-align: center;">배송일</th>
                   <th style="background-color: #eeeeee; text-align: center;">배송시간</th>
                   <th style="background-color: #eeeeee; text-align: center;">휴대폰번호</th>
@@ -51,7 +52,8 @@
               			<td><c:out value="${p['SALENAME'] }"/></td>
               			<td><c:out value="${p['PAYNAME'] }"/></td>
               			<td><c:out value="${p['PAYADDR1']},${p['PAYADDR2']},${p['PAYADDR3']}"/></td>
-              	    	<td><c:out value="${p['PAYDAY'] }"/></td>
+              			<td><c:out value="${p['PAYDAY']}"/></td>
+              	    	<td><c:out value="${p['PAYDELIVERYEN'] }"/></td>
               	    	<td><c:out value="${p['PAYTIME'] }"/></td>
               	    	<td><c:out value="${p['PAYPHONE'] }"/></td>
               	    	<td><c:out value="${p['PAYAMOUNT'] }"/></td>
@@ -79,5 +81,4 @@
 
  
 
-</section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

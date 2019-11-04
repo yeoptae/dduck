@@ -48,6 +48,25 @@
 		update client set cPw=#{cPw} where cId=#{cId}
 	</update>
 
+
+	<!-- 장바구니 -->
+   <select id="selectPanierCount" resultType="_int">
+   select count(*) from panier
+   </select>
    
+   <select id="selectPanierList" resultType="map">
+		select * from panier join saleboard using(pcode) join saleboardfile using(pcode) where attachflag = 1 and cId=#{cId}
+	</select>
+	
+	
+	<!-- 결제내역 -->
+   <select id="selectPaymentEndCount" resultType="_int">
+   select count(*) from payment
+   </select>
+   
+   <select id="selectPaymentEndList" resultType="map">
+		select * from payment join saleboard using(pcode) join saleboardfile using(pcode) where attachflag = 1 and cId=#{cId}
+	</select>
+	
 
 </mapper>
