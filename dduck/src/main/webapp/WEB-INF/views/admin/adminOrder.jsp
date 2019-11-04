@@ -9,10 +9,10 @@
 <section id="content">
 
 <div class="container-fluid">
-      <div class="row content">
+      <div class="row content" >
         <div class="col-sm-3">
+          <ul class="nav nav-pills nav-stacked" style="margin: 80px 0 0 0; margin-left: 60px;">
            <h4>관리자페이지</h4>
-          <ul class="nav nav-pills nav-stacked">
            <li><a href="${pageContext.request.contextPath}/admin/adminmypage.do">주문현황</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/adminClientList.do">회원리스트</a></li>
             <li><a href="${pageContext.request.contextPath}/admin/adminQnaBoard.do">Qna게시판 관리하기</a></li>

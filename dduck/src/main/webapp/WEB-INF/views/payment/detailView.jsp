@@ -150,7 +150,7 @@ input , select {
                 <div class="col-md-12 text-center">
                <input type="button" class="btn btn-danger" value="주문하기" onclick="payment();">
                 </div>
-                
+              	<c:if test="${loginClient.CId eq 'admin'}">  
                 <div class="col-md-12 text-center">
                <input type="button" class="btn btn-danger" value="수정하기" onclick="boardUpdate();">
                 </div>
@@ -160,6 +160,7 @@ input , select {
                                                              
                <input type="button" class="btn btn-danger" value="삭제하기" onclick="boardDelete();">
                 </div>
+                </c:if>
             </div>
         </div>
         
