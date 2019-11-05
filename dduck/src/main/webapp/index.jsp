@@ -15,7 +15,8 @@
 					<img src="${pageContext.request.contextPath }/resources/images/LeftBanner2.gif">
 					<img src="${pageContext.request.contextPath }/resources/images/LeftBanner3.gif">
 			</div>
-
+			<div class="col-sm-8">
+			</div>
 			<div class="col-sm-2 sidenav">
 				<div class="well sidenav">
 					<p>
