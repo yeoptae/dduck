@@ -78,6 +78,12 @@ public class AdminBoardDaoImpl implements AdminBoardDao {
 	}
 
 	@Override
+	public List<Map<String, String>> selectClientList2(SqlSessionTemplate session, int cPage, int numPerPage) {
+		RowBounds rows=new RowBounds((cPage-1)*numPerPage,numPerPage);
+		return session.selectList("client.selectClientList2",null,rows);
+	}
+
+	@Override
 	public int selectClientCount(SqlSessionTemplate session) {
 		return session.selectOne("client.selectClientCount");
 	}

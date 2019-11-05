@@ -200,14 +200,19 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
 	
 		
-		int numPerPage = 5;
+		int numPerPage = 7;
 		List<Map<String, String>> clientList = service.selectClientList(cPage, numPerPage,keyword);
+		List<Map<String, String>> clientList2 = service.selectClientList2(cPage, numPerPage);
 		int totlaCount = service.selectClientCount();
 		int totalCount2 = service.selectClientCount2(keyword);
 		mv.addObject("pageBar",
 				PageBarFactory.getPageBarWhere2(totalCount2, cPage, numPerPage, "/dduck/admin/adminClientList.do",keyword));
+		mv.addObject("pageBar",
+				PageBarFactory.getPageBar(totlaCount, cPage, numPerPage, "/dduck/admin/adminClientList.do"));
 		mv.addObject("count", totlaCount);
+		mv.addObject("count", totalCount2);
 		mv.addObject("clientList", clientList);
+		mv.addObject("clientList2", clientList2);
 		mv.addObject("keyword",keyword);
 		mv.setViewName("admin/clientList");
 		return mv;

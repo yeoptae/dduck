@@ -21,6 +21,7 @@ public interface AdminBoardService {
 	 int insertBoard(Map<String, String> param,List<SaleBoardFile> boardFile) throws Exception;
 
 	 List<Map<String,String>> selectClientList(int cPage,int numPerpage,String keyword);
+	  List<Map<String,String>> selectClientList2(int cPage,int numPerpage);
 	 int selectClientCount();
 	 int selectClientCount2(String keyword);
 	 

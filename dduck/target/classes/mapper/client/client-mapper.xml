@@ -19,9 +19,9 @@
        where CID = #{cId}
    </update>
    
-   <select id="selectClient" resultType="Client" parameterType="String">
+ <!--   <select id="selectClient" resultType="Client" parameterType="String">
       select * from client where cid=#{mNo}        
-   </select>
+   </select> -->
    
    
 
@@ -33,6 +33,11 @@
    <sql id="search">
           where cName like '%'||#{keyword}||'%'
     </sql>
+    
+    <select id="selectClientList2" resultType="map">
+      SELECT * FROM CLIENT order by cen desc
+    </select>
+   
       
    
    
@@ -59,6 +64,10 @@
 	<update id="updatePwChange">
 		update client set cPw=#{cPw} where cId=#{cId}
 	</update>
+
+ 	<select id="userIdCheck"  parameterType="String" resultType="int">
+     	 SELECT count(*) FROM client WHERE CID=#{cId}
+  	 </select>
 
 
 	<!-- 장바구니 -->

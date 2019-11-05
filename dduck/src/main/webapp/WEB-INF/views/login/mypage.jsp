@@ -26,9 +26,11 @@
 			<h4 style="padding:10px;">마이 페이지</h4>
 			<ul class="nav nav-pills nav-stacked">
 				<li><a
+
 					href="${pageContext.request.contextPath}/client/panier?cId=${loginClient.CId}">장바구니</a></li>
 				<li><a
 					href="${pageContext.request.contextPath}/client/paymentList?cId=${loginClient.CId}">결제내역</a></li>
+
 				<li><a
 					href="${pageContext.request.contextPath}/update/update.do?cNo=${loginClient.CId}">정보수정</a></li>
 				<li><a
@@ -78,7 +80,7 @@
 						</div>
 						<div class="col-sm-3">
 							<input type="text" id="sample6_postcode" placeholder="우편번호"
-								name="cAddr" class="form-control" value=${loginClient.CAddr1 } readonly="readonly">
+								name="cAddr" class="form-control" value="${loginClient.CAddr1 }" readonly="readonly">
 						</div>
 					</div>
 
@@ -88,7 +90,7 @@
 						</div>
 						<div class="col-sm-6">
 							<input type="text" id="sample6_address" placeholder="주소"
-								name="cAddr" class="form-control" value=${loginClient.CAddr2 } readonly="readonly">
+								name="cAddr" class="form-control" value="${loginClient.CAddr2 }" readonly="readonly">
 						</div>
 					</div>
 
@@ -98,7 +100,7 @@
 						</div>
 						<div class="col-sm-6">
 							<input type="text" id="sample6_address2" placeholder="상세주소"
-								name="cAddr" class="form-control" value=${loginClient.CAddr3 } readonly="readonly">
+								name="cAddr" class="form-control" value="${loginClient.CAddr3 }" readonly="readonly">
 						</div>
 					</div>
 

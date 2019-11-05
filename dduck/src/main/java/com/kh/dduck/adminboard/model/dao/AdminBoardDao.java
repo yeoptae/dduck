@@ -29,6 +29,7 @@ public interface AdminBoardDao {
 	int insertBoard(SqlSessionTemplate session,Map<String,String> param);
 	int insertBoardFile(SqlSessionTemplate session,SaleBoardFile boardFile);
 	List<Map<String,String>> selectClientList(SqlSessionTemplate session,int cPage,int numPerPage,String keyword);
+	List<Map<String,String>> selectClientList2(SqlSessionTemplate session,int cPage,int numPerPage);
 	int selectClientCount(SqlSessionTemplate session);
 	int selectClientCount2(SqlSessionTemplate session,String keyword);
 	

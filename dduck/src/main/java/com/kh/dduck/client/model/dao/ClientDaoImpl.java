@@ -49,6 +49,10 @@ public class ClientDaoImpl implements ClientDao {
 		return sqlSession.delete("client.updatePwChange",c);
 	}
 
+	@Override
+	public int userIdCheck(SqlSessionTemplate sqlSession, String cId) {
+		return sqlSession.selectOne("client.userIdCheck",cId);
+	}
 	
 	//장바구니
 	@Override
@@ -79,7 +83,6 @@ public class ClientDaoImpl implements ClientDao {
 		return sqlSession.selectList("client.selectPaymentEndList",cId,rows);
 	}
 	
-
 
 	
 

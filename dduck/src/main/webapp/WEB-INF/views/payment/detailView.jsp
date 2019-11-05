@@ -56,7 +56,7 @@ input , select {
 
 <section id="content">
 
-	<form name="calculatorFrm" class="detailViewForm" method="post">
+	<form name="calculatorFrm" class="detailViewForm" method="post" >
     <div class="container">
         <div class="row">
                 <br>
@@ -127,7 +127,7 @@ input , select {
                     	<label class="col-xs-4 control-label">배송비용</label>
                     	<div class="col-xs-8">
                     	<select name="ship" id="selectShip" onChange="changePrice()">
-                    		<option value=>배송 선택</option>
+                    		<option value="1">배송 선택</option>
                     		<option value="5000">서울,경기 (+ 5000원)</option>
                     		<option value="15000">서울,경기 외 (+ 15000원)</option>
                     		<option value="0">직접방문 (+ 0원)</option>
@@ -142,14 +142,14 @@ input , select {
 						</div><br>
                     	</div>
                 </div>
-				
+				<c:if test="${loginClient.CId != 'admin'}">  
 				<div class="col-md-12 text-center">
                     <input type="button" class="btn btn-primary" value="장바구니" onclick="jangbaguni();"><br>
                 </div>
-                
                 <div class="col-md-12 text-center">
                <input type="button" class="btn btn-danger" value="주문하기" onclick="payment();">
                 </div>
+                </c:if>
               	<c:if test="${loginClient.CId eq 'admin'}">  
                 <div class="col-md-12 text-center">
                <input type="button" class="btn btn-danger" value="수정하기" onclick="boardUpdate();">
@@ -168,7 +168,6 @@ input , select {
     </form>
 	
 	<script>
-	   
 	
 		function jangbaguni(){
 			calculatorFrm.action="${pageContext.request.contextPath}/payment/panier";
@@ -178,10 +177,29 @@ input , select {
 		}
 		
 		function payment() {
+			
 			calculatorFrm.action="${pageContext.request.contextPath}/dduck/payment";
-			if(confirm("확인 버튼을 누르면 결제창으로 넘어갑니다")){
+			
+			
+			if((${empty loginClient})) {
+				alert('로그인이 필요한 서비스 입니다');
+				location.href="${path}/login/loginView.do";
+			}
+
+			if(($('#selectShip').val()) == 1) {
+				alert('배송 비용을 선택하세요');
+			}
+			
+// 			if(($('#dateofbirth').val()) == "") {
+// 				alert('배송날짜를 선택해주세요');
+// 			}
+			
+			else if(confirm("확인 버튼을 누르면 결제창으로 넘어갑니다")){
 				calculatorFrm.submit();
 			}
+			
+			
+			
 		}
 		
 		 function boardUpdate(){
@@ -197,7 +215,7 @@ input , select {
 				if(confirm("삭제하시겠습니까?")){
 				calculatorFrm.submit();
 		    }
-		    }
+		 }
 		    
 		function changePrice() {
 			
@@ -268,6 +286,8 @@ input , select {
 	<div class="container text-center">
         <div class="col-sm-12 row well"  style="background-color: #F2FF92;">
             <h3>상세보기</h3>
+            <br>
+            <h1>${saleList['DETAILSINFO'] }</h1>
             <br>
             <div class="row">
             <img src="${pageContext.request.contextPath }/resources/images/jumun.jpg"  /><br><br>
