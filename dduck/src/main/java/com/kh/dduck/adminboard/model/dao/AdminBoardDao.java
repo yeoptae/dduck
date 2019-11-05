@@ -12,8 +12,14 @@ import com.kh.dduck.client.model.vo.Client;
 public interface AdminBoardDao {
 
 	
+	/* 검색기능 ------------------------------------------ */
+//	int selectBoardCount(SqlSessionTemplate session, String searchWord);
+//	List<Map<String, Object>> searchList(SqlSessionTemplate session, Map<String, Object> map, int cPage, int numPerpage, String searchWord);
+	/* ------------------------------------------------ */
+	
 	int selectBoardCount(SqlSessionTemplate session);
-	List<Map<String,String>> selectBoardList(SqlSessionTemplate session,int cPage,int numPerPage,int gCode);
+	int selectBoardCount2(SqlSessionTemplate session,String searchWord);
+	List<Map<String,String>> selectBoardList(SqlSessionTemplate session,int cPage,int numPerPage, String searchWord,int gCode);
 
 	
 	 

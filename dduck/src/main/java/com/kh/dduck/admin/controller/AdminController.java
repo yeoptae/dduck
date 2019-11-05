@@ -28,31 +28,31 @@ public class AdminController {
 	@Autowired
 	AdminBoardService service;
 
-//	/* saleboard search(상품 검색기능) */
-//	@RequestMapping("/saleboard/saleboardSearch.do")
-//	public ModelAndView saleboardSearch(HttpServletRequest request, Map<String, String> param,
-//		@RequestParam(value="cPage", required=false, defaultValue="1") int cPage,
-//		@RequestParam(value="searchWord", defaultValue = "")String searchWord) throws Exception{
-//		int numPerPage=9; //9개까지 리스트 출력
-//	}
 
+	
+	/* saleboard search & List(상품 리스트 검색추가) */
 	@RequestMapping("/admin/saleboardList.do")
 	public ModelAndView saleboardList(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage,
+			@RequestParam(required = false, defaultValue = "") String searchWord, HttpServletRequest request,
 			int gCode) {
+		
+		System.out.println("searchWord값 : "+searchWord+"1");
 		ModelAndView mv = new ModelAndView();
 
 		int numPerPage = 9;
-		List<Map<String, String>> list = service.selectBoardList(cPage, numPerPage, gCode);
+		
+		List<Map<String, String>> list = service.selectBoardList(cPage, numPerPage, searchWord, gCode);
 		List<Map<String, String>> fileList = service.selectFile();
-		System.out.println(fileList);
-		System.out.println(list);
 		int totlaCount = service.selectBoardCount();
-		mv.addObject("pageBar",
-				PageBarFactory.getPageBarWhere(totlaCount, cPage, numPerPage, "/dduck/admin/saleboardList.do", gCode));
+		int totlaCount2 = service.selectBoardCount2(searchWord);
+		
+		mv.addObject("searchWord",searchWord);
 		mv.addObject("count", totlaCount);
 		mv.addObject("list", list);
 		mv.addObject("fileList", fileList);
 		mv.addObject("gCode", gCode);
+		mv.addObject("pageBar",
+				PageBarFactory.getPageBarWhere2(totlaCount2, cPage, numPerPage, "/dduck/admin/saleboardList.do", gCode,searchWord));
 
 		mv.setViewName("saleboard/saleboardList");
 

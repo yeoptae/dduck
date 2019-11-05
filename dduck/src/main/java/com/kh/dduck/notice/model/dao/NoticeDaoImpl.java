@@ -7,6 +7,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.dduck.notice.model.vo.Notice;
 import com.kh.dduck.notice.model.vo.NoticeFile;
 
 @Repository
@@ -62,13 +63,11 @@ public class NoticeDaoImpl implements NoticeDao {
 	
 	/* notice update */
 	@Override
-	//게시글 내용 수정
-	public int updateNotice(SqlSessionTemplate session, Map<String, String> param) {
-		return session.update("notice.updateNotice",param);
+	public int deleteNoticeFile(SqlSessionTemplate session, int noticeCode) {
+		return session.delete("notice.deleteNoticeFile",noticeCode);
 	}
-	//첨부파일 수정
 	@Override
-	public int updateNoticeFile(SqlSessionTemplate session, NoticeFile ntf) {
-		return session.update("notice.udpatetNoticeFileList",ntf);
+	public int updateNotice(SqlSessionTemplate session, Notice n) {
+		return session.update("notice.updateNotice",n);
 	}
 }

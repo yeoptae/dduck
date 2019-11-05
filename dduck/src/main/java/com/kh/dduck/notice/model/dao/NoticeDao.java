@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.kh.dduck.notice.model.vo.Notice;
 import com.kh.dduck.notice.model.vo.NoticeFile;
 
 public interface NoticeDao {
@@ -27,6 +28,7 @@ public interface NoticeDao {
 	int noticeDelete(SqlSessionTemplate session, int noticeCode);
 	
 	/* notice update */
-	int updateNotice(SqlSessionTemplate session, Map<String,String> param);
-	int updateNoticeFile(SqlSessionTemplate session, NoticeFile ntf);
+	int deleteNoticeFile(SqlSessionTemplate session, int noticeCode);
+	int updateNotice(SqlSessionTemplate session, Notice n);
+
 }

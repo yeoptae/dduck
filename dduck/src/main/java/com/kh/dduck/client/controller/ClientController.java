@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,7 +22,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.dduck.client.model.service.ClientService;
 import com.kh.dduck.client.model.vo.Client;
 import com.kh.dduck.common.PageBarFactory;
-import com.kh.dduck.panier.model.vo.Panier;
 
 @SessionAttributes(value = { "loginClient" })
 @Controller
@@ -51,18 +51,15 @@ public class ClientController {
          String msg = "";
          String loc = "/";
 
-      if (c.getCId().equals("admin") && pwEncoder.matches(c.getCPw(), result.getCPw())) {
-
-         
-            msg = "로그인 성공";
-            model.addAttribute("loginClient", result);
-         } else if (pwEncoder.matches(c.getCPw(), result.getCPw())) {
-            msg = "로그인 성공";
-            model.addAttribute("loginClient", result);
-         } else {
-        	 
-
-            msg = "로그인 실패";
+    	  								///입력한 비밀번호          //디비에있는 비밀번호를 매치해서 result와 비교한다.
+        System.out.println(result!=null);
+        System.out.println(pwEncoder.matches(c.getCPw(), result.getCPw()));
+       if(result!=null&&pwEncoder.matches(c.getCPw(), result.getCPw())){
+    		  msg = "로그인 성공";
+              model.addAttribute("loginClient", result);
+    		  
+    	 } else {
+        	   msg = "로그인 실패";
          }
 
          model.addAttribute("msg", msg);
@@ -73,15 +70,15 @@ public class ClientController {
       
    // 로그아웃
    @RequestMapping("/Client/ClientLogout.do")
-   public String logout(HttpSession session, SessionStatus status) {
+   public String logout(HttpSession session,  SessionStatus sessions) {
 
-      if (!status.isComplete()) {
-         status.setComplete();
-         session.invalidate();
+      if (!sessions.isComplete()) {
+         sessions.setComplete();
+         System.out.println(session+"        111111111111111");
 
       }
       logger.debug("dggddggd");
-      return "login/login";
+      return "redirect:/";
 
    }
 
@@ -90,6 +87,9 @@ public class ClientController {
    public String enroll() {
       return "client/clientEnroll";
    }
+   
+   
+   
 
    /* 회원가입 */
    @RequestMapping("/client/clientEnrollEnd.do")
@@ -199,7 +199,6 @@ public class ClientController {
    @RequestMapping("/pwChangeEnd/pwChangeEnd.do")
    public String pwChangeEnd(Client c, Model model) {
 	   c.setCPw(pwEncoder.encode(c.getCPw()));
-       logger.debug("비버변경 됐니??"+c);
        
        int result = service.updatePwChange(c);
         
@@ -244,6 +243,19 @@ public class ClientController {
         return "common/msg";
      }
  	  
+
+   
+   @RequestMapping("/user/idCheck")
+   public @ResponseBody int idCheck(@RequestParam("cId") String cId) {
+	   
+	   System.out.println(" sssss  ");
+	   int result = service.userIdCheck(cId);
+	   
+		return result;
+	}
+   
+   
+   
  	 
    	//장바구니
    	@RequestMapping("/client/panier")
@@ -284,5 +296,5 @@ public class ClientController {
 		return mv;
    	}
    	
-
+   
 }

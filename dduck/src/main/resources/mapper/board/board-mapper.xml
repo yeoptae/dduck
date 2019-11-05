@@ -2,6 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="board">
 
+<!-- 여기부터 검색기능 -->
+<!-- 	<select id="selectBoardCount" resultMap="int">
+		select count(*) from saleboard where salename like '%'||#{searchWord}||'%'
+	</select>
+	<select id="searchList" parameterType="HashMap" resultType="HashMap">
+		select * from saleboard where salename like '%'||#{searchWord}||'%' order by PCODE desc
+	</select> -->
+<!-- 여기까지 검색기능 -->
+
   <select id="selectFile" resultType="map">
        select * from saleboardfile
   </select>
@@ -9,14 +18,15 @@
    <select id="selectBoardCount" resultType="_int">
       select count(*) from saleboard
    </select>
-   
-   <select id="selectBoardList" resultType="map">
-      SELECT A.*,
-         (SELECT COUNT(*)
-            FROM SALEBOARDFILE
-            WHERE PCODE=A.PCODE) AS BOARDFILE
-    FROM SALEBOARD A WHERE GCODE=${gCode} ORDER BY PCODE DESC
+    <select id="selectBoardCount2" resultType="_int">
+      select count(*) from saleboard where salename like '%'||#{searchWord}||'%'
    </select>
+   <select id="selectBoardList" parameterType="map" resultType="map">
+      SELECT * FROM SALEBOARD WHERE GCODE=#{gCode} and salename like '%'||#{searchWord}||'%' ORDER BY PCODE DESC
+   </select>
+   <sql id="search">
+		and salename like '%'||#{searchWord}||'%'
+   </sql>
    
    
 
