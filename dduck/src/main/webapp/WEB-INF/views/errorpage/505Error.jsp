@@ -96,10 +96,10 @@ body {
 }
 </style>
 <section id="content">
-	<p class="error_section_subtitle">페이지를 찾을 수 없습니다!</p>
+	<p class="error_section_subtitle">연결 오류 ㅠㅠ!</p>
 	<h1 class="error_title">
-		<p>404</p>
-		404
+		<p>500</p>
+		500
 	</h1>
 	<a href="http://localhost:9090/dduck" class="btn">홈으로 돌아가기</a>
 </section>
