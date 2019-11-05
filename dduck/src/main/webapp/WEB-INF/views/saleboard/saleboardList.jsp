@@ -25,10 +25,11 @@
 					</tr>
 				</c:if>
 				
-				<form name="form1" method="post" action="${path}/saleboard/saleboardSearch.do">
+				<form name="form1" method="post" action="${path}/admin/saleboardList.do?gCode=${gCode}">
 					<div id="custom-search-input">
 						<div class="input-group col-md-12">
-							<input type="text" class="search-query form-control" id="searchWord" name="searchWord" value="${searchWord }"  placeholder="떡 검색하기" />
+							<input type="text" class="search-query form-control" id="searchWord" name="searchWord" value="${searchWord }"  placeholder="떡 검색하기" required/>
+							<!-- <input type="hidden" name="gCode" value="gCode"> -->
 							<span class="input-group-btn">
 								<button class="btn btn-danger" onclick="searchDduck()" type="submit" id="btnSearch" name="btnSearch">
 									<span class=" glyphicon glyphicon-search"></span>

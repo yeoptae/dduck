@@ -175,9 +175,7 @@ public class NoticeController {
 	@RequestMapping("/notice/noticeDelete.do")
 	public String noticeDelete(int noticeCode, Model model) {
 		int result=service.noticeDelete(noticeCode);
-		
-		
-		
+
 		String msg = "";
 		String loc = "";
 		
@@ -215,7 +213,7 @@ public class NoticeController {
 	/* notice update */
 	@RequestMapping("/notice/noticeUpdateEnd.do")
 	public String updateNotice(Notice n,int noticeCode, Model model,@RequestParam Map<String, String> param,
-			@RequestParam(value="upFile",required=false) MultipartFile[] upFile,HttpServletRequest request) {
+			@RequestParam(value="upFile",required=false) MultipartFile[] upFile, HttpServletRequest request) {
 		int result2=service.deleteNoticeFile(noticeCode);
 		int result =service.updateNotice(n);
 		String saveDir=request.getSession().getServletContext().getRealPath("resources/upload/notice");

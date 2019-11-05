@@ -30,38 +30,13 @@ public class AdminController {
 
 
 	
-	/* saleboard search(상품 검색기능) */
-
-//	@RequestMapping("/saleboard/saleboardSearch.do")
-//	public ModelAndView searchList(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage,
-//			@RequestParam(value="searchWord", defaultValue = "") String searchWord,
-//			int gCode) throws Exception {
-//		
-//		int tatalCount = service.selectBoardCount(searchWord);
-//
-//		int numPerPage = 9;
-//		
-//		List<Map<String, String>> list = service.selectBoardList(cPage, numPerPage, gCode);
-//		List<Map<String, String>> fileList = service.selectFile();
-//		
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put("list",list);
-//		map.put("count", tatalCount);
-//		map.put("searchWord", searchWord);
-//		map.put("fileList", fileList);
-//		map.put("pageBar",PageBarFactory.getPageBarWhere(tatalCount, cPage, numPerPage, "/dduck/admin/saleboardSearch.do", gCode));
-//		
-//		
-//		ModelAndView mv = new ModelAndView("saleboard/saleboardList");
-//		mv.addObject("map", map);
-//
-//		return mv;
-//	}
-
+	/* saleboard search & List(상품 리스트 검색추가) */
 	@RequestMapping("/admin/saleboardList.do")
 	public ModelAndView saleboardList(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage,
-			@RequestParam(value="searchWord", defaultValue = "") String searchWord,
+			@RequestParam(required = false, defaultValue = "") String searchWord, HttpServletRequest request,
 			int gCode) {
+		
+		System.out.println("searchWord값 : "+searchWord+"1");
 		ModelAndView mv = new ModelAndView();
 
 		int numPerPage = 9;

@@ -41,24 +41,18 @@
 			${nfl.ORINOTICEFILEORI}
 		    <br>
 		    <!-- 첨부파일등록1 -->
-		    <div class="input-group mb-3" style="padding:0px;">
-            	<div class="input-group-prepend" style="padding:0px;">
-                	<span class="input-group-text">첨부파일1</span>
-                </div>
-                <div class="custom-file">
-                    <input type="file" class="btn btn-primary btn-round-sm btn-sm" name="upFile" id="upFile1">
-                </div>
-                <br>
-                <div class="input-group-prepend" style="padding:0px;">
-                    <span class="input-group-text">첨부파일2</span>
-                </div>
-                <div class="custom-file">
-                    <input type="file" class="btn btn-primary btn-round-sm btn-sm" name="upFile" id="upFile2">
-                </div>
-            </div>
+					<div id="fileDiv">
+						<p>
+							<input class="pull-left UPFILEdownline" type="file" name="upFile"/> <a href="#this" name="delete" class="btn">삭제하기</a>
+						</p>
+					</div>
+					
+					<a href="#this" id="add" class="btn">파일 추가하기</a>
+					
+				
 		    <div class="form-group">
 		        <div class="col-md-12 text-right">
-		            <button type="submit" class="btn btn-primary btn-lg">등록</button>
+		            <button type="submit" class="btn btn-primary btn-lg">수정등록</button>
 		        </div>
 		    </div>
 		</fieldset>
@@ -67,6 +61,27 @@
     </div>
 </section>
 	<script>
+	$(document).ready(function(){
+		$("a[name='delete']").on("click",function(e){
+            e.preventDefault();
+            fn_fileDelete($(this));
+        });
+        $("#add").on("click",function(e){
+            e.preventDefault();
+            fn_fileAdd();
+        });
+	});
+	function fn_fileDelete(obj){
+        obj.parent().remove();
+    }
+    function fn_fileAdd(){
+        var str = "<p><input class='pull-left UPFILEdownline' type='file' name='upFile'/><a href='#this' name='delete' class='btn'>삭제하기</a></p> ";
+        $("#fileDiv").append(str);
+        $("a[name='delete']").on("click",function(e){
+            e.preventDefault();
+            fn_fileDelete($(this));         
+        })
+    }
 		/* 제목 필수 입력 */
 	    function checkValue(){ 
 	  		var title = $('#name');

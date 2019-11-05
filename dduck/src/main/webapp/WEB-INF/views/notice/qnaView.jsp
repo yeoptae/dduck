@@ -27,7 +27,7 @@
         <div class="col-lg-6">
         	
             <h4><p>
-            	${qna.QACONTENT}
+            	<pre-wrap>${qna.QACONTENT}</pre-wrap>
             </p></h4>
         </div>
         </div>
@@ -42,7 +42,7 @@
 							${qnaC.CID } - <fmt:formatDate value='${qnaC.CMEN }' pattern="yyyy.MM.dd"/>
 		                </div>
 		                <div class="panel-body">
-		                    <textarea readonly class="commentTextArea" id="commentUpdate">${qnaC.CMCONTENT }</textarea>
+		                    <pre-wrap><textarea readonly class="commentTextArea" id="commentUpdate">${qnaC.CMCONTENT }</textarea></pre-wrap>
 		                    <div class="updateShowButton pull-right" id="updateShowButton"></div>
 							<c:if test="${loginClient.CId eq 'admin' }">
 								<div class="qnaCNull"></div>
@@ -62,7 +62,7 @@
 					<div class="content">
 			            <div class="panel panel-default">
 			                <div class="panel-body" style="background : rgb(245, 245, 245);">
-			                    <textarea rows="10" class="textareaComment" name="cmContent"></textarea>
+			                    <pre-wrap><textarea rows="10" class="textareaComment" name="cmContent"></textarea></pre-wrap>
 		                		<div class="pull-right">
 	                                <input class="navbar-btn btn-danger btn" type="submit" value="등록" class="qnaSubmitButton">
 	                            </div>
