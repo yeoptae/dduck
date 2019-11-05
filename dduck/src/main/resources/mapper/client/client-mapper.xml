@@ -33,6 +33,11 @@
    <sql id="search">
           where cName like '%'||#{keyword}||'%'
     </sql>
+    
+    <select id="selectClientList2" resultType="map">
+      SELECT * FROM CLIENT order by cen desc
+    </select>
+   
       
    
    

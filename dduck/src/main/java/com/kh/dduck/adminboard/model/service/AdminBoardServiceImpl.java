@@ -66,6 +66,10 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 		return dao.selectClientList(session,cPage,numPerpage,keyword);
 	}
 
+	@Override
+	public List<Map<String, String>> selectClientList2(int cPage, int numPerpage) {
+		return dao.selectClientList2(session,cPage,numPerpage);
+	}
 
 	@Override
 	public int selectClientCount() {
@@ -147,6 +151,9 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 	public int deleteBoardFile(int pCode) {
 		return dao.deleteBoardFile(session,pCode);
 	}
+
+
+	
 
 
 
