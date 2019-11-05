@@ -18,7 +18,7 @@
 			<div class="col-sm-8">
 			</div>
 			<div class="col-sm-2 sidenav">
-				<div class="well sidenav">
+				<div class="well">
 					<p>
 						<img src="${pageContext.request.contextPath }/resources/images/RightBanner.png">
 					</p>
