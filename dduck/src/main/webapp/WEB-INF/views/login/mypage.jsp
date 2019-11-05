@@ -32,9 +32,9 @@
 					href="${pageContext.request.contextPath}/client/paymentList?cId=${loginClient.CId}">결제내역</a></li>
 
 				<li><a
-					href="${pageContext.request.contextPath}/update/update.do?cNo=${loginClient.CId}">정보수정</a></li>
+					href="${pageContext.request.contextPath}/update/update.do?cId=${loginClient.CId}">정보수정</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}//pwChange/pwChange.do">비밀번호 변경</a></li>
+					href="${pageContext.request.contextPath}/pwChange/pwChange.do">비밀번호 변경</a></li>
 				<li><a
 					href="${pageContext.request.contextPath}/withdraw/withdraw.do">회원탈퇴</a></li>
 			</ul>

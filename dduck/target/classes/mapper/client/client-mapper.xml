@@ -15,7 +15,9 @@
    </insert>
    
    <update id="updateClient">
-      UPDATE CLIENT SET CNAME = #{cName}
+   
+   
+      UPDATE CLIENT SET CEMAIL=#{cEmail}, CPHONE=#{cPhone}, CADDR1=#{cAddr1}, CADDR2=#{cAddr2}, CADDR3=#{cAddr3}
        where CID = #{cId}
    </update>
    
