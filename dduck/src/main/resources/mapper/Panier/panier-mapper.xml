@@ -6,5 +6,10 @@
    <insert id="insertPanier" parameterType="panier">
       INSERT INTO panier VALUES (seq_panierCODE.nextval, #{cId}, #{pCode}, sysdate, #{panierAmount})
    </insert> 
-
+	
+	<delete id="deletePanier" parameterType="Panier">
+		delete from panier where paniercode = #{panierCode}
+	</delete>
+	
+	
 </mapper>

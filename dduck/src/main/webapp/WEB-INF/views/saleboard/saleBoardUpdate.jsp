@@ -115,32 +115,22 @@
 								<input type="text" class="form-control" placeholder="글 내용"
 									name="detailsInfo" value="${saleList['DETAILSINFO'] }"
 									maxlength="2048" style="height: 200px;" />
+									
 							</div>
 
 							<div class="form-group">
 								<label>상품판매 이미지 등록</label>
 								<h2>메인이미지</h2>
-							 	<c:forEach items="${att }" var="a" varStatus="at">
-							   <c:if test='${a["attachFlag"]=="1" }'>
-							      <input type="text" name="attachCode" 
-										class="form-control" placeholder="첨부파일번호" value="${a['attachCode']}" readonly />
-                               </c:if>
-                               </c:forEach>
-								<%-- <c:forEach items="${att }" var="a" varStatus="at">
-									
-									<c:if test='${a["attachFlag"]=="1" }'> --%>
-								<!-- 	<label>첨부파일번호</label>
-									<input type="text" name="attachCode" 
-										class="form-control" placeholder="첨부파일번호" readonly /> -->
-
+							                         	
 								<input type="file" name="dduckpic" id="dduckpic1"
 									class="form-control btn btn-outline-secondary inputFile"
 									accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
-								<%-- </c:if>
-								  </c:forEach> --%>
+									
+								
 								<button type="button" onclick="deleteImg('dduckpic');"
 									class="btn btn-primary">삭제</button>
-
+									
+                                 
 
 								<h2>서브이미지</h2>
 								<%--  <c:forEach items="${att }" var="a" varStatus="at"> 

@@ -40,8 +40,14 @@
 	</delete>
 	
 <!-- notice update -->
+<!-- 	<delete id="deleteNoticeFile" parameterType="notice">
+		delete from noticefile where noticecode=#{noticeCode}
+	</delete>
 	<update id="updateNotice" parameterType="notice">
 		update notice set noticecategory=#{noticeCategory}, noticetitle=#{noticeTitle}, noticecontent=#{noticeContent} where noticecode=#{noticeCode}
 	</update>
+	<insert id="insertNoticeFileList" parameterType="com.kh.dduck.notice.model.vo.NoticeFile">
+		insert into noticefile values(seq_noticefilecode.nextval,#{noticeCode},#{noticeFileOri},default)
+	</insert> -->
 
 </mapper>

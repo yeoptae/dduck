@@ -12,7 +12,7 @@
 	</select>
 	
 	<select id="selectPaymentList" resultType="map">
-		select * from payment  join saleboard using(pCode) ORDER BY payday DESC
+		select * from payment  join saleboard using(pCode) ORDER BY PAYDELIVERYEN DESC
 	</select>
 
 </mapper>

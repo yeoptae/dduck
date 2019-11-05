@@ -195,6 +195,20 @@
 				})
 
 			});
+			
+			
+			   $("input:text[name=salePrice]").keyup(function(e) {
+				     var reg = /[^0-9]*$/;
+				     var v = $(this).val();
+				     if (reg.test(v)) {
+				     	$(this).val(v.replace(reg, ""));
+				         $(this).focus();
+				     }
+				     
+					}); 
+			   
+			   
+			  
 		</script>
 
 	</body>

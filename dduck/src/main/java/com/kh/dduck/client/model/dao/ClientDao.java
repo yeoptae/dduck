@@ -1,8 +1,12 @@
 package com.kh.dduck.client.model.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 
 import com.kh.dduck.client.model.vo.Client;
+import com.kh.dduck.panier.model.vo.Panier;
 
 
 public interface ClientDao {
@@ -18,8 +22,13 @@ public interface ClientDao {
 //	int withdraw(SqlSessionTemplate sqlSession,Client c);
 
 	
+	//장바구니
+	int selectPanierCount(SqlSessionTemplate sqlSession);
+	List<Map<String,String>> selectPanierList(SqlSessionTemplate sqlSession, int cPage, int numPerPage, String cId);
 	
-	
+	//결제내역
+	int selectPaymentEndCount(SqlSessionTemplate sqlSession);
+	List<Map<String,String>> selectPaymentEndList(SqlSessionTemplate sqlSession, int cPage, int numPerPage,String cId);
 	
 	
 }

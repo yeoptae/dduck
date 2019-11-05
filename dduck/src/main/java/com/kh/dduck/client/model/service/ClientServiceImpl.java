@@ -1,11 +1,15 @@
 package com.kh.dduck.client.model.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.dduck.client.model.dao.ClientDao;
 import com.kh.dduck.client.model.vo.Client;
+import com.kh.dduck.panier.model.vo.Panier;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -52,11 +56,37 @@ public class ClientServiceImpl implements ClientService {
 	public int updatePwChange(Client c) {
 		return dao.updatePwChange(sqlSession, c);
 	}
+	
 	@Override
 	public int userIdCheck(String cId) {
 		return dao.userIdCheck(sqlSession, cId);
 	}
 
 
+	
+	//장바구니
+	@Override
+	public int selectPanierCount() {
+		return dao.selectPanierCount(sqlSession);
+	}
+	@Override
+	public List<Map<String, String>> selectPanierList(int cPage, int numPerPage,String cId) {
+		
+		return dao.selectPanierList(sqlSession,cPage,numPerPage,cId);
+	}
+	
+	//결제내역
+	@Override
+	public int selectPaymentEndCount() {
+		
+		return dao.selectPaymentEndCount(sqlSession);
+	}
+	@Override
+	public List<Map<String, String>> selectPaymentEndList(int cPage, int numPerPage, String cId) {
+		
+		return dao.selectPaymentEndList(sqlSession,cPage,numPerPage,cId);
+	}
 
+	
+	
 }

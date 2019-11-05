@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.dduck.common.PageBarFactory;
 import com.kh.dduck.notice.model.service.NoticeService;
+import com.kh.dduck.notice.model.vo.Notice;
 import com.kh.dduck.notice.model.vo.NoticeFile;
 import com.kh.dduck.qna.model.vo.Qna;
 
@@ -175,6 +176,8 @@ public class NoticeController {
 	public String noticeDelete(int noticeCode, Model model) {
 		int result=service.noticeDelete(noticeCode);
 		
+		
+		
 		String msg = "";
 		String loc = "";
 		
@@ -211,11 +214,10 @@ public class NoticeController {
 	
 	/* notice update */
 	@RequestMapping("/notice/noticeUpdateEnd.do")
-	public ModelAndView updateNotice(@RequestParam Map<String, String> param,
+	public String updateNotice(Notice n,int noticeCode, Model model,@RequestParam Map<String, String> param,
 			@RequestParam(value="upFile",required=false) MultipartFile[] upFile,HttpServletRequest request) {
-		
-		/* 파일업로드처리 */
-		//1. 저장 경로
+		int result2=service.deleteNoticeFile(noticeCode);
+		int result =service.updateNotice(n);
 		String saveDir=request.getSession().getServletContext().getRealPath("resources/upload/notice");
 		List<NoticeFile> NoticeFileList=new ArrayList();
 		
@@ -242,26 +244,30 @@ public class NoticeController {
 				NoticeFileList.add(ntf);
 			}
 		}
-		int result=0;
+		int result3=0;
 		try {
-			result=service.updateNotice(param,NoticeFileList);
+			result3=service.insertNoticeFile(n, NoticeFileList);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+		String msg ="";
+		String loc ="";
 		
-		String msg="";
-		String loc="/notice/noticeList.do";
 		if(result>0) {
-			msg="수정성공";
+			msg = "수정 완료";
+			loc="/notice/noticeView.do?noticeCode="+n.getNoticeCode();
+			model.addAttribute("msg",msg);
+			model.addAttribute("loc",loc);
+
 		}else {
-			msg="수정실패";
+			msg = "수정 실패";
+			loc="/notice/noticeList.do";
+			model.addAttribute("msg",msg);
+			model.addAttribute("loc",loc);
 		}
-		ModelAndView mv= new ModelAndView();
-				
-		mv.addObject("msg",msg);
-		mv.addObject("loc",loc);
 		
-		mv.setViewName("common/msg");
-		return mv;
+
+		return "common/msg";
+
 	}
 }

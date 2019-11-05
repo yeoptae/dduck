@@ -1,5 +1,8 @@
 package com.kh.dduck.client.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,14 +13,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.dduck.client.model.service.ClientService;
 import com.kh.dduck.client.model.vo.Client;
+import com.kh.dduck.common.PageBarFactory;
 
 @SessionAttributes(value = { "loginClient" })
 @Controller
@@ -47,12 +51,14 @@ public class ClientController {
          String msg = "";
          String loc = "/";
 
-    	  
-       if(result!=null &&pwEncoder.matches(c.getCPw(), result.getCPw())){
+    	  								///입력한 비밀번호          //디비에있는 비밀번호를 매치해서 result와 비교한다.
+        System.out.println(result!=null);
+        System.out.println(pwEncoder.matches(c.getCPw(), result.getCPw()));
+       if(result!=null&&pwEncoder.matches(c.getCPw(), result.getCPw())){
     		  msg = "로그인 성공";
               model.addAttribute("loginClient", result);
     		  
-    	  } else {
+    	 } else {
         	   msg = "로그인 실패";
          }
 
@@ -64,15 +70,15 @@ public class ClientController {
       
    // 로그아웃
    @RequestMapping("/Client/ClientLogout.do")
-   public String logout(HttpSession session, SessionStatus status) {
+   public String logout(HttpSession session,  SessionStatus sessions) {
 
-      if (!status.isComplete()) {
-         status.setComplete();
-         session.invalidate();
+      if (!sessions.isComplete()) {
+         sessions.setComplete();
+         System.out.println(session+"        111111111111111");
 
       }
       logger.debug("dggddggd");
-      return "login/login";
+      return "redirect:/";
 
    }
 
@@ -193,7 +199,6 @@ public class ClientController {
    @RequestMapping("/pwChangeEnd/pwChangeEnd.do")
    public String pwChangeEnd(Client c, Model model) {
 	   c.setCPw(pwEncoder.encode(c.getCPw()));
-       logger.debug("비버변경 됐니??"+c);
        
        int result = service.updatePwChange(c);
         
@@ -238,7 +243,6 @@ public class ClientController {
         return "common/msg";
      }
  	  
-   
 
    
    @RequestMapping("/user/idCheck")
@@ -252,11 +256,45 @@ public class ClientController {
    
    
    
-   
-   
+ 	 
+   	//장바구니
+   	@RequestMapping("/client/panier")
+   	public ModelAndView panier(@RequestParam(value="cPage", required=false, defaultValue="0") int cPage, String cId) {
+   		
+   		ModelAndView mv = new ModelAndView();
+   		
+   		int numPerPage = 10;
+   		List<Map<String,String>> list = service.selectPanierList(cPage,numPerPage,cId);
+   		int totalCount = service.selectPanierCount();
+   		mv.addObject("pageBar",PageBarFactory.getPageBar(totalCount, cPage, numPerPage, "/spring/client/panier"));
+		mv.addObject("count",totalCount);
+		mv.addObject("list",list);
+		mv.setViewName("client/panier");
+		
+		return mv;
+   		
+   	}
+  	
+  	
+   	//결제내역 출력
+   	@RequestMapping("/client/paymentList")
+   	public ModelAndView paymentList(@RequestParam(value="cPage", required=false, defaultValue="0") int cPage, String cId) {
+   		
+   		ModelAndView mv = new ModelAndView();
+   		
+   		int numPerPage = 10;
+   		
+   		List<Map<String,String>> list = service.selectPaymentEndList(cPage,numPerPage,cId);
+   		int totalCount = service.selectPaymentEndCount();
+   		
+   		mv.addObject("pageBar",PageBarFactory.getPageBar(totalCount, cPage, numPerPage, "/spring/client/paymentList"));
+		mv.addObject("count",totalCount);
+		mv.addObject("list",list);
+		
+		mv.setViewName("client/paymentList");
+		
+		return mv;
+   	}
+   	
    
 }
-   
-               
-
-   

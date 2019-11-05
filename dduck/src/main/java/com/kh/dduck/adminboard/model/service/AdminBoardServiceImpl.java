@@ -20,6 +20,17 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 	@Autowired
 	SqlSessionTemplate session;
 	
+	/* 검색기능---------------------------------------------------------- */
+//	@Override
+//	public int selectBoardCount(String searchWord) throws Exception {
+//		return dao.selectBoardCount(session, searchWord);
+//	}
+//	@Override
+//	public List<Map<String, Object>> searchList(Map<String, Object> map, int cPage, int numPerpage, String searchWord)
+//			throws Exception {
+//		return dao.searchList(session, map, cPage, numPerpage, searchWord);
+//	}
+	/* ----------------------------------------------------------------- */
 	
 	@Override
 	public int insertBoard(Map<String, String> param, List<SaleBoardFile> boardFile) throws Exception {
@@ -38,16 +49,20 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 
 
 	@Override
+	public int selectBoardCount2(String searchWord) {
+		// TODO Auto-generated method stub
+		return dao.selectBoardCount2(session,searchWord);
+	}
+	@Override
 	public int selectBoardCount() {
 		// TODO Auto-generated method stub
 		return dao.selectBoardCount(session);
 	}
 
-
 	@Override
-	public List<Map<String, String>> selectBoardList(int cPage, int numPerpage,int gCode) {
+	public List<Map<String, String>> selectBoardList(int cPage, int numPerpage,String searchWord,int gCode) {
 		// TODO Auto-generated method stub
-		return dao.selectBoardList(session,cPage,numPerpage,gCode);
+		return dao.selectBoardList(session,cPage,numPerpage, searchWord ,gCode);
 	}
 
 	
@@ -61,9 +76,9 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 
 
 	@Override
-	public List<Map<String, String>> selectClientList(int cPage,int numPerpage) {
+	public List<Map<String, String>> selectClientList(int cPage,int numPerpage,String keyword) {
 		
-		return dao.selectClientList(session,cPage,numPerpage);
+		return dao.selectClientList(session,cPage,numPerpage,keyword);
 	}
 
 
@@ -71,6 +86,13 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 	public int selectClientCount() {
 		return  dao.selectClientCount(session);
 	}
+	
+
+	@Override
+	public int selectClientCount2(String keyword) {
+		return dao.selectClientCount2(session,keyword);
+	}
+
 
 
 	@Override
@@ -104,12 +126,17 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 		if(result == 0) throw new RuntimeException();
 		if(boardFile.size()>0) {
 		for(SaleBoardFile a : boardFile) {
-	      result=dao.updateBoardFile(session,a);
-	      if(result == 0) throw new RuntimeException();
+	      result=dao.insertBoardFile(session,a);
+	      if(result == 0) throw new Exception(); 
 		}
 	}
+		/*
+		 * else { String msg = ""; String loc = "/admin/adminmypage.do"; if(result>0) {
+		 * msg = "수정성공"; }else { msg = "파일이 없습니다"; } }
+		 */
 		return result;
-	
+		
+		
 	}
 
 
@@ -117,20 +144,7 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 	public int deleteSaleBoard(SaleBoard s) {
 		return dao.deleteSaleBoard(session,s);
 	}
-
-
-	@Override
-	public int deletePayment() {
-		return dao.deletePayment(session);
-	}
-
-	
-  
-	
-
-
-	
-	
+		
 	public List<Map<String, String>> selectPaymentList(int cPage, int numPerPage) {
 		
 		return dao.selectPaymentList(session,cPage,numPerPage);
@@ -142,6 +156,13 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 		
 		return dao.selectPaymentCount(session);
 	}
+
+
+	@Override
+	public int deleteBoardFile(int pCode) {
+		return dao.deleteBoardFile(session,pCode);
+	}
+
 
 
 	

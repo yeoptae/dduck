@@ -1,9 +1,14 @@
 package com.kh.dduck.client.model.dao;
 
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.dduck.client.model.vo.Client;
+import com.kh.dduck.panier.model.vo.Panier;
 
 @Repository
 public class ClientDaoImpl implements ClientDao {
@@ -48,9 +53,37 @@ public class ClientDaoImpl implements ClientDao {
 	public int userIdCheck(SqlSessionTemplate sqlSession, String cId) {
 		return sqlSession.selectOne("client.userIdCheck",cId);
 	}
-
-
 	
+	//장바구니
+	@Override
+	public int selectPanierCount(SqlSessionTemplate sqlSession) {
+		
+		return sqlSession.selectOne("client.selectPanierCount");
+	}
+
+	@Override
+	public List<Map<String, String>> selectPanierList(SqlSessionTemplate sqlSession, int cPage, int numPerPage, String cId) {
+		
+		RowBounds rows=new RowBounds((cPage-1)*numPerPage,numPerPage);
+		return sqlSession.selectList("client.selectPanierList",cId,rows);
+	}
+	
+	
+	//결제내역 
+	@Override
+	public int selectPaymentEndCount(SqlSessionTemplate sqlSession) {
+		
+		return sqlSession.selectOne("client.selectPaymentEndCount");
+	}
+
+	@Override
+	public List<Map<String, String>> selectPaymentEndList(SqlSessionTemplate sqlSession, int cPage, int numPerPage,String cId) {
+		
+		RowBounds rows=new RowBounds((cPage-1)*numPerPage,numPerPage);
+		return sqlSession.selectList("client.selectPaymentEndList",cId,rows);
+	}
+	
+
 	
 
 }
