@@ -108,12 +108,13 @@ public class ClientController {
 
       return "common/msg";
    }
+   
+   
 
    /*정보수정*/
      @RequestMapping("/update/updateEnd.do") 
      public String updateEnd( Client c,Model model) { 
         System.out.println("updateEnd"+c);
-        logger.debug("업데이트 됐냐?");
         
         int result = service.updateClient(c);
          
@@ -121,6 +122,7 @@ public class ClientController {
          String loc = "";
          if (result > 0) {
             msg = "정보수정완료";
+            logger.debug("업데이트 됐냐?"+result);
          } else {
             msg = "정보수정오류";
          }
@@ -132,7 +134,8 @@ public class ClientController {
      
      
       /* 마이페이지 뷰 전환*/
-       @RequestMapping("/mypage/mypage.do") public String modify() { 
+       @RequestMapping("/mypage/mypage.do") 
+       public String modify() { 
     	   
     	   return "login/mypage";
        
@@ -143,16 +146,14 @@ public class ClientController {
 
    /* 내정보 출력 */
 
-   @RequestMapping("/update/update.do")
-   public String clientInfo(HttpServletRequest request, Client c, Model model) {
-      String cNo = request.getParameter("cNo");
-      System.out.println("!!!!!!!cNo" + cNo);
-      Client result = service.selectClient(c, cNo);
-//         List<Members> members=service.selectMember(memNo);
-      model.addAttribute("client", result);
-
-      return "update/update";
-   }
+       
+       @RequestMapping("/update/update.do")
+       public String clientInfo(Client c) {
+    	   Client result=service.selectClientOne(c);
+    	   return "update/update";
+       }
+       
+       
    
    /*회원탈퇴 뷰*/
    @RequestMapping("/withdraw/withdraw.do")
