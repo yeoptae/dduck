@@ -6,32 +6,28 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
   <jsp:param name="pageTitle" value="관리자마이페이지"/>
 </jsp:include>
-<section id="content">
 
-<div class="container-fluid">
-      <div class="row content">
-        <div class="col-sm-3">
-           <h4>마이페이지</h4>
-          <ul class="nav nav-pills nav-stacked">
+<body>
+	<div class="row">
+		<div class="col-sm-3 sidenav">
+			<h4 style="padding:10px;">마이 페이지</h4>
+			<ul class="nav nav-pills nav-stacked">
 				<li><a
+
 					href="${pageContext.request.contextPath}/client/panier?cId=${loginClient.CId}">장바구니</a></li>
 				<li><a
 					href="${pageContext.request.contextPath}/client/paymentList?cId=${loginClient.CId}">결제내역</a></li>
+
 				<li><a
-					href="${pageContext.request.contextPath}/update/update.do?cNo=${loginClient.CId}">정보수정</a></li>
+					href="${pageContext.request.contextPath}/update/update.do?cId=${loginClient.CId}">정보수정</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}//pwChange/pwChange.do">비밀번호 변경</a></li>
+					href="${pageContext.request.contextPath}/pwChange/pwChange.do">비밀번호 변경</a></li>
 				<li><a
 					href="${pageContext.request.contextPath}/withdraw/withdraw.do">회원탈퇴</a></li>
-			</ul><br> 
-           
-          
-        </div>
-
-        <div class="col-sm-9">
-
-          <hr>
-          <h2>장바구니</h2><br><br>
+			</ul>
+		</div>
+		<div class="col-xs-8 col-sm-8">
+		<h1 class="text-center">마이 페이지</h1>
           <div class="container-fluid" style="margin-top: 5%">
             <table class="table">
               <thead class="thead-light">
@@ -73,8 +69,7 @@
           <br><br>
 
         </div>
-  </section>
-  
+ </div>
   
 	<script>
 	
