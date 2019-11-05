@@ -45,7 +45,7 @@
                             <label id="pwd">패스워드</label>
                         </div>
                         <div class="col-sm-6">
-                        	<input type="text" name="cId" value="${loginClient.CId }"> 
+                        	<input type="hidden" name="cId" value="${loginClient.CId }"> 
                             <input type="password" class="form-control" name="cPw" id="cPw">
                         </div>
                     </div>

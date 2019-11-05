@@ -57,11 +57,16 @@ public class ClientServiceImpl implements ClientService {
 		return dao.updatePwChange(sqlSession, c);
 	}
 	
+	@Override
+	public int userIdCheck(String cId) {
+		return dao.userIdCheck(sqlSession, cId);
+	}
+
+
 	
 	//장바구니
 	@Override
 	public int selectPanierCount() {
-
 		return dao.selectPanierCount(sqlSession);
 	}
 	@Override

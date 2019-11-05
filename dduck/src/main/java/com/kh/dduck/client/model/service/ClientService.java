@@ -2,7 +2,6 @@ package com.kh.dduck.client.model.service;
 
 import java.util.List;
 import java.util.Map;
-
 import com.kh.dduck.client.model.vo.Client;
 import com.kh.dduck.panier.model.vo.Panier;
 
@@ -15,6 +14,8 @@ public interface ClientService {
 	int updatePw(Client c);
 	int deleteClient(Client c);
 	int updatePwChange(Client c);
+	
+	int userIdCheck(String cId);
 	
 	
 	
