@@ -52,8 +52,7 @@
 					<!-- 첨부파일등록 -->
 					<div id="fileDiv">
 						<p>
-							<input type="file" name="file_0" />
-							<a href="#this" name="delete" class="btn">삭제하기</a>
+							<input class="pull-left UPFILEdownline" type="file" name="upFile"/> <a href="#this" name="delete" class="btn">삭제하기</a>
 						</p>
 					</div>
 					
@@ -70,24 +69,22 @@
 	</div>
 </section>
 <script>
-	var g_count =1;
 	$(document).ready(function(){
 		$("a[name='delete']").on("click",function(e){
             e.preventDefault();
             fn_fileDelete($(this));
-        })
+        });
         $("#add").on("click",function(e){
             e.preventDefault();
             fn_fileAdd();
-        })
+        });
 	});
 	function fn_fileDelete(obj){
         obj.parent().remove();
     }
     function fn_fileAdd(){
-        var str = "<p><input type='file' name='file_"+(g_count++)+"'/><a href='#this' name='delete' class='btn'>삭제하기</a></p> ";
+        var str = "<p><input class='pull-left UPFILEdownline' type='file' name='upFile'/><a href='#this' name='delete' class='btn'>삭제하기</a></p> ";
         $("#fileDiv").append(str);
-         
         $("a[name='delete']").on("click",function(e){
             e.preventDefault();
             fn_fileDelete($(this));         

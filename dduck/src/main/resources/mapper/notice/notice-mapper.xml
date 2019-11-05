@@ -35,18 +35,18 @@
 	<select id="selectNoticeCode" parameterType="_int">
 		delte form notice where noticedoe=#{noticeCode}
 	</select>
-	<delete id="noticeDelete" parameterType="notice">
+	<delete id="noticeDelete" parameterType="_int">
 		delete from notice where noticeCode=#{noticeCode}
 	</delete>
 	
 <!-- notice update -->
-<!-- 	<delete id="deleteNoticeFile" parameterType="notice">
+	<delete id="deleteNoticeFile" parameterType="_int">
 		delete from noticefile where noticecode=#{noticeCode}
 	</delete>
 	<update id="updateNotice" parameterType="notice">
 		update notice set noticecategory=#{noticeCategory}, noticetitle=#{noticeTitle}, noticecontent=#{noticeContent} where noticecode=#{noticeCode}
 	</update>
-	<insert id="insertNoticeFileList" parameterType="com.kh.dduck.notice.model.vo.NoticeFile">
+	<!-- <insert id="insertNoticeFileList" parameterType="com.kh.dduck.notice.model.vo.NoticeFile">
 		insert into noticefile values(seq_noticefilecode.nextval,#{noticeCode},#{noticeFileOri},default)
 	</insert> -->
 

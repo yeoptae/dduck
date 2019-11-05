@@ -28,7 +28,7 @@
 		    <div class="form-group">
 		    <div class="qna-form-text">내용</div>
 		    <div class="col-md-9">
-		        <pre><textarea class="form-control" value="" id="message" name="qaContent" placeholder="내용을 입력해주세요" rows="5" style="height: 500px;" required>${qna.QACONTENT }</textarea></pre>
+		        <pre class="list-unstyled"><textarea class="form-control" value="" id="message" name="qaContent" placeholder="내용을 입력해주세요" rows="5" style="height: 500px;" required>${qna.QACONTENT }</textarea></pre>
 		    </div>
 		    </div>
 		    <br>
