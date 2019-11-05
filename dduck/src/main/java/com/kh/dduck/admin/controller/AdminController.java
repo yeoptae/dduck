@@ -52,7 +52,7 @@ public class AdminController {
 		mv.addObject("fileList", fileList);
 		mv.addObject("gCode", gCode);
 		mv.addObject("pageBar",
-				PageBarFactory.getPageBarWhere2(totlaCount2, cPage, numPerPage, "/dduck/admin/saleboardList.do", gCode,searchWord));
+				PageBarFactory.getPageBarWhere3(totlaCount2, cPage, numPerPage, "/dduck/admin/saleboardList.do", gCode,searchWord));
 
 		mv.setViewName("saleboard/saleboardList");
 
