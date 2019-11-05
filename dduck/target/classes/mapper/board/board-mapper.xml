@@ -16,18 +16,17 @@
   </select>
 
    <select id="selectBoardCount" resultType="_int">
-      select count(*) from saleboard where salename
+      select count(*) from saleboard
    </select>
     <select id="selectBoardCount2" resultType="_int">
-      select count(*) from saleboard where salename like '%||#{searchWord}||%'
+      select count(*) from saleboard where salename like '%'||#{searchWord}||'%'
    </select>
    <select id="selectBoardList" parameterType="map" resultType="map">
-      SELECT A.*,
-         (SELECT COUNT(*)
-            FROM SALEBOARDFILE
-            WHERE PCODE=A.PCODE) AS BOARDFILE
-    FROM SALEBOARD A WHERE GCODE=${gCode}, salename like '%||#{searchWord}||%' ORDER BY PCODE DESC
+      SELECT * FROM SALEBOARD WHERE GCODE=#{gCode} and salename like '%'||#{searchWord}||'%' ORDER BY PCODE DESC
    </select>
+   <sql id="search">
+		and salename like '%'||#{searchWord}||'%'
+   </sql>
    
    
 

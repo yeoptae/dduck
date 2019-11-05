@@ -118,7 +118,7 @@ public class PageBarFactory {
 
 
 
-	public static String getPageBarWhere2(int totalCount, int cPage, int numPerPage, String url,int gCode, String searchWord) {
+	public static String getPageBarWhere3(int totalCount, int cPage, int numPerPage, String url,int gCode, String searchWord) {
 		String pageBar="";
 		int pageBarSize=5;
 		
@@ -136,7 +136,7 @@ public class PageBarFactory {
 		}else {
 			pageBar+="<li class='page-item'>";
 			pageBar+="<a class='page-link' "
-					+ "href='javascript:fn_paging("+(pageNo-1)+","+searchWord+")'>이전</a>";
+					+ "href='javascript:fn_paging("+(pageNo-1)+","+gCode+")'>이전</a>";
 			pageBar+="</li>";
 		}
 		
@@ -148,7 +148,7 @@ public class PageBarFactory {
 			}else {
 				pageBar+="<li class='page-item'>";
 				pageBar+="<a class='page-link' "
-						+ "href='javascript:fn_paging("+(pageNo+","+searchWord)+")'>"+pageNo+"</a>";
+						+ "href='javascript:fn_paging("+(pageNo+","+gCode)+")'>"+pageNo+"</a>";
 				pageBar+="</li>";
 			}
 			pageNo++;
@@ -160,15 +160,15 @@ public class PageBarFactory {
 		}else {
 			pageBar+="<li class='page-item'>";
 			pageBar+="<a class='page-link' "
-					+ "href='javascript:fn_paging("+(pageNo+","+searchWord)+")'>다음</a>";
+					+ "href='javascript:fn_paging("+(pageNo+","+gCode)+")'>다음</a>";
 			pageBar+="</li>";
 		}
 		pageBar+="</ul>";
 		
 		
 		pageBar+="<script>";
-		pageBar+="function fn_paging(cPage,searchWord){";
-		pageBar+="location.href='"+url+"?cPage='+cPage+'&searchWord='+searchWord";
+		pageBar+="function fn_paging(cPage,gCode){";
+		pageBar+="location.href='"+url+"?cPage='+cPage+'&gCode='+gCode";
 		pageBar+="}";
 		pageBar+="</script>";
 		return pageBar;
