@@ -10,6 +10,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <section id="content">
 
+<<<<<<< HEAD
 	<div class="container-fluid">
 		<div class="row content">
 			<div class="col-sm-2">

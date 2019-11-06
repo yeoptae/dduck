@@ -8,64 +8,90 @@
 	<jsp:param name="clientEnroll" value="정보수정" />
 </jsp:include>
 
-
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.2/css/bootstrap.min.css">
-
-<!-- 부가적인 테마 -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.2/css/bootstrap-theme.min.css">
-
-<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
  	
-<body>
-	<div class="row">
+<div class="row">
 		<div class="col-sm-3 sidenav">
 			<h4 style="padding:10px;">마이 페이지</h4>
-			<ul class="nav nav-pills nav-stacked">
-				<li><a
-					href="${pageContext.request.contextPath}">장바구니</a></li>
-				<li><a
-					href="${pageContext.request.contextPath}/update/update.do?cNo=${loginClient.CId}">정보수정</a></li>
-				<li><a
-					href="${pageContext.request.contextPath}//pwChange/pwChange.do">비밀번호 변경</a></li>
-				<li><a
-					href="${pageContext.request.contextPath}/withdraw/withdraw.do">회원탈퇴</a></li>
+						<ul class="nav nav-pills nav-stacked">
+				<li><a href="${pageContext.request.contextPath}/client/panier?cId=${loginClient.CId}">장바구니</a></li>
+				<li><a href="${pageContext.request.contextPath}/client/paymentList?cId=${loginClient.CId}">결제내역</a></li>
+				<li><a href="${pageContext.request.contextPath}/update/update.do?cId=${loginClient.CId}">정보수정</a></li>
+				<li><a href="${pageContext.request.contextPath}/pwChange/pwChange.do">비밀번호 변경</a></li>
+				<li><a href="${pageContext.request.contextPath}/withdraw/withdraw.do">회원탈퇴</a></li>
 			</ul>
 		</div>
-		<div class="col-xs-8 col-sm-8">
-		<h1 class="text-center">비밀번호 변경</h1>
-			<div>
-				<form class="form-horizontal" action="${path }/pwChangeEnd/pwChangeEnd.do">
+		
+<div class="container">    
+        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-3 col-md-offset-3 col-sm-3 col-sm-offset-2">                    
+            <div class="panel panel-info" >
+                    <div class="panel-heading">
+                        <div class="panel-title">비밀번호 변경하기</div>
+                    </div>     
 
-					<div class="form-group">
-                        <div class="col-sm-2 control-label">
-                            <label id="pwd">패스워드</label>
-                        </div>
-                        <div class="col-sm-6">
+			<div style="padding-top:30px" class="panel-body" >
+				<form id="pwChange5" class="form-horizontal" role="form" action="${path }/pwChangeEnd/pwChangeEnd.do" onsubmit="return validate();">
+					<div style="margin-bottom: 25px" class="input-group">
+					<div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input id="pwChange6" type="password" class="form-control" name="cPw" id="cPw" placeholder="비밀번호">
+                    </div>
+                    <br>
+                        <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                         	<input type="hidden" name="cId" value="${loginClient.CId }"> 
-                            <input type="password" class="form-control" name="cPw" id="cPw">
+                            <input type="password" class="form-control"  id="pwdCheck" placeholder="비밀번호확인">
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-2 control-label">
-                            <label id="pwdCheck">패스워드 체크</label>
                         </div>
-                        <div class="col-sm-6">
-                            <input type="password" class="form-control" name="cPw" id="cPw">
-                        </div>
-                    </div>
-                    	 <div class="col-sm-12  text-center">
-                            <input type="submit" value="변경하기" class="btn btn-primary" style="margin-left: -170px;">
-                            <input type="reset" value="취소하기" class="btn btn-primary">
-                        </div>
-				</form>
+                        
+                    <div style="margin-top:10px" class="form-group">
+                                    <!-- Button -->
+                                 <div class="col-sm-12 controls">
+                                 	<input type="submit" value="변경하기" class="btn btn-primary" >
+                           			<input type="reset" value="취소하기" class="btn btn-primary">
+                                 </div>                      
+                             </div>
+                          </form>
+                     </div>
+                  </div>
 			</div>
 		</div>
 	</div>
+	
+	<script>
+		function validate(){
+			//영문 숫자 혼합하여 6~20자이내
+			var reg_pwd = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
 
-</body>
+			 if(!reg_pwd.test(str)){
+
+			  return false;
+
+			 }
+
+			 return true;
+
+			}
+
+			if(!chkPwd( $.trim($('#mpassword').val()))){ 
+
+			 alert('비밀번호를 확인하세요.₩n(영문,숫자를 혼합하여 6~20자 이내)');    
+
+			 $('#mpassword').val('');
+
+			 $('#mpassword').focus(); return false;
+
+			 }
+
+
+
+
+			
+		}
+	
+	</script>
+
+
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

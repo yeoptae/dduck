@@ -40,7 +40,8 @@ public class PaymentController {
 
 		}
 
-		return "common/msg";	
+		return "common/msg";
+		
 	}
 	@RequestMapping("/payment/dComplete.do")
 //	public String updatePayment(Payment p,Model model) {

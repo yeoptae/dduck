@@ -24,23 +24,16 @@
 	<div class="row">
 		<div class="col-sm-3 sidenav">
 			<h4 style="padding:10px;">마이 페이지</h4>
-			<ul class="nav nav-pills nav-stacked">
-				<li><a
-
-					href="${pageContext.request.contextPath}/client/panier?cId=${loginClient.CId}">장바구니</a></li>
-				<li><a
-					href="${pageContext.request.contextPath}/client/paymentList?cId=${loginClient.CId}">결제내역</a></li>
-
-				<li><a
-					href="${pageContext.request.contextPath}/update/update.do?cId=${loginClient.CId}">정보수정</a></li>
-				<li><a
-					href="${pageContext.request.contextPath}/pwChange/pwChange.do">비밀번호 변경</a></li>
-				<li><a
-					href="${pageContext.request.contextPath}/withdraw/withdraw.do">회원탈퇴</a></li>
+						<ul class="nav nav-pills nav-stacked">
+				<li><a href="${pageContext.request.contextPath}/client/panier?cId=${loginClient.CId}">장바구니</a></li>
+				<li><a href="${pageContext.request.contextPath}/client/paymentList?cId=${loginClient.CId}">결제내역</a></li>
+				<li><a href="${pageContext.request.contextPath}/update/update.do?cId=${loginClient.CId}">정보수정</a></li>
+				<li><a href="${pageContext.request.contextPath}/pwChange/pwChange.do">비밀번호 변경</a></li>
+				<li><a href="${pageContext.request.contextPath}/withdraw/withdraw.do">회원탈퇴</a></li>
 			</ul>
 		</div>
 		<div class="col-xs-8 col-sm-8">
-		<h1 class="text-center">마이 페이지</h1>
+		<h1  style="margin-cente">마이 페이지</h1>
 			<div>
 				<form class="form-horizontal">
 					<div class="form-group">
@@ -49,7 +42,7 @@
 						</div>
 						<div class="col-sm-6 text-left">
 							<input type="text" class="form-control" name="cId" id="id"
-								value=${loginClient.CId } readonly="readonly">
+								value="${loginClient.CId }" readonly="readonly">
 						</div>
 					</div>
 
@@ -59,7 +52,7 @@
 						</div>
 						<div class="col-sm-6">
 							<input type="text" class="form-control" name="cName" id="name"
-								value=${loginClient.CName } readonly="readonly">
+								value="${loginClient.CName }" readonly="readonly">
 						</div>
 					</div>
 
@@ -69,7 +62,7 @@
 						</div>
 						<div class="col-sm-6">
 							<input type="email" class="form-control" name="cEmail" id="email"
-								value=${loginClient.CEmail } readonly="readonly">
+								value="${loginClient.CEmail }" readonly="readonly">
 						</div>
 					</div>
 
@@ -112,7 +105,7 @@
 						</div>
 						<div class="col-sm-6">
 							<input type="text" class="form-control" name="cPhone"
-								value=${loginClient.CPhone } readonly="readonly">
+								value="${loginClient.CPhone }" readonly="readonly">
 						</div>
 					</div>
 

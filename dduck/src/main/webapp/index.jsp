@@ -7,6 +7,7 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
    <jsp:param name="pageTitle" value="" />
 </jsp:include>
+<<<<<<< HEAD
 
    <!-- Favicon -->   
 	<link href="img/favicon.ico" rel="shortcut icon"/>
@@ -61,5 +62,42 @@
 	<script src="${pageContext.request.contextPath }/resources/js/index/main.js"></script>
     
    </body>
+=======
+<style>
+.bodysize{
+   width : 100%;
+}
+@media (min-width : 1366px){
+   
+}
+@media (max-width : 1365px){
+   .sidebenner{
+      display : none;   
+   }
+/*    .navbar{
+      display : none;   
+   } */
+}
+</style>
+<section class="bodysize">
+   <div class="container-fluid text-center">
+      <div class="row content">
+         <div class="pull-left sidebenner" style="width : 280px">
+               <img src="${pageContext.request.contextPath }/resources/images/LeftBanner1.png">
+               <img src="${pageContext.request.contextPath }/resources/images/LeftBanner2.gif">
+               <img src="${pageContext.request.contextPath }/resources/images/LeftBanner3.gif">
+         </div>
+         <div class="col-sm-8" style="width : 65%;">
+         </div>
+         <div class="pull-right sidebenner" >
+            <div class="well sidenav" style="width : 100%">
+                  <img src="${pageContext.request.contextPath }/resources/images/RightBanner.png">
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+>>>>>>> branch 'master' of https://github.com/yeoptae/dduck.git
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
