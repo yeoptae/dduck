@@ -19,11 +19,11 @@
             <tr>        
                 <td>
                 <center>
-                    <form action="pass_injeung.do${dice},{e_mail}" method="post"> //받아온 인증코드를 컨트롤러로 넘겨서 일치하는지 확인                  
+                    <form action="pass_injeung.do${dice}" method="post"> //받아온 인증코드를 컨트롤러로 넘겨서 일치하는지 확인                  
                     <center>
                         <br>
                         <div>
-                        <input type="hidden" name="cEmail" value="${e_mail}">
+                        
                             인증번호 입력 : <input type="number" name="pass_injeung"
                                 placeholder="  인증번호를 입력하세요. ">
                         </div>                                        

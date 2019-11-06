@@ -28,7 +28,8 @@ public class QnaController {
 		//반환될 modelandview객체를 생성
 		ModelAndView mv=new ModelAndView();
 		
-		int numPerPage=5;
+		int numPerPage=8;
+		
 		List<Map<String,String>> list=service.selectQnaList(cPage,numPerPage);
 		int totalCount=service.selectQnaCount();
 		mv.addObject("pageBar",PageBarFactory.getPageBar(totalCount, cPage, numPerPage, "/dduck/qna/qnaList.do"));

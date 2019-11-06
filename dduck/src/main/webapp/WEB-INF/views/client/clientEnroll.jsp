@@ -32,7 +32,7 @@
    </style> -->
 
 <body>
-    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    <script src="https://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
     <script>
         function sample6_execDaumPostcode() {
             new daum.Postcode({
@@ -81,12 +81,12 @@
         
         
         
-	function validate() {
-        	
-        	var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/); 
-        	var getCheck= RegExp(/^[a-zA-Z0-9]{4,12}$/); 
-        	var getName= RegExp(/^[가-힣]+$/); 
-        	var fmt = RegExp(/^\d{6}[1234]\d{6}$/); //형식 설정
+   function validate() {
+           
+           var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/); 
+           var getCheck= RegExp(/^[a-zA-Z0-9]{4,12}$/); 
+           var getName= RegExp(/^[가-힣]+$/); 
+           var fmt = RegExp(/^\d{6}[1234]\d{6}$/); //형식 설정
 
              //아이디 공백확인
         	if($("#id").val() == ""){ 
@@ -108,23 +108,37 @@
             alert("비밀번호를 입력하지 않았습니다.")
             form1.pwdCheck.focus();
             return false;
-       		 }
-        	
-        	 //아이디 비밀번호 같음 확인 
-        	if (form1.pwd.value == form1.id.value) {
+              }
+           
+            //아이디 비밀번호 같음 확인 
+           if (form1.pwd.value == form1.id.value) {
             alert("아이디와 비밀번호가 같습니다.")
             form1.pwd.focus();
             return false;
+<<<<<<< HEAD
+              }
+            
+            //이름 유효성
+=======
        		 }
         	 
         	 //이름 유효성
+>>>>>>> branch 'master' of https://github.com/yeoptae/dduck.git
             var namePattern = /^[가-힣]{2,10}$/;
             
+<<<<<<< HEAD
+              if(!namePattern.test(form1.name.value)){
+=======
            	if(!namePattern.test(form1.name.value)){
+>>>>>>> branch 'master' of https://github.com/yeoptae/dduck.git
             alert("이름은 한글만 입력이 가능합니다..");
             form1.name.focus();
             return false;
+<<<<<<< HEAD
+            }
+=======
         	 }
+>>>>>>> branch 'master' of https://github.com/yeoptae/dduck.git
            
            //주소 빈칸
              if(form1.sample6_postcode.value==""){
@@ -140,7 +154,11 @@
               }
              
        
+<<<<<<< HEAD
+             //핸드폰 빈칸
+=======
          	 //핸드폰 빈칸
+>>>>>>> branch 'master' of https://github.com/yeoptae/dduck.git
             if(form1.phone.value==""){
                 alert("핸드폰번호를 입력해 주십시오.");
                 form1.phone.focus();
@@ -148,6 +166,55 @@
          }
             return true;
             
+<<<<<<< HEAD
+    }
+             
+       
+     
+   $(function(){
+      $("#id").blur(function() {
+         // id = "id_reg" / name = "userId"
+         var clientId = $('#id').val();
+         $.ajax({
+            url : "${pageContext.request.contextPath}/user/idCheck?cId="+ clientId,                                             //cId=파라미터값으로 input에 name값이다.
+            type : 'get',
+            datatype : 'html',
+            success : function(data) {
+                        console.log("1 = 중복o / 0 = 중복x : "+ data);                     
+                        if (data == 1) {
+                           // 1 : 아이디가 중복되는 문구
+                           $("#id_check").text("사용중인 아이디입니다.");
+                           $("#id_check").css("color", "red");
+                           $("#reg_submit").attr("disabled", true);
+                        } else {
+                           console.log("sadsdsdsd");
+                           if(data == 0){
+                              // 0 : 아이디 길이 / 문자열 검사
+                              $("#id_check").text("");
+                              $("#reg_submit").attr("disabled", false);
+                     
+                           } else if(data == ""){
+                              
+                              $('#id_check').text('아이디를 입력해주세요 :)');
+                              $('#id_check').css('color', 'red');
+                              $("#reg_submit").attr("disabled", true);            
+                              
+                           } else {
+                              
+                              $('#id_check').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :) :)");
+                              $('#id_check').css('color', 'red');
+                              $("#reg_submit").attr("disabled", true);
+                           }  
+                           
+                        } 
+                     }, error : function() {
+                           console.log("실패");
+                     }
+                  });
+               });
+              
+            });
+=======
  	}
          	 
        
@@ -180,6 +247,7 @@
 					});
 		        
 				});
+>>>>>>> branch 'master' of https://github.com/yeoptae/dduck.git
         
         
      </script>
