@@ -28,7 +28,7 @@
 			</ul>
 		</div>
 		<div class="col-xs-8 col-sm-8">
-		<h1 class="text-center">마이 페이지</h1>
+		<h1 class="text-center">장바구니</h1>
           <div class="container-fluid" style="margin-top: 5%">
             <table class="table">
               <thead class="thead-light">

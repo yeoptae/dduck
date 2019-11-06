@@ -68,6 +68,10 @@
  	<select id="userIdCheck"  parameterType="String" resultType="int">
      	 SELECT count(*) FROM client WHERE CID=#{cId}
   	 </select>
+  	 
+  	 <select id="userMailCheck" parameterType="String" resultType="int">
+  	 	SELECT count(*) FROM client Where CEMAIL=#{cEmail}
+  	 </select>
 
 
 	<!-- 장바구니 -->

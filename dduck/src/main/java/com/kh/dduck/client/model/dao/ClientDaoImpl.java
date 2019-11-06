@@ -54,6 +54,11 @@ public class ClientDaoImpl implements ClientDao {
 		return sqlSession.selectOne("client.userIdCheck",cId);
 	}
 	
+	@Override
+	public int userMailCheck(SqlSessionTemplate sqlSession, String cEmail) {
+		return sqlSession.selectOne("client.userMailCheck",cEmail);
+	}
+	
 	//장바구니
 	@Override
 	public int selectPanierCount(SqlSessionTemplate sqlSession) {
@@ -67,6 +72,7 @@ public class ClientDaoImpl implements ClientDao {
 		RowBounds rows=new RowBounds((cPage-1)*numPerPage,numPerPage);
 		return sqlSession.selectList("client.selectPanierList",cId,rows);
 	}
+	
 	
 	
 	//결제내역 
