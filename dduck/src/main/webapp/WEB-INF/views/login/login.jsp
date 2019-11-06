@@ -24,7 +24,7 @@
                     <div style="padding-top:30px" class="panel-body" >
 
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-                        <form id="loginform" class="form-horizontal" role="form" action="${path }/client/clientLogin.do">
+                        <form id="loginform" class="form-horizontal" method="post" role="form" action="${path }/client/clientLogin.do">
                                     
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -38,7 +38,7 @@
                                     <c:if test="${msg == '실패'}">
                                     <tr>
                                  <td colspan=2>
-                                 아이디 또는 패스워드가 틀렸습니다.
+                                ` 아이디 또는 패스워드가 틀렸습니다.
                                  </td>
                            </tr>
                            </c:if>
@@ -47,7 +47,7 @@
                            
                                     <div class="col-sm-12 controls">
                                     <input type="submit" id="login" value="로그인" class="btn btn-primary">
-                                    <input type="button" value="회원가입" class="btn btn-primary">
+                                    <button type="button" onclick="button1_click();" class="btn btn-primary">회원가입</button>
                                      </div>                                    
                                    </div>
                            </form>
@@ -75,6 +75,12 @@
          $('#loginform').submit(); 
       });
  });
+ 
+ function button1_click() {
+	 location.href = "${pageContext.request.contextPath}/member/email.do";
+	}
+ 
+ 
       
 </script>
          

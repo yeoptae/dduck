@@ -89,22 +89,22 @@
            var fmt = RegExp(/^\d{6}[1234]\d{6}$/); //형식 설정
 
              //아이디 공백확인
-           if($("#id").val() == ""){ 
-              alert("아이디 입력바람"); 
-            id.focus()              
-              return false; 
-           }
-           
-             //아이디 유효성검사
-           if(!getCheck.test($("#id").val())){ 
-              alert("아이디는 소문자,숫자 4글자 이상,12자이하로 가능합니다"); 
-              $("#id").focus(); 
-              
-              return false; 
-           }
-             
-           //비밀번호 공백 확인
-           if (form1.pwd.value=="" || form1.pwdCheck.value=="") {
+        	if($("#id").val() == ""){ 
+        		alert("아이디를 입력해주세요"); 
+				id.focus()        		
+        		return false; 
+        	}
+        	
+       		//아이디 유효성검사
+        	if(!getCheck.test($("#id").val())){ 
+        		alert("아이디는 소문자,숫자 4글자 이상,12자이하로 가능합니다"); 
+        		$("#id").focus(); 
+        		
+        		return false; 
+        	}
+       		
+        	//비밀번호 공백 확인
+        	if (form1.pwd.value=="" || form1.pwdCheck.value=="") {
             alert("비밀번호를 입력하지 않았습니다.")
             form1.pwdCheck.focus();
             return false;
@@ -115,16 +115,30 @@
             alert("아이디와 비밀번호가 같습니다.")
             form1.pwd.focus();
             return false;
+<<<<<<< HEAD
               }
             
             //이름 유효성
+=======
+       		 }
+        	 
+        	 //이름 유효성
+>>>>>>> branch 'master' of https://github.com/yeoptae/dduck.git
             var namePattern = /^[가-힣]{2,10}$/;
             
+<<<<<<< HEAD
               if(!namePattern.test(form1.name.value)){
+=======
+           	if(!namePattern.test(form1.name.value)){
+>>>>>>> branch 'master' of https://github.com/yeoptae/dduck.git
             alert("이름은 한글만 입력이 가능합니다..");
             form1.name.focus();
             return false;
+<<<<<<< HEAD
             }
+=======
+        	 }
+>>>>>>> branch 'master' of https://github.com/yeoptae/dduck.git
            
            //주소 빈칸
              if(form1.sample6_postcode.value==""){
@@ -140,7 +154,11 @@
               }
              
        
+<<<<<<< HEAD
              //핸드폰 빈칸
+=======
+         	 //핸드폰 빈칸
+>>>>>>> branch 'master' of https://github.com/yeoptae/dduck.git
             if(form1.phone.value==""){
                 alert("핸드폰번호를 입력해 주십시오.");
                 form1.phone.focus();
@@ -148,6 +166,7 @@
          }
             return true;
             
+<<<<<<< HEAD
     }
              
        
@@ -195,6 +214,40 @@
                });
               
             });
+=======
+ 	}
+         	 
+       
+     
+	$(function(){
+		$("#id").blur(function() {
+			// id = "id_reg" / name = "userId"
+			var clientId = $('#id').val();
+			$.ajax({
+				url : "${pageContext.request.contextPath}/user/idCheck?cId="+ clientId,
+																//cId=파라미터값으로 input에 name값이다.
+				type : 'get',
+				datatype : 'html',
+				success : function(data) {
+								console.log("1 = 중복o / 0 = 중복x : "+ data);							
+								if (data == 1) {
+									// 1 : 아이디가 중복되는 문구
+									$("#id_check").text("사용중인 아이디입니다.");
+									$("#id_check").css("color", "red");
+								} else {
+									if(data == 0){
+										// 0 : 아이디 길이 / 문자열 검사
+										$("#id_check").text("사용가능한 아이디입니다.");
+									} 
+								}
+							}, error : function() {
+									console.log("실패");
+							}
+						});
+					});
+		        
+				});
+>>>>>>> branch 'master' of https://github.com/yeoptae/dduck.git
         
         
      </script>

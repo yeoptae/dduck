@@ -231,7 +231,7 @@ public class PageBarFactory {
    }
    
    
-   
+ 
 
 	public static String getPageBarWhere3(int totalCount, int cPage, int numPerPage, String url,int gCode, String searchWord) {
 		String pageBar="";

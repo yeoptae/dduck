@@ -4,7 +4,7 @@
 <mapper namespace="payment">
 
 	<insert id="insertPayment" parameterType="payment">
-		insert into payment values (seq_paycode.nextval, #{cId}, #{pCode} , #{payAmount} , #{payPrice}, #{payDay}, sysdate, #{payMemo}, #{payAddr1} , #{payAddr2} , #{payAddr3} , #{payTime}, #{payPhone}, #{payName})
+		insert into payment values (seq_paycode.nextval, #{cId}, #{pCode} , #{payAmount} , #{payPrice}, #{payDay}, sysdate, #{payMemo}, #{payAddr1} , #{payAddr2} , #{payAddr3} , #{payTime}, #{payPhone}, #{payName}, #{dCheck})
 	</insert> 
 	
 	<select id="selectPaymentCount" resultType="_int"> 
@@ -12,7 +12,11 @@
 	</select>
 	
 	<select id="selectPaymentList" resultType="map">
-		select * from payment  join saleboard using(pCode) ORDER BY PAYDELIVERYEN DESC
+		select * from payment  join saleboard using(pCode) order by dcheck
 	</select>
+	
+	<update id="upDatePayment" parameterType="payment">
+	   update payment set dcheck=#{dCheck}+1 where paycode=#{payCode}
+	</update>
 
 </mapper>

@@ -18,8 +18,8 @@
     <style>
 
 .jumbotron {
-	padding-top: 0px !important;
-	padding-bottom: 0px !important;
+   padding-top: 0px !important;
+   padding-bottom: 0px !important;
 }
 </style>
 <body>
@@ -47,11 +47,11 @@
                     <ul class="nav navbar-nav" id="menu">
                         <li><a href="/dduck">Home</a></li>
                         <li class="dropdown">
-                        	<a class="dropdown-toggle" data-toggle="dropdown"">메뉴<b class="caret"></b></a>
-                        	<ul class="dropdown-menu">
-                        		<li><a href="${pageContext.request.contextPath}/notice/noticeList.do">공지사항</a></li>
-                        		<li><a href="${path }/qna/qnaList.do">QNA</a></li>
-                       		</ul>
+                           <a class="dropdown-toggle" data-toggle="dropdown"">메뉴<b class="caret"></b></a>
+                           <ul class="dropdown-menu">
+                              <li><a href="${pageContext.request.contextPath}/notice/noticeList.do">공지사항</a></li>
+                              <li><a href="${path }/qna/qnaList.do">QNA</a></li>
+                             </ul>
                         </li>
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=1">답례</a></li>
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=2">간식</a></li>
@@ -60,9 +60,9 @@
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=5">세트</a></li>
             
                     </ul>
-	                	
-	                	<!--로그인 시 보여지는 로직들  -->
-	                	<c:choose>
+                      
+                      <!--로그인 시 보여지는 로직들  -->
+                      <c:choose>
                            <c:when test="${empty loginClient }">
                            <ul class="nav navbar-nav navbar-right">
                            <!--로그인 클릭시 해당 매핑값을 읽어들임  -->
@@ -83,9 +83,8 @@
                                    </ul>
                             </c:otherwise>
                         </c:choose>
-              	  </div>
-           	 </div>
-        	 </nav>
-    	</header>
-	</html>
-
+                   </div>
+               </div>
+            </nav>
+       </header>
+   </html>

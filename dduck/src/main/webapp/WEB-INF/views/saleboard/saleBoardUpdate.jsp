@@ -127,8 +127,7 @@
 									accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
 									
 								
-								<button type="button" onclick="deleteImg('dduckpic');"
-									class="btn btn-primary">삭제</button>
+							
 									
                                  
 
@@ -140,43 +139,34 @@
 									class="form-control btn btn-outline-secondary inputFile"
 									accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
 									
-								<button type="button" onclick="deleteDduckImg('dduckpic2');"
-									class="btn btn-primary">삭제</button>
+							
 
 								<input type="file" name="dduckpic" id="dduckpic3"
 									value="${a['attachCode'] }"
 									class="form-control btn btn-outline-secondary inputFile"
 									accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
-								<button type="button" onclick="deleteDduckImg('dduckpic3');"
-									class="btn btn-primary">삭제</button>
+							
 
 								<input type="file" name="dduckpic" id="dduckpic4"
 									value="${a['attachCode'] }"
 									class="form-control btn btn-outline-secondary inputFile"
 									accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
-								<button type="button" onclick="deleteDduckImg('dduckpic4');"
-									class="btn btn-primary">삭제</button>
-
+							
 								<input type="file" name="dduckpic" id="dduckpic5"
 									value="${a['attachCode'] }"
 									class="form-control btn btn-outline-secondary inputFile"
 									accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
-								<button type="button" onclick="deleteDduckImg('dduckpic5');"
-									class="btn btn-primary">삭제</button>
-
+							
 								<input type="file" name="dduckpic" id="dduckpic6"
 									value="${a['attachCode'] }"
 									class="form-control btn btn-outline-secondary inputFile"
 									accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
-								<button type="button" onclick="deleteDduckImg('dduckpic6');"
-									class="btn btn-primary">삭제</button>
-
+							
 								<input type="file" name="dduckpic" id="dduckpic7"
 									value="${a['attachCode'] }"
 									class="form-control btn btn-outline-secondary inputFile"
 									accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
-								<button type="button" onclick="deleteDduckImg('dduckpic7');"
-									class="btn btn-primary">삭제</button>
+								
 								<%-- 	</c:if>
                                    </c:forEach>  --%>
 							</div>

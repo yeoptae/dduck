@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.dduck.panier.model.service.PanierService;
 import com.kh.dduck.panier.model.vo.Panier;
@@ -65,13 +66,29 @@ public class PanierController {
   		return "common/msg";
   	}
 	
-   	
-   	// 결제버튼 눌렀을시 페이지이동
-   	@RequestMapping("/payment/detailViewGo")
-   	public String detailViewGo(int pCode) {
+   	//장바구니에서 결제페이지로
+   	@RequestMapping("/panier/payment")
+   	public ModelAndView paymentAndPayment(int payAmount,String name,int price,
+   			int totalPrice,int pCode,int panierCode) {
    		
-   		System.out.println("이동가즈아~~");
-   		return "payment/detailView?pCode="+pCode;
+   		System.out.println("상품명 : "+name);
+   		System.out.println("수량 : "+payAmount);
+   		System.out.println("상품가격 : "+ price);
+   		System.out.println("수량*가격 "+ totalPrice);
+   		System.out.println("pCode "+ pCode);
+   		System.out.println("panierCode "+ panierCode);
+   		
+   		ModelAndView mv = new ModelAndView();
+   		mv.addObject("payAmount",payAmount);
+   		mv.addObject("name",name);
+   		mv.addObject("price",price);
+   		mv.addObject("totalPrice",totalPrice);
+   		mv.addObject("pCode",pCode);
+   		mv.addObject("panierCode",panierCode);
+   		
+   		mv.setViewName("payment/paymentView2");
+		
+		return mv;
    	}
    	
 }

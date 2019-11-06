@@ -112,7 +112,8 @@ public class MailController {
    @RequestMapping(value = "/member/join_injeung.do{dice}", method = RequestMethod.POST)
    public ModelAndView join_injeung(String email_injeung, @PathVariable String dice,String tomail,
          HttpServletResponse response_equals) throws IOException {
-	   System.out.println("tomail 인증 : "+tomail);
+
+      System.out.println("tomail 인증 : "+tomail);
       System.out.println("마지막 : email_injeung : " + email_injeung);
 
       System.out.println("마지막 : dice : " + dice);
@@ -152,7 +153,7 @@ public class MailController {
 
          response_equals.setContentType("text/html; charset=UTF-8");
          PrintWriter out_equals = response_equals.getWriter();
-         out_equals.println("<script>alert('인증번호가 일치하지않습니다. 인증번호를 다시 입력해주세요.'); history.go(-1);</script>");
+         out_equals.println("<script>alert('인증번호가 일치하지않습니다. 이메일 인증을 다시 받아주세요.'); history.go(-2);</script>");
          out_equals.flush();
 
          return mv2;
@@ -291,7 +292,7 @@ public class MailController {
               
               response_equals.setContentType("text/html; charset=UTF-8");
               PrintWriter out_equals = response_equals.getWriter();
-              out_equals.println("<script>alert('인증번호가 일치하지않습니다. 인증번호를 다시 입력해주세요.'); history.go(-1);</script>");
+              out_equals.println("<script>alert('인증번호가 일치하지않습니다. 이메일 인증을 다시 받아주세요.'); history.go(-2);</script>");
               out_equals.flush();
               
       

@@ -14,6 +14,11 @@ public class PaymentDaoImpl implements PaymentDao {
 		return session.insert("payment.insertPayment",p);
 	}
 
+	@Override
+	public int upDatePayment(SqlSessionTemplate session, Payment p) {
+		return session.update("payment.upDatePayment",p);
+	}
+
 	
 	
 }

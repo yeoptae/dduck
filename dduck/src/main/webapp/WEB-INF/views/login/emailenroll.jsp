@@ -4,9 +4,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <jsp:include page="/WEB-INF/views/common/header.jsp">
-	<jsp:param name="pageTitle" value=""/>
+   <jsp:param name="pageTitle" value=""/>
 </jsp:include>
 
+<<<<<<< HEAD
 <body>
  
 <table border="1" width="300" height="300" align= "center">
@@ -38,9 +39,38 @@
             </table>
         </form>
 </center>
+=======
+ <div class="container">    
+        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+            <div class="panel panel-info" >
+                    <div class="panel-heading">
+                        <div class="panel-title">인증번호 입력</div>
+                    </div>     
+>>>>>>> branch 'master' of https://github.com/yeoptae/dduck.git
 
- 
- 
-</body>
+                    <div style="padding-top:30px" class="panel-body" >
+
+                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                        <form id="loginform" class="form-horizontal" role="form" action="join_injeung.do${dice}" method="post">
+                                    
+                            <div style="margin-bottom: 25px" class="input-group">
+                               <input type="hidden" name="tomail" value="${tomail }"/>
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                        <input type="number"  id="ijNum" name="email_injeung"  class="form-control"  placeholder="인증번호"/>
+                                    </div>
+                                    <div class="check_font" id="mailCheck"></div>  
+                                <div style="margin-top:10px" class="form-group">
+                                    <!-- Button -->
+                           
+                                    <div class="col-sm-12 controls">
+                                    <button id="num" type="submit" name="submit" class="btn btn-primary">인증번호 확인</button>
+                                     </div>                                    
+                                   </div>
+                           </form>
+                        </div>  
+                    </div>  
+              </div>
+         </div>	
+
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
