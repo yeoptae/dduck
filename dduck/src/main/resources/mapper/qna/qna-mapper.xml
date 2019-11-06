@@ -7,7 +7,7 @@
 	</select>
 
 	<select id="selectQnaList" resultType="map">
-		SELECT * FROM QNA ORDER BY QACODE DESC	
+		SELECT * FROM QNA join qnacomment using(qacode,cid) ORDER BY QACODE DESC	
 	</select>
 
 <!-- qna View -->

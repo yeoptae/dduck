@@ -17,7 +17,6 @@
 </head>
     <style>
 
-
 .jumbotron {
    padding-top: 0px !important;
    padding-bottom: 0px !important;

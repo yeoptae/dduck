@@ -23,14 +23,32 @@
                 <div class="col col-2">작성자</div>
                 <div class="col col-3">제목</div>
                 <div class="col col-4">작성일</div>
+                <div class="col col-5">답변</div>
             </li>
             <c:forEach items="${list }" var="q" varStatus="v">
-		            <li class="table-row">
+		            <li class="qnaHover table-row" onclick="listQaCode()">
 		                <div class="col col-1" data-label="번호"><c:out value='${q["QACODE"] }'/></div>
 		                <div class="col col-2" data-label="작성자"><c:out value='${q["CID"] }'/></div>
-	                	<div class="col col-3" data-label="제목"><a href='${path }/qna/qnaView.do?qaCode=${q["QACODE"] }'><c:out value='${q["QATITLE"] }'/></a></div>
+	                	<div class="col col-3" data-label="제목" style="-webkit-text-stroke-width: thin;"><c:out value='${q["QATITLE"] }'/></div>
 		                <div class="col col-4" data-label="작성일"><fmt:formatDate value='${q["QAEN"] }' pattern="yyyy.MM.dd"/></div>
+		                <div class="col col-5" data-label="답변">
+<%-- 		                	<c:out value='${q["CMCONTENT"] }'/> --%>
+		                	<c:choose>
+		                		<c:when test='${empty q["CMCONTENT"]}'>
+		                			<div>-</div>
+		                		</c:when>
+		                		<c:when test='${not empty q["CMCONTENT"]}'>
+		                			<div style="color:red">답변완료</div>
+		                		</c:when>
+		                	</c:choose>
+		                </div>
 		            </li>
+		                        <script>
+            	function listQaCode(){
+            		console.log("클릭");
+            		location.href='${path }/qna/qnaView.do?qaCode=${q["QACODE"] }';
+            	}
+            </script>
             </c:forEach>
         </ul>
     </div>

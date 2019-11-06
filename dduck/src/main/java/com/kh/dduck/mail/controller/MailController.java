@@ -112,6 +112,7 @@ public class MailController {
    @RequestMapping(value = "/member/join_injeung.do{dice}", method = RequestMethod.POST)
    public ModelAndView join_injeung(String email_injeung, @PathVariable String dice,String tomail,
          HttpServletResponse response_equals) throws IOException {
+
       System.out.println("tomail 인증 : "+tomail);
       System.out.println("마지막 : email_injeung : " + email_injeung);
 

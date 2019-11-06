@@ -9,25 +9,25 @@
 </jsp:include>
 
    <!-- Favicon -->   
-	<link href="img/favicon.ico" rel="shortcut icon"/>
+   <link href="img/favicon.ico" rel="shortcut icon"/>
 
-	
+   
 
-	<!-- Stylesheets -->
-	<%-- <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/index/bootstrap.min.css"/> --%>
-	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/index/font-awesome.min.css"/>
-	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/index/owl.carousel.css"/>
-	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/index/animate.css"/>
-	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/index/style.css"/>
+   <!-- Stylesheets -->
+   <%-- <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/index/bootstrap.min.css"/> --%>
+   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/index/font-awesome.min.css"/>
+   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/index/owl.carousel.css"/>
+   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/index/animate.css"/>
+   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/index/style.css"/>
 
-	<!--[if lt IE 9]>
-	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
+   <!--[if lt IE 9]>
+     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+   <![endif]-->
 
 <div id="preloder">
-		<div class="loader"></div>
-	</div>
+      <div class="loader"></div>
+   </div>
 
  <section class="hero-section">
 		<div class="hero-slider owl-carousel">
