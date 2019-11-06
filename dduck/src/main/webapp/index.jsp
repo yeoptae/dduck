@@ -7,7 +7,6 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
    <jsp:param name="pageTitle" value="" />
 </jsp:include>
-<<<<<<< HEAD
 
    <!-- Favicon -->   
 	<link href="img/favicon.ico" rel="shortcut icon"/>
