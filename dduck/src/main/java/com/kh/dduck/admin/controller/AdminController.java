@@ -311,6 +311,7 @@ public class AdminController {
       ModelAndView mv = new ModelAndView();
 
       int numPerPage = 10;
+      int dCheck = 0;
 
       List<Map<String, String>> list = service.selectPaymentList(cPage, numPerPage);
       int totalCount = service.selectPaymentCount();
@@ -320,7 +321,8 @@ public class AdminController {
       mv.addObject("count", totalCount);
       mv.addObject("list", list);
       mv.setViewName("admin/adminOrder");
-
       return mv;
    }
+	/* @ReuqestMapping("/admin/withDraw") */
+   
 }
