@@ -82,6 +82,7 @@ input , select {
 				$('#hap').val(price2+parseInt(shipPrice));
 				
 				
+				
 		</script>
 		
 			<div class="container text-center well">
