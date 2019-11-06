@@ -52,12 +52,12 @@
               			<td><c:out value="${p['SALENAME'] }"/></td>
               			<td><c:out value="${p['PAYNAME'] }"/></td>
               			<td><c:out value="${p['PAYADDR1']},${p['PAYADDR2']},${p['PAYADDR3']}"/></td>
-              			<td><c:out value="${p['PAYDAY']}"/></td>
-              	    	<td><c:out value="${p['PAYDELIVERYEN'] }"/></td>
+              			<td><fmt:formatDate value="${p['PAYDAY']}" pattern="yyyy.MM.dd"/></td>
+              	    	<td><fmt:formatDate value="${p['PAYDELIVERYEN'] }" pattern="yyyy.MM.dd"/></td>
               	    	<td><c:out value="${p['PAYTIME'] }"/></td>
               	    	<td><c:out value="${p['PAYPHONE'] }"/></td>
-              	    	<td><c:out value="${p['PAYAMOUNT'] }"/></td>
-              	    	<td><c:out value="${p['PAYPRICE'] }"/></td>
+              	    	<td><c:out value="${p['PAYAMOUNT'] }개"/></td>
+              	    	<td><c:out value="${p['PAYPRICE'] } 원"/></td>
               	    	<td><c:out value="${p['PAYMEMO'] }"/></td>
               	    </tr>
                  </c:forEach>
