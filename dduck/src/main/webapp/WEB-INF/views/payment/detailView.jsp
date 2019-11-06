@@ -127,7 +127,7 @@ input , select {
                     	<label class="col-xs-4 control-label">배송비용</label>
                     	<div class="col-xs-8">
                     	<select name="ship" id="selectShip" onChange="changePrice()">
-                    		<option value="1">배송 선택</option>
+                    		<option value="00">배송 선택</option>
                     		<option value="5000">서울,경기 (+ 5000원)</option>
                     		<option value="15000">서울,경기 외 (+ 15000원)</option>
                     		<option value="0">직접방문 (+ 0원)</option>
@@ -135,11 +135,16 @@ input , select {
                     	</div><br><hr>
                     	</div>
                     	
+                    	<input type="hidden" name="dCheck" value="0">
+                    	
                     	<div class="form-group">
-                    	<label class="col-xs-4 control-label">총 합계 금액</label>
-                    	<div class="col-xs-8">
-						<input type="text" name="totalprice" id="totalprice" style="border:none" readonly>
-						</div><br>
+                    	<label class="col-xs-4 control-label" style="margin-top: 5%;">총 합계 금액</label>
+                    	<div class="col-xs-6">
+							<input type="text" name="totalprice" id="totalprice" style="border:none; text-align:center; font-size: 200%;" value="${saleList['SALEPRICE'] }원" readonly>
+						
+						</div>
+							
+						<br>
                     	</div>
                 </div>
 				<c:if test="${loginClient.CId != 'admin'}">  
@@ -176,30 +181,42 @@ input , select {
 			}
 		}
 		
-		function payment() {
-			
-			calculatorFrm.action="${pageContext.request.contextPath}/dduck/payment";
-			
-			
+	function payment() {
+		
+		calculatorFrm.action="${pageContext.request.contextPath}/dduck/payment";
+		
+		if(buyValidation())
+			{
+			if(confirm("확인 버튼을 누르면 결제창으로 넘어갑니다")){
+				calculatorFrm.submit();
+			}
+			}
+		
+		
+	}
+		
+		function buyValidation()
+		{
 			if((${empty loginClient})) {
 				alert('로그인이 필요한 서비스 입니다');
 				location.href="${path}/login/loginView.do";
+				
+				return false;
 			}
-
-			if(($('#selectShip').val()) == 1) {
+			
+			if(($('#selectShip').val()) == "00") {
 				alert('배송 비용을 선택하세요');
+				
+				return false;
 			}
 			
-// 			if(($('#dateofbirth').val()) == "") {
-// 				alert('배송날짜를 선택해주세요');
-// 			}
-			
-			else if(confirm("확인 버튼을 누르면 결제창으로 넘어갑니다")){
-				calculatorFrm.submit();
+			if(($('#dateofbirth').val()) == "") {
+				alert('배송날짜를 선택해주세요');
+				
+				return false;
 			}
 			
-			
-			
+			return true;
 		}
 		
 		 function boardUpdate(){
@@ -223,8 +240,8 @@ input , select {
 			var count= $("#amount").val();
 			var shipPrice=$("#selectShip").val();						
 			$("#totalprice").val("");
-			$(totalprice).val(parseInt(price*count)+parseInt(shipPrice));
-			
+			var total = parseInt(price*count)+parseInt(shipPrice)+"원";
+			var total1 = $(totalprice).val(total); 
 		}
 		
 		$(function(){
@@ -244,13 +261,14 @@ input , select {
 			console.log(select5000);
 			
 			var totalprice1 = document.getElementById("totalprice");
-			totalprice1.value = Number(selectValue)+ (Number(price1) * Number(amount1));
+			var total1 = parseInt(selectValue)+ (parseInt(price1) * parseInt(amount1))+"원";
+			totalprice1.value = total1;
 			
 			console.log(price1);
 			console.log(amount1);
 			var productPrice = document.getElementById("productPrice");
-			productPrice.value = parseInt(price1)*parseInt(amount1); 
-			
+			var produc = parseInt(price1)*parseInt(amount1)+"원";
+			productPrice.value = produc;
 		}
 		
 	
@@ -305,7 +323,7 @@ input , select {
                 <input type="hidden" name="pCode" value="${saleList['PCODE'] }">
                 
                 <div class="col-sm-12 row well" style="float: none; margin: 0 auto; background-color: lightgray;">
-                    <select class="form-control" name="reviewStar">
+                    <select class="form-control" name="reviewStar" >
                         <option value="★★★★★">★★★★★ 아주만족</option>
                         <option value="★★★★">★★★★ 만족</option>
                         <option value="★★★">★★★ 보통</option>
@@ -331,10 +349,9 @@ input , select {
 				<div class="col-sm-4" style="text-align: center;">
 				<input type = "hidden" name = "reviewNo" id = "no" value = '${r["REVIEWNO"]}'/>
 				<input type = "hidden" name = "deletepcode" id = "deletepcode" value="${saleList['PCODE'] }"/>
-					<h1>${r["REVIEWSTAR"]}</h1>
+					<h1 style="color:#EDD200;">${r["REVIEWSTAR"]}</h1>
 					<h3>${r["CID"]}</h3>
-					<h4>${r["REVIEWEN"]}</h4>
-					
+					<h4><fmt:formatDate value='${r["REVIEWEN"]}' pattern="yyyy.MM.dd"/></h4>
 					
 					<c:if test="${loginClient.CId eq r['CID']}">
 							<div class="col-sm-12">

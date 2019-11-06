@@ -38,7 +38,6 @@ public class PaymentController {
 
 		return "common/msg";
 		
-		
 	}
 	
 }
