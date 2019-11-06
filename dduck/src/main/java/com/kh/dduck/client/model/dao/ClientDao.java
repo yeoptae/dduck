@@ -18,6 +18,7 @@ public interface ClientDao {
 	int deleteClient(SqlSessionTemplate sqlSession,Client c);
 	int updatePwChange(SqlSessionTemplate sqlSession, Client c);
 	int userIdCheck(SqlSessionTemplate sqlSession, String cId);
+	int userMailCheck(SqlSessionTemplate sqlSession, String cEmail);
 	
 //	int withdraw(SqlSessionTemplate sqlSession,Client c);
 

@@ -16,6 +16,7 @@ public interface ClientService {
 	int updatePwChange(Client c);
 	
 	int userIdCheck(String cId);
+	int userMailCheck(String cEmail);
 	
 	
 	

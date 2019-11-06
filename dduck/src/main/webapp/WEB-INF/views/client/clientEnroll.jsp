@@ -90,7 +90,7 @@
 
              //아이디 공백확인
         	if($("#id").val() == ""){ 
-        		alert("아이디 입력바람"); 
+        		alert("아이디를 입력해주세요"); 
 				id.focus()        		
         		return false; 
         	}
@@ -115,84 +115,71 @@
             alert("아이디와 비밀번호가 같습니다.")
             form1.pwd.focus();
             return false;
-        }
+       		 }
+        	 
         	 //이름 유효성
             var namePattern = /^[가-힣]{2,10}$/;
-           if(!namePattern.test(form1.name.value)){
+            
+           	if(!namePattern.test(form1.name.value)){
             alert("이름은 한글만 입력이 가능합니다..");
             form1.name.focus();
             return false;
-         }
-        	 //핸드폰 빈칸
-           if(form1.phone.value==""){
-               alert("핸드폰번호를 입력해 주십시오.");
-               form1.phone.focus();
-               return false;
-            }
-         //주소 빈칸
-           if(form1.sample6_postcode.value==""){
-               alert("우편번호를 입력해주세요.");
-               form1.sample6_postcode.focus();
-               return false;
-            }
-            
-              if(form1.sample6_address2.value=="" || form1.sample6_address.value==""){
-               alert("상세주소를 입력해주세요.");
-               form1.sample6_address2.focus();
-               return false;
-            }
+        	 }
            
+           //주소 빈칸
+             if(form1.sample6_postcode.value==""){
+                 alert("우편번호를 입력해주세요.");
+                 form1.sample6_postcode.focus();
+                 return false;
+              }
+              
+                if(form1.sample6_address2.value=="" || form1.sample6_address.value==""){
+                 alert("상세주소를 입력해주세요.");
+                 form1.sample6_address2.focus();
+                 return false;
+              }
+             
+       
+         	 //핸드폰 빈칸
+            if(form1.phone.value==""){
+                alert("핸드폰번호를 입력해 주십시오.");
+                form1.phone.focus();
+                return false;
+         }
+            return true;
             
-        	
-
-             return true;
-        
-   	}
+ 	}
+         	 
+       
+     
 	$(function(){
 		$("#id").blur(function() {
 			// id = "id_reg" / name = "userId"
 			var clientId = $('#id').val();
 			$.ajax({
-				url : "${pageContext.request.contextPath}/user/idCheck?cId="+ clientId,															//cId=파라미터값으로 input에 name값이다.
+				url : "${pageContext.request.contextPath}/user/idCheck?cId="+ clientId,
+																//cId=파라미터값으로 input에 name값이다.
 				type : 'get',
 				datatype : 'html',
 				success : function(data) {
-					console.log("1 = 중복o / 0 = 중복x : "+ data);							
-					
-					 if (data == 1) {
-							// 1 : 아이디가 중복되는 문구
-							$("#id_check").text("사용중인 아이디입니다.");
-							$("#id_check").css("color", "red");
-							$("#reg_submit").attr("disabled", true);
-						} else {
-							console.log("sadsdsdsd");
-							if(clientId==0){
-								// 0 : 아이디 길이 / 문자열 검사
-								$("#id_check").text("");
-								$("#reg_submit").attr("disabled", false);
-					
-							} else if(clientId == ""){
-								
-								$('#id_check').text('아이디를 입력해주세요 :)');
-								$('#id_check').css('color', 'red');
-								$("#reg_submit").attr("disabled", true);				
-								
-							} else {
-								
-								$('#id_check').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :) :)");
-								$('#id_check').css('color', 'red');
-								$("#reg_submit").attr("disabled", true);
+								console.log("1 = 중복o / 0 = 중복x : "+ data);							
+								if (data == 1) {
+									// 1 : 아이디가 중복되는 문구
+									$("#id_check").text("사용중인 아이디입니다.");
+									$("#id_check").css("color", "red");
+								} else {
+									if(data == 0){
+										// 0 : 아이디 길이 / 문자열 검사
+										$("#id_check").text("사용가능한 아이디입니다.");
+									} 
+								}
+							}, error : function() {
+									console.log("실패");
 							}
-							
-						} 
-					}, error : function() {
-							console.log("실패");
-					}
+						});
+					});
+		        
 				});
-			});
-        
-		});
-        
         
         
      </script>
@@ -254,7 +241,7 @@
                             <label id="email">이메일</label>
                         </div>
                         <div class="col-sm-6">
-                            <input type="email" class="form-control" name="CEmail" id="email">
+                            <input type="email" class="form-control" name="CEmail" id="email" value="${tomail }" readonly>
                         </div>
                     </div>
 

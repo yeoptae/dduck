@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.kh.dduck.client.model.dao.ClientDao;
 import com.kh.dduck.client.model.vo.Client;
-import com.kh.dduck.panier.model.vo.Panier;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -60,6 +59,11 @@ public class ClientServiceImpl implements ClientService {
 	@Override
 	public int userIdCheck(String cId) {
 		return dao.userIdCheck(sqlSession, cId);
+	}
+	
+	@Override
+	public int userMailCheck(String cEmail) {
+		return dao.userMailCheck(sqlSession, cEmail);
 	}
 
 

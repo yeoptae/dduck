@@ -16,11 +16,13 @@
    
 </head>
     <style>
-    .jumbotron {
-        padding-top: 0px !important;
-        padding-bottom: 0px !important;
-    }
-   </style>
+
+
+.jumbotron {
+   padding-top: 0px !important;
+   padding-bottom: 0px !important;
+}
+</style>
 <body>
     <header>
         <div class="jumbotron" style="background-color: white;">
@@ -31,10 +33,10 @@
         </div>
 
         <nav class="navbar navbar-inverse">
-            <div class="container-fluid" >
+            <div class="headnavbarstyle container-fluid" >
             
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <button type="button" class="pull-left navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -44,13 +46,13 @@
 
                 <div class="collapse navbar-collapse" id="myNavbar" style=" text-align:center;">
                     <ul class="nav navbar-nav" id="menu">
-                        <li><a href="http://localhost:9090/dduck">Home</a></li>
+                        <li><a href="/dduck">Home</a></li>
                         <li class="dropdown">
-                        	<a class="dropdown-toggle" data-toggle="dropdown"">메뉴<b class="caret"></b></a>
-                        	<ul class="dropdown-menu">
-                        		<li><a href="${pageContext.request.contextPath}/notice/noticeList.do">공지사항</a></li>
-                        		<li><a href="${path }/qna/qnaList.do">QNA</a></li>
-                       		</ul>
+                           <a class="dropdown-toggle" data-toggle="dropdown"">메뉴<b class="caret"></b></a>
+                           <ul class="dropdown-menu">
+                              <li><a href="${pageContext.request.contextPath}/notice/noticeList.do">공지사항</a></li>
+                              <li><a href="${path }/qna/qnaList.do">QNA</a></li>
+                             </ul>
                         </li>
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=1">답례</a></li>
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=2">간식</a></li>
@@ -59,9 +61,9 @@
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=5">세트</a></li>
             
                     </ul>
-	                	
-	                	<!--로그인 시 보여지는 로직들  -->
-	                	<c:choose>
+                      
+                      <!--로그인 시 보여지는 로직들  -->
+                      <c:choose>
                            <c:when test="${empty loginClient }">
                            <ul class="nav navbar-nav navbar-right">
                            <!--로그인 클릭시 해당 매핑값을 읽어들임  -->
@@ -82,9 +84,8 @@
                                    </ul>
                             </c:otherwise>
                         </c:choose>
-              	  </div>
-           	 </div>
-        	 </nav>
-    	</header>
-	</html>
-
+                   </div>
+               </div>
+            </nav>
+       </header>
+   </html>
