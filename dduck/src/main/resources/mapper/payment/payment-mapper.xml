@@ -4,7 +4,7 @@
 <mapper namespace="payment">
 
 	<insert id="insertPayment" parameterType="payment">
-		insert into payment values (seq_paycode.nextval, #{cId}, #{pCode} , #{payAmount} , #{payPrice}, #{payDay}, sysdate, #{payMemo}, #{payAddr1} , #{payAddr2} , #{payAddr3} , #{payTime}, #{payPhone}, #{payName})
+		insert into payment values (seq_paycode.nextval, #{cId}, #{pCode} , #{payAmount} , #{payPrice}, #{payDay}, sysdate, #{payMemo}, #{payAddr1} , #{payAddr2} , #{payAddr3} , #{payTime}, #{payPhone}, #{payName}, #{dCheck})
 	</insert> 
 	
 	<select id="selectPaymentCount" resultType="_int"> 

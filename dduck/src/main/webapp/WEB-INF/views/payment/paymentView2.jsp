@@ -21,6 +21,15 @@ input , select {
 /*   box-shadow: inset 0 3px 6px rgba(0,0,0,0.1); */
   width: 190px;
 }
+[type="date"] {
+  background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+}
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
 </style>
 
 <section id="content">
@@ -33,24 +42,47 @@ input , select {
 					            <th>품목이름</th>
 					            <th>수량</th>
 					            <th>배송일</th>
+					            <th>배송선택</th>
 					            <th>상품금액</th>
-					            <th>배송비용</th>
 					            <th>총 합계 금액</th>
 					        </tr>
 					    </thead>
 					    <tbody>
 					        <tr>
 					            <td>${name }</td>
-					            <td>${panierAmount }</td>
-					            <td>${date }</td>
-					            <td>${productPrice }</td>
-					            <td>${ship }원</td>
-					            <td>${totalprice }</td>
+					            <td>${payAmount }</td>
+					            <td>
+					            	<input type="date" name="payDay" id='dateofbirth'>
+					            </td>
+					            <td>
+					            	<select name="ship" id="selectShip">
+			                    		<option value="00">배송 선택</option>
+			                    		<option value="5000">서울,경기 (+ 5000원)</option>
+			                    		<option value="15000">서울,경기 외 (+ 15000원)</option>
+			                    		<option value="0">직접방문 (+ 0원)</option>
+			                    	</select>	
+					            </td>
+					            <td>${price * payAmount }</td>
+					            <td>${totalPrice }</td>
 					        </tr>
 					    </tbody>
 					</table>
 				</div>
 			</div>
+		
+		<input type="text" id="price2" value="${price * payAmount }">
+		<input type="text" id="totalprice2" value="${totalPrice }">
+		<input type="text" id="hap" value="">
+		
+		<script>
+		
+				var price2 = $('#price2').val();
+				var ship2 = $('#totalprice2').val();
+				var selectShip = $('#selectShip').val();
+				$('#hap').val(price2+parseInt(shipPrice));
+				
+				
+		</script>
 		
 			<div class="container text-center well">
 				
@@ -171,6 +203,12 @@ input , select {
 		
 		 
 </section>
+
+<script>
+	
+  	document.getElementById('dateofbirth').value = new Date().toISOString().substring(0, 10);
+  	
+</script>
 
 <script>
 

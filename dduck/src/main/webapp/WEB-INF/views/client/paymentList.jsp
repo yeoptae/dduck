@@ -50,7 +50,7 @@
               			<td style="text-align: center;"><img src="${path }/resources/upload/board/${p['ATTACHREFILENAME'] }" height="50px" width="50px"></td>
               			<td style="text-align: center;"><c:out value="${p['SALENAME'] }"/></td>
               			<td style="text-align: center;"><c:out value="${p['PAYADDR1']},${p['PAYADDR2']},${p['PAYADDR3']}"/></td>
-              			<td style="text-align: center;"><c:out value="${p['PAYDELIVERYEN'] }"/></td>
+              			<td style="text-align: center;"><fmt:formatDate value="${p['PAYDELIVERYEN'] }" pattern="yyyy.MM.dd"/></td>
               			<td style="text-align: center;"><c:out value="${p['PAYTIME'] }"/></td>
               			<td style="text-align: center;"><c:out value="${p['PAYAMOUNT'] }"/>개</td>
               			<td style="text-align: center;"><c:out value="${p['PAYPRICE'] }"/>원</td>

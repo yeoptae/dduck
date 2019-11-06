@@ -21,5 +21,6 @@ public class Payment {
 	private String payTime;
 	private String payPhone;
 	private String payName;
+	private int dCheck;
 	
 }
