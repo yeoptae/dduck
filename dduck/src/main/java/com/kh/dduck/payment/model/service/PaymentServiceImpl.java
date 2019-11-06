@@ -22,6 +22,11 @@ public class PaymentServiceImpl implements PaymentService {
 		return dao.insertPayment(session, p);
 	}
 
+	@Override
+	public int upDatePayment(Payment p) {
+		return dao.upDatePayment(session,p);
+	}
+
 	
 	
 }

@@ -12,7 +12,11 @@
 	</select>
 	
 	<select id="selectPaymentList" resultType="map">
-		select * from payment  join saleboard using(pCode) ORDER BY PAYDELIVERYEN DESC
+		select * from payment  join saleboard using(pCode) order by dcheck
 	</select>
+	
+	<update id="upDatePayment" parameterType="payment">
+	   update payment set dcheck=#{dCheck}+1 where paycode=#{payCode}
+	</update>
 
 </mapper>

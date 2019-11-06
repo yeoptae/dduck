@@ -7,5 +7,5 @@ import com.kh.dduck.payment.model.vo.Payment;
 public interface PaymentDao {
 
 	int insertPayment(SqlSessionTemplate session, Payment p);
-	
+	int upDatePayment(SqlSessionTemplate session,Payment p);
 }

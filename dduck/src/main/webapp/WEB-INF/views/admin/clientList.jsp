@@ -13,8 +13,8 @@
 <section id="content">
 	<div class="container-fluid">
 		<div class="row content">
-			<div class="col-sm-3 sidenav">
-				<ul class="nav nav-pills nav-stacked" style="margin: 80px 0 0 0; margin-left: 60px;">
+			<div class="col-sm-2 sidenav">
+				<ul class="nav nav-pills nav-stacked">
 				<h4>관리자페이지</h4>
 					<li><a
 						href="${pageContext.request.contextPath}/admin/adminmypage.do">주문현황</a></li>
@@ -31,13 +31,12 @@
 
 			</div>
 
-			<div class="col-sm-9">
+			<div class="col-sm-10">
 
 				<hr>
 				<h2>회원리스트</h2>
 				
 				
-				<br>
 				<div class="container-fluid" style="margin-top: 5%">
 				
 				<form name="form1" method="post" action="${pageContext.request.contextPath}/admin/adminClientList.do">
@@ -62,6 +61,7 @@
 								<th style="background-color: #eeeeee; text-align: center;">전화번호</th>
 								<th style="background-color: #eeeeee; text-align: center;">주소</th>
 								<th style="background-color: #eeeeee; text-align: center;">작성일</th>
+								<th style="background-color: #eeeeee; text-align: center;">탈퇴</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -72,8 +72,11 @@
 								<td><c:out value='${c["CNAME"] }' /></td>
 								<td><c:out value='${c["CEMAIL"] }' /></td>
 								<td><c:out value='${c["CPHONE"] }' /></td>
-								<td><c:out value='${c["CADDR"] }' /></td>
+								<td><c:out value="${c['CADDR2']},${c['CADDR3']}"/></td>
 								<td><c:out value='${c["CEN"] }' /></td>
+								<td>
+								<button type="button" class="btn btn-primary" id="getOut" onclick="getOut()">탈퇴</button>
+										</td>
 							    </tr>
 								</c:forEach>
 						</tbody>
@@ -88,7 +91,11 @@
 				<br>
 
 			</div>
-			
+  <script>
+  function getOut() {
+	  location="${pageContext.request.contextPath}/admin/withDraw";  
+  }
+  </script>			
 
 </section>
 

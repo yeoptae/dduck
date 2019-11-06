@@ -119,45 +119,38 @@
 									class="form-control btn btn-outline-secondary inputFile"
 									accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
 									
-								<button type="button" onclick="deleteDriverImg('dduckpic');"
-									class="btn btn-primary">삭제</button>
+								
 									
 								<h2>서브이미지</h2>	
 								<input type="file" name="dduckpic" id="dduckpic2"
 									class="form-control btn btn-outline-secondary inputFile"
 									accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
-								<button type="button" onclick="deleteDriverImg('dduckpic2');"
-									class="btn btn-primary">삭제</button>
+								
 									
 								<input type="file" name="dduckpic" id="dduckpic3"
 									class="form-control btn btn-outline-secondary inputFile"
 									accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
-								<button type="button" onclick="deleteDriverImg('dduckpic3');"
-									class="btn btn-primary">삭제</button>
+								
 									
 								<input type="file" name="dduckpic" id="dduckpic4"
 									class="form-control btn btn-outline-secondary inputFile"
 									accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
-								<button type="button" onclick="deleteDriverImg('dduckpic4');"
-									class="btn btn-primary">삭제</button>
+							
 									
 								<input type="file" name="dduckpic" id="dduckpic5"
 									class="form-control btn btn-outline-secondary inputFile"
 									accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
-								<button type="button" onclick="deleteDriverImg('dduckpic5');"
-									class="btn btn-primary">삭제</button>
+								
 									
 									<input type="file" name="dduckpic" id="dduckpic6"
 									class="form-control btn btn-outline-secondary inputFile"
 									accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
-								<button type="button" onclick="deleteDriverImg('dduckpic6');"
-									class="btn btn-primary">삭제</button>
+							
 									
 									<input type="file" name="dduckpic" id="dduckpic7"
 									class="form-control btn btn-outline-secondary inputFile"
 									accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
-								<button type="button" onclick="deleteDriverImg('dduckpic7');"
-									class="btn btn-primary">삭제</button>
+								
 							</div>
 
 							<div class="form-group form-check">

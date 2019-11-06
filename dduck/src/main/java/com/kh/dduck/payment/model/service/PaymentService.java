@@ -5,5 +5,5 @@ import com.kh.dduck.payment.model.vo.Payment;
 public interface PaymentService {
 	
 	int insertPayment(Payment p);
-
+    int upDatePayment(Payment p);
 }

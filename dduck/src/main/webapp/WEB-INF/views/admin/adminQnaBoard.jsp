@@ -11,8 +11,8 @@
 
 	<div class="container-fluid">
 		<div class="row content">
-			<div class="col-sm-3 sidenav">
-				<ul class="nav nav-pills nav-stacked" style="margin: 80px 0 0 0; margin-left: 60px;">
+			<div class="col-sm-2 sidenav">
+				<ul class="nav nav-pills nav-stacked">
 				<h4>관리자페이지</h4>
 					<li><a
 						href="${pageContext.request.contextPath}/admin/adminmypage.do">주문현황</a></li>
@@ -29,12 +29,10 @@
 
 			</div>
 
-			<div class="col-sm-9">
+			<div class="col-sm-10">
 				<hr>
 				<h2>Qna게시판</h2>
 				
-				<br>
-				<br>
 				<div class="container-fluid" style="margin-top: 5%">
 					<table id='tbl-board' class='table table-striped table-hover'>
 						<thead class="thead-light">
