@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.dduck.client.model.service.ClientService;
@@ -47,7 +48,7 @@ public class MailController {
 
    // mailSending 코드
    @RequestMapping(value = "/member/auth.do", method = RequestMethod.POST)
-   public ModelAndView mailSending(HttpServletRequest request, String e_mail, HttpServletResponse response_email)
+   public ModelAndView mailSending(HttpServletRequest request, HttpServletResponse response_email,@RequestParam("e_mail")String e_mail)
          throws IOException {
 
       Random r = new Random();
@@ -90,7 +91,8 @@ public class MailController {
       }
 
       ModelAndView mv = new ModelAndView(); // ModelAndView로 보낼 페이지를 지정하고, 보낼 값을 지정한다.
-      mv.setViewName("/login/emailenroll"); // 뷰의경로 및 이름
+      mv.setViewName("/login/emailenroll"); // 뷰의경로 및 이름u
+      mv.addObject("tomail",tomail);
       mv.addObject("dice", dice);
 
       System.out.println("mv : " + mv);
@@ -108,9 +110,9 @@ public class MailController {
    // 내가 입력한 인증번호와 메일로 입력한 인증번호가 맞는지 확인해서 맞으면 회원가입 페이지로 넘어가고,
    // 틀리면 다시 원래 페이지로 돌아오는 메소드
    @RequestMapping(value = "/member/join_injeung.do{dice}", method = RequestMethod.POST)
-   public ModelAndView join_injeung(String email_injeung, @PathVariable String dice,
+   public ModelAndView join_injeung(String email_injeung, @PathVariable String dice,String tomail,
          HttpServletResponse response_equals) throws IOException {
-
+	   System.out.println("tomail 인증 : "+tomail);
       System.out.println("마지막 : email_injeung : " + email_injeung);
 
       System.out.println("마지막 : dice : " + dice);
@@ -120,7 +122,7 @@ public class MailController {
       ModelAndView mv = new ModelAndView();
 
       mv.setViewName("/client/clientEnroll.do");
-
+      mv.addObject("tomail", tomail);
       mv.addObject("e_mail", email_injeung);
 
       if (email_injeung.equals(dice)) {
@@ -129,7 +131,7 @@ public class MailController {
 
          // 모든 인증 완료후 회원가입 페이지로 이동 시켜줍니다.
          mv.setViewName("client/clientEnroll");
-
+         mv.addObject("tomail", tomail);
          mv.addObject("e_mail", email_injeung);
 
          // 만약 인증번호가 같다면 이메일을 회원가입 페이지로 같이 넘겨서 이메일을

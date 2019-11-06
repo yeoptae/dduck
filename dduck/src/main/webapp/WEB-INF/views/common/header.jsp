@@ -16,11 +16,12 @@
    
 </head>
     <style>
-    .jumbotron {
-        padding-top: 0px !important;
-        padding-bottom: 0px !important;
-    }
-   </style>
+
+.jumbotron {
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+}
+</style>
 <body>
     <header>
         <div class="jumbotron" style="background-color: white;">
@@ -31,10 +32,10 @@
         </div>
 
         <nav class="navbar navbar-inverse">
-            <div class="container-fluid" >
+            <div class="headnavbarstyle container-fluid" >
             
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <button type="button" class="pull-left navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -44,7 +45,7 @@
 
                 <div class="collapse navbar-collapse" id="myNavbar" style=" text-align:center;">
                     <ul class="nav navbar-nav" id="menu">
-                        <li><a href="http://localhost:9090/dduck">Home</a></li>
+                        <li><a href="/dduck">Home</a></li>
                         <li class="dropdown">
                         	<a class="dropdown-toggle" data-toggle="dropdown"">메뉴<b class="caret"></b></a>
                         	<ul class="dropdown-menu">

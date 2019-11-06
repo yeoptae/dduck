@@ -27,8 +27,7 @@
                     <center>
                         <br>
                         <div>
-                            이메일 : <input type="email" name="e_mail"
-                                placeholder="  이메일주소를 입력하세요. ">
+                            이메일 : <input type="email" name="e_mail" placeholder="  이메일주소를 입력하세요. ">
                         </div>                                                    
  
                         <br> <br>
