@@ -33,6 +33,7 @@
               <thead class="thead-light">
                 <tr style="text-align: center;">
         
+        
                 <tr>
                   <th style="background-color: #eeeeee; text-align: center;">상품정보</th>
                   <th style="background-color: #eeeeee; text-align: center;">상품명</th>
