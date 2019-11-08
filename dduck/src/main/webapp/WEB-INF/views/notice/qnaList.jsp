@@ -26,10 +26,10 @@
                 <div class="col col-5">답변</div>
             </li>
             <c:forEach items="${list }" var="q" varStatus="v">
-		            <li class="qnaHover table-row" onclick="listQaCode()">
+		            <li class="qnaHover table-row">
 		                <div class="col col-1" data-label="번호"><c:out value='${q["QACODE"] }'/></div>
 		                <div class="col col-2" data-label="작성자"><c:out value='${q["CID"] }'/></div>
-	                	<div class="col col-3" data-label="제목" style="-webkit-text-stroke-width: thin;"><c:out value='${q["QATITLE"] }'/></div>
+	                	<div class="col col-3" data-label="제목" style="-webkit-text-stroke-width: thin;"><a href='${path }/qna/qnaView.do?qaCode=${q["QACODE"] }'><c:out value='${q["QATITLE"] }'/></a></div>
 		                <div class="col col-4" data-label="작성일"><fmt:formatDate value='${q["QAEN"] }' pattern="yyyy.MM.dd"/></div>
 		                <div class="col col-5" data-label="답변">
 <%-- 		                	<c:out value='${q["CMCONTENT"] }'/> --%>
@@ -43,12 +43,6 @@
 		                	</c:choose>
 		                </div>
 		            </li>
-		                        <script>
-            	function listQaCode(){
-            		console.log("클릭");
-            		location.href='${path }/qna/qnaView.do?qaCode=${q["QACODE"] }';
-            	}
-            </script>
             </c:forEach>
         </ul>
     </div>

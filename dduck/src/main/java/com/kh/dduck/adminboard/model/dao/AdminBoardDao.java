@@ -20,7 +20,7 @@ public interface AdminBoardDao {
 	int selectBoardCount(SqlSessionTemplate session);
 	int selectBoardCount2(SqlSessionTemplate session,String searchWord);
 	List<Map<String,String>> selectBoardList(SqlSessionTemplate session,int cPage,int numPerPage, String searchWord,int gCode);
-
+	List<Map<String,String>> searchList(SqlSessionTemplate session,int cPage,int numPerPage, String searchWord);
 	
 	 
 	List<Map<String,String>> selectFile(SqlSessionTemplate session);

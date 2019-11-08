@@ -61,7 +61,7 @@ public class NoticeController {
 		//반환될 modelandview객체를 생성
 		ModelAndView mv=new ModelAndView();
 		
-		int numPerPage=5;
+		int numPerPage=10;
 		List<Map<String,String>> list=service.selectNoticeList(cPage,numPerPage);
 		int totalCount=service.selectNoticeCount();
 		mv.addObject("pageBar",PageBarFactory.getPageBar(totalCount, cPage, numPerPage, "/dduck/notice/noticeList.do"));
