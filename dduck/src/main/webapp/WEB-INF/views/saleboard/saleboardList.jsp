@@ -7,12 +7,8 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="pageTitle" value="" />
 </jsp:include>
-<style>
- #money {
- 
- 
- }
-</style>
+
+
 <section id="content">
 
 	<section>
@@ -94,8 +90,5 @@
 		<br>
 		<center>${pageBar }</center>
 	</section>
-
-
-
 </section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

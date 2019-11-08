@@ -1,18 +1,23 @@
 package com.kh.dduck.admin.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,6 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.dduck.adminboard.model.service.AdminBoardService;
 import com.kh.dduck.adminboard.model.vo.SaleBoard;
 import com.kh.dduck.adminboard.model.vo.SaleBoardFile;
+import com.kh.dduck.client.controller.ClientController;
+import com.kh.dduck.client.model.vo.Client;
 import com.kh.dduck.common.PageBarFactory;
 
 @Controller
@@ -27,9 +34,14 @@ public class AdminController {
 
    @Autowired
    AdminBoardService service;
-
-
+    
    
+   @Autowired
+	BCryptPasswordEncoder pwEncoder;
+   
+   private Logger logger = LoggerFactory.getLogger(ClientController.class);
+   
+	 
    /* saleboard search & List(상품 리스트 검색추가) */
    @RequestMapping("/admin/saleboardList.do")
    public ModelAndView saleboardList(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage,
@@ -189,8 +201,24 @@ public class AdminController {
    
    
    @RequestMapping("/admin/mainpage.do")
-   public String mainPage() {
-      return "admin/main";
+   public ModelAndView mainPage(HttpServletRequest request, HttpServletResponse response) throws Exception { 
+		 ModelAndView mv = new ModelAndView(); 
+		
+		 List<Map<String, String>> list = service.selectBoardList2(); 
+		 List<Map<String, String>> list2 = service.selectBoardList3();
+		 List<Map<String, String>> list3 = service.selectBoardList4();
+		 List<Map<String, String>> list4 = service.selectBoardList5();
+		 List<Map<String, String>> list5 = service.selectBoardList6();
+		 List<Map<String,String>> fileList = service.selectFile();
+		 
+		 mv.addObject("list", list); 
+		 mv.addObject("list2", list2); 
+		 mv.addObject("list3", list3);
+		 mv.addObject("list4", list4);
+		 mv.addObject("list5", list5);
+		 mv.addObject("fileList", fileList);
+		 mv.setViewName("admin/main");
+		 return mv;
    }
 
    @RequestMapping("/admin/adminClientList.do")
@@ -323,6 +351,13 @@ public class AdminController {
       mv.setViewName("admin/adminOrder");
       return mv;
    }
-	/* @ReuqestMapping("/admin/withDraw") */
    
+    @RequestMapping("/admin/withDraw.do") 
+	 public void deleteClient(Client c,HttpServletResponse res)throws IOException {
+    	    System.out.println("======================");
+    	    System.out.println(c);
+			int result = service.deleteClient(c);
+			if(result > 0) res.getWriter().print(true);
+			else res.getWriter().print(false);
+		}
 }

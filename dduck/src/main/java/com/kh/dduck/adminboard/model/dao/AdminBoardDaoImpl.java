@@ -62,6 +62,27 @@ public class AdminBoardDaoImpl implements AdminBoardDao {
 		return session.selectList("board.selectBoardList",map, rows);
 	}
 	
+	@Override
+	public List<Map<String, String>> selectBoardList2(SqlSessionTemplate session) {
+		return session.selectList("board.selectBoardList2");
+	}
+	@Override
+	public List<Map<String, String>> selectBoardList3(SqlSessionTemplate session) {
+		return session.selectList("board.selectBoardList3");
+	}
+	@Override
+	public List<Map<String, String>> selectBoardList4(SqlSessionTemplate session) {
+		return session.selectList("board.selectBoardList4");
+	}
+	@Override
+	public List<Map<String, String>> selectBoardList5(SqlSessionTemplate session) {
+		return session.selectList("board.selectBoardList5");
+	}
+	@Override
+	public List<Map<String, String>> selectBoardList6(SqlSessionTemplate session) {
+		return session.selectList("board.selectBoardList6");
+	}
+	
 
 	@Override
 	public List<Map<String, String>> selectFile(SqlSessionTemplate session) {
@@ -149,6 +170,11 @@ public class AdminBoardDaoImpl implements AdminBoardDao {
 	@Override
 	public int deleteBoardFile(SqlSessionTemplate session, int pCode) {
 		return session.delete("board.deleteBoardFile",pCode);
+	}
+
+	@Override
+	public int deleteClient(SqlSessionTemplate sqlSession, Client c) {
+		return sqlSession.delete("client.delete2",c);
 	}
 
 	
