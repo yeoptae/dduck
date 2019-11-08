@@ -53,7 +53,7 @@ public class ReviewController {
 	
 	//결제뷰 넘겨주기
 	@RequestMapping("/dduck/payment")
-	public ModelAndView paymentView(String name, int panierAmount, Date date, String totalprice, String ship, String productPrice, int pCode, int dCheck) {
+	public ModelAndView paymentView(String name, int panierAmount, Date date, String totalprice, String ship, String productPrice, int pCode, int dCheck, String img) {
 		System.out.println("떡이름 : " + name);
 		System.out.println("수량 : " + panierAmount);
 		System.out.println("배송일 : " + date);
@@ -62,6 +62,7 @@ public class ReviewController {
 		System.out.println("상품금액 : "+ productPrice);
 		System.out.println("pCode : " + pCode);
 		System.out.println("int dCheck : " + dCheck);
+		System.out.println("img : " + img);
 		
 		ModelAndView mv = new ModelAndView();
 		
@@ -72,6 +73,7 @@ public class ReviewController {
 		mv.addObject("ship",ship);
 		mv.addObject("productPrice",productPrice);
 		mv.addObject("pCode",pCode);
+		mv.addObject("img",img);
 		
 		mv.setViewName("payment/paymentView");
 		

@@ -8,7 +8,6 @@
 </jsp:include>
 
 <body>
-<form name="panierFrm" class="detailViewForm" method="post" >
 	<div class="row">
 		<div class="col-sm-3 sidenav">
 			<h4 style="padding:10px;">장바구니</h4>
@@ -34,6 +33,7 @@
               <thead class="thead-light">
                 <tr style="text-align: center;">
         
+        
                 <tr>
                   <th style="background-color: #eeeeee; text-align: center;">상품정보</th>
                   <th style="background-color: #eeeeee; text-align: center;">상품명</th>
@@ -48,23 +48,15 @@
               		<tr>
               			<td style="text-align: center;"><img src="${path }/resources/upload/board/${p['ATTACHREFILENAME'] }" height="50px" width="50px"></td>
               			<td style="text-align: center;"><c:out value="${p['SALENAME'] }"/></td>
-              			<td style="text-align: center;"><c:out value="${p['SALEPRICE'] }"/></td>
-              			<td style="text-align: center;"><c:out value="${p['PANIERAMOUNT'] }"/></td>
-              			<td style="text-align: center;"><c:out value="${p['SALEPRICE'] * p['PANIERAMOUNT']}"/></td>
+              			<td style="text-align: center;"><c:out value="${p['SALEPRICE'] }"/>원</td>
+              			<td style="text-align: center;"><c:out value="${p['PANIERAMOUNT'] }"/>개</td>
+              			<td style="text-align: center;"><c:out value="${p['SALEPRICE'] * p['PANIERAMOUNT']}"/>원</td>
               			<td style="text-align: center;">
               				<input type="button" id="${p['PANIERCODE']}" class="btn btn-danger" value="삭제"  onclick="panierDelect(this.id);">
-              				<input type="button" id="${p['PCODE']}" class="btn btn-primary" value="결제" onclick="paymentView(this.id);">
+              				<input type="button" id="${p['PANIERCODE']}" class="btn btn-primary" value="결제" onclick="paymentView(this.id);">
               			</td>
               	    </tr>
-              	    <input type="hidden" name="cId" id="cid" value="${loginClient.CId}">
-              	    <input type="hidden" name="panierCode" id="paCode" value="${p['PANIERCODE']}">
-              	    <input type="hidden" name="pCode" id="pcode" value="${p['PCODE']}">
               	    
-              	    <input type="text" name="payAmount" value="${p['PANIERAMOUNT'] }">
-              	    <input type="text" name="name" value="${p['SALENAME'] }">
-              	    <input type="text" name="price" value="${p['SALEPRICE'] }">
-              	    <input type="text" name="panierCode" value="${p['PANIERCODE'] }">
-              	    <input type="text" name="totalPrice" value="${p['SALEPRICE'] * p['PANIERAMOUNT']}">
               	    
                  </c:forEach>
               </tbody>
@@ -78,8 +70,6 @@
 
         </div>
  </div>
- </form>
-  
 	<script>
 	
 	
@@ -103,9 +93,10 @@
 	
 	function paymentView(pc) {
 		
-		panierFrm.action="${pageContext.request.contextPath}/panier/payment";
 		if(confirm("결제페이지로 이동하시겠습니까?")) {
-			panierFrm.submit();
+		location.href="${pageContext.request.contextPath}/panier/payment?panierCode="+pc;
+// 		panierFrm.action="${pageContext.request.contextPath}/panier/payment";
+// 			panierFrm.submit();
 		}
 	}
 	
