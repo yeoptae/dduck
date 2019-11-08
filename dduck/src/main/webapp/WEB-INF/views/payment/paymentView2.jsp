@@ -34,12 +34,14 @@ input , select {
 
 <section id="content">
 	<form name="paymentFrm" class="paymentViewForm" method="post">
+	<c:forEach items="${list }" var="p">
 			  <div class="container">
 				<div class="row">
 					<table class="table table-responsive">
 					    <thead style="background-color: #EAEAEA;">
 					        <tr>
-					            <th>품목이름</th>
+					            <th>상품정보</th>
+					            <th>상품이름</th>
 					            <th>수량</th>
 					            <th>배송일</th>
 					            <th>배송선택</th>
@@ -47,44 +49,70 @@ input , select {
 					            <th>총 합계 금액</th>
 					        </tr>
 					    </thead>
+					    
 					    <tbody>
 					        <tr>
-					            <td>${name }</td>
-					            <td>${payAmount }</td>
+					            <td><img src="${path }/resources/upload/board/${p['ATTACHREFILENAME'] }" height="50px" width="80px"></td>
+					            <td>${p['SALENAME'] }</td>
+					            <td>${p['PANIERAMOUNT'] }</td>
 					            <td>
-					            	<input type="date" name="payDay" id='dateofbirth'>
+					            	<input type="date" name="payDay" id='datePicker'>
 					            </td>
 					            <td>
-					            	<select name="ship" id="selectShip">
+					            	<select name="ship" id="selectShip" onchange="SetSelectBox();">
 			                    		<option value="00">배송 선택</option>
 			                    		<option value="5000">서울,경기 (+ 5000원)</option>
 			                    		<option value="15000">서울,경기 외 (+ 15000원)</option>
-			                    		<option value="0">직접방문 (+ 0원)</option>
 			                    	</select>	
 					            </td>
-					            <td>${price * payAmount }</td>
-					            <td>${totalPrice }</td>
+					            <td>${p['PANIERAMOUNT'] * p['SALEPRICE']}원</td>
+					            <td id="total">${p['PANIERAMOUNT'] * p['SALEPRICE']}원</td>
 					        </tr>
 					    </tbody>
+					    
 					</table>
 				</div>
 			</div>
 		
-		<input type="text" id="price2" value="${price * payAmount }">
-		<input type="text" id="totalprice2" value="${totalPrice }">
-		<input type="text" id="hap" value="">
+		<input type="hidden" id="name" value="${p['SALENAME'] }">		
+		<input type="hidden" id="price2" value="${p['PANIERAMOUNT'] * p['SALEPRICE']}">
+<%-- 		<input type="text" id="totalprice2" value="${totalPrice }"> --%>
+		<input type="hidden" name="payPrice" id="hap">
 		
+		<input type="hidden" name="cId" value="${loginClient.CId }">
+		<input type="hidden" name="pCode" value="${p['PCODE'] }">
+		<input type="hidden" name="payAmount" value="${p['PANIERAMOUNT'] }">
+		<input type="hidden" name="panierCode" value="${p['PANIERCODE'] }">
+
+		</c:forEach>
 		<script>
+			var total="";	
 		
+			function SetSelectBox() {
+			
+				var selectShip = $('#selectShip').val();
 				var price2 = $('#price2').val();
 				var ship2 = $('#totalprice2').val();
-				var selectShip = $('#selectShip').val();
-				$('#hap').val(price2+parseInt(shipPrice));
+				console.log(parseInt(price2)+parseInt(selectShip));
+				$('#hap').val(parseInt(parseInt(price2)+parseInt(selectShip)));
 				
+				total = $('#total').text(parseInt(price2)+parseInt(selectShip)+"원");
+				total = total[0].textContent;
+				console.log(typeof(total));
+				console.log(parseInt(total));
 				
-				
+			}
 		</script>
+		<script>
+	
+	  	document.getElementById('datePicker').value = new Date().toISOString().substring(0, 10);
+	  	
+	  	document.getElementById('datePicker').value = new Date(new Date().setDate(new Date().getDate()+1)).toISOString().substring(0, 10);
+		console.log(new Date(new Date().setDate(new Date().getDate()+1)));
 		
+		$('#datePicker').attr("min",new Date(new Date().setDate(new Date().getDate()+1)).toISOString().substring(0, 10));
+		
+		</script>
 			<div class="container text-center well">
 				
 				<div class="col-sm-12">
@@ -152,21 +180,21 @@ input , select {
                 		<div class="form-group has-warning">
                         	<label class="col-xs-4 control-label"></label>
                         		<div class="col-xs-8">
-                            		<input type="button" onClick="openDaumZipAddress();" class="btn btn-lg btn-primary" value = "주소변경"><br>
+                            		<input type="button" onClick="openDaumZipAddress();" class="btn btn-lg btn-primary" value = "주소변경"><br><br>
                         		</div>
                 		</div><br>
                 		
                 		<div class="form-group has-warning">
                         	<label class="col-xs-4 control-label">전화번호</label>
                         		<div class="col-xs-8">
-                            		<input type="text" name="payPhone" id="inputSuccess" class="form-control" value="${loginClient.CPhone }"><br>
+                            		<input type="text" name="payPhone" id="inputSuccess1" class="form-control" value="${loginClient.CPhone }"><br>
                         		</div>
                 		</div><br>
                 		
                 		<div class="form-group has-warning">
                         	<label class="col-xs-4 control-label">배송 시간</label>
                         		<div class="col-xs-6">
-                            		<select name="payTime" id="selectShip" class="form-control">
+                            		<select name="payTime" id="tiemShip" class="form-control">
 			                    		<option value="0">시간 선택</option>
 			                    		<option value="06~08시">06~08시 도착</option>
 			                    		<option value="08~10시">08~10시 도착</option>
@@ -181,7 +209,7 @@ input , select {
                 		<div class="form-group has-warning">
                         	<label class="col-xs-4 control-label">요청사항</label>
                         		<div class="col-xs-8">
-                            		<textarea name="payMemo" rows=7 cols=140 class="form-control" name="reviewContent" style="resize: none;"></textarea><br>
+                            		<textarea name="payMemo" rows=7 cols=140 class="form-control" name="reviewContent" style="resize: none;" placeholder="요청사항이 있을시 적어주세요."></textarea><br>
                         		</div>
                 		</div><br>
                 		
@@ -189,12 +217,6 @@ input , select {
 					</div>
 				</div><br><br>
 				
-				<input type="hidden" name="cId" value="${loginClient.CId }">
-				<input type="hidden" name="pCode" value="${pCode }">
-				<input type="hidden" name="payAmount" value="${panierAmount }">
-				<input type="hidden" name="payPrice" id="totalprice1" value="${totalprice }">
-				<input type="hidden" name="payDay" value="${date }"><br><br>
-
 				
 <!-- 			<button class="btn btn-lg btn-primary btn-block" type="submit">결제</button><br><br><br> -->
 <!-- 			<button id="check_module" type="button">아임 서포트 결제 모듈 테스트 해보기</button> -->
@@ -205,11 +227,6 @@ input , select {
 		 
 </section>
 
-<script>
-	
-  	document.getElementById('dateofbirth').value = new Date().toISOString().substring(0, 10);
-  	
-</script>
 
 <script>
 
@@ -242,12 +259,14 @@ function openDaumZipAddress() {
 		
 		$("#check_module").click(function () {
 
-			var totalprice = $('#totalprice1').val();
-			console.log(totalprice.substr(0,totalprice.length-1));
-			var totalprice1 = parseInt(totalprice.substr(0,totalprice.length-1));
-			console.log(parseInt(totalprice.substr(0,totalprice.length-1)));
-			$('#totalprice1').val(parseInt(totalprice.substr(0,totalprice.length-1)));
+// 			var totalprice = $('#totalprice1').val();
+// 			console.log(totalprice.substr(0,totalprice.length-1));
+// 			var totalprice1 = parseInt(totalprice.substr(0,totalprice.length-1));
+// 			console.log(parseInt(totalprice.substr(0,totalprice.length-1)));
+// 			$('#totalprice1').val(parseInt(totalprice.substr(0,totalprice.length-1)));
+
 			
+			console.log(total);
 			
 			if(PayValidation())
 				{
@@ -257,8 +276,8 @@ function openDaumZipAddress() {
 					 	pg : 'html5_inicis',
 					    pay_method : 'card',
 					    merchant_uid : 'merchant_' + new Date().getTime(),
-					    name : "${name }",
-					    amount : "${totalprice}",
+					    name : $('#name').val(),
+					    amount : parseInt(total),
 					    buyer_email : $('#buyerEmail').val(),
 					    buyer_name : $('#buyerName').val(),
 					    buyer_tel : $('#buyerPhone').val(),
@@ -272,7 +291,7 @@ function openDaumZipAddress() {
 				        msg += '상점 거래ID : ' + rsp.merchant_uid;
 				        msg += '결제 금액 : ' + rsp.paid_amount;
 				        msg += '카드 승인번호 : ' + rsp.apply_num;
-				        paymentFrm.action="${pageContext.request.contextPath}/payment";
+				        paymentFrm.action="${pageContext.request.contextPath}/payment2";
 					    paymentFrm.submit();
 				    } else {
 				        var msg = '결제에 실패하였습니다.';
@@ -285,11 +304,64 @@ function openDaumZipAddress() {
 		});
 		
 		function PayValidation() {
-		if($('#selectShip').val()=="0") {
-			alert("시간을 선택해주세요.");
+			
+		if($('#datePicker').val()=="") {
+			alert("배송일을 선택해주세요.");
 			
 			return false;
 			}
+			
+		if($('#selectShip').val()=="00") {
+			alert("배송을 선택 해주세요.");
+			
+			return false;
+			}
+		
+		//주문자이름 널값
+		if($('#buyerName').val()=="") {
+			alert("주문자 이름을 확인해주세요.");
+			return false;
+		}
+		
+ 		//핸드폰번호 숫자만 11글자
+		var number1 = /^[0-9]{10,11}$/;
+		if(!number1.test($('#buyerPhone').val())) {
+			alert("주문자 전화번호를 확인해주세요.");
+			return false;
+		}
+
+		//이메일 형식
+		var email1 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		if(!email1.test($('#buyerAddr').val())) {
+			alert("주문자 이메일를 확인해주세요.");
+			return false;
+		}
+		
+		//배송지 이름 널값
+		if($('#inputSuccess').val()=="") {
+			alert("배송자 이름을 확인해주세요.");
+			return false;
+		}
+		
+		//상세주소 널값
+		if($('#address_etc').val()=="") {
+			alert("상세주소를 확인해주세요.");
+			return false;
+		}
+		
+ 		//배송자 핸드폰번호 숫자만 11글자
+		var number1 = /^[0-9]{10,11}$/;
+		if(!number1.test($('#inputSuccess1').val())) {
+			alert("배송자 전화번호를 확인해주세요.");
+			return false;
+		}
+		
+		if($('#tiemShip').val()=="0") {
+			alert("배송시간대를 선택 해주세요.");
+			
+			return false;
+			}
+		
 		return true;
 		}
 </script>

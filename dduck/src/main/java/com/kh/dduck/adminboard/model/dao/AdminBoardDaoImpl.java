@@ -83,7 +83,11 @@ public class AdminBoardDaoImpl implements AdminBoardDao {
 		return session.selectList("board.selectBoardList6");
 	}
 	
-
+	@Override
+	public List<Map<String, String>> searchList(SqlSessionTemplate session, int cPage, int numPerPage, String searchWord) {
+		RowBounds rows=new RowBounds((cPage-1)*numPerPage,numPerPage);
+		return session.selectList("board.searchList",searchWord, rows);
+	}
 	@Override
 	public List<Map<String, String>> selectFile(SqlSessionTemplate session) {
 		// TODO Auto-generated method stub

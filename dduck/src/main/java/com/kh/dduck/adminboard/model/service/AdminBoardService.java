@@ -16,11 +16,15 @@ public interface AdminBoardService {
 	 int selectBoardCount2(String searchWord);
 
 	 List<Map<String,String>> selectBoardList(int cPage,int numPerpage,String searchWord,int gCode);
+
 	 List<Map<String,String>> selectBoardList2();
 	 List<Map<String,String>> selectBoardList3();
 	 List<Map<String,String>> selectBoardList4();
 	 List<Map<String,String>> selectBoardList5();
 	 List<Map<String,String>> selectBoardList6();
+
+	 List<Map<String,String>> searchList(int cPage,int numPerpage,String searchWord);
+
 	 List<Map<String,String>> selectFile();
 	 
 	 int insertBoard(Map<String, String> param,List<SaleBoardFile> boardFile) throws Exception;

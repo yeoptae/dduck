@@ -34,14 +34,42 @@ public class AdminController {
 
    @Autowired
    AdminBoardService service;
-    
-   
+
    @Autowired
 	BCryptPasswordEncoder pwEncoder;
    
    private Logger logger = LoggerFactory.getLogger(ClientController.class);
    
 	 
+
+
+
+   /* 상품전체검색 */
+   @RequestMapping("/admin/searchList.do")
+   public ModelAndView searchList(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage,
+         @RequestParam(required = false, defaultValue = "") String searchWord, HttpServletRequest request) {
+      
+      ModelAndView mv = new ModelAndView();
+
+      int numPerPage = 9;
+      
+      List<Map<String, String>> list = service.searchList(cPage, numPerPage, searchWord);
+      List<Map<String, String>> fileList = service.selectFile();
+      int totlaCount = service.selectBoardCount();
+      int totlaCount2 = service.selectBoardCount2(searchWord);
+      
+      mv.addObject("searchWord",searchWord);
+      mv.addObject("count", totlaCount);
+      mv.addObject("list", list);
+      mv.addObject("fileList", fileList);
+      mv.addObject("pageBar",
+            PageBarFactory.getPageBarWhere2(totlaCount2, cPage, numPerPage, "/dduck/admin/searchList.do",searchWord));
+
+      mv.setViewName("saleboard/searchList");
+
+      return mv;
+   }
+   
    /* saleboard search & List(상품 리스트 검색추가) */
    @RequestMapping("/admin/saleboardList.do")
    public ModelAndView saleboardList(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage,

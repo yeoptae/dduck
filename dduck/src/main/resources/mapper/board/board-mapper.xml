@@ -24,6 +24,9 @@
    <select id="selectBoardList" parameterType="map" resultType="map">
       SELECT * FROM SALEBOARD WHERE GCODE=#{gCode} and salename like '%'||#{searchWord}||'%' ORDER BY PCODE DESC
    </select>
+   <select id="searchList" resultType="map">
+      SELECT * FROM SALEBOARD WHERE salename like '%'||#{searchWord}||'%' ORDER BY PCODE DESC
+   </select>
    <sql id="search">
 		and salename like '%'||#{searchWord}||'%'
    </sql>
