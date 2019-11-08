@@ -1,5 +1,8 @@
 package com.kh.dduck.panier.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -68,23 +71,15 @@ public class PanierController {
 	
    	//장바구니에서 결제페이지로
    	@RequestMapping("/panier/payment")
-   	public ModelAndView paymentAndPayment(int payAmount,String name,int price,
-   			int totalPrice,int pCode,int panierCode) {
-   		
-   		System.out.println("상품명 : "+name);
-   		System.out.println("수량 : "+payAmount);
-   		System.out.println("상품가격 : "+ price);
-   		System.out.println("수량*가격 "+ totalPrice);
-   		System.out.println("pCode "+ pCode);
-   		System.out.println("panierCode "+ panierCode);
-   		
+   	public ModelAndView paymentAndPayment(int panierCode) {
+
    		ModelAndView mv = new ModelAndView();
-   		mv.addObject("payAmount",payAmount);
-   		mv.addObject("name",name);
-   		mv.addObject("price",price);
-   		mv.addObject("totalPrice",totalPrice);
-   		mv.addObject("pCode",pCode);
-   		mv.addObject("panierCode",panierCode);
+   		
+   		int totalcount = service.selectPanierCount(panierCode);
+   		List<Map<String,String>> list = service.selectPanierList(panierCode);
+   		
+   		mv.addObject("totalcount" , totalcount);
+   		mv.addObject("list" , list);
    		
    		mv.setViewName("payment/paymentView2");
 		

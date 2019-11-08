@@ -30,7 +30,8 @@ input , select {
 					<table class="table table-responsive">
 					    <thead style="background-color: #EAEAEA;">
 					        <tr>
-					            <th>품목이름</th>
+					            <th>품목정보</th>
+					            <th>상품이름</th>
 					            <th>수량</th>
 					            <th>배송일</th>
 					            <th>상품금액</th>
@@ -40,6 +41,7 @@ input , select {
 					    </thead>
 					    <tbody>
 					        <tr>
+					            <td><img src="${path }/resources/upload/board/${img }" height="50px" width="80px"></td>
 					            <td>${name }</td>
 					            <td>${panierAmount }</td>
 					            <td>${date }</td>
@@ -119,14 +121,14 @@ input , select {
                 		<div class="form-group has-warning">
                         	<label class="col-xs-4 control-label"></label>
                         		<div class="col-xs-8">
-                            		<input type="button" onClick="openDaumZipAddress();" class="btn btn-lg btn-primary" value = "주소변경"><br>
+                            		<input type="button" onClick="openDaumZipAddress();" class="btn btn-lg btn-primary" value = "주소변경"><br><br>
                         		</div>
                 		</div><br>
                 		
                 		<div class="form-group has-warning">
                         	<label class="col-xs-4 control-label">전화번호</label>
                         		<div class="col-xs-8">
-                            		<input type="text" name="payPhone" id="inputSuccess" class="form-control" value="${loginClient.CPhone }"><br>
+                            		<input type="text" name="payPhone" id="inputSuccess1" class="form-control" value="${loginClient.CPhone }"><br>
                         		</div>
                 		</div><br>
                 		
@@ -148,7 +150,7 @@ input , select {
                 		<div class="form-group has-warning">
                         	<label class="col-xs-4 control-label">요청사항</label>
                         		<div class="col-xs-8">
-                            		<textarea name="payMemo" rows=7 cols=140 class="form-control" name="reviewContent" style="resize: none;"></textarea><br>
+                            		<textarea name="payMemo" rows=7 cols=140 class="form-control" name="reviewContent" style="resize: none;" placeholder="요청사항이 있을시 적어주세요."></textarea><br>
                         		</div>
                 		</div><br>
                 		
@@ -245,12 +247,55 @@ function openDaumZipAddress() {
 				}
 		});
 		
+		
+		
 		function PayValidation() {
+		
+		//주문자이름 널값
+		if($('#buyerName').val()=="") {
+			alert("주문자 이름을 확인해주세요.");
+			return false;
+		}
+		
+// 		//핸드폰번호 숫자만 11글자
+		var number1 = /^[0-9]{10,11}$/;
+		if(!number1.test($('#buyerPhone').val())) {
+			alert("주문자 전화번호를 확인해주세요.");
+			return false;
+		}
+
+		//이메일 형식
+		var email1 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		if(!email1.test($('#buyerAddr').val())) {
+			alert("주문자 이메일를 확인해주세요.");
+			return false;
+		}
+		
+		//배송지 이름 널값
+		if($('#inputSuccess').val()=="") {
+			alert("배송자 이름을 확인해주세요.");
+			return false;
+		}
+		
+		//상세주소 널값
+		if($('#address_etc').val()=="") {
+			alert("상세주소를 확인해주세요.");
+			return false;
+		}
+		
+// 		//배송자 핸드폰번호 숫자만 11글자
+		var number1 = /^[0-9]{10,11}$/;
+		if(!number1.test($('#inputSuccess1').val())) {
+			alert("배송자 전화번호를 확인해주세요.");
+			return false;
+		}
+		
 		if($('#selectShip').val()=="0") {
 			alert("시간을 선택해주세요.");
 			
 			return false;
 			}
+		
 		return true;
 		}
 </script>
