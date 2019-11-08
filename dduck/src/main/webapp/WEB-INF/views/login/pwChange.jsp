@@ -32,17 +32,17 @@
                     </div>     
 
 			<div style="padding-top:30px" class="panel-body" >
-				<form id="pwChange5" class="form-horizontal" role="form" action="${path }/pwChangeEnd/pwChangeEnd.do" onsubmit="return validate();">
+				<form id="pwChange5" class="form-horizontal" role="form" action="${path }/pwChangeEnd/pwChangeEnd.do" onsubmit="return validate();" method="post">
 					<div style="margin-bottom: 25px" class="input-group">
 					<div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input id="pwChange6" type="password" class="form-control" name="cPw" id="cPw" placeholder="비밀번호">
+                            <input  type="password" class="form-control" name="cPw" id="cPw" placeholder="비밀번호">
                     </div>
                     <br>
                         <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                         	<input type="hidden" name="cId" value="${loginClient.CId }"> 
-                            <input type="password" class="form-control"  id="pwdCheck" placeholder="비밀번호확인">
+                            <input type="password" class="form-control"  name="cPwCheck" id="pwdCheck" placeholder="비밀번호확인">
                         </div>
                         </div>
                         
@@ -63,19 +63,17 @@
 	<script>
 		function validate(){
 			//영문 숫자 혼합하여 6~20자이내
-			var reg_pwd = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
+			 var cPw = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
 
-			 if(!reg_pwd.test(str)){
-
-			  return false;
-
-			 }
-
-			 return true;
-
-			}
-
-			if(!chkPwd( $.trim($('#mpassword').val()))){ 
+	         
+	     	//비밀번호 유효성검사       		
+       	  if(checkNumber <0 || checkEnglish <0){
+                 alert("숫자와 영문자를 혼용하여야 합니다.");
+                 $('#password').val('').focus();
+                 return false;
+             }
+			
+			if(!pwdCheck( $.trim($('#mpassword').val()))){ 
 
 			 alert('비밀번호를 확인하세요.₩n(영문,숫자를 혼합하여 6~20자 이내)');    
 
@@ -85,10 +83,6 @@
 
 			 }
 
-
-
-
-			
 		}
 	
 	</script>

@@ -15,24 +15,11 @@
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
 
-
-<!--    <style>
-      div#enroll-container{width:400px; margin:0 auto; text-align:center;}   
-      div#enroll-container input, div#enroll-container select {margin-bottom:10px;}
-      
-    /*중복아이디체크관련*/
-    div#userId-container{position:relative; padding:0px;}
-    div#userId-container span.guide {display:none;font-size: 12px;position:absolute; top:12px; right:10px;}
-    div#userId-container span.ok{color:green;}
-    div#userId-container span.error{color:red;}
-    
-   </style> -->
 
 <body>
-    <script src="https://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
     <script>
         function sample6_execDaumPostcode() {
             new daum.Postcode({
@@ -76,149 +63,33 @@
             }).open();
         }
         
+        //비밀번호 일치하는지 확인  비밀번호가 틀리면  가입버튼 비활성화
+       $(function(){ 
+        	$("#alert-success").hide(); 
+        	$("#alert-danger").hide(); 
+        	$("[name=pwdCheck]").keyup(function(){ 
+        		var pwd=$("#pwd").val(); 
+        		var pwdCheck=$("#pwdCheck").val(); 
+        		/* var reg_pwd =$("#pwd").val(/^.*(?=.{6,12})(?=.*[0-9])(?=.*[a-zA-Z]).*$/); */
+        		if(pwd != "" || pwdCheck != ""|| reg_pwd !=""){ 
+        			if(pwd == pwdCheck){ 
+        				$("#alert-success").show(); 
+        				$("#alert-danger").hide(); 
+        				$("#submit").removeAttr("disabled"); 
+        				}else { 
+        					$("#alert-success").hide(); 
+        					$("#alert-danger").show(); 
+        					$("#submit").attr("disabled", "disabled"); 
+        					} 
+        			} 
+        		}); 
+        }); 
         
+         
+     
         
-        
-        
-        
-   function validate() {
-           
-           var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/); 
-           var getCheck= RegExp(/^[a-zA-Z0-9]{4,12}$/); 
-           var getName= RegExp(/^[가-힣]+$/); 
-           var fmt = RegExp(/^\d{6}[1234]\d{6}$/); //형식 설정
+ 
 
-             //아이디 공백확인
-        	if($("#id").val() == ""){ 
-        		alert("아이디를 입력해주세요"); 
-				id.focus()        		
-        		return false; 
-        	}
-        	
-       		//아이디 유효성검사
-        	if(!getCheck.test($("#id").val())){ 
-        		alert("아이디는 소문자,숫자 4글자 이상,12자이하로 가능합니다"); 
-        		$("#id").focus(); 
-        		
-        		return false; 
-        	}
-       		
-        	//비밀번호 공백 확인
-        	if (form1.pwd.value=="" || form1.pwdCheck.value=="") {
-            alert("비밀번호를 입력하지 않았습니다.")
-            form1.pwdCheck.focus();
-            return false;
-              }
-           
-            //아이디 비밀번호 같음 확인 
-           if (form1.pwd.value == form1.id.value) {
-            alert("아이디와 비밀번호가 같습니다.")
-            form1.pwd.focus();
-            return false;
-<<<<<<< HEAD
-              }
-            
-            //이름 유효성
-=======
-       		 }
-        	 
-        	 //이름 유효성
->>>>>>> branch 'master' of https://github.com/yeoptae/dduck.git
-            var namePattern = /^[가-힣]{2,10}$/;
-            
-<<<<<<< HEAD
-              if(!namePattern.test(form1.name.value)){
-=======
-           	if(!namePattern.test(form1.name.value)){
->>>>>>> branch 'master' of https://github.com/yeoptae/dduck.git
-            alert("이름은 한글만 입력이 가능합니다..");
-            form1.name.focus();
-            return false;
-<<<<<<< HEAD
-            }
-=======
-        	 }
->>>>>>> branch 'master' of https://github.com/yeoptae/dduck.git
-           
-           //주소 빈칸
-             if(form1.sample6_postcode.value==""){
-                 alert("우편번호를 입력해주세요.");
-                 form1.sample6_postcode.focus();
-                 return false;
-              }
-              
-                if(form1.sample6_address2.value=="" || form1.sample6_address.value==""){
-                 alert("상세주소를 입력해주세요.");
-                 form1.sample6_address2.focus();
-                 return false;
-              }
-             
-       
-<<<<<<< HEAD
-             //핸드폰 빈칸
-=======
-         	 //핸드폰 빈칸
->>>>>>> branch 'master' of https://github.com/yeoptae/dduck.git
-            if(form1.phone.value==""){
-                alert("핸드폰번호를 입력해 주십시오.");
-                form1.phone.focus();
-                return false;
-         }
-            return true;
-            
-<<<<<<< HEAD
-    }
-             
-       
-     
-   $(function(){
-      $("#id").blur(function() {
-         // id = "id_reg" / name = "userId"
-         var clientId = $('#id').val();
-         $.ajax({
-            url : "${pageContext.request.contextPath}/user/idCheck?cId="+ clientId,                                             //cId=파라미터값으로 input에 name값이다.
-            type : 'get',
-            datatype : 'html',
-            success : function(data) {
-                        console.log("1 = 중복o / 0 = 중복x : "+ data);                     
-                        if (data == 1) {
-                           // 1 : 아이디가 중복되는 문구
-                           $("#id_check").text("사용중인 아이디입니다.");
-                           $("#id_check").css("color", "red");
-                           $("#reg_submit").attr("disabled", true);
-                        } else {
-                           console.log("sadsdsdsd");
-                           if(data == 0){
-                              // 0 : 아이디 길이 / 문자열 검사
-                              $("#id_check").text("");
-                              $("#reg_submit").attr("disabled", false);
-                     
-                           } else if(data == ""){
-                              
-                              $('#id_check').text('아이디를 입력해주세요 :)');
-                              $('#id_check').css('color', 'red');
-                              $("#reg_submit").attr("disabled", true);            
-                              
-                           } else {
-                              
-                              $('#id_check').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :) :)");
-                              $('#id_check').css('color', 'red');
-                              $("#reg_submit").attr("disabled", true);
-                           }  
-                           
-                        } 
-                     }, error : function() {
-                           console.log("실패");
-                     }
-                  });
-               });
-              
-            });
-=======
- 	}
-         	 
-       
-     
 	$(function(){
 		$("#id").blur(function() {
 			// id = "id_reg" / name = "userId"
@@ -238,6 +109,7 @@
 									if(data == 0){
 										// 0 : 아이디 길이 / 문자열 검사
 										$("#id_check").text("사용가능한 아이디입니다.");
+										$("#id_check").css("color", "green");
 									} 
 								}
 							}, error : function() {
@@ -246,10 +118,10 @@
 						});
 					});
 		        
-				});
->>>>>>> branch 'master' of https://github.com/yeoptae/dduck.git
-        
-        
+				}); 
+
+
+	
      </script>
      
 
@@ -265,12 +137,12 @@
             <div>
                 <p>&nbsp;</p>
 
-                <form  name="form1" class="form-horizontal" action="${path }/client/clientEnrollEnd.do" method="post" onsubmit="return validate();">
+                <form name="form1" class="form-horizontal" action="${path }/client/clientEnrollEnd.do" method="post" onsubmit="return signUp_validate();">
                     <div class="form-group">
                         <div class="col-sm-2 control-label">
-                            <label for="id">아이디</label>
+                            <label >아이디</label>
                         </div>
-                        <div class="col-sm-4 text-left">
+                        <div class="col-sm-6 text-left">
                             <input type="text" name="cId" id="id" class="form-control">
                             <div class="check_font" id="id_check"></div>
                         </div>
@@ -278,35 +150,36 @@
 
                     <div class="form-group">
                         <div class="col-sm-2 control-label">
-                            <label id="pwd">패스워드</label>
+                            <label>패스워드</label>
                         </div>
                         <div class="col-sm-6">
-                            <input type="password" class="form-control" name="cPw" id="pwd">
-                            <div class="check_font" id="id_check"></div>
+                            <input type="password" class="form-control" name="cPw" id="pwd" required/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-2 control-label">
-                            <label id="pwdCheck">패스워드 체크</label>
+                            <label>패스워드 체크</label>
                         </div>
                         <div class="col-sm-6">
-                            <input type="password" class="form-control" name="pwdCheck" id="pwdCheck">
+                            <input type="password" class="form-control" name="pwdCheck" id="pwdCheck" required/>
+                         	<div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div> 
+                            <div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-2 control-label">
-                            <label id="name">이름</label>
+                            <label>이름</label>
                         </div>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="cName" id="name">
+                            <input type="text" class="form-control" name="cName" id="userName">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-2 control-label">
-                            <label id="email">이메일</label>
+                            <label>이메일</label>
                         </div>
                         <div class="col-sm-6">
                             <input type="email" class="form-control" name="CEmail" id="email" value="${tomail }" readonly>
@@ -364,8 +237,8 @@
                     <input type="hidden" name="ip" value="${GetIpAddress.getIp()}">
                     <div class="form-group">
                         <div class="col-sm-12  text-center">
-                            <input type="submit" value="회원가입" class="btn btn-primary" style="margin-left: -170px;">
-                            <input type="reset" value="취소" class="btn btn-primary">
+                            <input type="submit" id=submit value="회원가입" class="btn btn-primary" style="margin-left: -170px;">
+                           
                         </div>
                     </div>
                 </form>
@@ -373,9 +246,29 @@
         </div>
     </div>
 </body>
-
-
-
+<script>
+function signUp_validate(){
+	
+	/* var idCheck = /^[A-Za-z0-9+]{4,12}$/;
+	if(!idCheck.test($('#id').val())) {
+		alert("아이디는 4글자이상,12글자만 가능합니다.");
+	} */
+	
+	var pwCheck = /^[a-z]+[a-z0-9]{5,19}$/g;
+	var pwCheck2= /^[a-z]+[a-z0-9]{5,19}$/g;
+	if(!pwCheck.test($('#pwd').val()) &&!pwCheck2.test($('#pwd').val())) {
+		alert('비밀번호는 소문자+숫자로 가능합니다.');
+	}
+	
+	var getName= /^[가-힣]+$/;
+	if(!getName.test($('#userName').val())) {
+		alert("이름은 한글만 입력이 가능합니다.");
+	}
+	
+	
+	return false;
+}
+</script>
 
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

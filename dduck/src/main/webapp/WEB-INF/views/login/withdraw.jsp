@@ -33,7 +33,7 @@
                     </div>     
 
                     <div style="padding-top:30px" class="panel-body" >
-                        <form id="withraw" class="form-horizontal" role="form" action="${path }/withdraw1/withdraw1.do">
+                        <form id="withraw" class="form-horizontal" role="form" action="${path }/withdraw1/withdraw2.do" >
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                         <input type="hidden" name="cId" value="${loginClient.CId}"/>
@@ -55,25 +55,14 @@
          </div>
        </div>
          
- <script type="text/javascript">
- $(document).ready(function(e){
-   $('#withraw').click(function(){
-      
-         // 입력 값 체크
-         if($.trim($('#login-password').val()) == ''){
-            alert("패스워드를 입력해 주세요.");
-            $('#login-password').focus();
-            return  false;
-         }else {
-         
-         }
-         
-       //전송
-         $('#withraw').submit(); 
-      });
- });
-      
+<script>
+
+
+
+
+
 </script>
+      
          
     
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
