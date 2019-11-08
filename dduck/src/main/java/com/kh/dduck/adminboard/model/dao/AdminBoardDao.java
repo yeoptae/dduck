@@ -21,7 +21,14 @@ public interface AdminBoardDao {
 	int selectBoardCount2(SqlSessionTemplate session,String searchWord);
 	List<Map<String,String>> selectBoardList(SqlSessionTemplate session,int cPage,int numPerPage, String searchWord,int gCode);
 
-	
+	List<Map<String,String>> selectBoardList2(SqlSessionTemplate session);
+	List<Map<String,String>> selectBoardList3(SqlSessionTemplate session);
+	List<Map<String,String>> selectBoardList4(SqlSessionTemplate session);
+	List<Map<String,String>> selectBoardList5(SqlSessionTemplate session);
+	List<Map<String,String>> selectBoardList6(SqlSessionTemplate session);
+
+	List<Map<String,String>> searchList(SqlSessionTemplate session,int cPage,int numPerPage, String searchWord);
+
 	 
 	List<Map<String,String>> selectFile(SqlSessionTemplate session);
 	
@@ -49,5 +56,5 @@ public interface AdminBoardDao {
 	List<Map<String,String>> selectPaymentList(SqlSessionTemplate session, int cPage, int numPerPage);
 	
 	int deleteBoardFile(SqlSessionTemplate session,int pCode);
-	  
+	int deleteClient(SqlSessionTemplate sqlSession,Client c);  
 }

@@ -18,5 +18,8 @@
 	<update id="upDatePayment" parameterType="payment">
 	   update payment set dcheck=#{dCheck}+1 where paycode=#{payCode}
 	</update>
-
+	
+	<delete id="deletePanier" parameterType="panier">
+		delete from panier where paniercode = #{panierCode}
+	</delete>
 </mapper>

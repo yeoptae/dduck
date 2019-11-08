@@ -61,6 +61,10 @@
  			delete from client where cid=#{cId} and cpw=#{cPw}
 	</delete>
 	
+	<delete id="delete2">
+ 			delete from Client where cId = #{cId} 
+	</delete>
+	
 	<!--정보수정에서 비번변경  -->
 	<update id="updatePwChange">
 		update client set cPw=#{cPw} where cId=#{cId}

@@ -212,7 +212,7 @@ public class ClientController {
 	public String pwSearchEnd(HttpServletRequest request, Client c, Model model, String e_mail) {
 
 		c.setCPw(pwEncoder.encode(c.getCPw().trim()));
-		logger.debug("비버변경 됐니??" + c);
+		logger.debug("비번변경 됐니??" + c);
 
 		int result = service.updatePw(c);
 
@@ -272,15 +272,13 @@ public class ClientController {
 	@RequestMapping("/client/paymentList")
 	public ModelAndView paymentList(@RequestParam(value = "cPage", required = false, defaultValue = "0") int cPage,
 			String cId) {
-
 		ModelAndView mv = new ModelAndView();
-
 		int numPerPage = 10;
 
 		List<Map<String, String>> list = service.selectPaymentEndList(cPage, numPerPage, cId);
 		int totalCount = service.selectPaymentEndCount();
 
-		mv.addObject("pageBar", PageBarFactory.getPageBar(totalCount, cPage, numPerPage, "/spring/client/paymentList"));
+		mv.addObject("pageBar", PageBarFactory.getPageBar(totalCount, cPage, numPerPage, "/dduck/client/paymentList"));
 		mv.addObject("count", totalCount);
 		mv.addObject("list", list);
 

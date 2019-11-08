@@ -1,5 +1,8 @@
 package com.kh.dduck.panier.model.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +31,22 @@ public class PanierServiceImpl implements PanierService {
 		
 		return dao.deletePanier(session,p);
 	}
+
+	
+	@Override
+	public List<Map<String, String>> selectPanierList(int panierCode) {
+		
+		return dao.selectPanierList(session, panierCode);
+	}
+
+	@Override
+	public int selectPanierCount(int panierCode) {
+
+		return dao.selectPanierCount(session, panierCode);
+	}
+	
+	
+	
 	
 	
 }

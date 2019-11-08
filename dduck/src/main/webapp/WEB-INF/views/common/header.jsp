@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="ko">
@@ -15,11 +16,30 @@
 
    
 </head>
-    <style>
-
+<style>
+.navbar-inverse .navbar-nav>li>a, .dropdown-menu>li>a{
+	font-family: 'Do Hyeon', sans-serif;
+	font-size : 20px;
+    color : white;
+}
+.navbar-inverse .navbar-nav>li>ul>li>a:hover {
+	background-color: e04e4e;
+}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>li>a:hover{
+	background-color: #8e2615;
+}
+.container-fluid, .navbar-inverse .navbar-nav>li>ul{
+    background-color: #BC331C;
+}
 .jumbotron {
    padding-top: 0px !important;
    padding-bottom: 0px !important;
+}
+.seroLine{
+	margin-top : 15px;
+	width : 1px;
+	height : 20px;
+	background-color : rgba(138, 16, 16, 0.822);
 }
 </style>
 <body>
@@ -32,7 +52,7 @@
         </div>
 
         <nav class="navbar navbar-inverse">
-            <div class="headnavbarstyle container-fluid" >
+            <div class="container-fluid" >
             
                 <div class="navbar-header">
                     <button type="button" class="pull-left navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -46,17 +66,23 @@
                 <div class="collapse navbar-collapse" id="myNavbar" style=" text-align:center;">
                     <ul class="nav navbar-nav" id="menu">
                         <li><a href="/dduck">Home</a></li>
+                        <li><div class="seroLine"></div></li>
                         <li class="dropdown">
                            <a class="dropdown-toggle" data-toggle="dropdown"">메뉴<b class="caret"></b></a>
                            <ul class="dropdown-menu">
-                              <li><a href="${pageContext.request.contextPath}/notice/noticeList.do">공지사항</a></li>
-                              <li><a href="${path }/qna/qnaList.do">QNA</a></li>
+                              <li class="downmenufocus"><a href="${pageContext.request.contextPath}/notice/noticeList.do">공지사항</a></li>
+                              <li class="downmenufocus"><a href="${path }/qna/qnaList.do">QNA</a></li>
                              </ul>
                         </li>
+                        <li><div class="seroLine"></div></li>
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=1">답례</a></li>
+                        <li><div class="seroLine"></div></li>
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=2">간식</a></li>
+                        <li><div class="seroLine"></div></li>
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=3">돌</a></li>
+                        <li><div class="seroLine"></div></li>
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=4">케익</a></li>
+                        <li><div class="seroLine"></div></li>
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=5">세트</a></li>
             
                     </ul>
