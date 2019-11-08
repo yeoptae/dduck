@@ -11,5 +11,11 @@
 		delete from panier where paniercode = #{panierCode}
 	</delete>
 	
+	<select id="selectPanierCount" resultType="_int">
+	 select count(*) from panier where panierCode=#{panierCode}
+	</select>
+	<select id="selectPanierList" resultType="map" parameterType="_int">
+		select * from panier join saleboard using(pcode) join saleboardfile using(pcode) where panierCode = #{panierCode} and attachflag = 1
+	</select>
 	
 </mapper>

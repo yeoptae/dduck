@@ -66,6 +66,7 @@ input , select {
                 		<c:if test='${a["attachFlag"]=="1" }'>
                     		<img src='${pageContext.request.contextPath}/resources/upload/board/${a["attachReFileName"]}' alt="Image"
                     		style="width:800px; height:550px;">
+                    		<input type = "hidden" name ="img" value="${a['attachReFileName'] }">
                 		</c:if>
                 	</c:forEach>
                 </div>
@@ -81,7 +82,8 @@ input , select {
                     	<div class="form-group">
                     	<label class="col-xs-4 control-label">판매가</label>
                     	<div class="col-xs-8">
-                    	<input type="text" id="price" value="${saleList['SALEPRICE'] }" style="border:none" readonly>
+                    	<input type="text" id="price1" value="${saleList['SALEPRICE'] }원" style="border:none" readonly>
+                    	<input type="hidden" id="price" value="${saleList['SALEPRICE'] }" style="border:none" readonly>
                     	</div><br>
                     	</div>
                     	
@@ -112,7 +114,7 @@ input , select {
                     	<div class="form-group">
                     	<label class="col-xs-4 control-label">배송날짜</label>
                     	<div class="col-xs-8">
-						<input type="date" name="date" id='dateofbirth'>
+						<input type="date" name="date" id='datePicker' >
 						</div><br>
                     	</div>
                     	
@@ -130,7 +132,6 @@ input , select {
                     		<option value="00">배송 선택</option>
                     		<option value="5000">서울,경기 (+ 5000원)</option>
                     		<option value="15000">서울,경기 외 (+ 15000원)</option>
-                    		<option value="0">직접방문 (+ 0원)</option>
                     	</select>
                     	</div><br><hr>
                     	</div>
@@ -276,8 +277,13 @@ input , select {
 	
 	<script>
 	
-  	document.getElementById('dateofbirth').value = new Date().toISOString().substring(0, 10);
-  	
+	  	document.getElementById('datePicker').value = new Date().toISOString().substring(0, 10);
+	  	
+	  	document.getElementById('datePicker').value = new Date(new Date().setDate(new Date().getDate()+1)).toISOString().substring(0, 10);
+		console.log(new Date(new Date().setDate(new Date().getDate()+1)));
+		
+		$('#datePicker').attr("min",new Date(new Date().setDate(new Date().getDate()+1)).toISOString().substring(0, 10));
+		
 	</script>
 	
 	
@@ -305,11 +311,12 @@ input , select {
         <div class="col-sm-12 row well"  style="background-color: #F2FF92;">
             <h3>상세보기</h3>
             <br>
-            <h1>${saleList['DETAILSINFO'] }</h1>
+            <pre>${saleList['DETAILSINFO'] }</pre>
             <br>
             <div class="row">
             <img src="${pageContext.request.contextPath }/resources/images/jumun.jpg"  /><br><br>
-            <img src="${pageContext.request.contextPath }/resources/images/baesong.jpg"  /><br>
+            <img src="${pageContext.request.contextPath }/resources/images/baesong.png"  /><br><br>
+            <img src="${pageContext.request.contextPath }/resources/images/abcd1.png"  /><br><br>
             
             </div>
         </div><br>
@@ -369,7 +376,9 @@ input , select {
 			</div>
 			<br>
 		</c:forEach>
-		${pageBar }
+		<div id="pageBar" style="text-align: center; color: black;">
+              ${pageBar }
+            </div>
 		</div>
 		<hr>
 		<br>
@@ -430,7 +439,7 @@ input , select {
 	
 	function reviewDelete() {
 		
- 		if(confirm("리뷰를 삭제할거냐..?")) {
+ 		if(confirm("리뷰를 삭제하시겠습니까?")) {
 		      location.href="${pageContext.request.contextPath}/review/reviewDelete?reviewNo="+$('#no').val()+"&PCode="+$('#deletepcode').val();
 		      console.log($('#no').val());
 			

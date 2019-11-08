@@ -1,5 +1,8 @@
 package com.kh.dduck.panier.model.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -21,5 +24,18 @@ public class PanierDaoImpl implements PanierDao {
 		return session.delete("panier.deletePanier",p);
 	}
 
+	@Override
+	public List<Map<String, String>> selectPanierList(SqlSessionTemplate session, int panierCode) {
+
+		return session.selectList("panier.selectPanierList",panierCode);
+	}
+
+	@Override
+	public int selectPanierCount(SqlSessionTemplate session, int panierCode) {
+
+		return session.selectOne("panier.selectPanierCount",panierCode);
+	}
+
+	
 	
 }
