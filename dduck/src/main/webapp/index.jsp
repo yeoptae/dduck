@@ -54,6 +54,19 @@
             </div>
          </div>
       </div>
+      
+		<form name="form1" method="post" action="${path}/admin/searchList.do">
+			<div id="custom-search-input">
+				<div class="input-group col-md-12">
+					<input type="text" class="search-query form-control" id="searchWord" name="searchWord" value="${searchWord }"  placeholder="떡 검색하기" required/>
+					<span class="input-group-btn">
+						<button class="btn btn-danger" onclick="searchDduck()" type="submit" id="btnSearch" name="btnSearch">
+							<span class=" glyphicon glyphicon-search"></span>
+						</button>
+					</span>
+				</div>
+			</div>
+		</form>
    </section>
    
    <script src="${pageContext.request.contextPath }/resources/js/index/jquery-3.2.1.min.js"></script>

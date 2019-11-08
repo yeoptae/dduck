@@ -64,7 +64,11 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 		// TODO Auto-generated method stub
 		return dao.selectBoardList(session,cPage,numPerpage, searchWord ,gCode);
 	}
-
+	@Override
+	public List<Map<String, String>> searchList(int cPage, int numPerpage,String searchWord) {
+		// TODO Auto-generated method stub
+		return dao.searchList(session,cPage,numPerpage, searchWord);
+	}
 	
 	
 	 

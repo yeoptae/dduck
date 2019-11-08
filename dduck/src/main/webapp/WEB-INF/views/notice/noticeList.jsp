@@ -43,7 +43,7 @@
                             </thead>
                             <tbody>
                             <c:forEach items="${list }" var="n" varStatus="v">
-                                <tr>
+                                <tr class="noticeTrHeight">
                                     <td>
                                     	<c:choose>
                                     		<c:when test='${n["NOTICECATEGORY"] eq "1"}'>
@@ -76,7 +76,7 @@
                             </c:forEach>
                             </tbody>
                         </table>   
-                        ${pageBar }
+                       <center>${pageBar }</center>
                 </div>
             </div>
         </div>
