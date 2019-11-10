@@ -169,7 +169,9 @@
                             </c:when>
                             <c:otherwise >
                                 <ul class="nav navbar-nav navbar-right">
-                                      <li><a href="${pageContext.request.contextPath}/mypage/mypage.do">마이페이지</a></li>
+<%--                                       <li><a href="${pageContext.request.contextPath}/mypage/mypage.do?cNo=${loginClient.CId}">마이페이지</a></li> --%>
+									<li><a href="${pageContext.request.contextPath}/client/panier?cId=${loginClient.CId}">마이페이지</a></li>
+
                                       <li><a href="${pageContext.request.contextPath}/Client/ClientLogout.do">로그아웃</a></li>
                                    </ul>
                             </c:otherwise>
