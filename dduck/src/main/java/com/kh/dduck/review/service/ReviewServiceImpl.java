@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.dduck.adminboard.model.vo.SaleBoardFile;
+import com.kh.dduck.payment.model.vo.Payment;
 import com.kh.dduck.review.model.dao.ReviewDao;
 import com.kh.dduck.review.model.vo.Review;
 
@@ -61,6 +62,12 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<SaleBoardFile> selectAttachList(int pCode) {
 		
 		return dao.selectAttachList(session,pCode);
+	}
+
+	@Override
+	public int selectReviewCount1(Payment p) {
+		
+		return dao.selectReviewCount1(session, p);
 	}
 
 	
