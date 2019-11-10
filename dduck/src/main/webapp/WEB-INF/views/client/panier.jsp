@@ -10,20 +10,20 @@
 <body>
 	<div class="row">
 		<div class="col-sm-3 sidenav">
-			<h4 style="padding:10px;">마이 페이지</h4>
+			<h4 style="margin-right:10px; font-family: 'Black Han Sans', sans-serif;">마이 페이지</h4>
 			<ul class="nav nav-pills nav-stacked">
 				<li><a
 
-					href="${pageContext.request.contextPath}/client/panier?cId=${loginClient.CId}">장바구니</a></li>
+					href="${pageContext.request.contextPath}/client/panier?cId=${loginClient.CId}" style="font-family: 'Black Han Sans', sans-serif;">장바구니</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/client/paymentList?cId=${loginClient.CId}">결제내역</a></li>
+					href="${pageContext.request.contextPath}/client/paymentList?cId=${loginClient.CId}" style="font-family: 'Black Han Sans', sans-serif;">결제내역</a></li>
 
 				<li><a
-					href="${pageContext.request.contextPath}/update/update.do?cId=${loginClient.CId}">정보수정</a></li>
+					href="${pageContext.request.contextPath}/update/update.do?cId=${loginClient.CId}" style="font-family: 'Black Han Sans', sans-serif;">정보수정</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/pwChange/pwChange.do">비밀번호 변경</a></li>
+					href="${pageContext.request.contextPath}/pwChange/pwChange.do" style="font-family: 'Black Han Sans', sans-serif;">비밀번호 변경</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/withdraw/withdraw.do">회원탈퇴</a></li>
+					href="${pageContext.request.contextPath}/withdraw/withdraw.do" style="font-family: 'Black Han Sans', sans-serif;">회원탈퇴</a></li>
 			</ul>
 		</div>
 		<div class="col-xs-8 col-sm-8">
