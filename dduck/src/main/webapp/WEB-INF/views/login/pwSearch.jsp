@@ -34,7 +34,7 @@
                            
                                     <div class="col-sm-12 controls">
                                     
-                                      <button type="submit" name="submit" class="btn btn-primary">인증번호 전송</button>
+                                      <button type="submit" name="submit" id="injeng" class="btn btn-primary">인증번호 전송</button>
                                      </div>                                    
                                    </div>
                         	</form>
@@ -52,10 +52,59 @@
 
 
 <script>
+
+
  $(function(){
-		$("#email").blur(function() {
+	$("#email").keyup(function() {
+		var clientEmail = $('#email').val();
+		if(clientEmail.length>10){
+				$.ajax({
+				url : "${pageContext.request.contextPath}/user/mailCheck?e_mail="+ clientEmail,
+				//cId=파라미터값으로 input에 name값이다.
+				type : 'get',
+				datatype : 'html',
+				success : function(data) {
+								if (data == 1) {
+									// 1 : 이메일 중복문구
+									$("#mailCheck").text("인증보내기를 클릭해주세요.");
+									$("#mailCheck").css({"color":"green","display":"block"});
+									$("#injeng").show();
+								} else {
+									if(data == 0){
+										// 0 : 아이디 길이 / 문자열 검사
+										$("#mailCheck").text("이메일을 다시 입력해주세요.");
+										$("#mailCheck").css({"color":"red","display":"block"});
+										$("#injeng").hide();
+									} 
+								}
+							}, error : function() {
+									console.log("실패");
+							}
+			});
+		}
+	});
+}); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  $(function(){
+		$("#email").keyup(function() {
 			var clientEmail = $('#email').val();
-			
 			$.ajax({                                                    //e_mail=파라미터값     
 				url : "${pageContext.request.contextPath}/user/mailCheck?e_mail="+ clientEmail,															//cId=파라미터값으로 input에 name값이다.
 				type : 'post',
@@ -66,12 +115,13 @@
 								if (data == 1) {
 									// 1 : 	이메일이 중복되는 문구
 									$("#mailCheck").text("존재하는 이메일 입니다.");
-									$("#mailCheck").css("color", "red");
-									$("#injeng").hide();
+									$("#mailCheck").css("color", "green");
+									$("#injeng").show();
 								} else if(data == 0){
 										// 0 : 아이디 길이 / 문자열 검사
 									 	$("#mailCheck").text("존재하지않는 이메일 입니다. 다시 입력해주세요.");
-										$("#injeng").show();
+									 	$("#mailCheck").css("color", "red");
+										$("#injeng").hide();
 									} 
 									
 							}, error : function() {
@@ -80,7 +130,7 @@
 						});
 					});
 		        
-				});
+				}); */
         
         
 </script>      
