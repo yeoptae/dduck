@@ -170,6 +170,7 @@ public class ClientController {
 			
 		}else {
 			msg = "비밀번호를 확인해주세요.";	
+			loc="/withdraw/withdraw.do";
 		}
 		model.addAttribute("msg", msg);
 		model.addAttribute("loc", loc);
@@ -192,6 +193,8 @@ public class ClientController {
 		c.setCPw(pwEncoder.encode(c.getCPw().trim()));
 
 		int result = service.updatePwChange(c);
+		
+		System.out.println(c+"1111111111111111111111111111111111");
 
 		String msg = "";
 		String loc = "";
@@ -228,6 +231,34 @@ public class ClientController {
 
 		return "common/msg";
 	}
+	
+	
+	/*아이디찾기 뷰*/ 
+	@RequestMapping("/user/findingId.do")
+	public String searchId() {
+		return "login/idSearch";
+	}
+	
+	/*아이디 찾기 컨트롤러*/
+	@RequestMapping("/searchIdEnd/searchIdEnd.do")
+	public String searchIdEnd(Client c, Model model) {
+
+		Client result = service.searchIdEnd(c);
+
+		String msg = "";
+		String loc = "";
+		if (result!=null) {
+			msg = "귀하의 아이디는 " + result.getCId()+"입니다.";
+		} else {
+			msg = "존재하지 않는 정보입니다.";
+		}
+		model.addAttribute("msg", msg);
+		model.addAttribute("loc", loc);
+
+		return "common/msg";
+	}
+	
+	
 
 	/*회원가입시 아이디 중복체크*/
 	@RequestMapping("/user/idCheck")
@@ -241,14 +272,22 @@ public class ClientController {
 
 	/*회원가입시 이메일 중복체크*/
 	@RequestMapping("/user/mailCheck")
-	public @ResponseBody int mailCheck(@RequestParam("e_mail") String cEmail) {
+	public @ResponseBody int mailCheck(@RequestParam(value="e_mail") String cEmail ) {
 
-		System.out.println(" 메일메일메일메일메일 ");
 		int result = service.userMailCheck(cEmail);
 
 		return result;
 	}
+	/*정보수정시 이메일 중복체크*/
+	@RequestMapping("/user/mailCheck2")
+	public @ResponseBody int mailCheck2(@RequestParam(value="cEmail") String cEmail ) {
 
+		int result = service.userMailCheck2(cEmail);
+
+		return result;
+	}
+
+	
 	// 장바구니
 	@RequestMapping("/client/panier")
 	public ModelAndView panier(@RequestParam(value = "cPage", required = false, defaultValue = "0") int cPage,

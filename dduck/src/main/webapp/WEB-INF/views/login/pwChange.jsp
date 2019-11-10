@@ -10,11 +10,10 @@
 
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
  	
 <div class="row">
 		<div class="col-sm-3 sidenav">
-			<h4 style="padding:10px;">마이 페이지</h4>
+			<h4 style="padding:10px;">비밀번호변경</h4>
 						<ul class="nav nav-pills nav-stacked">
 				<li><a href="${pageContext.request.contextPath}/client/panier?cId=${loginClient.CId}">장바구니</a></li>
 				<li><a href="${pageContext.request.contextPath}/client/paymentList?cId=${loginClient.CId}">결제내역</a></li>
@@ -30,27 +29,31 @@
                     <div class="panel-heading">
                         <div class="panel-title">비밀번호 변경하기</div>
                     </div>     
-
-			<div style="padding-top:30px" class="panel-body" >
-				<form id="pwChange5" class="form-horizontal" role="form" action="${path }/pwChangeEnd/pwChangeEnd.do" onsubmit="return validate();" method="post">
+                    
+                    	<div style="padding-top:30px" class="panel-body" >
+				<form id="pwChange5" class="form-horizontal" role="form" action="${path }/pwChangeEnd/pwChangeEnd.do" onsubmit="return signUp_validate();" method="post">
 					<div style="margin-bottom: 25px" class="input-group">
 					<div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input  type="password" class="form-control" name="cPw" id="cPw" placeholder="비밀번호">
+                            <input type="hidden" name="cId" value="${loginClient.CId}">
+                            <input type="password" class="form-control" name="cPw" id="pwd" placeholder="비밀번호" required/>
                     </div>
                     <br>
                         <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        	<input type="hidden" name="cId" value="${loginClient.CId }"> 
-                            <input type="password" class="form-control"  name="cPwCheck" id="pwdCheck" placeholder="비밀번호확인">
+                            <input type="password" class="form-control" name="pwdCheck" id="pwdCheck" placeholder="비밀번호 확인" required/>
                         </div>
                         </div>
+                            <div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div> 
+                            <div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
+                            
+                            
                         
                     <div style="margin-top:10px" class="form-group">
                                     <!-- Button -->
                                  <div class="col-sm-12 controls">
-                                 	<input type="submit" value="변경하기" class="btn btn-primary" >
-                           			<input type="reset" value="취소하기" class="btn btn-primary">
+                                 	<input type="submit" id="submit" value="변경하기" class="btn btn-primary" >
+                           			<input type="button" class="btn btn-primary" value="취소하기" onClick="location.reload()"/>  
                                  </div>                      
                              </div>
                           </form>
@@ -59,33 +62,51 @@
 			</div>
 		</div>
 	</div>
-	
-	<script>
-		function validate(){
-			//영문 숫자 혼합하여 6~20자이내
-			 var cPw = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
 
-	         
-	     	//비밀번호 유효성검사       		
-       	  if(checkNumber <0 || checkEnglish <0){
-                 alert("숫자와 영문자를 혼용하여야 합니다.");
-                 $('#password').val('').focus();
-                 return false;
-             }
-			
-			if(!pwdCheck( $.trim($('#mpassword').val()))){ 
+<script>
+ //비밀번호 일치하는지 확인  비밀번호가 틀리면  변경하기 버튼 비활성화
+       $(function(){ 
+        	$("#alert-success").hide(); 
+        	$("#alert-danger").hide(); 
+        	$("[name=pwdCheck]").keyup(function(){ 
+        		var pwd=$("#pwd").val(); 
+        		var pwdCheck=$("#pwdCheck").val(); 
+        		if(pwd != "" || pwdCheck != ""){ 
+        			if(pwd == pwdCheck){ 
+        				$("#alert-success").show(); 
+        				$("#alert-danger").hide(); 
+        				$("#submit").removeAttr("disabled"); 
+        				}else { 
+        					$("#alert-success").hide(); 
+        					$("#alert-danger").show(); 
+        					$("#submit").attr("disabled", "disabled"); 
+        					} 
+        			} 
+        		}); 
+        });
 
-			 alert('비밀번호를 확인하세요.₩n(영문,숫자를 혼합하여 6~20자 이내)');    
+ 
+ 
+ 
+ 
+ 
+       function signUp_validate(){
+    		
+    		
+    		var pwCheck = /^[a-z]+[a-z0-9]{5,19}$/g;
+    		if(!pwCheck.test($('#pwd').val())) {
+    			alert('비밀번호는 소문자+숫자로 가능합니다.');
+    			return false;
+    		} 
 
-			 $('#mpassword').val('');
 
-			 $('#mpassword').focus(); return false;
+    		
+    		return true;
+    		}
 
-			 }
 
-		}
-	
-	</script>
+
+</script>
 
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

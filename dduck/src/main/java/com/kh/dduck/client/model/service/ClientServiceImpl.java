@@ -65,8 +65,16 @@ public class ClientServiceImpl implements ClientService {
 	public int userMailCheck(String cEmail) {
 		return dao.userMailCheck(sqlSession, cEmail);
 	}
-
-
+	
+	@Override
+	public int userMailCheck2(String cEmail) {
+		return dao.userMailCheck2(sqlSession, cEmail);
+	}
+	
+	@Override
+	public Client searchIdEnd(Client c ) {
+		return dao.searchIdEnd(sqlSession,c);
+	}
 	
 	//장바구니
 	@Override
