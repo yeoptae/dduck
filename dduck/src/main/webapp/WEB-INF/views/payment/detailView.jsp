@@ -6,6 +6,7 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="pageTitle" value="상세페이지"/>
 </jsp:include>
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Do+Hyeon|Nanum+Gothic+Coding|Noto+Sans+KR|Sunflower:300&display=swap" rel="stylesheet">
 <style>
         .jumbotron{
             padding-top: 0px !important;
@@ -51,6 +52,10 @@ input , select {
 /*   box-shadow: inset 0 3px 6px rgba(0,0,0,0.1); */
   width: 190px;
 }
+#div1{
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
 
 </style>
 
@@ -72,17 +77,18 @@ input , select {
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="well" style="background-color: white;">
-                    	<h2 style="text-align: center">${saleList["SALENAME"] }</h2><hr>
+                <div style="background-color: white;">
+                    	<br>
+                    	<h2 style="text-align: center"><p style="font-family: 'Black Han Sans', sans-serif;">${saleList["SALENAME"] }</p></h2><hr>
                     	
                     	<input type = "hidden" name = "name" value="${saleList['SALENAME'] }">
                     	<input type = "hidden" name = "cId" value="${loginClient.CId }"/>
                     	<input type = "hidden" name = "pCode" value="${saleList['PCODE'] }"/>
                     	
                     	<div class="form-group">
-                    	<label class="col-xs-4 control-label">판매가</label>
-                    	<div class="col-xs-8">
-                    	<input type="text" id="price1" value="${saleList['SALEPRICE'] }원" style="border:none" readonly>
+                    	<label class="col-xs-4 control-label"><p style="font-family: 'Do Hyeon', sans-serif;">판매가</p></label>
+                    	<div class="col-xs-8"  id="div1">
+                    	<input type="text" id="price1" value="${saleList['SALEPRICE'] }원" style="border:none;" readonly>
                     	<input type="hidden" id="price" value="${saleList['SALEPRICE'] }" style="border:none" readonly>
                     	</div><br>
                     	</div>
@@ -91,43 +97,43 @@ input , select {
                     	
                     	
                     	<div class="form-group">
-                    	<label class="col-xs-4 control-label">수량</label>
-                    	<div class="col-xs-8">
-                    	&nbsp;최소 1개
+                    	<label class="col-xs-4 control-label"><p style="font-family: 'Do Hyeon', sans-serif;">수량</p></label>
+                    	<div class="col-xs-8" id="div1">
+                    	&nbsp;최소한개
                     	</div><br>
                     	</div>
                     	
                     	<div class="form-group">
-                    	<label class="col-xs-4 control-label">브랜드</label>
-                    	<div class="col-xs-8">
+                    	<label class="col-xs-4 control-label"><p style="font-family: 'Do Hyeon', sans-serif;">브랜드</p></label>
+                    	<div class="col-xs-8"  id="div1">
                     	&nbsp;내마음이 콩떡콩떡집
                     	</div><br>
                     	</div>
                     	
                     	<div class="form-group">
-                    	<label class="col-xs-4 control-label">원산지</label>
-                    	<div class="col-xs-8">
+                    	<label class="col-xs-4 control-label"><p style="font-family: 'Do Hyeon', sans-serif;">원산지</p></label>
+                    	<div class="col-xs-8"  id="div1">
                     	&nbsp;아래참조
                     	</div><br>
                     	</div>
                     	
                     	<div class="form-group">
-                    	<label class="col-xs-4 control-label">배송날짜</label>
-                    	<div class="col-xs-8">
+                    	<label class="col-xs-4 control-label"><p style="font-family: 'Do Hyeon', sans-serif;">배송날짜</p></label>
+                    	<div class="col-xs-8"  id="div1">
 						<input type="date" name="date" id='datePicker' >
 						</div><br>
                     	</div>
                     	
                     	<div class="form-group">
-                    	<label class="col-xs-4 control-label">수량</label>
-                    	<div class="col-xs-8">
+                    	<label class="col-xs-4 control-label"><p style="font-family: 'Do Hyeon', sans-serif;">수량</p></label>
+                    	<div class="col-xs-8"  id="div1">
                     	<input type="number" name="panierAmount" value="1" min="1" id="amount" onChange="OnKeyUp()">
                     	</div><br>
                     	</div>
                     	
                     	<div class="form-group">
-                    	<label class="col-xs-4 control-label">배송비용</label>
-                    	<div class="col-xs-8">
+                    	<label class="col-xs-4 control-label"><p style="font-family: 'Do Hyeon', sans-serif;">배송비용</p></label>
+                    	<div class="col-xs-8"  id="div1">
                     	<select name="ship" id="selectShip" onChange="changePrice()">
                     		<option value="00">배송 선택</option>
                     		<option value="5000">서울,경기 (+ 5000원)</option>
@@ -139,10 +145,10 @@ input , select {
                     	<input type="hidden" name="dCheck" value="0">
                     	
                     	<div class="form-group">
-                    	<label class="col-xs-4 control-label" style="margin-top: 5%;">총 합계 금액</label>
-                    	<div class="col-xs-6">
+                    	<label class="col-xs-4 control-label" style="margin-top: 5%;"><p style="font-family: 'Do Hyeon', sans-serif;">총 합계 금액</p></label>
+                    	<div class="col-xs-6"  id="div1">
 							<input type="text" name="totalprice" id="totalprice" style="border:none; text-align:center; font-size: 200%;" value="${saleList['SALEPRICE'] }원" readonly>
-						
+						<br><br>
 						</div>
 							
 						<br>
@@ -150,10 +156,10 @@ input , select {
                 </div>
 				<c:if test="${loginClient.CId != 'admin'}">  
 				<div class="col-md-12 text-center">
-                    <input type="button" class="btn btn-primary" value="장바구니" onclick="jangbaguni();"><br>
+                    <input type="button" class="btn btn-primary" style="width: 100%;" value="장바구니"  onclick="jangbaguni();"><br><br>
                 </div>
                 <div class="col-md-12 text-center">
-               <input type="button" class="btn btn-danger" value="주문하기" onclick="payment();">
+               <input type="button" class="btn btn-danger" style="width: 100%;" value="주문하기" onclick="payment();">
                 </div>
                 </c:if>
               	<c:if test="${loginClient.CId eq 'admin'}">  
@@ -205,17 +211,18 @@ input , select {
 				return false;
 			}
 			
+			if(($('#datePicker').val()) == "") {
+				alert('배송날짜를 선택해주세요');
+				
+				return false;
+			}
+			
 			if(($('#selectShip').val()) == "00") {
 				alert('배송 비용을 선택하세요');
 				
 				return false;
 			}
 			
-			if(($('#dateofbirth').val()) == "") {
-				alert('배송날짜를 선택해주세요');
-				
-				return false;
-			}
 			
 			return true;
 		}
@@ -247,6 +254,8 @@ input , select {
 		
 		$(function(){
 			$("#amount").on({"change":OnKeyUp,"keyup":OnKeyUp});
+			
+			OnKeyUp();
 		})
 		
 		function OnKeyUp() {
@@ -308,15 +317,15 @@ input , select {
 	
 	
 	<div class="container text-center">
-        <div class="col-sm-12 row well"  style="background-color: #F2FF92;">
-            <h3>상세보기</h3>
+        <div class="col-sm-12 row">
+            <h1 style="font-family: 'Black Han Sans', sans-serif;">${saleList['SALENAME'] }</h1><br><hr>
             <br>
-            <pre>${saleList['DETAILSINFO'] }</pre>
+            <pre style="background-color: white; font-size: 30px; font-family: 'Nanum Gothic Coding', monospace; border:0px;">${saleList['DETAILSINFO'] }</pre><hr>
             <br>
             <div class="row">
-            <img src="${pageContext.request.contextPath }/resources/images/jumun.jpg"  /><br><br>
-            <img src="${pageContext.request.contextPath }/resources/images/baesong.png"  /><br><br>
-            <img src="${pageContext.request.contextPath }/resources/images/abcd1.png"  /><br><br>
+            <img src="${pageContext.request.contextPath }/resources/images/abcd1.png"  />
+            <img src="${pageContext.request.contextPath }/resources/images/jumun.jpg"  />
+            <img src="${pageContext.request.contextPath }/resources/images/baesong.png"  />
             
             </div>
         </div><br>
@@ -324,22 +333,28 @@ input , select {
     
 	<form name="reviewBoard"  method="post" action="${pageContext.request.contextPath}/review/reviewForm">
     <div class="container text-center"> <br>
-            <div class="col-sm-12 row well" style="background-color:lightyellow;">
-                <h3>후기를 등록해주세요</h3><br>
+            <div class="col-sm-12 row" style="background-color:white;">
+                <h3 style="font-family: 'Black Han Sans', sans-serif; font-size: 50px;">후기를 등록해주세요</h3><br>
                 <input type="hidden" name="cId" value="${loginClient.CId }">
                 <input type="hidden" name="pCode" value="${saleList['PCODE'] }">
                 
-                <div class="col-sm-12 row well" style="float: none; margin: 0 auto; background-color: lightgray;">
-                    <select class="form-control" name="reviewStar" >
+                <div class="col-sm-12 row well" style="float: none; margin: 0 auto; background-color: #EAEAEA;">
+                    <select class="form-control" name="reviewStar" style="font-family: 'Do Hyeon', sans-serif;" >
                         <option value="★★★★★">★★★★★ 아주만족</option>
                         <option value="★★★★">★★★★ 만족</option>
                         <option value="★★★">★★★ 보통</option>
                         <option value="★★">★★ 미흡</option>
                         <option value="★">★ 불만족</option>
                     </select><br>
-                    <textarea rows=7 cols=140 class="form-control" name="reviewContent" placeholder="후기를 등록하세요 (500자 이하)" style="resize: none;"></textarea><br>
-                    <input type="submit" class="btn btn-danger" value="리뷰등록"><br>
-                    
+                    <textarea rows=7 cols=140 class="form-control" name="reviewContent" placeholder="후기를 등록하세요 (500자 이하)" style="resize: none; font-family: 'Sunflower', sans-serif;"></textarea><br>
+                    <c:choose>
+                    <c:when test="${loginClient.CId == null}">
+                    <p>로그인이 필요한 서비스 입니다.</p>
+                	</c:when>
+                	<c:otherwise>
+                	<input type="submit"class="btn btn-danger" value="리뷰등록"><br>
+                	</c:otherwise>
+                	</c:choose>
                 </div>
             </div>
         </div>
@@ -369,7 +384,7 @@ input , select {
 					
 				</div>
 				<div class="col-sm-8" >
-					<textarea class="form-control" id="textarea" rows=7 cols=80 readonly style="background-color: white; resize: none;">${r["REVIEWCONTENT"]}</textarea><br>
+					<textarea class="form-control" id="textarea" rows=7 cols=80 readonly style="background-color: white; resize: none; font-family: 'Sunflower', sans-serif;">${r["REVIEWCONTENT"]}</textarea><br>
 					<br>
 					<div class="add1"></div>
 				</div>
@@ -390,15 +405,14 @@ input , select {
 
 
 <script>
-
+	
+	
 	var img = document.getElementsByClassName('img-responsive'); 
 	for (var x = 0; x < img.length; x++) { 
 		img.item(x).onclick=function() {
 			window.open(this.src)
 			}; 
 		}
-
-
 
 	function reviewUpdate(element){
 		var target=$(element).parent().parent().next().find('.add1');

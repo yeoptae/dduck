@@ -6,6 +6,7 @@ import java.util.Map;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import com.kh.dduck.adminboard.model.vo.SaleBoardFile;
+import com.kh.dduck.payment.model.vo.Payment;
 import com.kh.dduck.review.model.vo.Review;
 
 public interface ReviewDao {
@@ -18,4 +19,5 @@ public interface ReviewDao {
 	int updateReview(SqlSessionTemplate session, Review r);
 	Map<String,Object> selectSale(SqlSessionTemplate session, int pCode);
 	List<SaleBoardFile> selectAttachList(SqlSessionTemplate session, int pCode);
+	int selectReviewCount1(SqlSessionTemplate session, Payment p);
 }

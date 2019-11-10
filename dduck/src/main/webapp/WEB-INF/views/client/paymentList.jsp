@@ -6,6 +6,7 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
   <jsp:param name="pageTitle" value="관리자마이페이지"/>
 </jsp:include>
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Do+Hyeon|Nanum+Gothic+Coding|Noto+Sans+KR|Sunflower:300&display=swap" rel="stylesheet">
 <body>
 	<div class="row">
 		<div class="col-sm-3 sidenav">
@@ -26,11 +27,11 @@
 			</ul>
 		</div>
 		<div class="col-xs-8 col-sm-8">
-		<h1 class="text-center">결제내역</h1>
+		<h1 class="text-center" style="font-family: 'Black Han Sans', sans-serif;">결제내역</h1>
 
           <div class="container-fluid" style="margin-top: 5%">
             <table class="table">
-              <thead class="thead-light">
+              <thead class="thead-light" style="font-family: 'Do Hyeon', sans-serif;">
                 <tr style="text-align: center;">
         
                 <tr>
@@ -41,19 +42,26 @@
                   <th style="background-color: #eeeeee; text-align: center;">배송시간</th>               
                   <th style="background-color: #eeeeee; text-align: center;">수량</th>               
                   <th style="background-color: #eeeeee; text-align: center;">합계 금액</th>            
+                  <th style="background-color: #eeeeee; text-align: center;">배송 상태</th>            
                   <th style="background-color: #eeeeee; text-align: center;">결제 상태</th>            
                 </tr>
               </thead>
-              <tbody>
+              <tbody style="font-family: 'Noto Sans KR', sans-serif;">
                  <c:forEach items="${list }" var="p" varStatus="pv">
               		<tr>
               			<td style="text-align: center;"><img src="${path }/resources/upload/board/${p['ATTACHREFILENAME'] }" height="50px" width="50px"></td>
-              			<td style="text-align: center;"><c:out value="${p['SALENAME'] }"/></td>
+              			<td style="text-align: center;"><a id="${p['PCODE']}" onclick="move1(this.id);"><c:out value="${p['SALENAME'] }"/></a></td>
               			<td style="text-align: center;"><c:out value="${p['PAYADDR1']},${p['PAYADDR2']},${p['PAYADDR3']}"/></td>
               			<td style="text-align: center;"><fmt:formatDate value="${p['PAYDELIVERYEN'] }" pattern="yyyy.MM.dd"/></td>
               			<td style="text-align: center;"><c:out value="${p['PAYTIME'] }"/></td>
               			<td style="text-align: center;"><c:out value="${p['PAYAMOUNT'] }"/>개</td>
               			<td style="text-align: center;"><c:out value="${p['PAYPRICE'] }"/>원</td>
+              			<c:if test="${p['DCHECK'] =='1' }">						
+              			<td style="text-align: center;">배송완료</td>
+						</c:if>
+              			<c:if test="${p['DCHECK'] =='0' }">						
+              			<td style="text-align: center;">배송 전</td>
+						</c:if>
               			<td style="text-align: center;">결제완료</td>
               	    </tr>
               	    <input type="hidden" name="cId" value="${loginClient.CId}">
@@ -71,7 +79,14 @@
 </div>
 
 </body>
-
+<script>
+function move1(pc) {
+	
+	if(confirm("이동하시겠습니까?")) {
+		location.href="${pageContext.request.contextPath}/detail/detailView?pCode="+pc;	
+	}
+}
+</script>
  
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
