@@ -40,37 +40,42 @@
 
 
 
-// 중복된 이메일일경우 버튼을 숨기는 ajax
- $(function(){
-		$("#email").blur(function() {
-			var clientEmail = $('#email').val();
-			
-			$.ajax({                                                    //e_mail=파라미터값     
-				url : "${pageContext.request.contextPath}/user/mailCheck?e_mail="+ clientEmail,															//cId=파라미터값으로 input에 name값이다.
-				type : 'post',
+
+
+
+
+$(function(){
+	$("#email").keyup(function() {
+		var clientEmail = $('#email').val();
+		if(clientEmail.length>11){
+				$.ajax({
+				url : "${pageContext.request.contextPath}/user/mailCheck?e_mail="+ clientEmail,
+				//cId=파라미터값으로 input에 name값이다.
+				type : 'get',
 				datatype : 'html',
-				
 				success : function(data) {
-								console.log("1 = 중복o / 0 = 중복x : "+ data);	
 								if (data == 1) {
-									// 1 : 	이메일이 중복되는 문구
-									$("#mailCheck").text("사용중인 이메일 입니다. 이메일을 다시입력해 주세요.");
-									$("#mailCheck").css("color", "red");
+									// 1 : 이메일 중복문구
+									$("#mailCheck").text("사용중인 아이디입니다.");
+									$("#mailCheck").css({"color":"red","display":"block"});
 									$("#injeng").hide();
-								} else if(data == 0){
+								} else {
+									if(data == 0){
 										// 0 : 아이디 길이 / 문자열 검사
-									 	$("#mailCheck").text("사용가능한 이메일 입니다.");
+										$("#mailCheck").text("사용가능한 아이디입니다.");
+										$("#mailCheck").css({"color":"green","display":"block"});
 										$("#injeng").show();
 									} 
-									
+								}
 							}, error : function() {
 									console.log("실패");
 							}
-						});
-					});
-		        
-				});
-        
+			});
+		}
+	});
+}); 
+
+
         
 </script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

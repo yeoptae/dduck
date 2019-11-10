@@ -242,6 +242,8 @@ public class ClientController {
 	/*아이디 찾기 컨트롤러*/
 	@RequestMapping("/searchIdEnd/searchIdEnd.do")
 	public String searchIdEnd(Client c, Model model) {
+		
+		System.out.println("1111111111111111"+c);
 
 		Client result = service.searchIdEnd(c);
 
@@ -312,7 +314,7 @@ public class ClientController {
 	public ModelAndView paymentList(@RequestParam(value = "cPage", required = false, defaultValue = "0") int cPage,
 			String cId) {
 		ModelAndView mv = new ModelAndView();
-		int numPerPage = 10;
+		int numPerPage = 20;
 
 		List<Map<String, String>> list = service.selectPaymentEndList(cPage, numPerPage, cId);
 		int totalCount = service.selectPaymentEndCount();

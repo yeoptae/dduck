@@ -19,11 +19,11 @@
                         <div class="panel-title">비밀번호 변경하기</div>
                     </div>     
 			<div style="padding-top:30px" class="panel-body" >
-				<form id="pwChange5" class="form-horizontal" role="form" action="pass_change.do" method="post" onsubmit="return validate();" method="post">
+				<form id="pwChange5" class="form-horizontal" role="form" action="pass_change.do" method="post" onsubmit="return signUp_validate();" method="post">
 					<div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
  		<input type="hidden" value="${e_mail}" name="cEmail">
-                            <input  type="password" class="form-control" name="cPw"  placeholder="변경할 비밀번호">
+                            <input  type="password" class="form-control" name="cPw" id="pwd" placeholder="변경할 비밀번호">
                     </div>
                     <div style="margin-top:10px" class="form-group">
                                     <!-- Button -->
@@ -38,6 +38,29 @@
 		</div>
 		</div>
 	
+<script>
+
+function signUp_validate(){
+	
+	
+	var pwCheck = /^[a-z]+[a-z0-9]{5,19}$/g;
+	if(!pwCheck.test($('#pwd').val())) {
+		alert('비밀번호는 소문자+숫자로 가능합니다.');
+		return false;
+	} 
+
+
+	
+	return true;
+	}
+
+
+
+
+
+</script>
+
+
 
 
 
