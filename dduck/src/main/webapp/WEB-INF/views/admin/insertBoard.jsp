@@ -5,6 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Do+Hyeon|Nanum+Gothic+Coding|Noto+Sans+KR|Sunflower:300&display=swap" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet" />
@@ -68,33 +69,6 @@
 
 .select-birth-input {
 	width: 80px;
-}
-
-body:after {
-	/* -moz-pointer-events: none;
-			-webkit-pointer-events: none;
-			-ms-pointer-events: none;
-			pointer-events: none;
-			-moz-transition: opacity 1.5s ease-in-out, visibility 1.5s;
-			-webkit-transition: opacity 1.5s ease-in-out, visibility 1.5s;
-			-ms-transition: opacity 1.5s ease-in-out, visibility 1.5s;
-			transition: opacity 1.5s ease-in-out, visibility 1.5s; */
-	content: '';
-	background-image:
-		url("${pageContext.request.contextPath}/resources/images/abc.jpg");
-	background-attachment: fixed;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	position: fixed;
-	display: block;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
-	z-index: -1;
-	visibility: visible;
-	opacity: 1;
 }
 .file_input label {
     position:relative;
@@ -170,7 +144,7 @@ div#select_box select#gCode {
 				<div class="col">
 
 					<br> <br> <br> <br>
-					<h2>상품등록</h2>
+					<h2 style="margin-right:10px; font-family: 'Black Han Sans', sans-serif;">상품등록</h2>
 					<hr>
 					<form name="boardFrm"
 						action="${pageContext.request.contextPath}/admin/insertProductEnd.do"

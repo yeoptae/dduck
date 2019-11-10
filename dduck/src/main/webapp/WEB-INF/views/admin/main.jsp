@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Do+Hyeon|Nanum+Gothic+Coding|Noto+Sans+KR|Sunflower:300&display=swap" rel="stylesheet">
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="pageTitle" value="" />
 </jsp:include>
@@ -105,7 +106,7 @@
 	<span
 		style="font-family: Noto sans KR, sans-serif; font-size: 35px; color: #424242; letter-spacing: -0.07em;">콩떡콩떡</span>
 	<span
-		style="font-family: 'Roboto', sans-seri; font-size: 41px; color: #424242; letter-spacing: -0.02em;">New</span>
+		style="font-family: 'Black Han Sans', sans-serif; font-size: 41px; color: #424242; letter-spacing: -0.02em;">New</span>
 </p>
 
 
@@ -123,7 +124,7 @@
                  
 				<center> <table><p style="margin-top: 80px; margin-bottom: 15px">
 					<span
-						style="font-family: Georgia, serif; font-size: 35px; color: #424242; letter-spacing: -0.07em; ">답례떡
+						style="font-family: 'Black Han Sans', sans-serif; font-size: 35px; color: #424242; letter-spacing: -0.07em; ">답례떡
 					</span>
 				</p></table></center>
 				<br>
@@ -161,12 +162,12 @@
 							<div class="post-title">
 								<ul class="mt-1 mb-0">
 									<center>
-										<li class="list-inline-item"><c:out
+										<li class="list-inline-item" style="font-family: 'Do Hyeon', sans-serif;" ><c:out
 												value='${b["SALENAME"] }' /></li>
 										<%-- 									</center> --%>
 										<center>
 											<li class="list-inline-item" name="money"
-												style="color: #333; font-family: Georgia, serif; font-size: 20px;">
+												style="font-family: 'Noto Sans KR', sans-serif;" font-size: 20px;">
 												<fmt:formatNumber value='${b["SALEPRICE"] }' /> 원
 											</li>
 								</ul>
@@ -189,7 +190,7 @@
 				</c:if>
 				<p align="center" style="margin-top: 80px; margin-bottom: 15px">
 					<span
-						style="font-family: Georgia, serif; font-size: 35px; color: #424242; letter-spacing: -0.07em;">간식</span>
+						style="font-family: 'Black Han Sans', sans-serif; font-size: 35px; color: #424242; letter-spacing: -0.07em;">간식</span>
 				</p>
                <br>
 				<c:forEach items="${list2 }" var="b" varStatus="v">
@@ -222,12 +223,12 @@
 							<div class="post-title">
 								<ul class="mt-1 mb-0">
 									<center>
-										<li class="list-inline-item"><c:out
+										<li class="list-inline-item" style="font-family: 'Do Hyeon', sans-serif;"><c:out
 												value='${b["SALENAME"] }' /></li>
 									</center>
 									<center>
 										<li class="list-inline-item" name="money"
-											style="color: #333; font-family: Georgia, serif; font-size: 20px;">
+											style="font-family: 'Noto Sans KR', sans-serif;" font-size: 20px;">
 											<fmt:formatNumber value='${b["SALEPRICE"] }' /> 원
 										</li>
 								</ul>
@@ -250,7 +251,7 @@
 				</c:if>
 				<p align="center" style="margin-top: 80px; margin-bottom: 15px">
 					<span
-						style="font-family: Georgia, serif; font-size: 35px; color: #424242; letter-spacing: -0.07em;">돌떡</span>
+						style="font-family: 'Black Han Sans', sans-serif; font-size: 35px; color: #424242; letter-spacing: -0.07em;">돌떡</span>
 				</p>
 				<br>
 				<c:forEach items="${list3 }" var="b" varStatus="v">
@@ -284,12 +285,12 @@
 							<div class="post-title">
 								<ul class="mt-1 mb-0">
 									<center>
-										<li class="list-inline-item"><c:out
+										<li class="list-inline-item" style="font-family: 'Do Hyeon', sans-serif;"><c:out
 												value='${b["SALENAME"] }' /></li>
 									</center>
 									<center>
 										<li class="list-inline-item" name="money"
-											style="color: #333; font-family: Georgia, serif; font-size: 20px;">
+											style="font-family: 'Noto Sans KR', sans-serif;" font-size: 20px;">
 											<fmt:formatNumber value='${b["SALEPRICE"] }' /> 원
 										</li>
 								</ul>
@@ -310,7 +311,7 @@
 				</c:if>
 				<p align="center" style="margin-top: 80px; margin-bottom: 15px">
 					<span
-						style="font-family: Georgia, serif; font-size: 35px; color: #424242; letter-spacing: -0.07em;">케이크</span>
+						style="font-family: 'Black Han Sans', sans-serif; font-size: 35px; color: #424242; letter-spacing: -0.07em;">케이크</span>
 				</p>
 				<br>
 				<c:forEach items="${list4 }" var="b" varStatus="v">
@@ -344,12 +345,12 @@
 							<div class="post-title">
 								<ul class="mt-1 mb-0">
 									<center>
-										<li class="list-inline-item"><c:out
+										<li class="list-inline-item" style="font-family: 'Do Hyeon', sans-serif;"><c:out
 												value='${b["SALENAME"] }' /></li>
 									</center>
 									<center>
 										<li class="list-inline-item" name="money"
-											style="color: #333; font-family: Georgia, serif; font-size: 20px;">
+											style="font-family: 'Noto Sans KR', sans-serif;" font-size: 20px;">
 											<fmt:formatNumber value='${b["SALEPRICE"] }' /> 원
 										</li>
 								</ul>
@@ -370,7 +371,7 @@
 				</c:if>
 				<p align="center" style="margin-top: 80px; margin-bottom: 15px">
 				 	<span
-						style="font-family: Georgia, serif; font-size: 35px; color: #424242; letter-spacing: -0.07em;">세트</span>
+						style="font-family: 'Black Han Sans', sans-serif; font-size: 35px; color: #424242; letter-spacing: -0.07em;">세트</span>
 				</p>
 				<br>
 				<c:forEach items="${list5 }" var="b" varStatus="v">
@@ -404,12 +405,12 @@
 							<div class="post-title">
 								<ul class="mt-1 mb-0">
 									<center>
-										<li class="list-inline-item"><c:out
+										<li class="list-inline-item" style="font-family: 'Do Hyeon', sans-serif;"><c:out
 												value='${b["SALENAME"] }' /></li>
 									</center>
 									<center>
 										<li class="list-inline-item" name="money"
-											style="color: #333; font-family: Georgia, serif; font-size: 20px;">
+											style="font-family: 'Noto Sans KR', sans-serif;" font-size: 20px;">
 											<fmt:formatNumber value='${b["SALEPRICE"] }' /> 원
 										</li>
 								</ul>
