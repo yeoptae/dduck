@@ -314,7 +314,7 @@ public class ClientController {
 	public ModelAndView paymentList(@RequestParam(value = "cPage", required = false, defaultValue = "0") int cPage,
 			String cId) {
 		ModelAndView mv = new ModelAndView();
-		int numPerPage = 10;
+		int numPerPage = 20;
 
 		List<Map<String, String>> list = service.selectPaymentEndList(cPage, numPerPage, cId);
 		int totalCount = service.selectPaymentEndCount();
