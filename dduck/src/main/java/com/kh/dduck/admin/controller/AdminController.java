@@ -46,7 +46,7 @@ public class AdminController {
 
    /* 상품전체검색 */
    @RequestMapping("/admin/searchList.do")
-   public ModelAndView searchList(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage,int gCode,
+   public ModelAndView searchList(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage,
          @RequestParam(required = false, defaultValue = "") String searchWord, HttpServletRequest request) {
       
       ModelAndView mv = new ModelAndView();
@@ -55,11 +55,10 @@ public class AdminController {
       
       List<Map<String, String>> list = service.searchList(cPage, numPerPage, searchWord);
       List<Map<String, String>> fileList = service.selectFile();
-      int totlaCount = service.selectBoardCount(gCode);
       int totlaCount2 = service.selectBoardCount2(searchWord);
       
       mv.addObject("searchWord",searchWord);
-      mv.addObject("count", totlaCount);
+
       mv.addObject("list", list);
       mv.addObject("fileList", fileList);
       mv.addObject("pageBar",

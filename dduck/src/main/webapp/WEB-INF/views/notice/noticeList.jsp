@@ -11,23 +11,24 @@
     <br><br>
     <div class="mainlist bodystyle">
         <div class="container">
+			<h2 class="pull-left">공지사항 <small>공지/이벤트</small></h2>
             <div class="row">
              	<c:if test="${loginClient.CId eq 'admin' }">
 	            	<div class="pull-left buttonposi">
 	            		<input type="button" value="글쓰기" id='btn-add' class='btn btn-lg btn-link' onclick='location.href="${path}/notice/noticeForm"'/>
 	            	</div>
              	</c:if>
-                <div class="col-md-3">
+                <!-- <div class="col-md-3">
                     <form action="#" method="get">
                         <div class="input-group">
-                            <!-- USE TWITTER TYPEAHEAD JSON WITH API TO SEARCH -->
+                            USE TWITTER TYPEAHEAD JSON WITH API TO SEARCH
                             <input class="form-control" id="system-search" name="q" placeholder="검색" required>
                             <span class="input-group-btn">
                                 <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
                             </span>
                         </div>
                     </form>
-                </div><br>
+                </div> --><br>
                 <div class="col-md-9">
                 <br>
                  <table class="table table-list-search">
@@ -36,14 +37,14 @@
                                     <th class="notice-table-6">분류</th>
                                     <th class="notice-table-1">번호</th>
                                     <th class="notice-table-2">제목</th>
-                                    <th class="notice-table-3">작성자</th>
-                                    <th class="notice-table-4">작성일</th>
-                                    <!-- <th class="notice-table-5">조회수</th> -->
+                                    <th class="notice-table-3" style="width : 100px;">작성자</th>
+                                    <th class="notice-table-4" style="width : 100px;">작성일</th>
+                                   
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="text-align: center;">
                             <c:forEach items="${list }" var="n" varStatus="v">
-                                <tr class="noticeTrHeight">
+                                <tr>
                                     <td>
                                     	<c:choose>
                                     		<c:when test='${n["NOTICECATEGORY"] eq "1"}'>
@@ -73,7 +74,9 @@
                                     	<c:out value='${n["NOTICECOUNT"] }'/>
                                     </td> --%>
                                 </tr>
+
                             </c:forEach>
+                            
                             </tbody>
                         </table>   
                        <center>${pageBar }</center>

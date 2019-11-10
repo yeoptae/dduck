@@ -25,7 +25,7 @@
 }
 
 .navbar {
-	height: 65px;
+	/* height: 65px; */
 	width: 100%;
 }
 

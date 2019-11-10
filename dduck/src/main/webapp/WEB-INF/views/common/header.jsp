@@ -16,6 +16,49 @@
 
    
 </head>
+
+	<style>
+	#custom-search-input {
+		width : 250px;
+        margin:0;
+        margin-top: 10px;
+        padding: 0;
+    }
+ 
+    #custom-search-input .search-query {
+        padding-right: 3px;
+        padding-right: 4px \9;
+        padding-left: 3px;
+        padding-left: 4px \9;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+ 
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+ 
+    #custom-search-input button {
+        border: 0;
+        background: none;
+        /** belows styles are working good */
+        padding: 2px 5px;
+        margin-top: 2px;
+        position: relative;
+        left: -28px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        color:#D9230F;
+    }
+ 
+    .search-query:focus + button {
+        z-index: 3;   
+    }
+	
+	</style>
 <style>
 .navbar-inverse .navbar-nav>li>a, .dropdown-menu>li>a{
 	font-family: 'Do Hyeon', sans-serif;
@@ -28,7 +71,7 @@
 .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>li>a:hover{
 	background-color: #8e2615;
 }
-.container-fluid, .navbar-inverse .navbar-nav>li>ul{
+.redredredheader, .navbar-inverse .navbar-nav>li>ul{
     background-color: #BC331C;
 }
 .jumbotron {
@@ -41,6 +84,9 @@
 	height : 20px;
 	background-color : rgba(138, 16, 16, 0.822);
 }
+.loinglinestyle ul>li>a{
+	height : 50px;
+}
 </style>
 <body>
     <header>
@@ -52,7 +98,7 @@
         </div>
 
         <nav class="navbar navbar-inverse">
-            <div class="container-fluid" >
+            <div class="redredredheader container-fluid" >
             
                 <div class="navbar-header">
                     <button type="button" class="pull-left navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -65,7 +111,7 @@
 
                 <div class="collapse navbar-collapse" id="myNavbar" style=" text-align:center;">
                     <ul class="nav navbar-nav" id="menu">
-                        <li><a href="/dduck">Home</a></li>
+                        <li><a href="${path}">Home</a></li>
                         <li><div class="seroLine"></div></li>
                         <li class="dropdown">
                            <a class="dropdown-toggle" data-toggle="dropdown"">메뉴<b class="caret"></b></a>
@@ -86,8 +132,28 @@
                         <li><a href="${pageContext.request.contextPath}/admin/saleboardList.do?gCode=5">세트</a></li>
             
                     </ul>
-                      
-                      <!--로그인 시 보여지는 로직들  -->
+					<ul class="nav navbar-nav">
+						<li>
+							<form name="form1" method="post"
+								action="${path}/admin/searchList.do">
+								<div id="custom-search-input">
+									<div class="input-group col-md-12">
+										<input type="text" id="searchWord" name="searchWord"
+											value="${searchWord }" placeholder="전체 떡 검색하기" required
+											class="  search-query form-control" placeholder="Search" />
+										<span class="input-group-btn">
+											<button class="btn btn-danger" onclick="searchDduck()"
+												type="submit">
+												<span class=" glyphicon glyphicon-search"></span>
+											</button>
+										</span>
+									</div>
+								</div>
+							</form>
+						</li>
+					</ul>
+					<!--로그인 시 보여지는 로직들  -->
+                      <div class="loinglinestyle">
                       <c:choose>
                            <c:when test="${empty loginClient }">
                            <ul class="nav navbar-nav navbar-right">
@@ -109,6 +175,7 @@
                                    </ul>
                             </c:otherwise>
                         </c:choose>
+                        </div>
                    </div>
                </div>
             </nav>
