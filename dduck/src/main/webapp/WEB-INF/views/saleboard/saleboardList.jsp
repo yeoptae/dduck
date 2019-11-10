@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Do+Hyeon|Nanum+Gothic+Coding|Noto+Sans+KR|Sunflower:300&display=swap" rel="stylesheet">
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="pageTitle" value="" />
 </jsp:include>
@@ -61,12 +62,12 @@
 							<div class="post-title">
 								<ul class="mt-1 mb-0">
 									<center>
-										<li class="list-inline-item"><c:out
+										<li class="list-inline-item" style="font-family: 'Do Hyeon', sans-serif;"><c:out
 												value='${b["SALENAME"] }' /></li>
 									</center>
 									<center>
 										<li class="list-inline-item" name="money"
-											style="color: #333; font-family:"Dotum",돋움; font-size:20px;">
+											 style="font-family: 'Noto Sans KR', sans-serif;" font-size: 20px;">
 											<fmt:formatNumber value='${b["SALEPRICE"] }' /> 원
 										</li>
 								</ul>
