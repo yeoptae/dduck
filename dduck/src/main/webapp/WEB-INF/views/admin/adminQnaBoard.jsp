@@ -4,7 +4,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
-<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Do+Hyeon|Nanum+Gothic+Coding|Noto+Sans+KR|Sunflower:300&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Do+Hyeon|Nanum+Gothic+Coding|Noto+Sans+KR|Sunflower:300&display=swap"
+	rel="stylesheet">
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="pageTitle" value="관리자마이페이지" />
 </jsp:include>
@@ -15,16 +17,20 @@
 		<div class="row content">
 			<div class="col-sm-2 sidenav">
 				<ul class="nav nav-pills nav-stacked">
-				<h4 style="margin-right:10px; font-family: 'Black Han Sans', sans-serif;">관리자페이지</h4>
+					<h4
+						style="margin-right: 10px; font-family: 'Black Han Sans', sans-serif;">관리자페이지</h4>
 					<li><a
-						href="${pageContext.request.contextPath}/admin/adminmypage.do" style="font-family: 'Black Han Sans', sans-serif;">주문현황</a></li>
+						href="${pageContext.request.contextPath}/admin/adminmypage.do"
+						style="font-family: 'Black Han Sans', sans-serif;">주문현황</a></li>
 					<li><a
-						href="${pageContext.request.contextPath}/admin/adminClientList.do" style="font-family: 'Black Han Sans', sans-serif;">회원리스트</a></li>
+						href="${pageContext.request.contextPath}/admin/adminClientList.do"
+						style="font-family: 'Black Han Sans', sans-serif;">회원리스트</a></li>
 					<li><a
-						href="${pageContext.request.contextPath}/admin/adminQnaBoard.do" style="font-family: 'Black Han Sans', sans-serif;">Qna게시판
-							관리하기</a></li>
+						href="${pageContext.request.contextPath}/admin/adminQnaBoard.do"
+						style="font-family: 'Black Han Sans', sans-serif;">Qna게시판 관리하기</a></li>
 					<li><a
-						href="${pageContext.request.contextPath}/admin/insertproduct.do" style="font-family: 'Black Han Sans', sans-serif;">상품등록</a></li>
+						href="${pageContext.request.contextPath}/admin/insertproduct.do"
+						style="font-family: 'Black Han Sans', sans-serif;">상품등록</a></li>
 				</ul>
 				<br>
 
@@ -33,8 +39,11 @@
 
 			<div class="col-sm-10">
 				<hr>
-				<center><h2 style="margin-right:10px; font-family: 'Black Han Sans', sans-serif;">Qna게시판</h2></center>
-				
+				<center>
+					<h2
+						style="margin-right: 10px; font-family: 'Black Han Sans', sans-serif;">Qna게시판</h2>
+				</center>
+
 				<div class="container-fluid" style="margin-top: 5%">
 					<table id='tbl-board' class='table table-striped table-hover'>
 						<thead class="thead-light">
@@ -44,6 +53,7 @@
 								<th style="background-color: #eeeeee; text-align: center;">작성자</th>
 								<th style="background-color: #eeeeee; text-align: center;">제목</th>
 								<th style="background-color: #eeeeee; text-align: center;">작성일</th>
+								<th style="background-color: #eeeeee; text-align: center;">답변</th>
 
 							</tr>
 						</thead>
@@ -53,9 +63,20 @@
 								<tr style="text-align: center;">
 									<td><c:out value='${q["QACODE"] }' /></td>
 									<td><c:out value='${q["CID"] }' /></td>
-									<td><a href='${path }/qna/qnaView.do?qaCode=${q["QACODE"] }'><c:out value='${q["QATITLE"] }'/></a></td>
+									<td><a
+										href='${path }/qna/qnaView.do?qaCode=${q["QACODE"] }'><c:out
+												value='${q["QATITLE"] }' /></a></td>
 									<td><c:out value='${q["QAEN"] }' /></td>
 									
+		                	<c:if test='${empty q["CMCONTENT"]}'>
+		                	<td>답변전<td>
+		                	</c:if>
+		                	<c:if test='${not empty q["CMCONTENT"]}'>
+		                	<td >답변완료</td>
+		                	</c:if>
+		                		
+		                
+		    
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -65,8 +86,7 @@
 				</div>
 			</div>
 
-			<br>
-			<br>
+			<br> <br>
 
 		</div>
 </section>
