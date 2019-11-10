@@ -13,7 +13,6 @@
 			<h4 style="margin-right:10px; font-family: 'Black Han Sans', sans-serif;">장바구니</h4>
 			<ul class="nav nav-pills nav-stacked">
 				<li><a
-
 					href="${pageContext.request.contextPath}/client/panier?cId=${loginClient.CId}" style="font-family: 'Black Han Sans', sans-serif;">장바구니</a></li>
 				<li><a
 					href="${pageContext.request.contextPath}/client/paymentList?cId=${loginClient.CId}" style="font-family: 'Black Han Sans', sans-serif;">결제내역</a></li>
