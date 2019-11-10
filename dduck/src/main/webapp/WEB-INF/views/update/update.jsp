@@ -8,6 +8,8 @@
 	<jsp:param name="clientEnroll" value="정보수정" />
 </jsp:include>
 
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Do+Hyeon|Nanum+Gothic+Coding|Noto+Sans+KR|Sunflower:300&display=swap" rel="stylesheet">
+
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.2/css/bootstrap.min.css">
@@ -20,7 +22,6 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<body>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script>
         function sample6_execDaumPostcode() {
@@ -68,7 +69,7 @@
     
 	<div class="row">
 		<div class="col-sm-3 sidenav">
-			<h4 style="padding:10px;">마이 페이지</h4>
+			<h4 style="padding:10px;">정보수정</h4>
 			<ul class="nav nav-pills nav-stacked">
 				<li><a href="${pageContext.request.contextPath}/client/panier?cId=${loginClient.CId}">장바구니</a></li>
 				<li><a href="${pageContext.request.contextPath}/client/paymentList?cId=${loginClient.CId}">결제내역</a></li>
@@ -78,9 +79,9 @@
 			</ul>
 		</div>
 		<div class="col-xs-8 col-sm-8">
-		<h1 class="text-center" style="margin-right: 170px;">정보수정</h1>
+		<h1 class="text-center" style="margin-right:150px; font-family: 'Black Han Sans', sans-serif;">정보수정</h1>
 			<div>
-				<form class="form-horizontal" action="${path }/update/updateEnd.do" method="post">
+				<form class="form-horizontal" action="${path }/update/updateEnd.do" method="post" onsubmit="return signUp_validate();">
 					<div class="form-group">
 						<div class="col-sm-2 control-label">
 							<label for="id">아이디</label>
@@ -102,11 +103,12 @@
 
 					<div class="form-group">
 						<div class="col-sm-2 control-label">
-							<label id="email">이메일</label>
+							<label>이메일</label>
 						</div>
 						<div class="col-sm-6">
 							<input type="email" class="form-control" name="cEmail" id="email"
 								value="${loginClient.CEmail }">
+							<div class="check_font" id="mailCheck"></div>
 						</div>
 					</div>
 
@@ -147,10 +149,10 @@
 
 					<div class="form-group">
 						<div class="col-sm-2 control-label">
-							<label id="phone">전화번호</label>
+							<label >전화번호</label>
 						</div>
 						<div class="col-sm-6">
-							<input type="text" class="form-control" name="cPhone"
+							<input type="text" class="form-control" name="cPhone" id="phone"
 								value="${loginClient.CPhone }">
 						</div>
 					</div>
@@ -158,15 +160,87 @@
 					<input type="hidden" name="ip" value="${GetIpAddress.getIp()}">
 					<div class="form-group">
 						<div class="col-sm-12  text-center">
-							<input type="submit" value="정보수정" class="btn btn-primary"
-								style="margin-left: -170px;"> <input type="reset"
-								value="취소" class="btn btn-primary">
+							<input type="submit" value="정보수정"  id="submit" class="btn btn-primary"
+								style="margin-left: -170px;">
+							<input type="button" class="btn btn-primary" value="취소하기" onClick="location.reload()"/>  
 						</div>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
+	
+	
+	
+	
+	
+	
+	
+<script>
 
-</body>
+//이메일 우편번호 주소 상세주소 전화번호
+function signUp_validate(){
+
+	var phone = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})([0-9]{3,4})([0-9]{4})$/;
+	if(!phone.test($('#phone').val())){
+		alert('올바른 휴대폰 번호를 입력해주세요.');
+		return false;
+	}
+
+	
+	return true;
+	}
+
+$(function(){
+	$("#email").keyup(function() {
+		var clientEmail = $('#email').val();
+		if(clientEmail==''||clientEmail.length<5){
+			$("#mailCheck").css("display","none");
+		}
+		if(clientEmail.trim().length>4){
+			$.ajax({
+				url : "${pageContext.request.contextPath}/user/mailCheck2?cEmail="+ clientEmail,
+				//cId=파라미터값으로 input에 name값이다.
+				type : 'post',
+				datatype : 'html',
+				success : function(data) {
+								if (data == 1) {
+									// 1 : 이메일이 중복되는 문구
+									$("#mailCheck").text("중복된 이메일입니다.");
+									$("#mailCheck").css({"color":"red","display":"block"});
+									$("#submit").hide();
+								} else {
+									if(data == 0){
+										$("#mailCheck").text("사용가능한 이메일입니다.");
+										$("#mailCheck").css({"color":"green","display":"block"});
+										$("#submit").show();
+									} 
+								}
+							}, error : function() {
+									console.log("실패");
+							}
+				});
+			}
+		});
+	});
+
+
+
+
+
+
+
+</script>
+ 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

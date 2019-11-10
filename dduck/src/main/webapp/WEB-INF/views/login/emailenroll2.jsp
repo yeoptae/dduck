@@ -4,43 +4,40 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <jsp:include page="/WEB-INF/views/common/header.jsp">
-	<jsp:param name="pageTitle" value=""/>
+   <jsp:param name="pageTitle" value=""/>
 </jsp:include>
 
-<body>
- 
-<table border="1" width="300" height="300" align= "center">
-<center>
-<span style="color: green; font-weight: bold;">입력한 이메일로 받은 인증번호를 입력하세요. (인증번호가 맞아야 다음 단계로 넘어가실 수 있습니다.)</span> <br> <br>    
-        <br> <br>
-        
-        
-        <div style="text-align:center;">
-            <tr>        
-                <td>
-                <center>
-                    <form action="pass_injeung.do${dice}" method="post"> //받아온 인증코드를 컨트롤러로 넘겨서 일치하는지 확인                  
-                    <center>
-                        <br>
-                        <div>
-                        
-                            인증번호 입력 : <input type="number" name="pass_injeung"
-                                placeholder="  인증번호를 입력하세요. ">
-                        </div>                                        
- 
-                        <br> <br>
-                        <button type="submit" name="submit">인증번호 전송</button>
- 
-                        </div>
-                    </td>
-                </tr>
-                    </center>
-            </table>
-        </form>
-</center>
 
- 
- 
-</body>
+ <div class="container">    
+        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+            <div class="panel panel-info" >
+                    <div class="panel-heading">
+                        <div class="panel-title">인증번호 입력</div>
+                    </div>     
+
+                    <div style="padding-top:30px" class="panel-body" >
+
+                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                        <form id="loginform" class="form-horizontal" role="form" action="pass_injeung.do${dice},{e_mail}" method="post">
+                                    
+                            <div style="margin-bottom: 25px" class="input-group">
+                                	<input type="hidden" name="cEmail" value="${e_mail}">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                        <input type="number"  name="pass_injeung"  class="form-control"  placeholder="인증번호"/>
+                                    </div>
+                                    <div class="check_font" id="mailCheck"></div>  
+                                <div style="margin-top:10px" class="form-group">
+                                    <!-- Button -->
+                           
+                                    <div class="col-sm-12 controls">
+                                    <button  type="submit" name="submit" class="btn btn-primary">인증번호 확인</button>
+                                     </div>                                    
+                                   </div>
+                           </form>
+                        </div>  
+                    </div>  
+              </div>
+         </div>	
+
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

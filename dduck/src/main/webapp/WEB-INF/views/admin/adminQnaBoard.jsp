@@ -4,16 +4,18 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Do+Hyeon|Nanum+Gothic+Coding|Noto+Sans+KR|Sunflower:300&display=swap" rel="stylesheet">
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="pageTitle" value="관리자마이페이지" />
 </jsp:include>
+
 <section id="content">
 
 	<div class="container-fluid">
 		<div class="row content">
 			<div class="col-sm-2 sidenav">
 				<ul class="nav nav-pills nav-stacked">
-				<h4>관리자페이지</h4>
+				<h4 style="margin-right:10px; font-family: 'Black Han Sans', sans-serif;">관리자페이지</h4>
 					<li><a
 						href="${pageContext.request.contextPath}/admin/adminmypage.do">주문현황</a></li>
 					<li><a
@@ -31,7 +33,7 @@
 
 			<div class="col-sm-10">
 				<hr>
-				<h2>Qna게시판</h2>
+				<center><h2 style="margin-right:10px; font-family: 'Black Han Sans', sans-serif;">Qna게시판</h2></center>
 				
 				<div class="container-fluid" style="margin-top: 5%">
 					<table id='tbl-board' class='table table-striped table-hover'>

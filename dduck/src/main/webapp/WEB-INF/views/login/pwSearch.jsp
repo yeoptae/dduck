@@ -20,37 +20,21 @@
                         <div class="panel-title">메일을 입력하시면 인증번호가 발송됩니다.</div>
                     </div>     
 
-                    <div style="padding-top:30px" class="panel-body" >
+                    <div class="panel-body" >
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                         <form id="pwSearch" class="form-horizontal" role="form" action="${path}/find_pass.do" method="post">
-                                    
                             <div style="margin-bottom: 25px" class="input-group">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input  id="id" name="user_id" type="text" class="form-control" value="" placeholder="User Id">                                     
                                     </div>
                             <div style="margin-bottom: 25px" class="input-group">
-                                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input id="e_mail" name="e_mail" type="email" class="form-control"  value="" placeholder="User Email">                                     
+                                      <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                        <input type="email" id="email" name="e_mail"  class="form-control" placeholder="User Email">                                  
                                    </div>
-                            <!--  <div style="margin-bottom: 25px" class="input-group">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input id="login-username" type="text" class="form-control" name="cEmailNum" value="" placeholder="인증번호">                                     
-                                    </div> -->
-                                <%--     <c:if test="${msg == '실패'}">
-                                    <tr>
-											<td colspan=2>
-											아이디 또는 패스워드가 틀렸습니다.
-											</td>
-									</tr>
-									</c:if> --%>
+                                   <div class="check_font" id="mailCheck"></div>  
                                 <div style="margin-top:10px" class="form-group">
-                                    <!-- Button -->
                            
                                     <div class="col-sm-12 controls">
                                     
                                       <button type="submit" name="submit" class="btn btn-primary">인증번호 전송</button>
-                                       <!-- <button onclick="btn_auth()" name="submit" class="btn btn-primary">인증하기</button> -->
-                                    <!-- <input type="submit" id="login" value="전송" class="btn btn-primary"> -->
                                      </div>                                    
                                    </div>
                         	</form>
@@ -59,23 +43,46 @@
               </div>
          </div>
          
-<!--          <Script>
-function btn_auth(){
-    $.ajax({
-         type:"POST",
-         url:"${path}/pwSearch/auth.do",  //전송버튼 누르면 작동하는 컨트롤러 매핑값
-         data : {email : $("input[name=e_mail]").val()},  //input name값
-         success: function(data){
-          sessionStorage.setItem("authkey",data);
-         },error : function(data){
-            console.log(data);
-         }
-     });
-     alert("인증번호를 발송했습니다.");
- }
-   
-</Script>
-          -->
          
+         
+         
+         
+         
+   
+
+
+<script>
+ $(function(){
+		$("#email").blur(function() {
+			var clientEmail = $('#email').val();
+			
+			$.ajax({                                                    //e_mail=파라미터값     
+				url : "${pageContext.request.contextPath}/user/mailCheck?e_mail="+ clientEmail,															//cId=파라미터값으로 input에 name값이다.
+				type : 'post',
+				datatype : 'html',
+				
+				success : function(data) {
+								console.log("1 = 중복o / 0 = 중복x : "+ data);	
+								if (data == 1) {
+									// 1 : 	이메일이 중복되는 문구
+									$("#mailCheck").text("존재하는 이메일 입니다.");
+									$("#mailCheck").css("color", "red");
+									$("#injeng").hide();
+								} else if(data == 0){
+										// 0 : 아이디 길이 / 문자열 검사
+									 	$("#mailCheck").text("존재하지않는 이메일 입니다. 다시 입력해주세요.");
+										$("#injeng").show();
+									} 
+									
+							}, error : function() {
+									console.log("실패");
+							}
+						});
+					});
+		        
+				});
+        
+        
+</script>      
          
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
