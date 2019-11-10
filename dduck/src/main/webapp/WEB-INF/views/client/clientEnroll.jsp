@@ -7,6 +7,7 @@
    <jsp:param name="clientEnroll" value="회원가입"/>
 </jsp:include>
 
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Do+Hyeon|Nanum+Gothic+Coding|Noto+Sans+KR|Sunflower:300&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.2/css/bootstrap.min.css">
 
@@ -70,8 +71,7 @@
         	$("[name=pwdCheck]").keyup(function(){ 
         		var pwd=$("#pwd").val(); 
         		var pwdCheck=$("#pwdCheck").val(); 
-        		/* var reg_pwd =$("#pwd").val(/^.*(?=.{6,12})(?=.*[0-9])(?=.*[a-zA-Z]).*$/); */
-        		if(pwd != "" || pwdCheck != ""|| reg_pwd !=""){ 
+        		if(pwd != "" || pwdCheck != ""){ 
         			if(pwd == pwdCheck){ 
         				$("#alert-success").show(); 
         				$("#alert-danger").hide(); 
@@ -91,35 +91,36 @@
  
 
 	$(function(){
-		$("#id").blur(function() {
-			// id = "id_reg" / name = "userId"
+		$("#id").keyup(function() {
 			var clientId = $('#id').val();
-			$.ajax({
-				url : "${pageContext.request.contextPath}/user/idCheck?cId="+ clientId,
-																//cId=파라미터값으로 input에 name값이다.
-				type : 'get',
-				datatype : 'html',
-				success : function(data) {
-								console.log("1 = 중복o / 0 = 중복x : "+ data);							
-								if (data == 1) {
-									// 1 : 아이디가 중복되는 문구
-									$("#id_check").text("사용중인 아이디입니다.");
-									$("#id_check").css("color", "red");
-								} else {
-									if(data == 0){
-										// 0 : 아이디 길이 / 문자열 검사
-										$("#id_check").text("사용가능한 아이디입니다.");
-										$("#id_check").css("color", "green");
-									} 
+			if(clientId==''||clientId.length<4){
+				$("#id_check").css("display","none");
+			}
+			if(clientId.trim().length>3){
+				$.ajax({
+					url : "${pageContext.request.contextPath}/user/idCheck?cId="+ clientId,
+					//cId=파라미터값으로 input에 name값이다.
+					type : 'get',
+					datatype : 'html',
+					success : function(data) {
+									if (data == 1) {
+										// 1 : 아이디가 중복되는 문구
+										$("#id_check").text("사용중인 아이디입니다.");
+										$("#id_check").css({"color":"red","display":"block"});
+									} else {
+										if(data == 0){
+											// 0 : 아이디 길이 / 문자열 검사
+											$("#id_check").text("사용가능한 아이디입니다.");
+											$("#id_check").css({"color":"green","display":"block"});
+										} 
+									}
+								}, error : function() {
+										console.log("실패");
 								}
-							}, error : function() {
-									console.log("실패");
-							}
-						});
 					});
-		        
-				}); 
-
+				}
+			});
+		}); 
 
 	
      </script>
@@ -128,7 +129,7 @@
     <div class="row">
 
         <div class="col-xs-12 col-sm-12">
-            <h1 class="text-center" style="margin-right: -50px;">회원가입</h1>
+            <h1 class="text-center" style="margin-right: -50px; font-family: 'Black Han Sans', sans-serif;">회원가입</h1>
         </div>
 
         <div class="col-xs-3 col-sm-3"></div>
@@ -140,7 +141,7 @@
                 <form name="form1" class="form-horizontal" action="${path }/client/clientEnrollEnd.do" method="post" onsubmit="return signUp_validate();">
                     <div class="form-group">
                         <div class="col-sm-2 control-label">
-                            <label >아이디</label>
+                            <label>아이디</label>
                         </div>
                         <div class="col-sm-6 text-left">
                             <input type="text" name="cId" id="id" class="form-control">
@@ -193,7 +194,7 @@
                         </div>
                         <div class="col-sm-3">
                             <input type="text" id="sample6_postcode" placeholder="우편번호" name="cAddr1"
-                                class="form-control">
+                                class="form-control" readonly>
                         </div>
                         <div class="col-sm-3">
                             <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"
@@ -208,7 +209,7 @@
                         </div>
                         <div class="col-sm-6">
                             <input type="text" id="sample6_address" placeholder="주소" name="cAddr2"
-                                class="form-control">
+                                class="form-control" readonly>
                         </div>
                     </div>
 
@@ -226,7 +227,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-2 control-label">
-                            <label id="phone">전화번호</label>
+                            <label>전화번호</label>
                         </div>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" name="cPhone" id="phone">
@@ -238,6 +239,7 @@
                     <div class="form-group">
                         <div class="col-sm-12  text-center">
                             <input type="submit" id=submit value="회원가입" class="btn btn-primary" style="margin-left: -170px;">
+                            <input type="button" class="btn btn-primary" value="취소하기" onClick="history.go(-1)"> 
                            
                         </div>
                     </div>
@@ -249,25 +251,33 @@
 <script>
 function signUp_validate(){
 	
-	/* var idCheck = /^[A-Za-z0-9+]{4,12}$/;
+	var idCheck = /^[A-Za-z0-9+]{4,12}$/;
 	if(!idCheck.test($('#id').val())) {
-		alert("아이디는 4글자이상,12글자만 가능합니다.");
-	} */
+		alert("아이디는 4~12글자만 가능합니다.");
+		return false;
+	}
 	
 	var pwCheck = /^[a-z]+[a-z0-9]{5,19}$/g;
-	var pwCheck2= /^[a-z]+[a-z0-9]{5,19}$/g;
-	if(!pwCheck.test($('#pwd').val()) &&!pwCheck2.test($('#pwd').val())) {
+	if(!pwCheck.test($('#pwd').val())) {
 		alert('비밀번호는 소문자+숫자로 가능합니다.');
-	}
+		return false;
+	} 
 	
 	var getName= /^[가-힣]+$/;
 	if(!getName.test($('#userName').val())) {
 		alert("이름은 한글만 입력이 가능합니다.");
+		return false;
 	}
+	var phone = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})([0-9]{3,4})([0-9]{4})$/;
+	if(!phone.test($('#phone').val())){
+		alert('올바른 휴대폰 번호를 입력해주세요.');
+		return false;
+	}
+
 	
-	
-	return false;
-}
+	return true;
+	}
+
 </script>
 
 

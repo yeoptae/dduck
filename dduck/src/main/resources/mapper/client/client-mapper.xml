@@ -15,16 +15,10 @@
    </insert>
    
    <update id="updateClient">
-   
-   
       UPDATE CLIENT SET CEMAIL=#{cEmail}, CPHONE=#{cPhone}, CADDR1=#{cAddr1}, CADDR2=#{cAddr2}, CADDR3=#{cAddr3}
        where CID = #{cId}
    </update>
-   
- <!--   <select id="selectClient" resultType="Client" parameterType="String">
-      select * from client where cid=#{mNo}        
-   </select> -->
-   
+
    
 
    <select id="selectClientList" resultType="map">
@@ -55,7 +49,6 @@
     </update>
     
     <!--회원탈퇴  -->
-    
     <delete id="delete">
 <!--  			delete from Client where cId = #{cId}  -->
  			delete from client where cid=#{cId} and cpw=#{cPw}
@@ -77,6 +70,23 @@
   	 <select id="userMailCheck" parameterType="String" resultType="int">
   	 	SELECT count(*) FROM client Where CEMAIL=#{cEmail}
   	 </select>
+  	 
+  	 <select id="userMailCheck2" parameterType="String" resultType="int">
+  	 	SELECT count(*) FROM client Where CEMAIL=#{cEmail}
+  	 </select>
+
+  	 
+  	 
+  	 
+  	 
+  	 <select id = "searchId" resultType="Client" parameterType="Client">
+				select cid from client where cname=#{cName} and cPhone=#{cPhone}
+	</select>
+  	 
+  	 
+  	 
+  	 
+  	 
 
 
 	<!-- 장바구니 -->
@@ -97,6 +107,9 @@
    <select id="selectPaymentEndList" resultType="map">
 		select * from payment join saleboard using(pcode) join saleboardfile using(pcode) where attachflag = 1 and cId=#{cId}
 	</select>
+	
+	
+
 	
 
 </mapper>

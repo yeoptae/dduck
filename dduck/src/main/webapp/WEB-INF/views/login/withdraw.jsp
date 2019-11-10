@@ -15,7 +15,7 @@
 
 <div class="row">
 		<div class="col-sm-3 sidenav">
-			<h4 style="padding:10px;">마이 페이지</h4>
+			<h4 style="padding:10px;">탈퇴하기</h4>
 						<ul class="nav nav-pills nav-stacked">
 				<li><a href="${pageContext.request.contextPath}/client/panier?cId=${loginClient.CId}">장바구니</a></li>
 				<li><a href="${pageContext.request.contextPath}/client/paymentList?cId=${loginClient.CId}">결제내역</a></li>
@@ -37,15 +37,14 @@
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                         <input type="hidden" name="cId" value="${loginClient.CId}"/>
-                                        <input id="login-password" type="password" class="form-control" name="cPw" placeholder="Password">
+                                        <input id="login-password" type="password" class="form-control" name="cPw" placeholder="비밀번호">
                                     </div>
                                     
                                 <div style="margin-top:10px" class="form-group">
-                                    <!-- Button -->
                            
                                     <div class="col-sm-12 controls">
                                     <input type="submit" id="withraw" value="회원탈퇴" class="btn btn-primary">
-                                    <input type="reset" value="취소하기" class="btn btn-primary">
+                                    <input type="button" class="btn btn-primary" value="취소하기" onClick="location.reload()"/>  
                                      </div>                                    
                                    </div>
                            </form>
