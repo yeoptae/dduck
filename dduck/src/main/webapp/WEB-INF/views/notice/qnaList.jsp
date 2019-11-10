@@ -7,9 +7,15 @@
 	<jsp:param name="qna" value="qnalist"/>
 </jsp:include>
 <link rel="stylesheet" href="${path }/resources/css/style.css">
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Do+Hyeon|Nanum+Gothic+Coding|Noto+Sans+KR|Sunflower:300&display=swap" rel="stylesheet">
+<style>
+*{
+	font-family: 'Noto Sans KR', sans-serif;
+}
+</style>
 <section id="content">
     <div class="container">
-        <h2>QNA <small>질문게시판</small></h2>
+        <h2 style="font-family: 'Black Han Sans', sans-serif;">QNA <small style="font-family: 'Noto Sans KR', sans-serif;">질문게시판</small></h2>
         <c:if test="${!empty loginClient }">
 	        <div class="qna-writer-button">
 	            <button type="button" class="qnawritebutton btn btn-white btn-cons" onclick='location.href="${path}/qna/qnaForm"'>글쓰기</button>
