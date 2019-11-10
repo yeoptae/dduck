@@ -8,7 +8,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.dduck.client.model.vo.Client;
-import com.kh.dduck.panier.model.vo.Panier;
 
 @Repository
 public class ClientDaoImpl implements ClientDao {
@@ -59,6 +58,21 @@ public class ClientDaoImpl implements ClientDao {
 		return sqlSession.selectOne("client.userMailCheck",cEmail);
 	}
 	
+	
+	@Override
+	public int userMailCheck2(SqlSessionTemplate sqlSession, String cEmail) {
+		return sqlSession.selectOne("client.userMailCheck2",cEmail);
+	}
+	
+	
+	
+	//아이디찾기
+	@Override
+	public Client searchIdEnd(SqlSessionTemplate sqlSession, Client c) {
+		return sqlSession.selectOne("client.searchId",c);
+	}
+	
+	
 	//장바구니
 	@Override
 	public int selectPanierCount(SqlSessionTemplate sqlSession) {
@@ -88,7 +102,6 @@ public class ClientDaoImpl implements ClientDao {
 		RowBounds rows=new RowBounds((cPage-1)*numPerPage,numPerPage);
 		return sqlSession.selectList("client.selectPaymentEndList",cId,rows);
 	}
-	
 
 	
 

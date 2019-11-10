@@ -7,11 +7,17 @@
 	<jsp:param name="notice" value="noticelist"/>
 </jsp:include>
 <link rel="stylesheet" href="${path }/resources/css/style.css">
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Do+Hyeon|Nanum+Gothic+Coding|Noto+Sans+KR|Sunflower:300&display=swap" rel="stylesheet">
+<style>
+*{
+	font-family: 'Noto Sans KR', sans-serif;
+}
+</style>
 <section id="content">
     <br><br>
     <div class="mainlist bodystyle">
         <div class="container">
-			<h2 class="pull-left">공지사항 <small>공지/이벤트</small></h2>
+			<h2 class="pull-left" style="font-family: 'Black Han Sans', sans-serif;">공지사항 <small style="font-family: 'Noto Sans KR', sans-serif;">공지/이벤트</small></h2>
             <div class="row">
              	<c:if test="${loginClient.CId eq 'admin' }">
 	            	<div class="pull-left buttonposi">

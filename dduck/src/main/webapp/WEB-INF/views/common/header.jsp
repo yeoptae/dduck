@@ -159,7 +159,6 @@
                            <ul class="nav navbar-nav navbar-right">
                            <!--로그인 클릭시 해당 매핑값을 읽어들임  -->
                                     <li><a href="${pageContext.request.contextPath}/login/loginView.do"><span class="glyphicon glyphicon-user"></span> 로그인</a></li>
-                                   <li><a href="${pageContext.request.contextPath}/member/email.do"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
                                   </ul>
                                   </c:when>
                             <c:when test="${loginClient.CId eq 'admin' }">
@@ -171,7 +170,8 @@
                             <c:otherwise >
                                 <ul class="nav navbar-nav navbar-right">
 <%--                                       <li><a href="${pageContext.request.contextPath}/mypage/mypage.do?cNo=${loginClient.CId}">마이페이지</a></li> --%>
-									<li><a href="${pageContext.request.contextPath}/client/panier?cId=${loginClient.CId}"">마이페이지</a></li>
+									<li><a href="${pageContext.request.contextPath}/client/panier?cId=${loginClient.CId}">마이페이지</a></li>
+
                                       <li><a href="${pageContext.request.contextPath}/Client/ClientLogout.do">로그아웃</a></li>
                                    </ul>
                             </c:otherwise>

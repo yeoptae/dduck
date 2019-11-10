@@ -1,9 +1,10 @@
 package com.kh.dduck.client.model.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import com.kh.dduck.client.model.vo.Client;
-import com.kh.dduck.panier.model.vo.Panier;
 
 public interface ClientService {
 	
@@ -17,10 +18,12 @@ public interface ClientService {
 	
 	int userIdCheck(String cId);
 	int userMailCheck(String cEmail);
+	int userMailCheck2(String cEmail);
+	
+	Client searchIdEnd(Client c);
 	
 	
 	
-//	int withdrawer(Client c);
 	
 	//장바구니
 	int selectPanierCount();
@@ -29,6 +32,8 @@ public interface ClientService {
 	//결제내역
 	int selectPaymentEndCount();
 	List<Map<String,String>> selectPaymentEndList(int cPage,int numPerPage,String cId);
+
+	
 	
 	
 }
