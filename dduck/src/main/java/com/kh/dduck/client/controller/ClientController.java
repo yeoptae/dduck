@@ -242,6 +242,8 @@ public class ClientController {
 	/*아이디 찾기 컨트롤러*/
 	@RequestMapping("/searchIdEnd/searchIdEnd.do")
 	public String searchIdEnd(Client c, Model model) {
+		
+		System.out.println("1111111111111111"+c);
 
 		Client result = service.searchIdEnd(c);
 

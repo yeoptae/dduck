@@ -23,8 +23,8 @@
                         
                         <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="${pageContext.request.contextPath}/user/findingId.do">아이디찾기&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></div>
                     </div>     
-
                     <div style="padding-top:30px" class="panel-body" >
+
 
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                         <form id="loginform" class="form-horizontal" method="post" role="form" action="${path }/client/clientLogin.do">
