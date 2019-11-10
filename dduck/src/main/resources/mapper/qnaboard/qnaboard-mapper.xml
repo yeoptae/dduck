@@ -3,7 +3,7 @@
 <mapper namespace="qnaBoard">
 
   <select id="selectQnaBoard" resultType="map">
-	 SELECT * FROM QNA ORDER BY QACODE DESC   
+	 select * from qna left join qnacomment on (qna.qacode=qnacomment.qacode) ORDER BY QNA.QACODE DESC
 	</select>
 	
 	<select id="selectQnaCount" resultType="_int">
