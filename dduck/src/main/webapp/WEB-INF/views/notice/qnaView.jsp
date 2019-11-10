@@ -34,12 +34,12 @@
         <br><br><br><br><br>
 <!-- ---------------댓글구간--------------- -->
         <c:choose>
-	        <c:when test="${!empty qnaC.CMCONTENT }">
+	        <c:when test="${!empty qnaC.CMCONTENT}">
 				<div class="content">
 		            <div class="panel panel-default">
 		                <div class="panel-heading">
 		                	<input type = "hidden" name = "qaCode" id = "qaCode" value = '${qnaC.QACODE}'/>
-							${qnaC.CID } - <fmt:formatDate value='${qnaC.CMEN }' pattern="yyyy.MM.dd"/>
+							관리자 - <fmt:formatDate value='${qnaC.CMEN }' pattern="yyyy.MM.dd"/>
 		                </div>
 		                <div class="panel-body">
 		                    <pre-wrap><textarea readonly class="commentTextArea" id="commentUpdate">${qnaC.CMCONTENT }</textarea></pre-wrap>
