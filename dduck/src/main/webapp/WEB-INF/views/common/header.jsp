@@ -28,7 +28,7 @@
 .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>li>a:hover{
 	background-color: #8e2615;
 }
-.container-fluid, .navbar-inverse .navbar-nav>li>ul{
+.redredredheader, .navbar-inverse .navbar-nav>li>ul{
     background-color: #BC331C;
 }
 .jumbotron {
@@ -41,6 +41,9 @@
 	height : 20px;
 	background-color : rgba(138, 16, 16, 0.822);
 }
+.loinglinestyle ul>li>a{
+	height : 50px;
+}
 </style>
 <body>
     <header>
@@ -52,7 +55,7 @@
         </div>
 
         <nav class="navbar navbar-inverse">
-            <div class="container-fluid" >
+            <div class="redredredheader container-fluid" >
             
                 <div class="navbar-header">
                     <button type="button" class="pull-left navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -65,7 +68,7 @@
 
                 <div class="collapse navbar-collapse" id="myNavbar" style=" text-align:center;">
                     <ul class="nav navbar-nav" id="menu">
-                        <li><a href="/dduck">Home</a></li>
+                        <li><a href="${path}">Home</a></li>
                         <li><div class="seroLine"></div></li>
                         <li class="dropdown">
                            <a class="dropdown-toggle" data-toggle="dropdown"">메뉴<b class="caret"></b></a>
@@ -88,6 +91,7 @@
                     </ul>
                       
                       <!--로그인 시 보여지는 로직들  -->
+                      <div class="loinglinestyle">
                       <c:choose>
                            <c:when test="${empty loginClient }">
                            <ul class="nav navbar-nav navbar-right">
@@ -109,6 +113,7 @@
                                    </ul>
                             </c:otherwise>
                         </c:choose>
+                        </div>
                    </div>
                </div>
             </nav>
