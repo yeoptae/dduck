@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.dduck.adminboard.model.vo.SaleBoardFile;
+import com.kh.dduck.payment.model.vo.Payment;
 import com.kh.dduck.review.model.vo.Review;
 
 
@@ -55,6 +56,12 @@ public class ReviewDaoImpl implements ReviewDao {
 	public List<SaleBoardFile> selectAttachList(SqlSessionTemplate session, int pCode) {
 
 		return session.selectList("review.selectAttachList",pCode);
+	}
+
+	@Override
+	public int selectReviewCount1(SqlSessionTemplate session, Payment p) {
+		
+		return session.selectOne("review.selectReviewCount1" , p);
 	}
 
 	

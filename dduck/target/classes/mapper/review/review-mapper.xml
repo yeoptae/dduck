@@ -27,8 +27,14 @@
 	<select id = "selectSale" resultType="map" parameterType="_int">
 		select * from SALEBOARD where pCode = #{pCode}
 	</select>
+
 	<select id = "selectAttachList" resultType="com.kh.dduck.adminboard.model.vo.SaleBoardFile" parameterType="_int">
 		select * from SaleBoardFile where pCode = #{pCode}
 	</select>
+	
+	<select id="selectReviewCount1" resultType="_int">
+	select count(*) from payment where pcode=#{pCode} and cid=#{cId}
+	</select>
+
 	
 </mapper>

@@ -6,7 +6,7 @@
 <script type="text/JavaScript" src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Do+Hyeon|Nanum+Gothic+Coding|Noto+Sans+KR|Sunflower:300&display=swap" rel="stylesheet">
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="pageTitle" value=""/>
 </jsp:include>
@@ -30,15 +30,20 @@ input , select {
 [type="date"]::-webkit-calendar-picker-indicator {
   opacity: 0;
 }
+
+#div1{
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 16px;
+}
 </style>
 
 <section id="content">
 	<form name="paymentFrm" class="paymentViewForm" method="post">
 	<c:forEach items="${list }" var="p">
-			  <div class="container">
+			  <div class="container"><br><br><br>
 				<div class="row">
 					<table class="table table-responsive">
-					    <thead style="background-color: #EAEAEA;">
+					    <thead style="background-color: #EAEAEA; font-family: 'Do Hyeon', sans-serif;">
 					        <tr>
 					            <th>상품정보</th>
 					            <th>상품이름</th>
@@ -50,7 +55,7 @@ input , select {
 					        </tr>
 					    </thead>
 					    
-					    <tbody>
+					    <tbody style="font-family: 'Noto Sans KR', sans-serif;">
 					        <tr>
 					            <td><img src="${path }/resources/upload/board/${p['ATTACHREFILENAME'] }" height="50px" width="80px"></td>
 					            <td>${p['SALENAME'] }</td>
@@ -71,7 +76,7 @@ input , select {
 					    </tbody>
 					    
 					</table>
-				</div>
+				</div><br><br><hr>
 			</div>
 		
 		<input type="hidden" id="name" value="${p['SALENAME'] }">		
@@ -113,67 +118,68 @@ input , select {
 		$('#datePicker').attr("min",new Date(new Date().setDate(new Date().getDate()+1)).toISOString().substring(0, 10));
 		
 		</script>
-			<div class="container text-center well">
+		<br><br>
+			<div class="container text-center">
 				
 				<div class="col-sm-12">
-					<h1>주문자 정보</h1>
+					<h1 style="font-family: 'Black Han Sans', sans-serif;">주문자 정보</h1>
 					
 					<div class="col-sm-8" style="float: none; margin-left: 15%; auto;">
 						
 						<div class="form-group has-warning">
-                        	<label class="col-xs-4 control-label">주문하시는분</label>
+                        	<label class="col-xs-4 control-label" id="div1">주문하시는분</label>
                         		<div class="col-xs-8">
                             		<input type="text" id="buyerName" class="form-control" value="${loginClient.CName }"><br>
                         		</div>
                 		</div><br>
                 		
                 		<div class="form-group has-warning">
-                        	<label class="col-xs-4 control-label">전화번호</label>
+                        	<label class="col-xs-4 control-label" id="div1">전화번호</label>
                         		<div class="col-xs-8">
-                            		<input type="text" id="buyerPhone" class="form-control" value="${loginClient.CPhone }"><br>
+                            		<input type="text" id="buyerPhone" class="form-control" value="${loginClient.CPhone }" style="font-family: 'Nanum Gothic Coding', monospace;"><br>
                         		</div>
                 		</div><br>
                 		
                 		<div class="form-group has-warning">
-                        	<label class="col-xs-4 control-label">이메일</label>
+                        	<label class="col-xs-4 control-label" id="div1">이메일</label>
                         		<div class="col-xs-8">
-                            		<input type="text" id="buyerAddr" class="form-control" value="${loginClient.CEmail }"><br>
+                            		<input type="text" id="buyerAddr" class="form-control" value="${loginClient.CEmail }" style="font-family: 'Nanum Gothic Coding', monospace;"><br>
                         		</div>
                 		</div><br>
 					</div>
 				</div>
 				
 				
-				<div class="col-sm-12 well">
-					<h1>배송지 정보</h1>
+				<div class="col-sm-12"><br><br><hr><br>
+					<h1 style="font-family: 'Black Han Sans', sans-serif;">배송지 정보</h1>
 					<div class="col-sm-10"  style="float: none; margin-left: 10%; auto;">
 						
 						<div class="form-group has-warning">
-                        	<label class="col-xs-4 control-label">받으실분</label>
+                        	<label class="col-xs-4 control-label" id="div1">받으실분</label>
                         		<div class="col-xs-8">
                             		<input type="text" name="payName" id="inputSuccess" class="form-control" value="${loginClient.CName }" style="width: 100px; height: 30px;"><br>
                         		</div>
                 		</div><br>
                 		
                 		<div class="form-group has-warning">
-                        	<label class="col-xs-4 control-label">우편번호</label>
+                        	<label class="col-xs-4 control-label" id="div1">우편번호</label>
                         		<div class="col-xs-8">
-                            		<input type="text" name="payAddr1" id="zonecode" class="form-control" value="${loginClient.CAddr1 }" readonly style="width: 90px; height: 30px;">
+                            		<input type="text" name="payAddr1" id="zonecode" class="form-control" value="${loginClient.CAddr1 }" readonly style="width: 90px; height: 30px; font-family: 'Nanum Gothic Coding', monospace;">
                         			 
                         		</div>
                 		</div>
 
                 		<div class="form-group has-warning">
-                        	<label class="col-xs-4 control-label">주소</label>
+                        	<label class="col-xs-4 control-label" id="div1">주소</label>
                         		<div class="col-xs-8">
                             		<input type="text" name="payAddr2" id="address" class="form-control" value="${loginClient.CAddr2 }" readonly>
                         		</div>
                 		</div>
 
                 		<div class="form-group has-warning">
-                        	<label class="col-xs-4 control-label">상세주소</label>
+                        	<label class="col-xs-4 control-label" id="div1">상세주소</label>
                         		<div class="col-xs-8">
-                            		<input type="text" name="payAddr3" id="address_etc" class="form-control" value="${loginClient.CAddr3 }"><br>
+                            		<input type="text" name="payAddr3" id="address_etc" class="form-control" value="${loginClient.CAddr3 }" style="font-family: 'Nanum Gothic Coding', monospace;"><br>
                         		</div>
                 		</div><br>
 
@@ -185,16 +191,16 @@ input , select {
                 		</div><br>
                 		
                 		<div class="form-group has-warning">
-                        	<label class="col-xs-4 control-label">전화번호</label>
+                        	<label class="col-xs-4 control-label" id="div1">전화번호</label>
                         		<div class="col-xs-8">
-                            		<input type="text" name="payPhone" id="inputSuccess1" class="form-control" value="${loginClient.CPhone }"><br>
+                            		<input type="text" name="payPhone" id="inputSuccess1" class="form-control" value="${loginClient.CPhone }" style="font-family: 'Nanum Gothic Coding', monospace;"><br>
                         		</div>
                 		</div><br>
                 		
                 		<div class="form-group has-warning">
-                        	<label class="col-xs-4 control-label">배송 시간</label>
+                        	<label class="col-xs-4 control-label" id="div1">배송 시간</label>
                         		<div class="col-xs-6">
-                            		<select name="payTime" id="tiemShip" class="form-control">
+                            		<select name="payTime" id="tiemShip" class="form-control" style="font-family: 'Nanum Gothic Coding', monospace;">
 			                    		<option value="0">시간 선택</option>
 			                    		<option value="06~08시">06~08시 도착</option>
 			                    		<option value="08~10시">08~10시 도착</option>
@@ -207,20 +213,22 @@ input , select {
                 		</div>
                 		
                 		<div class="form-group has-warning">
-                        	<label class="col-xs-4 control-label">요청사항</label>
+                        	<label class="col-xs-4 control-label" id="div1">요청사항</label>
                         		<div class="col-xs-8">
                             		<textarea name="payMemo" rows=7 cols=140 class="form-control" name="reviewContent" style="resize: none;" placeholder="요청사항이 있을시 적어주세요."></textarea><br>
+                        		<br><br><br>
                         		</div>
-                		</div><br>
+                		</div>
                 		
                 		
 					</div>
-				</div><br><br>
+				</div><br><br><hr>
 				
 				
 <!-- 			<button class="btn btn-lg btn-primary btn-block" type="submit">결제</button><br><br><br> -->
 <!-- 			<button id="check_module" type="button">아임 서포트 결제 모듈 테스트 해보기</button> -->
-			 <input type="button" id="check_module" class="btn btn-danger" value="결제하기">
+			 <input type="button" id="check_module" class="btn btn-danger btn-lg" value="결제하기" style="width: 100%;">
+			 <br><br><br><br><br><br>
 			</div>
 		</form>
 		
