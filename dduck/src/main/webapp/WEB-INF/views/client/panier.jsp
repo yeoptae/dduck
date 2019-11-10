@@ -10,7 +10,7 @@
 <body>
 	<div class="row">
 		<div class="col-sm-3 sidenav">
-			<h4 style="margin-right:10px; font-family: 'Black Han Sans', sans-serif;">마이 페이지</h4>
+			<h4 style="margin-right:10px; font-family: 'Black Han Sans', sans-serif;">장바구니</h4>
 			<ul class="nav nav-pills nav-stacked">
 				<li><a
 
