@@ -5,6 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Do+Hyeon|Nanum+Gothic+Coding|Noto+Sans+KR|Sunflower:300&display=swap" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet" />
@@ -24,7 +25,7 @@
 }
 
 .navbar {
-	height: 65px;
+	/* height: 65px; */
 	width: 100%;
 }
 
@@ -69,6 +70,63 @@
 .select-birth-input {
 	width: 80px;
 }
+.file_input label {
+    position:relative;
+    cursor:pointer;
+    display:inline-block;
+    vertical-align:middle;
+    overflow:hidden;
+    width:100px;
+    height:30px;
+    background:#777;
+    color:#fff;
+    text-align:center;
+    line-height:30px;
+}
+.file_input label input {
+    position:absolute;
+    width:0;
+    height:0;
+    overflow:hidden;
+}
+.file_input input[type=text] {
+    vertical-align:middle;
+    display:inline-block;
+    width:400px;
+    height:28px;
+    line-height:28px;
+    font-size:11px;
+    padding:0;
+    border:0;
+    border:1px solid #777;
+}
+div#select_box {
+  position: relative;
+  width: 200px;
+  height: 32px;
+  background: url(http://cfile1.uf.tistory.com/image/27423E43565F8EF627B215) 0 center no-repeat;
+  /* 화살표 이미지 */
+}
+div#select_box label {
+  position: absolute;
+  font-size: 14px;
+  color: #fff;
+  top: 7px;
+  left: 12px;
+  letter-spacing: 1px;
+}
+
+div#select_box select#gCode {
+  width: 100%;
+  height: 32px;
+  min-height: 32px;
+  line-height: 32px;
+  padding: 0 10px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  /* IE 8 */
+}
+
 </style>
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="pageTitle" value="상품등록" />
@@ -83,7 +141,7 @@
 			data-android-fix="true">
 			<div class="row">
 				<div class="col-sm-2"></div>
-				<div class="col-sm-8 row well" style="margin: 0 auto;">
+				<div class="col-sm-8" style="margin: 0 auto;">
 					<div class="col">
 
 						<br> <br> <br> <br>
@@ -96,15 +154,18 @@
 							<div class="form-group">
 								<th colspan="2"
 									style="background-color: #eeeeee; text-align: left;">게시판 <br>
-									<br> <select class="custom-select d-block w-100"
-									name="gCode" id="gCode" required>
-										<option value="">게시판선택</option>
-										<option value="1">답례</option>
-										<option value="2">간식</option>
-										<option value="3">돌</option>
-										<option value="4">케이크</option>
-										<option value="5">세트</option>
-								</select></th> <br> <br> <br> <label>게시글번호</label> <input
+									<br><div id="select_box">
+							<label for="gCode">게시판선택</label>
+							<select class="custom-select d-block w-100"
+								name="gCode" id="gCode" required>
+									<option selected="selected">게시판선택</option>
+									<option value="1">답례</option>
+									<option value="2">간식</option>
+									<option value="3">돌</option>
+									<option value="4">케이크</option>
+									<option value="5">세트</option>
+							</select>
+							</div></th> <br> <label>게시글번호</label> <input
 									type="hidden" name="pCode" value="${saleList['PCODE'] }"
 									class="form-control" placeholder="게시글번호" readonly /> <label>제목</label>
 								<input type="text" name="saleName"
@@ -119,57 +180,67 @@
 							</div>
 
 							<div class="form-group">
-								<label>상품판매 이미지 등록</label>
-								<h2>메인이미지</h2>
-							                         	
-								<input type="file" name="dduckpic" id="dduckpic1"
-									class="form-control btn btn-outline-secondary inputFile"
-									accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
-									
-								
-							
-									
-                                 
+							<label>상품판매 이미지 등록</label>
+							<h2>메인이미지</h2>
+							<div class="file_input">
+							<input type="text" readonly="readonly" id="dduckpic1">
+								<label>업로드							
+							<input type="file" name="dduckpic" id="dduckpic1"
+								onchange="javascript:document.getElementById('dduckpic1').value=this.value"
+								accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
+								</label>
+                             </div>
 
-								<h2>서브이미지</h2>
-								<%--  <c:forEach items="${att }" var="a" varStatus="at"> 
-                                	<c:if test='${a["attachFlag"]!="1" }'> --%>
-								<input type="file" name="dduckpic" id="dduckpic2"
-									value="${a['attachCode'] }"
-									class="form-control btn btn-outline-secondary inputFile"
-									accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
-									
-							
-
-								<input type="file" name="dduckpic" id="dduckpic3"
-									value="${a['attachCode'] }"
-									class="form-control btn btn-outline-secondary inputFile"
-									accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
-							
-
-								<input type="file" name="dduckpic" id="dduckpic4"
-									value="${a['attachCode'] }"
-									class="form-control btn btn-outline-secondary inputFile"
-									accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
-							
-								<input type="file" name="dduckpic" id="dduckpic5"
-									value="${a['attachCode'] }"
-									class="form-control btn btn-outline-secondary inputFile"
-									accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
-							
-								<input type="file" name="dduckpic" id="dduckpic6"
-									value="${a['attachCode'] }"
-									class="form-control btn btn-outline-secondary inputFile"
-									accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
-							
-								<input type="file" name="dduckpic" id="dduckpic7"
-									value="${a['attachCode'] }"
-									class="form-control btn btn-outline-secondary inputFile"
-									accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
-								
-								<%-- 	</c:if>
-                                   </c:forEach>  --%>
-							</div>
+							<h2>서브이미지</h2>
+								<div class="file_input">
+							<input type="text" readonly="readonly" id="dduckpic2">
+								<label>업로드							
+							<input type="file" name="dduckpic" id="dduckpic2"
+								onchange="javascript:document.getElementById('dduckpic2').value=this.value"
+								accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
+								</label>
+                             </div>
+								<div class="file_input">
+							<input type="text" readonly="readonly" id="dduckpic3">
+								<label>업로드							
+							<input type="file" name="dduckpic" id="dduckpic3"
+								onchange="javascript:document.getElementById('dduckpic3').value=this.value"
+								accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
+								</label>
+                             </div>
+									<div class="file_input">
+							<input type="text" readonly="readonly" id="dduckpic4">
+								<label>업로드							
+							<input type="file" name="dduckpic" id="dduckpic4"
+								onchange="javascript:document.getElementById('dduckpic4').value=this.value"
+								accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
+								</label>
+                             </div>
+									<div class="file_input">
+							<input type="text" readonly="readonly" id="dduckpic5">
+								<label>업로드							
+							<input type="file" name="dduckpic" id="dduckpic5"
+								onchange="javascript:document.getElementById('dduckpic5').value=this.value"
+								accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
+								</label>
+                             </div>
+									<div class="file_input">
+							<input type="text" readonly="readonly" id="dduckpic6">
+								<label>업로드							
+							<input type="file" name="dduckpic" id="dduckpic6"
+								onchange="javascript:document.getElementById('dduckpic6').value=this.value"
+								accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
+								</label>
+                             </div>
+									<div class="file_input">
+							<input type="text" readonly="readonly" id="dduckpic7">
+								<label>업로드							
+							<input type="file" name="dduckpic" id="dduckpic7"
+								onchange="javascript:document.getElementById('dduckpic7').value=this.value"
+								accept=".jpg, .png, .pdf" style="margin-top: 5px;" />
+								</label>
+                             </div>
+						</div>
 							<div style="text-align: center;">
 								<button type="submit" class="btn btn-primary">수정</button>
 								<button type="button" onclick="history.back();"

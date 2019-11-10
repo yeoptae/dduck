@@ -17,14 +17,14 @@
 				<ul class="nav nav-pills nav-stacked">
 				<h4 style="margin-right:10px; font-family: 'Black Han Sans', sans-serif;">관리자페이지</h4>
 					<li><a
-						href="${pageContext.request.contextPath}/admin/adminmypage.do">주문현황</a></li>
+						href="${pageContext.request.contextPath}/admin/adminmypage.do" style="font-family: 'Black Han Sans', sans-serif;">주문현황</a></li>
 					<li><a
-						href="${pageContext.request.contextPath}/admin/adminClientList.do">회원리스트</a></li>
+						href="${pageContext.request.contextPath}/admin/adminClientList.do" style="font-family: 'Black Han Sans', sans-serif;">회원리스트</a></li>
 					<li><a
-						href="${pageContext.request.contextPath}/admin/adminQnaBoard.do">Qna게시판
+						href="${pageContext.request.contextPath}/admin/adminQnaBoard.do" style="font-family: 'Black Han Sans', sans-serif;">Qna게시판
 							관리하기</a></li>
 					<li><a
-						href="${pageContext.request.contextPath}/admin/insertproduct.do">상품등록</a></li>
+						href="${pageContext.request.contextPath}/admin/insertproduct.do" style="font-family: 'Black Han Sans', sans-serif;">상품등록</a></li>
 				</ul>
 				<br>
 
