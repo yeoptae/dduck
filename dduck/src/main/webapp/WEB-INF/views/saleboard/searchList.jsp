@@ -25,19 +25,6 @@
 					</tr>
 				</c:if>
 				
-				<form name="form1" method="post" action="${path}/admin/searchList.do">
-					<div id="custom-search-input">
-						<div class="input-group col-md-12">
-							<input type="text" class="search-query form-control" id="searchWord" name="searchWord" value="${searchWord }"  placeholder="전체 떡 검색하기" required/>
-							<!-- <input type="hidden" name="gCode" value="gCode"> -->
-							<span class="input-group-btn">
-								<button class="btn btn-danger" onclick="searchDduck()" type="submit" id="btnSearch" name="btnSearch">
-									<span class=" glyphicon glyphicon-search"></span>
-								</button>
-							</span>
-						</div>
-					</div>
-				</form>
 				
 				<c:forEach items="${list }" var="b" varStatus="v">
 					<div class="col-lg-4 col-md-6 col-sm-8 col-sx-9 col-10 m-auto">

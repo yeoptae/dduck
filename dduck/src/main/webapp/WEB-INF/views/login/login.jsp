@@ -71,8 +71,8 @@
  });
  
  function button1_click() {
-	 location.href = "${pageContext.request.contextPath}/member/email.do";
-	}
+    location.href = "${pageContext.request.contextPath}/member/email.do";
+   }
  
  
       

@@ -6,11 +6,11 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
   <jsp:param name="pageTitle" value="관리자마이페이지"/>
 </jsp:include>
-
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Do+Hyeon|Nanum+Gothic+Coding|Noto+Sans+KR|Sunflower:300&display=swap" rel="stylesheet">
 <body>
 	<div class="row">
 		<div class="col-sm-3 sidenav">
-			<h4 style="padding:10px;">장바구니</h4>
+			<h4 style="padding:10px;">마이 페이지</h4>
 			<ul class="nav nav-pills nav-stacked">
 				<li><a
 
@@ -27,9 +27,9 @@
 			</ul>
 		</div>
 		<div class="col-xs-8 col-sm-8">
-		<h1 class="text-center">장바구니</h1>
+		<h1 class="text-center" style="font-family: 'Black Han Sans', sans-serif;">장바구니</h1>
           <div class="container-fluid" style="margin-top: 5%">
-            <table class="table">
+            <table class="table" style="font-family: 'Do Hyeon', sans-serif;">
               <thead class="thead-light">
                 <tr style="text-align: center;">
         
@@ -43,11 +43,11 @@
                   <th style="background-color: #eeeeee; text-align: center;">삭제,결제</th>               
                 </tr>
               </thead>
-              <tbody>
+              <tbody style="font-family: 'Noto Sans KR', sans-serif;">
                  <c:forEach items="${list }" var="p" varStatus="pv">
               		<tr>
               			<td style="text-align: center;"><img src="${path }/resources/upload/board/${p['ATTACHREFILENAME'] }" height="50px" width="50px"></td>
-              			<td style="text-align: center;"><c:out value="${p['SALENAME'] }"/></td>
+              			<td style="text-align: center;"><a id="${p['PCODE']}" onclick="move1(this.id);"><c:out value="${p['SALENAME'] }"/></a></td>
               			<td style="text-align: center;"><c:out value="${p['SALEPRICE'] }"/>원</td>
               			<td style="text-align: center;"><c:out value="${p['PANIERAMOUNT'] }"/>개</td>
               			<td style="text-align: center;"><c:out value="${p['SALEPRICE'] * p['PANIERAMOUNT']}"/>원</td>
@@ -56,14 +56,14 @@
               				<input type="button" id="${p['PANIERCODE']}" class="btn btn-primary" value="결제" onclick="paymentView(this.id);">
               			</td>
               	    </tr>
-              	    
+              	    <input type="hidden" id="cId" value="${loginClient.CId}">
               	    
                  </c:forEach>
               </tbody>
             </table>
-            <div id="pageBar" style="text-align: center; color: black;">
-              ${pageBar }
-            </div>
+<!--             <div id="pageBar" style="text-align: center; color: black;"> -->
+<%--               ${pageBar } --%>
+<!--             </div> -->
           </div>
 
           <br><br>
@@ -79,17 +79,18 @@
 	
 	function panierDelect(el){
 		if(confirm("장바구니를 삭제하시겠습니까?")) {
-			location.href="${pageContext.request.contextPath}/client/panierDelete?panierCode="+el+"&cId="+cId;	
+			location.href="${pageContext.request.contextPath}/client/panierDelete?panierCode="+el+"&cId="+$('#cId').val();	
+// 			location.href="${pageContext.request.contextPath}/client/panierDelete?cId="+cId;	
 		}
 		console.log(panierCode);
 	}
 	
-// 	function paymentView(pc) {
+	function move1(pc) {
 		
-// 		if(confirm("결제페이지로 이동하시겠습니까?")) {
-// 			location.href="${pageContext.request.contextPath}/detail/detailView?pCode="+pc;	
-// 		}
-// 	}
+		if(confirm("이동하시겠습니까?")) {
+			location.href="${pageContext.request.contextPath}/detail/detailView?pCode="+pc;	
+		}
+	}
 	
 	function paymentView(pc) {
 		

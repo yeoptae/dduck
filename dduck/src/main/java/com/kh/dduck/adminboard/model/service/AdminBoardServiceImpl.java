@@ -54,9 +54,9 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 		return dao.selectBoardCount2(session,searchWord);
 	}
 	@Override
-	public int selectBoardCount() {
+	public int selectBoardCount(int gCode) {
 		// TODO Auto-generated method stub
-		return dao.selectBoardCount(session);
+		return dao.selectBoardCount(session,gCode);
 	}
 
 	@Override
