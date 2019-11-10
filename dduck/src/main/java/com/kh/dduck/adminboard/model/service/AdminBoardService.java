@@ -12,7 +12,7 @@ public interface AdminBoardService {
 	//int selectBoardCount(String searchWord) throws Exception;
 	//List<Map<String, Object>> searchList(Map<String,Object> map,int cPage,int numPerpage,String searchWord) throws Exception;
 	 
-	 int selectBoardCount();
+	 int selectBoardCount(int gCode);
 	 int selectBoardCount2(String searchWord);
 
 	 List<Map<String,String>> selectBoardList(int cPage,int numPerpage,String searchWord,int gCode);

@@ -46,7 +46,7 @@ public class AdminController {
 
    /* 상품전체검색 */
    @RequestMapping("/admin/searchList.do")
-   public ModelAndView searchList(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage,
+   public ModelAndView searchList(@RequestParam(value = "cPage", required = false, defaultValue = "1") int cPage,int gCode,
          @RequestParam(required = false, defaultValue = "") String searchWord, HttpServletRequest request) {
       
       ModelAndView mv = new ModelAndView();
@@ -55,7 +55,7 @@ public class AdminController {
       
       List<Map<String, String>> list = service.searchList(cPage, numPerPage, searchWord);
       List<Map<String, String>> fileList = service.selectFile();
-      int totlaCount = service.selectBoardCount();
+      int totlaCount = service.selectBoardCount(gCode);
       int totlaCount2 = service.selectBoardCount2(searchWord);
       
       mv.addObject("searchWord",searchWord);
@@ -83,7 +83,7 @@ public class AdminController {
       
       List<Map<String, String>> list = service.selectBoardList(cPage, numPerPage, searchWord, gCode);
       List<Map<String, String>> fileList = service.selectFile();
-      int totlaCount = service.selectBoardCount();
+      int totlaCount = service.selectBoardCount(gCode);
       int totlaCount2 = service.selectBoardCount2(searchWord);
       
       mv.addObject("searchWord",searchWord);
@@ -92,7 +92,7 @@ public class AdminController {
       mv.addObject("fileList", fileList);
       mv.addObject("gCode", gCode);
       mv.addObject("pageBar",
-            PageBarFactory.getPageBarWhere3(totlaCount2, cPage, numPerPage, "/dduck/admin/saleboardList.do", gCode,searchWord));
+            PageBarFactory.getPageBarWhere3(totlaCount, cPage, numPerPage, "/dduck/admin/saleboardList.do", gCode,searchWord));
 
       mv.setViewName("saleboard/saleboardList");
 
@@ -231,7 +231,7 @@ public class AdminController {
    @RequestMapping("/admin/mainpage.do")
    public ModelAndView mainPage(HttpServletRequest request, HttpServletResponse response) throws Exception { 
 		 ModelAndView mv = new ModelAndView(); 
-		
+	
 		 List<Map<String, String>> list = service.selectBoardList2(); 
 		 List<Map<String, String>> list2 = service.selectBoardList3();
 		 List<Map<String, String>> list3 = service.selectBoardList4();
