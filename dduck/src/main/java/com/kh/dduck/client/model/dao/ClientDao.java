@@ -6,7 +6,6 @@ import java.util.Map;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import com.kh.dduck.client.model.vo.Client;
-import com.kh.dduck.panier.model.vo.Panier;
 
 
 public interface ClientDao {
@@ -19,9 +18,10 @@ public interface ClientDao {
 	int updatePwChange(SqlSessionTemplate sqlSession, Client c);
 	int userIdCheck(SqlSessionTemplate sqlSession, String cId);
 	int userMailCheck(SqlSessionTemplate sqlSession, String cEmail);
-	
-//	int withdraw(SqlSessionTemplate sqlSession,Client c);
+	int userMailCheck2(SqlSessionTemplate sqlSession, String cEmail);
+	Client searchIdEnd(SqlSessionTemplate sqlSession, Client c);
 
+	
 	
 	//장바구니
 	int selectPanierCount(SqlSessionTemplate sqlSession);
@@ -30,6 +30,6 @@ public interface ClientDao {
 	//결제내역
 	int selectPaymentEndCount(SqlSessionTemplate sqlSession);
 	List<Map<String,String>> selectPaymentEndList(SqlSessionTemplate sqlSession, int cPage, int numPerPage,String cId);
-	
+
 	
 }

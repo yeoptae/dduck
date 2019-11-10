@@ -25,7 +25,6 @@
                                     </div>
                                     <div class="check_font" id="mailCheck"></div>  
                                 <div style="margin-top:10px" class="form-group">
-                                    <!-- Button -->
                            
                                     <div class="col-sm-12 controls">
                                     <button id="injeng" type="submit" name="submit" class="btn btn-primary">이메일 인증받기</button>
@@ -41,7 +40,7 @@
 
 
 
-//원래 되는부분
+// 중복된 이메일일경우 버튼을 숨기는 ajax
  $(function(){
 		$("#email").blur(function() {
 			var clientEmail = $('#email').val();

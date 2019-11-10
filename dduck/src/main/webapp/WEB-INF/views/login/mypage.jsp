@@ -8,6 +8,7 @@
 	<jsp:param name="clientEnroll" value="정보수정" />
 </jsp:include>
 
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Do+Hyeon|Nanum+Gothic+Coding|Noto+Sans+KR|Sunflower:300&display=swap" rel="stylesheet">
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.2/css/bootstrap.min.css">
@@ -23,8 +24,8 @@
 <body>
 	<div class="row">
 		<div class="col-sm-3 sidenav">
-			<h4 style="padding:10px;">마이 페이지</h4>
-						<ul class="nav nav-pills nav-stacked">
+			<h4 style="center" >마이 페이지</h4>
+				<ul class="nav nav-pills nav-stacked">
 				<li><a href="${pageContext.request.contextPath}/client/panier?cId=${loginClient.CId}">장바구니</a></li>
 				<li><a href="${pageContext.request.contextPath}/client/paymentList?cId=${loginClient.CId}">결제내역</a></li>
 				<li><a href="${pageContext.request.contextPath}/update/update.do?cId=${loginClient.CId}">정보수정</a></li>
@@ -33,7 +34,7 @@
 			</ul>
 		</div>
 		<div class="col-xs-8 col-sm-8">
-		<h1  style="margin-cente">마이 페이지</h1>
+		<h1 class="text-center" style="margin-right:170px; font-family: 'Black Han Sans', sans-serif;">정보수정</h1>
 			<div>
 				<form class="form-horizontal">
 					<div class="form-group">

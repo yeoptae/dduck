@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
@@ -30,8 +31,6 @@ public class MailController {
    JavaMailSender mailSender; // 메일 서비스를 사용하기 위해 의존성을 주입함.
    ClientService clientservice; // 서비스를 호출하기 위해 의존성을 주입
 
-   
-   
    // 로깅을 위한 변수
    private static final Logger logger = LoggerFactory.getLogger(MailController.class);
    private static final String String = null;
@@ -185,10 +184,10 @@ public class MailController {
    
   @RequestMapping(value = "/find_pass.do", method = RequestMethod.POST)
       public ModelAndView find_pass(HttpServletRequest request, String user_id, String e_mail,
-              HttpServletResponse response_email) throws IOException{
-          
-          //랜덤한 난수 (인증번호)를 생성해서 이메일로 보내고 그 인증번호를 입력하면 비밀번호를 변경할 수 있는 페이지로 이동시킴
-          
+              String cMail,HttpServletResponse response_email) throws IOException{
+	  
+	  
+       //랜덤한 난수 (인증번호)를 생성해서 이메일로 보내고 그 인증번호를 입력하면 비밀번호를 변경할 수 있는 페이지로 이동시킴 
           Random r = new Random();
           int dice = r.nextInt(157211)+48271;
           
@@ -304,7 +303,15 @@ public class MailController {
           
       }
       
+      
+      
+      
+     /*아이디찾기 메일 컨트롤러*/
+//==================================================================================================     
+ 
+      
     
 
       
 }
+
