@@ -54,9 +54,9 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 		return dao.selectBoardCount2(session,searchWord);
 	}
 	@Override
-	public int selectBoardCount() {
+	public int selectBoardCount(int gCode) {
 		// TODO Auto-generated method stub
-		return dao.selectBoardCount(session);
+		return dao.selectBoardCount(session,gCode);
 	}
 
 	@Override
@@ -64,6 +64,7 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 		// TODO Auto-generated method stub
 		return dao.selectBoardList(session,cPage,numPerpage, searchWord ,gCode);
 	}
+
 	@Override
 	public List<Map<String, String>> searchList(int cPage, int numPerpage,String searchWord) {
 		// TODO Auto-generated method stub
@@ -77,7 +78,26 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 		// TODO Auto-generated method stub
 		return dao.selectFile(session);
 	}
-
+	@Override
+	public List<Map<String, String>> selectBoardList2() {
+		return dao.selectBoardList2(session);
+	}
+	@Override
+	public List<Map<String, String>> selectBoardList3() {
+		return dao.selectBoardList3(session);
+	}
+	@Override
+	public List<Map<String, String>> selectBoardList4() {
+		return dao.selectBoardList4(session);
+	}
+	@Override
+	public List<Map<String, String>> selectBoardList5() {
+		return dao.selectBoardList5(session);
+	}
+	@Override
+	public List<Map<String, String>> selectBoardList6() {
+		return dao.selectBoardList6(session);
+	}
 
 	@Override
 	public List<Map<String, String>> selectClientList(int cPage,int numPerpage,String keyword) {
@@ -173,7 +193,13 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 
 
 	
+	@Override
+	public int deleteClient(Client c) {
+		return dao.deleteClient(session, c);
+	}
 
+
+	
 
 
 	

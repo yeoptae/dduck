@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.kh.dduck.adminboard.model.vo.SaleBoardFile;
+import com.kh.dduck.payment.model.vo.Payment;
 import com.kh.dduck.review.model.vo.Review;
 
 
@@ -17,5 +18,6 @@ public interface ReviewService {
 	int updateReview(Review r);
 	Map<String,Object> selectSale(int pCode);
 	List<SaleBoardFile> selectAttachList(int pCode);
+	int selectReviewCount1(Payment p);
 
 }

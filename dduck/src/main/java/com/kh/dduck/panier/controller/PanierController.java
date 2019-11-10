@@ -45,22 +45,21 @@ public class PanierController {
 	
    	//장바구니삭제
    	@RequestMapping("/client/panierDelete")
-  	public String deleteReview(Panier p, Model model) {
+  	public String deleteReview(Panier p, Model model, String cId) {
    		
   		int result = service.deletePanier(p);
-
   		String msg = "";
   		String loc = "";
-
+  		System.out.println(cId);
   		if (result > 0) {
   			msg = "삭제 완료";
-  			loc="/client/panier?panierCode="+p.getPanierCode()+"&cId="+p.getCId();
+  			loc="/client/panier?cId="+cId;
   			model.addAttribute("msg", msg);
   			model.addAttribute("loc", loc);
 
   		} else {
   			msg = "삭제 실패";
-  			loc = "client/panier";
+  			loc = "/client/panier";
   			model.addAttribute("msg", msg);
   			model.addAttribute("loc", loc);
 

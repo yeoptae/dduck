@@ -57,6 +57,11 @@
     <!--회원탈퇴  -->
     
     <delete id="delete">
+<!--  			delete from Client where cId = #{cId}  -->
+ 			delete from client where cid=#{cId} and cpw=#{cPw}
+	</delete>
+	
+	<delete id="delete2">
  			delete from Client where cId = #{cId} 
 	</delete>
 	

@@ -17,8 +17,9 @@
         <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
             <div class="panel panel-info" >
                     <div class="panel-heading">
-                        <div class="panel-title">Sign In</div>
+                        <div class="panel-title">로그인</div>
                         <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="${pageContext.request.contextPath}/pwSearch/pwSearch.do">비밀번호찾기</a></div>
+                        <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="${pageContext.request.contextPath}/user/findingId.do">아이디찾기 </a></div>
                     </div>     
 
                     <div style="padding-top:30px" class="panel-body" >
@@ -28,20 +29,13 @@
                                     
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input id="login-username" type="text" class="form-control" name="cId" value="" placeholder="User Id">                                        
+                                        <input id="login-username" type="text" class="form-control" name="cId" value="" placeholder="아이디">                                        
                                     </div>
                                 
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                        <input id="login-password" type="password" class="form-control" name="cPw" placeholder="Password">
+                                        <input id="login-password" type="password" class="form-control" name="cPw" placeholder="비밀번호">
                                     </div>
-                                    <c:if test="${msg == '실패'}">
-                                    <tr>
-                                 <td colspan=2>
-                                ` 아이디 또는 패스워드가 틀렸습니다.
-                                 </td>
-                           </tr>
-                           </c:if>
                                 <div style="margin-top:10px" class="form-group">
                                     <!-- Button -->
                            
@@ -77,8 +71,8 @@
  });
  
  function button1_click() {
-	 location.href = "${pageContext.request.contextPath}/member/email.do";
-	}
+    location.href = "${pageContext.request.contextPath}/member/email.do";
+   }
  
  
       

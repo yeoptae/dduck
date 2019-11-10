@@ -16,7 +16,7 @@
   </select>
 
    <select id="selectBoardCount" resultType="_int">
-      select count(*) from saleboard
+      select count(*) from saleboard WHERE GCODE=#{gCode}
    </select>
     <select id="selectBoardCount2" resultType="_int">
       select count(*) from saleboard where salename like '%'||#{searchWord}||'%'
@@ -31,7 +31,23 @@
 		and salename like '%'||#{searchWord}||'%'
    </sql>
    
+   <select id="selectBoardList2" resultType="map">
+      SELECT * FROM (SELECT * FROM SALEBOARD WHERE GCODE=1  ORDER BY PCODE DESC) WHERE ROWNUM <![CDATA[<]]> 4
+   </select>
    
+    <select id="selectBoardList3" resultType="map">
+      SELECT * FROM (SELECT * FROM SALEBOARD WHERE GCODE=2 ORDER BY PCODE DESC) WHERE ROWNUM <![CDATA[<]]> 4
+   </select> 
+   
+    <select id="selectBoardList4" resultType="map">
+      SELECT * FROM (SELECT * FROM SALEBOARD WHERE GCODE=3 ORDER BY PCODE DESC) WHERE ROWNUM <![CDATA[<]]> 4
+   </select> 
+   <select id="selectBoardList5" resultType="map">
+      SELECT * FROM (SELECT * FROM SALEBOARD WHERE GCODE=4 ORDER BY PCODE DESC) WHERE ROWNUM <![CDATA[<]]> 4
+   </select> 
+   <select id="selectBoardList6" resultType="map">
+      SELECT * FROM (SELECT * FROM SALEBOARD WHERE GCODE=5 ORDER BY PCODE DESC) WHERE ROWNUM <![CDATA[<]]> 4
+   </select> 
 
 	<insert id="insertBoard" parameterType="map">
 		INSERT INTO SALEBOARD VALUES(SEQ_PCODE.NEXTVAL,#{gCode},#{saleName},#{salePrice},#{detailsInfo})

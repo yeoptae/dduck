@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.dduck.adminboard.model.vo.SaleBoardFile;
 import com.kh.dduck.common.PageBarFactory;
+import com.kh.dduck.payment.model.vo.Payment;
 import com.kh.dduck.review.model.vo.Review;
 import com.kh.dduck.review.service.ReviewService;
 
@@ -85,22 +86,24 @@ public class ReviewController {
 	
 	// 등록
 	@RequestMapping("/review/reviewForm")
-	public String insertReview(Review r, Model model) {
-
-		int result = service.insertReview(r);
+	public String insertReview(Review r, Payment p,Model model) {
+		
+		
+		int result = service.selectReviewCount1(p);
 
 		String msg = "";
 		String loc = "";
 
 		if (result > 0) {
+			service.insertReview(r);
 			msg = "등록 완료";
 			loc = "/detail/detailView?pCode="+r.getPCode();
 			model.addAttribute("msg", msg);
 			model.addAttribute("loc", loc);
 
 		} else {
-			msg = "등록 실패";
-			loc = "/detail/detailView";
+			msg = "구매해야 리뷰를 등록하실수 있습니다.";
+			loc = "/detail/detailView?pCode="+r.getPCode();
 			model.addAttribute("msg", msg);
 			model.addAttribute("loc", loc);
 

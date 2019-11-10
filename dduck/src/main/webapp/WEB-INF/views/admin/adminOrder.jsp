@@ -50,6 +50,7 @@
 								<th style="background-color: #eeeeee; text-align: center;">휴대폰번호</th>
 								<th style="background-color: #eeeeee; text-align: center;">수량</th>
 								<th style="background-color: #eeeeee; text-align: center;">금액</th>
+								<th style="background-color: #eeeeee; text-align: center;">요청사항</th>
 								<th style="background-color: #eeeeee; text-align: center;">배송상태</th>
 								<th style="background-color: #eeeeee; text-align: center;">배송완료</th>
 
@@ -71,6 +72,7 @@
 									<td><c:out value="${p['PAYPHONE'] }" /></td>
 									<td><c:out value="${p['PAYAMOUNT'] }" /></td>
 									<td><c:out value="${p['PAYPRICE'] }" /></td>
+									<td><c:out value="${p['PAYMEMO'] }" /></td>
 									<c:if test="${p['DCHECK'] =='0' }">
 										<td><p class="trt${pv.count}">배송전</p></td>
 									</c:if>

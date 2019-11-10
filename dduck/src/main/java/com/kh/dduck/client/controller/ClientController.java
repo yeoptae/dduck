@@ -53,7 +53,7 @@ public class ClientController {
 		} else if (pwEncoder.matches(c.getCPw().trim(), result.getCPw().trim())) {
 			msg = "로그인 성공";
 			model.addAttribute("loginClient", result);
-//              session.setAttribute("loginMember", result);
+			//              session.setAttribute("loginMember", result);
 
 		} else {
 			msg = "비밀번호가 틀립니다.";
@@ -105,7 +105,7 @@ public class ClientController {
 
 	/* 정보수정 */
 	@RequestMapping("/update/updateEnd.do")
-	public String updateEnd(Client c, Model model) {
+	public String updateEnd(Client c, Model model, 	SessionStatus session) {
 		System.out.println("updateEnd" + c);
 
 		int result = service.updateClient(c);
@@ -114,7 +114,7 @@ public class ClientController {
 		String loc = "";
 		if (result > 0) {
 			msg = "정보수정완료";
-//            status.setComplete();
+			session.setComplete();
 			logger.debug("업데이트 됐냐?" + result);
 		} else {
 			msg = "정보수정오류";
@@ -147,31 +147,37 @@ public class ClientController {
 		return "login/withdraw";
 	}
 
+
 	/* 회원탈퇴 */
-	@RequestMapping("/withdraw1/withdraw1.do")
-	public String deleteReview(Client c, Model model) {
-		c.setCPw(pwEncoder.encode(c.getCPw()));
-		int result = service.deleteClient(c);
-		System.out.println("!!!!!!!" + c);
+	@RequestMapping("/withdraw1/withdraw2.do")
+	public String deleteClient(Client c, Model model,SessionStatus session) {
+
+		Client result2 = service.selectClientOne(c);
+
 		String msg = "";
-		String loc = "";
+		String loc = "/";
 
-		if (result > 0) {
-			msg = "탈퇴 완료";
-			loc = "/login/login";
-			model.addAttribute("msg", msg);
-			model.addAttribute("loc", loc);
+		if(result2 != null && pwEncoder.matches(c.getCPw().trim(), result2.getCPw().trim())) {
+			int result = service.deleteClient(result2);
+	
 
-		} else {
-			msg = "탈퇴 실패";
-			loc = "/";
-			model.addAttribute("msg", msg);
-			model.addAttribute("loc", loc);
+			if(result>0){
+				msg = "탈퇴 완료";
+				loc = "/";
+				session.setComplete();
 
+			}
+			
+		}else {
+			msg = "비밀번호를 확인해주세요.";	
 		}
-
+		model.addAttribute("msg", msg);
+		model.addAttribute("loc", loc);
 		return "common/msg";
+	
 	}
+
+
 
 	/* 마이페이지에서 비밀번호 변경뷰매소드 */
 	@RequestMapping("/pwChange/pwChange.do")
@@ -181,16 +187,17 @@ public class ClientController {
 
 	/* 마이페이지에서 비밀번호 변경매소드 */
 	@RequestMapping("/pwChangeEnd/pwChangeEnd.do")
-	public String pwChangeEnd(Client c, Model model) {
-		
+	public String pwChangeEnd(Client c, Model model, SessionStatus session) {
+
 		c.setCPw(pwEncoder.encode(c.getCPw().trim()));
-		
+
 		int result = service.updatePwChange(c);
 
 		String msg = "";
 		String loc = "";
 		if (result > 0) {
 			msg = "비번변경완료";
+			session.setComplete();
 		} else {
 			msg = "취소하셧습니다.";
 		}
@@ -203,9 +210,9 @@ public class ClientController {
 	/* 비번 찾아서 변경하는 매소드 */
 	@RequestMapping("/pass_change.do")
 	public String pwSearchEnd(HttpServletRequest request, Client c, Model model, String e_mail) {
-		
+
 		c.setCPw(pwEncoder.encode(c.getCPw().trim()));
-		logger.debug("비버변경 됐니??" + c);
+		logger.debug("비번변경 됐니??" + c);
 
 		int result = service.updatePw(c);
 
@@ -221,7 +228,7 @@ public class ClientController {
 
 		return "common/msg";
 	}
-	
+
 	/*회원가입시 아이디 중복체크*/
 	@RequestMapping("/user/idCheck")
 	public @ResponseBody int idCheck(@RequestParam("cId") String cId) {
@@ -231,7 +238,7 @@ public class ClientController {
 
 		return result;
 	}
-	
+
 	/*회원가입시 이메일 중복체크*/
 	@RequestMapping("/user/mailCheck")
 	public @ResponseBody int mailCheck(@RequestParam("e_mail") String cEmail) {
@@ -265,15 +272,13 @@ public class ClientController {
 	@RequestMapping("/client/paymentList")
 	public ModelAndView paymentList(@RequestParam(value = "cPage", required = false, defaultValue = "0") int cPage,
 			String cId) {
-
 		ModelAndView mv = new ModelAndView();
-
 		int numPerPage = 10;
 
 		List<Map<String, String>> list = service.selectPaymentEndList(cPage, numPerPage, cId);
 		int totalCount = service.selectPaymentEndCount();
 
-		mv.addObject("pageBar", PageBarFactory.getPageBar(totalCount, cPage, numPerPage, "/spring/client/paymentList"));
+		mv.addObject("pageBar", PageBarFactory.getPageBar(totalCount, cPage, numPerPage, "/dduck/client/paymentList"));
 		mv.addObject("count", totalCount);
 		mv.addObject("list", list);
 

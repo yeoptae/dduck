@@ -7,8 +7,7 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="pageTitle" value="관리자마이페이지" />
 </jsp:include>
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <section id="content">
 	<div class="container-fluid">
@@ -75,8 +74,10 @@
 								<td><c:out value="${c['CADDR2']},${c['CADDR3']}"/></td>
 								<td><c:out value='${c["CEN"] }' /></td>
 								<td>
-								<button type="button" class="btn btn-primary" id="getOut" onclick="getOut()">탈퇴</button>
+								<button type="button" class="btn btn-primary tr${v.count}" id="getOut" onclick="getOut('${c['CID'] }','${v.count}');">탈퇴</button>
+								<input type="text" class="num${v.count}" hidden/>
 										</td>
+								<%-- <td><input type="hidden"<c:out value='${c["CPW"] }' />></td> --%>
 							    </tr>
 								</c:forEach>
 						</tbody>
@@ -92,9 +93,22 @@
 
 			</div>
   <script>
-  function getOut() {
-	  location="${pageContext.request.contextPath}/admin/withDraw";  
-  }
+  function getOut(i, j) {
+	   $.ajax({
+		  url: "${pageContext.request.contextPath}/admin/withDraw.do",
+		  data : {'cId' : i},
+		  success : function(data) {
+				if(data == 'true'){
+					alert("탈퇴성공");
+					$('.tr'+j).css({"display": "none"});
+				}else{
+					alert("실패");
+				}		
+			}, error : function() {
+				console.log("ajax fail");
+			}
+		}); 
+	}
   </script>			
 
 </section>
