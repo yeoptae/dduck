@@ -46,8 +46,8 @@ public class AdminBoardDaoImpl implements AdminBoardDao {
 	}
 
 	@Override
-	public int selectBoardCount(SqlSessionTemplate session) {
-		return session.selectOne("board.selectBoardCount");
+	public int selectBoardCount(SqlSessionTemplate session,int gCode) {
+		return session.selectOne("board.selectBoardCount",gCode);
 	}
 	@Override
 	public int selectBoardCount2(SqlSessionTemplate session, String searchWord) {

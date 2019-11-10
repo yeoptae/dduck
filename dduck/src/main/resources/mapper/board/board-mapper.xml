@@ -16,7 +16,7 @@
   </select>
 
    <select id="selectBoardCount" resultType="_int">
-      select count(*) from saleboard
+      select count(*) from saleboard WHERE GCODE=#{gCode}
    </select>
     <select id="selectBoardCount2" resultType="_int">
       select count(*) from saleboard where salename like '%'||#{searchWord}||'%'
