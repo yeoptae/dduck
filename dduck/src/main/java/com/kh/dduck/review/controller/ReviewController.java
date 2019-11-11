@@ -31,7 +31,6 @@ public class ReviewController {
 		
 		ModelAndView mv = new ModelAndView();
         
-		
 		Map<String, Object> saleList = service.selectSale(pCode);
 		List<SaleBoardFile> att = service.selectAttachList(pCode);
 		int numPerPage = 5;
