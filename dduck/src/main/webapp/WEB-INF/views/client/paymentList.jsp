@@ -68,9 +68,9 @@
                  </c:forEach>
               </tbody>
             </table>
-            <div id="pageBar" style="text-align: center; color: black;">
-              ${pageBar }
-            </div>
+<!--             <div id="pageBar" style="text-align: center; color: black;"> -->
+<%--               ${pageBar } --%>
+<!--             </div> -->
           </div>
 
           <br><br>

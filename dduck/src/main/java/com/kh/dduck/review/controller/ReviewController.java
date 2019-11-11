@@ -39,7 +39,7 @@ public class ReviewController {
 		
 		int totalCount = service.selectReviewCount(pCode);
 		
-		mv.addObject("pageBar", PageBarFactory.getPageBar2(totalCount, cPage, numPerPage, "/dduck/detail/detailView",pCode));
+		mv.addObject("pageBar", PageBarFactory.getPageBar2(totalCount, cPage, numPerPage, "/19AM_dduck_final/detail/detailView",pCode));
 		mv.addObject("count", totalCount);
 		mv.addObject("list", list);
 		mv.addObject("saleList", saleList);
