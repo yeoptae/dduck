@@ -34,7 +34,14 @@
             <c:forEach items="${list }" var="q" varStatus="v">
 		            <li class="qnaHover table-row">
 		                <div class="col col-1" data-label="번호"><c:out value='${q["QACODE"] }'/></div>
-		                <div class="col col-2" data-label="작성자"><c:out value='${q["CID"] }'/></div>
+		                <c:choose>
+		                	<c:when test="${empty q['CID']}">
+		                		<div class="col col-2" data-label="작성자">(탈퇴회원)</div>
+		                	</c:when>
+		                	<c:when test="${not empty q['CID']}">
+		                		<div class="col col-2" data-label="작성자"><c:out value='${q["CID"] }'/></div>
+	                		</c:when>
+		                </c:choose>
 	                	<div class="col col-3" data-label="제목" style="-webkit-text-stroke-width: thin;"><a href='${path }/qna/qnaView.do?qaCode=${q["QACODE"] }'><c:out value='${q["QATITLE"] }'/></a></div>
 		                <div class="col col-4" data-label="작성일"><fmt:formatDate value='${q["QAEN"] }' pattern="yyyy.MM.dd"/></div>
 		                <div class="col col-5" data-label="답변">

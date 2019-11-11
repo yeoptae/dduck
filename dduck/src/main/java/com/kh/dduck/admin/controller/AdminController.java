@@ -62,7 +62,8 @@ public class AdminController {
       mv.addObject("list", list);
       mv.addObject("fileList", fileList);
       mv.addObject("pageBar",
-            PageBarFactory.getPageBarWhere2(totlaCount2, cPage, numPerPage, "/19AM_dduck_final/admin/searchList.do",searchWord));
+    		  PageBarFactory.getPageBarWhere22(totlaCount2, cPage, numPerPage, "/19AM_dduck_final/admin/searchList.do",searchWord));
+
 
       mv.setViewName("saleboard/searchList");
 
