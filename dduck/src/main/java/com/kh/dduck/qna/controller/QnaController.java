@@ -38,7 +38,8 @@ public class QnaController {
 		mv.setViewName("notice/qnaList");
 		
 		return mv;
-	}
+	} 
+	
 	
 	/* 마이페이지 Qna List연결 */
 	@RequestMapping("/client/ClientQnaList.do")
