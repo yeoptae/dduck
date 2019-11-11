@@ -40,6 +40,7 @@ public class QnaController {
 		return mv;
 	} 
 	
+	
 	/* 마이페이지 Qna List연결 */
 	@RequestMapping("/client/ClientQnaList.do")
 	public ModelAndView MypageQnaList(@RequestParam(value="cPage", required=false, defaultValue="0") int cPage) {
