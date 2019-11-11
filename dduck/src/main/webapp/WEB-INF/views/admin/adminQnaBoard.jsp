@@ -74,9 +74,6 @@
 		                	<c:if test='${not empty q["CMCONTENT"]}'>
 		                	<td >답변완료</td>
 		                	</c:if>
-		                		
-		                
-		    
 								</tr>
 							</c:forEach>
 						</tbody>
