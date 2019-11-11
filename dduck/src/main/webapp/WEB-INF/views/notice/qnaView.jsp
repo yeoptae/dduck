@@ -80,8 +80,10 @@
     <div class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
             <div class="pull-right">
+            <c:if test="${loginClient.CId eq qna.CID}">
                 <a href="javascript:void(0);" onclick="qnaUpdate()" class="updateBtn navbar-btn btn-danger btn">
                     <span class="glyphicon"></span> 수정 </a>
+            </c:if>
                 <a href="javascript:void(0);" onclick="qnaDelete()" class="navbar-btn btn-danger btn">
                     <span class="glyphicon"></span> 삭제 </a>
             </div>
