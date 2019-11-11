@@ -263,6 +263,7 @@ function signUp_validate(){
       return false;
    } 
    
+   
    var getName= /^[가-힣]+$/;
    if(!getName.test($('#userName').val())) {
       alert("이름은 한글만 입력이 가능합니다.");
