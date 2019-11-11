@@ -23,7 +23,7 @@
    src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=4b65ed0f-8a23-4128-abf7-7df859e62126"></script>
 
 <script type="text/javascript"
-   src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
+   src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
 
 <!-- Stylesheets -->
 <%-- <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/index/bootstrap.min.css"/> --%>
@@ -467,7 +467,7 @@
    src="${pageContext.request.contextPath }/resources/js/index/main.js"></script>
 
 <script type="text/javascript"
-   src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b0677ab683f93637bdf3d83781b922c1"></script>
+   src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=b0677ab683f93637bdf3d83781b922c1"></script>
 <script>
    var container = document.getElementById('map');
    var options = {
