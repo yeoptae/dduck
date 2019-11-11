@@ -20,7 +20,7 @@
 
 
 <body>
-    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js">
     <script>
         function sample6_execDaumPostcode() {
             new daum.Postcode({
@@ -70,8 +70,8 @@
         	$("#alert-danger").hide(); 
         	$("[name=pwdCheck]").keyup(function(){ 
         		var pwd=$("#pwd").val(); 
-        		var pwdCheck=$("#pwdCheck").val(); 
-        		if(pwd != "" || pwdCheck != ""){ 
+        		var pwdCheck=$("#pwdCheck").val();
+        		if(pwd != "" || pwdCheck != ""){
         			if(pwd == pwdCheck){ 
         				$("#alert-success").show(); 
         				$("#alert-danger").hide(); 
@@ -105,7 +105,7 @@
 					success : function(data) {
 									if (data == 1) {
 										// 1 : 아이디가 중복되는 문구
-										$("#id_check").text("사용중인 아이디입니다.");
+										$("#id_check").text("중복된 아이디입니다.");
 										$("#id_check").css({"color":"red","display":"block"});
 									} else {
 										if(data == 0){
