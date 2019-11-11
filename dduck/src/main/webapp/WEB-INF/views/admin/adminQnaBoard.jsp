@@ -44,7 +44,7 @@
 						style="margin-right: 10px; font-family: 'Black Han Sans', sans-serif;">Qna게시판</h2>
 				</center>
 
-				<div class="container-fluid" style="margin-top: 5%">
+				<div class="container-fluid" >
 					<table id='tbl-board' class='table table-striped table-hover'>
 						<thead class="thead-light">
 							<tr style="text-align: center;">

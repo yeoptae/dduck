@@ -37,7 +37,7 @@
 				<center><h2 style="margin-right:10px; font-family: 'Black Han Sans', sans-serif;">회원리스트</h2></center>
 				
 				
-				<div class="container-fluid" style="margin-top: 5%">
+				<div class="container-fluid" >
 				
 				<form name="form1" method="post" action="${pageContext.request.contextPath}/admin/adminClientList.do">
 
@@ -66,8 +66,8 @@
 						</thead>
 						<tbody>
 							
-								<c:forEach items="${clientList }" var="c" varStatus="v">
-								<tr style="text-align: center;">
+								<c:forEach items="${clientList }" var="c" varStatus="v">								
+								<tr style="text-align: center;">							
 								<td><c:out value='${c["CID"] }' /></td>
 								<td><c:out value='${c["CNAME"] }' /></td>
 								<td><c:out value='${c["CEMAIL"] }' /></td>
@@ -95,11 +95,12 @@
 			</div>
   <script>
   function getOut(i, j) {
-	   $.ajax({
+	  if(confirm("탈퇴시키겠습니까?")) { 
+	  $.ajax({
 		  url: "${pageContext.request.contextPath}/admin/withDraw.do",
 		  data : {'cId' : i},
 		  success : function(data) {
-				if(data == 'true'){
+			   if(data == 'true'){
 					alert("탈퇴성공");
 					$('.tr'+j).css({"display": "none"});
 				}else{
@@ -109,6 +110,9 @@
 				console.log("ajax fail");
 			}
 		}); 
+	  } else {
+		  alert("취소하였습니다.");
+	  }
 	}
   </script>			
 

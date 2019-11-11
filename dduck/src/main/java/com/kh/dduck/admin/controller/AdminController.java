@@ -62,7 +62,7 @@ public class AdminController {
       mv.addObject("list", list);
       mv.addObject("fileList", fileList);
       mv.addObject("pageBar",
-            PageBarFactory.getPageBarWhere2(totlaCount2, cPage, numPerPage, "/19AM_dduck_final/dduck/admin/searchList.do",searchWord));
+            PageBarFactory.getPageBarWhere2(totlaCount2, cPage, numPerPage, "/19AM_dduck_final/admin/searchList.do",searchWord));
 
       mv.setViewName("saleboard/searchList");
 
@@ -91,7 +91,7 @@ public class AdminController {
       mv.addObject("fileList", fileList);
       mv.addObject("gCode", gCode);
       mv.addObject("pageBar",
-            PageBarFactory.getPageBarWhere3(totlaCount, cPage, numPerPage, "/19AM_dduck_final/dduck/admin/saleboardList.do", gCode,searchWord));
+            PageBarFactory.getPageBarWhere3(totlaCount, cPage, numPerPage, "/19AM_dduck_final/admin/saleboardList.do", gCode,searchWord));
 
       mv.setViewName("saleboard/saleboardList");
 
@@ -260,9 +260,9 @@ public class AdminController {
       int totlaCount = service.selectClientCount();
       int totalCount2 = service.selectClientCount2(keyword);
       mv.addObject("pageBar",
-            PageBarFactory.getPageBarWhere2(totalCount2, cPage, numPerPage, "/19AM_dduck_final/dduck/admin/adminClientList.do",keyword));
+            PageBarFactory.getPageBarWhere2(totalCount2, cPage, numPerPage, "/19AM_dduck_final/admin/adminClientList.do",keyword));
       mv.addObject("pageBar",
-              PageBarFactory.getPageBar(totlaCount, cPage, numPerPage, "/19AM_dduck_final/dduck/admin/adminClientList.do"));
+              PageBarFactory.getPageBar(totlaCount, cPage, numPerPage, "/19AM_dduck_final/admin/adminClientList.do"));
       mv.addObject("count", totlaCount);
       mv.addObject("count", totalCount2);
       mv.addObject("clientList", clientList);
@@ -278,7 +278,7 @@ public class AdminController {
       List<Map<String, String>> QnaList = service.selectQnaBoard(cPage, numPerPage);
       int totlaCount = service.selectQnaCount();
       mv.addObject("pageBar",
-            PageBarFactory.getPageBar(totlaCount, cPage, numPerPage, "/19AM_dduck_final/dduck/admin/adminQnaBoard.do"));
+            PageBarFactory.getPageBar(totlaCount, cPage, numPerPage, "/19AM_dduck_final/admin/adminQnaBoard.do"));
       mv.addObject("count", totlaCount);
       mv.addObject("QnaList", QnaList);
       mv.setViewName("admin/adminQnaBoard");
@@ -372,7 +372,7 @@ public class AdminController {
       int totalCount = service.selectPaymentCount();
 
       mv.addObject("pageBar",
-            PageBarFactory.getPageBar(totalCount, cPage, numPerPage, "/19AM_dduck_final/dduck/admin/adminmypage.do"));
+            PageBarFactory.getPageBar(totalCount, cPage, numPerPage, "/19AM_dduck_final/admin/adminmypage.do"));
       mv.addObject("count", totalCount);
       mv.addObject("list", list);
       mv.setViewName("admin/adminOrder");
@@ -381,8 +381,6 @@ public class AdminController {
    
     @RequestMapping("/admin/withDraw.do") 
 	 public void deleteClient(Client c,HttpServletResponse res)throws IOException {
-    	    System.out.println("======================");
-    	    System.out.println(c);
 			int result = service.deleteClient(c);
 			if(result > 0) res.getWriter().print(true);
 			else res.getWriter().print(false);
