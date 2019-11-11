@@ -64,7 +64,7 @@ public class NoticeController {
 		int numPerPage=10;
 		List<Map<String,String>> list=service.selectNoticeList(cPage,numPerPage);
 		int totalCount=service.selectNoticeCount();
-		mv.addObject("pageBar",PageBarFactory.getPageBar(totalCount, cPage, numPerPage, "/dduck/notice/noticeList.do"));
+		mv.addObject("pageBar",PageBarFactory.getPageBar(totalCount, cPage, numPerPage, "/19AM_dduck_final/notice/noticeList.do"));
 		mv.addObject("count",totalCount);
 		mv.addObject("list",list);
 		mv.setViewName("notice/noticeList");
@@ -79,7 +79,7 @@ public class NoticeController {
 		
 		/* 파일업로드처리 */
 		//1. 저장 경로
-		String saveDir=request.getSession().getServletContext().getRealPath("resources/upload/notice");
+		String saveDir=request.getSession().getServletContext().getRealPath("/resources/upload/notice");
 		List<NoticeFile> NoticeFileList=new ArrayList();
 		
 		File dir=new File(saveDir);

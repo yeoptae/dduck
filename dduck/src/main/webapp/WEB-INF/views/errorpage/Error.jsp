@@ -29,7 +29,7 @@ body {
   align-items: center;
   flex-direction: column;
   height: 100vh;
-  background-image: linear-gradient(-225deg, #1A1A1A, #343434);
+  background-image: linear-gradient(-225deg, #fffff, #343434);
 }
 .error_section_subtitle {
   color: #25F193;
@@ -121,13 +121,58 @@ title.onmousemove = function(e) {
 </script>
 </head>
 <body class="center1 errorPborder">
+<footer id="contact" class="contact-us">
+        <div class="container">
+            <div class="row">
+                <div class="contact-area">
     <section class="error_section">
+    <img src="${pageContext.request.contextPath }/resources/images/nullbackGganpan.png"/>
       <p class="error_section_subtitle">페이지를 찾을 수 없습니다!</p>
       <h1 class="error_title">
-        <p>500</p>
-        500
+        <p>ERROR!!!</p>
+        ERROR!!!
       </h1>
-      <a href="/" class="btn">▶홈으로 돌아가기◀</a>
+      <a href="${pageContext.request.contextPath }" class="btn">▶홈으로 돌아가기◀</a>
     </section>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,400i,500,500i,600,600i,700,700i,800|Vollkorn:400,400i,600,600i,700,700i');
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+/* footer */
+
+.contact-area {
+    position: relative;
+}
+
+.contact-us {
+    background: gray url(https://subtlepatterns.com/patterns/geometry2.png) repeat 0 0;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    height: 100%;
+    padding: 60px 0;
+    box-sizing: border-box;
+    -webkit-animation: slide 20s linear infinite;
+}
+
+@-webkit-keyframes slide {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -400px 0;
+    }
+}
+
+</style>
 </html>

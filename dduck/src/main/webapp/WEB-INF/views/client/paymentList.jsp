@@ -17,6 +17,7 @@
 					href="${pageContext.request.contextPath}/client/panier?cId=${loginClient.CId}" style="font-family: 'Black Han Sans', sans-serif;">장바구니</a></li>
 				<li><a
 					href="${pageContext.request.contextPath}/client/paymentList?cId=${loginClient.CId}" style="font-family: 'Black Han Sans', sans-serif;">결제내역</a></li>
+				<li><a href="${pageContext.request.contextPath}/client/ClientQnaList.do?cId=${loginClient.CId}" style="font-family: 'Black Han Sans', sans-serif;">문의내역</a></li>
 
 				<li><a
 					href="${pageContext.request.contextPath}/update/update.do?cId=${loginClient.CId}" style="font-family: 'Black Han Sans', sans-serif;">정보수정</a></li>
@@ -68,9 +69,9 @@
                  </c:forEach>
               </tbody>
             </table>
-            <div id="pageBar" style="text-align: center; color: black;">
-              ${pageBar }
-            </div>
+<!--             <div id="pageBar" style="text-align: center; color: black;"> -->
+<%--               ${pageBar } --%>
+<!--             </div> -->
           </div>
 
           <br><br>
