@@ -28,7 +28,6 @@ public class ReviewController {
 	@RequestMapping("/detail/detailView")
 	public ModelAndView ReviewView(@RequestParam(value = "cPage", required = false, defaultValue = "0") int cPage, int pCode) {
 
-		
 		ModelAndView mv = new ModelAndView();
         
 		Map<String, Object> saleList = service.selectSale(pCode);

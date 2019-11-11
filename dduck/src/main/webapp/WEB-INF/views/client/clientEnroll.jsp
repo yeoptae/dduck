@@ -66,23 +66,23 @@
         
         //비밀번호 일치하는지 확인  비밀번호가 틀리면  가입버튼 비활성화
        $(function(){ 
-        	$("#alert-success").hide(); 
-        	$("#alert-danger").hide(); 
-        	$("[name=pwdCheck]").keyup(function(){ 
-        		var pwd=$("#pwd").val(); 
-        		var pwdCheck=$("#pwdCheck").val(); 
-        		if(pwd != "" || pwdCheck != ""){ 
-        			if(pwd == pwdCheck){ 
-        				$("#alert-success").show(); 
-        				$("#alert-danger").hide(); 
-        				$("#submit").removeAttr("disabled"); 
-        				}else { 
-        					$("#alert-success").hide(); 
-        					$("#alert-danger").show(); 
-        					$("#submit").attr("disabled", "disabled"); 
-        					} 
-        			} 
-        		}); 
+           $("#alert-success").hide(); 
+           $("#alert-danger").hide(); 
+           $("[name=pwdCheck]").keyup(function(){ 
+              var pwd=$("#pwd").val(); 
+              var pwdCheck=$("#pwdCheck").val(); 
+              if(pwd != "" || pwdCheck != ""){ 
+                 if(pwd == pwdCheck){ 
+                    $("#alert-success").show(); 
+                    $("#alert-danger").hide(); 
+                    $("#submit").removeAttr("disabled"); 
+                    }else { 
+                       $("#alert-success").hide(); 
+                       $("#alert-danger").show(); 
+                       $("#submit").attr("disabled", "disabled"); 
+                       } 
+                 } 
+              }); 
         }); 
         
          
@@ -90,39 +90,39 @@
         
  
 
-	$(function(){
-		$("#id").keyup(function() {
-			var clientId = $('#id').val();
-			if(clientId==''||clientId.length<4){
-				$("#id_check").css("display","none");
-			}
-			if(clientId.trim().length>3){
-				$.ajax({
-					url : "${pageContext.request.contextPath}/user/idCheck?cId="+ clientId,
-					//cId=파라미터값으로 input에 name값이다.
-					type : 'get',
-					datatype : 'html',
-					success : function(data) {
-									if (data == 1) {
-										// 1 : 아이디가 중복되는 문구
-										$("#id_check").text("사용중인 아이디입니다.");
-										$("#id_check").css({"color":"red","display":"block"});
-									} else {
-										if(data == 0){
-											// 0 : 아이디 길이 / 문자열 검사
-											$("#id_check").text("사용가능한 아이디입니다.");
-											$("#id_check").css({"color":"green","display":"block"});
-										} 
-									}
-								}, error : function() {
-										console.log("실패");
-								}
-					});
-				}
-			});
-		}); 
+   $(function(){
+      $("#id").keyup(function() {
+         var clientId = $('#id').val();
+         if(clientId==''||clientId.length<4){
+            $("#id_check").css("display","none");
+         }
+         if(clientId.trim().length>3){
+            $.ajax({
+               url : "${pageContext.request.contextPath}/user/idCheck?cId="+ clientId,
+               //cId=파라미터값으로 input에 name값이다.
+               type : 'get',
+               datatype : 'html',
+               success : function(data) {
+                           if (data == 1) {
+                              // 1 : 아이디가 중복되는 문구
+                              $("#id_check").text("사용중인 아이디입니다.");
+                              $("#id_check").css({"color":"red","display":"block"});
+                           } else {
+                              if(data == 0){
+                                 // 0 : 아이디 길이 / 문자열 검사
+                                 $("#id_check").text("사용가능한 아이디입니다.");
+                                 $("#id_check").css({"color":"green","display":"block"});
+                              } 
+                           }
+                        }, error : function() {
+                              console.log("실패");
+                        }
+               });
+            }
+         });
+      }); 
 
-	
+   
      </script>
      
 
@@ -164,7 +164,7 @@
                         </div>
                         <div class="col-sm-6">
                             <input type="password" class="form-control" name="pwdCheck" id="pwdCheck" required/>
-                         	<div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div> 
+                            <div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div> 
                             <div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
                         </div>
                     </div>
@@ -250,33 +250,34 @@
 </body>
 <script>
 function signUp_validate(){
-	
-	var idCheck = /^[A-Za-z0-9+]{4,12}$/;
-	if(!idCheck.test($('#id').val())) {
-		alert("아이디는 4~12글자만 가능합니다.");
-		return false;
-	}
-	
-	var pwCheck = /^[a-z]+[a-z0-9]{5,19}$/g;
-	if(!pwCheck.test($('#pwd').val())) {
-		alert('비밀번호는 소문자+숫자로 가능합니다.');
-		return false;
-	} 
-	
-	var getName= /^[가-힣]+$/;
-	if(!getName.test($('#userName').val())) {
-		alert("이름은 한글만 입력이 가능합니다.");
-		return false;
-	}
-	var phone = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})([0-9]{3,4})([0-9]{4})$/;
-	if(!phone.test($('#phone').val())){
-		alert('올바른 휴대폰 번호를 입력해주세요.');
-		return false;
-	}
+   
+   var idCheck = /^[A-Za-z0-9+]{4,12}$/;
+   if(!idCheck.test($('#id').val())) {
+      alert("아이디는 4~12글자만 가능합니다.");
+      return false;
+   }
+   
+   var pwCheck = /^[a-z]+[a-z0-9]{5,19}$/g;
+   if(!pwCheck.test($('#pwd').val())) {
+      alert('비밀번호는 소문자+숫자로 가능합니다.');
+      return false;
+   } 
+   
+   
+   var getName= /^[가-힣]+$/;
+   if(!getName.test($('#userName').val())) {
+      alert("이름은 한글만 입력이 가능합니다.");
+      return false;
+   }
+   var phone = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})([0-9]{3,4})([0-9]{4})$/;
+   if(!phone.test($('#phone').val())){
+      alert('올바른 휴대폰 번호를 입력해주세요.');
+      return false;
+   }
 
-	
-	return true;
-	}
+   
+   return true;
+   }
 
 </script>
 

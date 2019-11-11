@@ -75,9 +75,17 @@
 								<td><c:out value="${c['CADDR2']},${c['CADDR3']}"/></td>
 								<td><c:out value='${c["CEN"] }' /></td>
 								<td>
-								<button type="button" class="btn btn-primary tr${v.count}" id="getOut" onclick="getOut('${c['CID'] }','${v.count}');">탈퇴</button>
-								<input type="text" class="num${v.count}" hidden/>
-										</td>
+								<c:choose>
+									<c:when test='${c["CID"] ne "admin" }'>
+										<button type="button" class="btn btn-primary tr${v.count}" id="getOut" onclick="getOut('${c['CID'] }','${v.count}');">탈퇴</button>
+										<input type="text" class="num${v.count}" hidden/>
+									</c:when>
+									<c:when test='${c["CID"] eq "admin" }'>
+										<button type="button" class="btn btn-primary tr${v.count}" onclick="dontgetout();">탈퇴</button>
+									</c:when>
+								</c:choose>
+								</td>
+									
 								<%-- <td><input type="hidden"<c:out value='${c["CPW"] }' />></td> --%>
 							    </tr>
 								</c:forEach>
@@ -94,6 +102,9 @@
 
 			</div>
   <script>
+  function dontgetout(){
+	  alert('관리자 계정은 탈퇴할 수 없는 아이디 입니다!');
+  }
   function getOut(i, j) {
 	  if(confirm("탈퇴시키겠습니까?")) { 
 	  $.ajax({

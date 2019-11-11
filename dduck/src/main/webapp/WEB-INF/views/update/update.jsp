@@ -20,7 +20,7 @@
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script>
@@ -73,6 +73,7 @@
 			<ul class="nav nav-pills nav-stacked">
 				<li><a href="${pageContext.request.contextPath}/client/panier?cId=${loginClient.CId}" style="font-family: 'Black Han Sans', sans-serif;">장바구니</a></li>
 				<li><a href="${pageContext.request.contextPath}/client/paymentList?cId=${loginClient.CId}" style="font-family: 'Black Han Sans', sans-serif;">결제내역</a></li>
+				<li><a href="${pageContext.request.contextPath}/client/ClientQnaList.do?cId=${loginClient.CId}" style="font-family: 'Black Han Sans', sans-serif;">문의내역</a></li>
 				<li><a href="${pageContext.request.contextPath}/update/update.do?cId=${loginClient.CId}" style="font-family: 'Black Han Sans', sans-serif;">정보수정</a></li>
 				<li><a href="${pageContext.request.contextPath}/pwChange/pwChange.do" style="font-family: 'Black Han Sans', sans-serif;">비밀번호 변경</a></li>
 				<li><a href="${pageContext.request.contextPath}/withdraw/withdraw.do" style="font-family: 'Black Han Sans', sans-serif;">회원탈퇴</a></li>
