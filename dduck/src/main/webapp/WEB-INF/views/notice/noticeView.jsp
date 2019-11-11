@@ -52,7 +52,7 @@
     <br><br><br><br><br>
     
 	<!-- 관리자메뉴 -->
-<%-- 	<c:if test="${cId eq 'admin' }"> --%>
+	<c:if test="${loginClient.CId eq 'admin' }">
 	    <div class="navbar navbar-default navbar-fixed-bottom">
 	        <div class="container">
 	            <p class="navbar-text pull-left">
@@ -66,7 +66,7 @@
 	            </div>
 	        </div>
 	    </div>
-<%--     </c:if> --%>
+    </c:if>
 </section>
 <script>
 /* 삭제 ---------------------------------------------------------------- */
