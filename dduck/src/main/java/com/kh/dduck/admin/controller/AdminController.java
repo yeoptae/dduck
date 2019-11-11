@@ -382,8 +382,6 @@ public class AdminController {
    
     @RequestMapping("/admin/withDraw.do") 
 	 public void deleteClient(Client c,HttpServletResponse res)throws IOException {
-    	    System.out.println("======================");
-    	    System.out.println(c);
 			int result = service.deleteClient(c);
 			if(result > 0) res.getWriter().print(true);
 			else res.getWriter().print(false);
