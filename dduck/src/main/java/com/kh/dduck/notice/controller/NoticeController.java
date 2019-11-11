@@ -83,6 +83,7 @@ public class NoticeController {
 		List<NoticeFile> NoticeFileList=new ArrayList();
 		
 		File dir=new File(saveDir);
+		
 		for(MultipartFile f : upFile) {
 			if(!f.isEmpty()) {
 				//파일명 재설정
