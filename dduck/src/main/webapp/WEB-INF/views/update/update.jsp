@@ -128,7 +128,6 @@
 						</div>
 					</div>
 
-
 					<div class="form-group">
 						<div class="col-sm-2 control-label">
 							<label id="address1" style="background-color: #EAEAEA; font-family: 'Do Hyeon', sans-serif;">주소</label>
