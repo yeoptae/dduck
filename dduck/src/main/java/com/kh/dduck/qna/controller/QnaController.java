@@ -17,7 +17,7 @@ import com.kh.dduck.qna.model.vo.QnaComment;
 
 @Controller
 public class QnaController {
-
+	
 	@Autowired
 	QnaService service;
 	
@@ -32,10 +32,29 @@ public class QnaController {
 		
 		List<Map<String,String>> list=service.selectQnaList(cPage,numPerPage);
 		int totalCount=service.selectQnaCount();
-		mv.addObject("pageBar",PageBarFactory.getPageBar(totalCount, cPage, numPerPage, "/dduck/qna/qnaList.do"));
+		mv.addObject("pageBar",PageBarFactory.getPageBar(totalCount, cPage, numPerPage,"/19AM_dduck_final/qna/qnaList.do"));
 		mv.addObject("count",totalCount);
 		mv.addObject("list",list);
 		mv.setViewName("notice/qnaList");
+		
+		return mv;
+	}
+	
+	/* 마이페이지 Qna List연결 */
+	@RequestMapping("/client/ClentQnaList.do")
+	public ModelAndView MypageQnaList(@RequestParam(value="cPage", 
+	required=false, defaultValue="0") int cPage) {
+		//반환될 modelandview객체를 생성
+		ModelAndView mv=new ModelAndView();
+		
+		int numPerPage=8;
+		
+		List<Map<String,String>> list=service.selectQnaList(cPage,numPerPage);
+		int totalCount=service.selectQnaCount();
+		mv.addObject("pageBar",PageBarFactory.getPageBar(totalCount, cPage, numPerPage, "/19AM_dduck_final/client/ClentQnaList.do"));
+		mv.addObject("count",totalCount);
+		mv.addObject("list",list);
+		mv.setViewName("notice/MypageQnaList");
 		
 		return mv;
 	}

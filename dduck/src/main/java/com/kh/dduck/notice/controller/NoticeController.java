@@ -64,7 +64,7 @@ public class NoticeController {
 		int numPerPage=10;
 		List<Map<String,String>> list=service.selectNoticeList(cPage,numPerPage);
 		int totalCount=service.selectNoticeCount();
-		mv.addObject("pageBar",PageBarFactory.getPageBar(totalCount, cPage, numPerPage, "/dduck/notice/noticeList.do"));
+		mv.addObject("pageBar",PageBarFactory.getPageBar(totalCount, cPage, numPerPage, "/19AM_dduck_final/notice/noticeList.do"));
 		mv.addObject("count",totalCount);
 		mv.addObject("list",list);
 		mv.setViewName("notice/noticeList");
