@@ -85,7 +85,7 @@
 				<form class="form-horizontal" action="${path }/update/updateEnd.do" method="post" onsubmit="return signUp_validate();">
 					<div class="form-group">
 						<div class="col-sm-2 control-label">
-							<label for="id">아이디</label>
+							<label style="background-color: #EAEAEA; font-family: 'Do Hyeon', sans-serif;">아이디</label>
 						</div>
 						<div class="col-sm-6 text-left">
 							<input type="text" class="form-control" name="cId" id="id" readonly="readonly"
@@ -94,7 +94,7 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-2 control-label">
-							<label id="name">이름</label>
+							<label style="background-color: #EAEAEA; font-family: 'Do Hyeon', sans-serif;">이름</label>
 						</div>
 						<div class="col-sm-6">
 							<input type="text" class="form-control" name="cName" id="name" readonly="readonly"
@@ -104,7 +104,7 @@
 
 					<div class="form-group">
 						<div class="col-sm-2 control-label">
-							<label>이메일</label>
+							<label style="background-color: #EAEAEA; font-family: 'Do Hyeon', sans-serif;">이메일</label>
 						</div>
 						<div class="col-sm-6">
 							<input type="email" class="form-control" name="cEmail" id="email"
@@ -116,7 +116,7 @@
 
 					<div class="form-group">
 						<div class="col-sm-2 control-label">
-							<label id="zip_num">우편번호</label>
+							<label id="zip_num" style="background-color: #EAEAEA; font-family: 'Do Hyeon', sans-serif;">우편번호</label>
 						</div>
 						<div class="col-sm-3">
 							<input type="text" id="sample6_postcode" placeholder="우편번호"
@@ -130,7 +130,7 @@
 
 					<div class="form-group">
 						<div class="col-sm-2 control-label">
-							<label id="address1">주소</label>
+							<label id="address1" style="background-color: #EAEAEA; font-family: 'Do Hyeon', sans-serif;">주소</label>
 						</div>
 						<div class="col-sm-6">
 							<input type="text" id="sample6_address" placeholder="주소"
@@ -140,7 +140,7 @@
 
 					<div class="form-group">
 						<div class="col-sm-2 control-label">
-							<label id="address1">상세주소</label>
+							<label id="address1" style="background-color: #EAEAEA; font-family: 'Do Hyeon', sans-serif;">상세주소</label>
 						</div>
 						<div class="col-sm-6">
 							<input type="text" id="sample6_address2" placeholder="상세주소"
@@ -148,9 +148,10 @@
 						</div>
 					</div>
 
+
 					<div class="form-group">
 						<div class="col-sm-2 control-label">
-							<label >전화번호</label>
+							<label style="background-color: #EAEAEA; font-family: 'Do Hyeon', sans-serif;">전화번호</label>
 						</div>
 						<div class="col-sm-6">
 							<input type="text" class="form-control" name="cPhone" id="phone"
