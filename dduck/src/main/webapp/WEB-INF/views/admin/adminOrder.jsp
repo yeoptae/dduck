@@ -36,7 +36,7 @@
 
 				<hr>
 				<center><h2 style="margin-right:10px; font-family: 'Black Han Sans', sans-serif;">주문현황</h2></center>
-				<div class="container-fluid" style="margin-top: 5%">
+				<div class="container-fluid">
 					<table class="table">
 						<thead class="thead-light">
 							<tr style="text-align: center;">
@@ -118,7 +118,7 @@
 				//var c = $(".num${pv.count}").val();
 				//console.log(j);
 
-
+       if(confirm("배송완료를 하였습니까??")) { 
 				$.ajax({
 					url : "${pageContext.request.contextPath}/payment/dComplete.do",														//cId=파라미터값으로 input에 name값이다.
 					data : {payCode : i},
@@ -136,6 +136,7 @@
 						console.log("ajax fail");
 					}
 				});
+       }
 			}
 				
 
