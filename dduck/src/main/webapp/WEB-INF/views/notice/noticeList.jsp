@@ -41,7 +41,6 @@
                             <thead>
                                 <tr>
                                     <th class="notice-table-6">분류</th>
-                                    <th class="notice-table-1">번호</th>
                                     <th class="notice-table-2">제목</th>
                                     <th class="notice-table-3" style="width : 100px;">작성자</th>
                                     <th class="notice-table-4" style="width : 100px;">작성일</th>
@@ -60,9 +59,6 @@
                                     			이벤트
                                     		</c:when>
                                     	</c:choose>
-                                    </td>
-                                    <td>
-                                    	<c:out value='${n["NOTICECODE"] }'/>
                                     </td>
                                     <td>
                                     	<a href='${path }/notice/noticeView.do?noticeCode=${n["NOTICECODE"]}'>
