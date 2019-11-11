@@ -278,6 +278,14 @@ div#select_box select#gCode {
 				$("img[name=img_" + img + "]").attr("src", "");
 				$("input[name=" + img + "]").val("null");
 			}
+			$(function() {
+				  var select = $("select#gCode");
+
+				  select.change(function() {
+				    var select_name = $(this).children("option:selected").text();
+				    $(this).siblings("label").text(select_name);
+				  });
+				});
 		</script>
 
 	</body>

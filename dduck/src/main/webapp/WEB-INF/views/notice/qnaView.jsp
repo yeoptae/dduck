@@ -69,7 +69,7 @@
 			                </div>
 			            </div>
 					</div>
-				<input type="hidden" name="cId" value="${qna.CID }">
+				<%-- <input type="hidden" name="cId" value="${qna.CID }"> --%>
 				<input type="hidden" name="qaCode" value="${qna.QACODE }">
 				</form>
 			</c:when>
