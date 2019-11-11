@@ -20,17 +20,17 @@
 					          
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input id="login-username" type="text" class="form-control" name="cName"  placeholder="이름">                                        
+                                        <input id="username" type="text" class="form-control" name="cName"  placeholder="이름">                                        
                                     </div>
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                                        <input id="login-password" type="password" class="form-control" name="cPhone" placeholder="전화번호">
+                                        <input id="userPhone" type="password" class="form-control" name="cPhone" placeholder="전화번호">
                                     </div>
                                 <div style="margin-top:10px" class="form-group">
                         
                                     <!-- Button -->
                                  <div class="col-sm-12 controls">
-                                 	<input type="submit" id="submit" value="아이디찾기" class="btn btn-primary" >
+                                 	<input type="submit" id="idSearch4" value="아이디찾기" class="btn btn-primary" >
                            			<input type="button" class="btn btn-primary" value="취소하기" onClick="location.reload()"/>  
                                  </div>                      
                              </div>
@@ -39,7 +39,27 @@
                   </div>
 			</div>
 		</div>
+<script>
+$(document).ready(function(e){
+	   $('#idSearch4').click(function(){
+	      
+	         // 입력 값 체크
+	         if($.trim($('#username').val()) == ''){
+	            alert("이름을 입력해주세요.");
+	            $('#username').focus();
+	            return  false;
+	         }else if($.trim($('#userPhone').val()) == ''){
+	            alert("전화번호를 입력해주세요.");
+	            $('#userPhone').focus();
+	            return false;
+	         }
+	         
+	       //전송
+	         $('#loginform').submit(); 
+	      });
+	 });
 
+</script>
 
 
 

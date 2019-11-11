@@ -55,6 +55,7 @@
 
 
  $(function(){
+	 $("#injeng").hide();
 	$("#email").keyup(function() {
 		var clientEmail = $('#email').val();
 		if(clientEmail.length>10){
