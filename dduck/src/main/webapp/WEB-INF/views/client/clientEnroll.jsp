@@ -141,7 +141,7 @@
                 <form name="form1" class="form-horizontal" action="${path }/client/clientEnrollEnd.do" method="post" onsubmit="return signUp_validate();">
                     <div class="form-group">
                         <div class="col-sm-2 control-label">
-                            <label>아이디</label>
+                            <label style="background-color: #EAEAEA; font-family: 'Do Hyeon', sans-serif;">아이디</label>
                         </div>
                         <div class="col-sm-6 text-left">
                             <input type="text" name="cId" id="id" class="form-control">
@@ -151,7 +151,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-2 control-label">
-                            <label>패스워드</label>
+                            <label style="background-color: #EAEAEA; font-family: 'Do Hyeon', sans-serif;">패스워드</label>
                         </div>
                         <div class="col-sm-6">
                             <input type="password" class="form-control" name="cPw" id="pwd" required/>
@@ -160,7 +160,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-2 control-label">
-                            <label>패스워드 체크</label>
+                            <label style="background-color: #EAEAEA; font-family: 'Do Hyeon', sans-serif;">패스워드 체크</label>
                         </div>
                         <div class="col-sm-6">
                             <input type="password" class="form-control" name="pwdCheck" id="pwdCheck" required/>
@@ -171,7 +171,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-2 control-label">
-                            <label>이름</label>
+                            <label style="background-color: #EAEAEA; font-family: 'Do Hyeon', sans-serif;">이름</label>
                         </div>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" name="cName" id="userName">
@@ -180,7 +180,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-2 control-label">
-                            <label>이메일</label>
+                            <label style="background-color: #EAEAEA; font-family: 'Do Hyeon', sans-serif;">이메일</label>
                         </div>
                         <div class="col-sm-6">
                             <input type="email" class="form-control" name="CEmail" id="email" value="${tomail }" readonly>
@@ -190,7 +190,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-2 control-label">
-                            <label id="zip_num">우편번호</label>
+                            <label id="zip_num" style="background-color: #EAEAEA; font-family: 'Do Hyeon', sans-serif;">우편번호</label>
                         </div>
                         <div class="col-sm-3">
                             <input type="text" id="sample6_postcode" placeholder="우편번호" name="cAddr1"
@@ -205,7 +205,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-2 control-label">
-                            <label id="address1">주소</label>
+                            <label id="address1" style="background-color: #EAEAEA; font-family: 'Do Hyeon', sans-serif;">주소</label>
                         </div>
                         <div class="col-sm-6">
                             <input type="text" id="sample6_address" placeholder="주소" name="cAddr2"
@@ -215,7 +215,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-2 control-label">
-                            <label id="address1">상세주소</label>
+                            <label id="address1" style="background-color: #EAEAEA; font-family: 'Do Hyeon', sans-serif;">상세주소</label>
                         </div>
                         <div class="col-sm-6">
                             <input type="text" id="sample6_address2" placeholder="상세주소" name="cAddr3"
@@ -227,7 +227,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-2 control-label">
-                            <label>전화번호</label>
+                            <label style="background-color: #EAEAEA; font-family: 'Do Hyeon', sans-serif;">전화번호</label>
                         </div>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" name="cPhone" id="phone">
