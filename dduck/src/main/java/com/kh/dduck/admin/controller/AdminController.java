@@ -62,7 +62,7 @@ public class AdminController {
       mv.addObject("list", list);
       mv.addObject("fileList", fileList);
       mv.addObject("pageBar",
-            PageBarFactory.getPageBarWhere2(totlaCount2, cPage, numPerPage, "/19AM_dduck_final/dduck/admin/searchList.do",searchWord));
+            PageBarFactory.getPageBarWhere22(totlaCount2, cPage, numPerPage, "/19AM_dduck_final/admin/searchList.do",searchWord));
 
       mv.setViewName("saleboard/searchList");
 
@@ -91,7 +91,7 @@ public class AdminController {
       mv.addObject("fileList", fileList);
       mv.addObject("gCode", gCode);
       mv.addObject("pageBar",
-            PageBarFactory.getPageBarWhere3(totlaCount, cPage, numPerPage, "/19AM_dduck_final/dduck/admin/saleboardList.do", gCode,searchWord));
+            PageBarFactory.getPageBarWhere3(totlaCount, cPage, numPerPage, "/19AM_dduck_final/admin/saleboardList.do", gCode,searchWord));
 
       mv.setViewName("saleboard/saleboardList");
 

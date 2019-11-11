@@ -41,7 +41,7 @@ public class QnaController {
 	}
 	
 	/* 마이페이지 Qna List연결 */
-	@RequestMapping("/client/ClentQnaList.do")
+	@RequestMapping("/client/ClientQnaList.do")
 	public ModelAndView MypageQnaList(@RequestParam(value="cPage", 
 	required=false, defaultValue="0") int cPage) {
 		//반환될 modelandview객체를 생성

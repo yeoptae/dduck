@@ -79,7 +79,7 @@ public class NoticeController {
 		
 		/* 파일업로드처리 */
 		//1. 저장 경로
-		String saveDir=request.getSession().getServletContext().getRealPath("resources/upload/notice");
+		String saveDir=request.getSession().getServletContext().getRealPath("/resources/upload/notice");
 		List<NoticeFile> NoticeFileList=new ArrayList();
 		
 		File dir=new File(saveDir);
