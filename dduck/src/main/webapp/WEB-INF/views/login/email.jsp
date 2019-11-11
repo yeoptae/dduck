@@ -56,13 +56,13 @@ $(function(){
 				success : function(data) {
 								if (data == 1) {
 									// 1 : 이메일 중복문구
-									$("#mailCheck").text("사용중인 아이디입니다.");
+									$("#mailCheck").text("중복된 이메일입니다.");
 									$("#mailCheck").css({"color":"red","display":"block"});
 									$("#injeng").hide();
 								} else {
 									if(data == 0){
 										// 0 : 아이디 길이 / 문자열 검사
-										$("#mailCheck").text("사용가능한 아이디입니다.");
+										$("#mailCheck").text("사용가능한 이메일입니다.");
 										$("#mailCheck").css({"color":"green","display":"block"});
 										$("#injeng").show();
 									} 
