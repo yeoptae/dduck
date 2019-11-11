@@ -25,7 +25,6 @@
         <br>
         <ul class="qnatable responsive-table">
             <li class="table-header">
-                <div class="col col-1">번호</div>
                 <div class="col col-2">작성자</div>
                 <div class="col col-3">제목</div>
                 <div class="col col-4">작성일</div>
@@ -33,7 +32,7 @@
             </li>
             <c:forEach items="${list }" var="q" varStatus="v">
 		            <li class="qnaHover table-row">
-		                <div class="col col-1" data-label="번호"><c:out value='${q["QACODE"] }'/></div>
+		                
 		                <c:choose>
 		                	<c:when test="${empty q['CID']}">
 		                		<div class="col col-2" data-label="작성자">(탈퇴회원)</div>
