@@ -19,6 +19,7 @@
                     <div class="panel-heading">
                         <div class="panel-title">메일을 입력하시면 인증번호가 발송됩니다.</div>
                     </div>     
+                    
 
                     <div class="panel-body" >
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
