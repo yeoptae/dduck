@@ -45,12 +45,13 @@
 
 
 $(function(){
+	$("#injeng").hide();
 	$("#email").keyup(function() {
 		var clientEmail = $('#email').val();
 		if(clientEmail.length>11){
 				$.ajax({
 				url : "${pageContext.request.contextPath}/user/mailCheck?e_mail="+ clientEmail,
-				//cId=파라미터값으로 input에 name값이다.
+				//e_mail=파라미터값으로 input에 name값이다.
 				type : 'get',
 				datatype : 'html',
 				success : function(data) {
